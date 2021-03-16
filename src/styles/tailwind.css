@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap");
+@layer base {
+  body {
+    @apply m-0 text-default;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+  button {
+    @apply focus:outline-none rounded h-10 w-20 min-w-max py-2.5 px-4 font-bold flex justify-center items-center bg-grey disabled:opacity-50 disabled:pointer-events-none;
+  }
+  button.active {
+    @apply bg-blue text-white;
+  }
+  button.unstyled {
+    @apply bg-transparent text-blue justify-start w-auto p-0 h-auto font-normal;
+  }
+  h2 {
+    @apply text-4xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+}
