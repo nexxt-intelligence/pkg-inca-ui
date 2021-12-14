@@ -1,0 +1,44 @@
+.filters--filter-box--filter--entry {
+        position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 40px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.filters--filter-box--filter--entry--content {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.filters--filter-box--filter--entry--content .inca-switch--wrapper {
+    margin-bottom: -16px;
+    margin-right: 8px;
+}
+
+.filters--filter-box--filter--entry--menu {
+    cursor: pointer;
+    margin-bottom: -4px;
+    position: relative;
+}
+
+.filters--filter-box--filter--entry--menu--expanded {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 120px;
+    background-color: #ffffff;
+    z-index: 6;
+    border: 1px solid #828282;
+    border-radius: 4px;
+    box-shadow: 2px 3px 10px 0px rgb(175 175 175 / 15%);
+}
+
+.filters--filter-box--filter--entry--menu--expanded .entry-menu--item {
+    padding: 8px;
+    cursor: pointer;
+}

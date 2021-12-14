@@ -13,3 +13,5 @@ export {
 } from "./components/MiniModal";
 
 export { Switch } from './components/Switch';
+
+export { FilterBox } from './components/FilterBox';
