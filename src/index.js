@@ -11,3 +11,5 @@ export {
   MiniModalContent,
   MiniModalActions,
 } from "./components/MiniModal";
+
+export { SideBar, SideBarItem } from "./components/SideBar";
