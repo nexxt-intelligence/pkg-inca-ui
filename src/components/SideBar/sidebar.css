@@ -1,3 +1,27 @@
+@media (max-width: 600px) {
+  .sidebar-inca {
+    display: none;
+  }
+  .top-nav {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+@media (min-width: 601px) {
+  .top-nav {
+    display: none;
+  }
+}
+
 .sidebar-inca {
   position: fixed;
   top: 0px;

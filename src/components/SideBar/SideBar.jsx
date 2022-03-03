@@ -4,6 +4,7 @@ import {
   UilAngleRightB,
   UilCommentAltLines,
   UilQuestionCircle,
+  UilBars,
 } from "@iconscout/react-unicons";
 import "./sidebar.css";
 
@@ -13,6 +14,8 @@ export function SideBar({
   children,
   selectedLink,
   footerProps,
+  logo,
+  isMobile,
 }) {
   const profileChild = [];
   const arrayChildren = [];
@@ -26,6 +29,7 @@ export function SideBar({
           mainBody = React.cloneElement(childFragment, {
             isExpanded: isExpanded,
             selectedLink: selectedLink,
+            isMobile: isMobile,
           });
           arrayChildren.push(mainBody);
         });
@@ -33,53 +37,80 @@ export function SideBar({
         mainBody = React.cloneElement(child, {
           isExpanded: isExpanded,
           selectedLink: selectedLink,
+          isMobile: isMobile,
         });
         arrayChildren.push(mainBody);
       }
     }
   });
-  return (
-    <nav
-      className="sidebar-inca"
-      style={{ width: isExpanded ? "250px" : "65px" }}
-    >
-      <section>{arrayChildren}</section>
-      <footer>
-        <SideBarItem footer>
-          <a
-            className="sidebar-footer-item"
-            onClick={() => {
-              footerProps.openFeedback();
-            }}
-          >
-            <UilCommentAltLines size={20} />
-            {isExpanded && <span className="sidebar-item-text">Feedback</span>}
-          </a>
-        </SideBarItem>
-        <SideBarItem footer>
-          <a
-            className="sidebar-footer-item"
-            href={footerProps.helpDeskUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <UilQuestionCircle size={20} />
-            {isExpanded && <span className="sidebar-item-text">Help</span>}
-          </a>
-        </SideBarItem>
-        {profileChild}
-      </footer>
-      <button
-        className="sidebar-button"
-        onClick={() => sidebarToggle(isExpanded ? false : true)}
-      >
-        {isExpanded ? (
+
+  const renderButtons = () => {
+    if (isExpanded) {
+      return (
+        <button
+          className="sidebar-button"
+          onClick={() => sidebarToggle(isExpanded ? false : true)}
+        >
           <UilAngleLeftB size={20} />
-        ) : (
+        </button>
+      );
+    } else if (!isExpanded && !isMobile) {
+      return (
+        <button
+          className="sidebar-button"
+          onClick={() => sidebarToggle(isExpanded ? false : true)}
+        >
           <UilAngleRightB size={20} />
-        )}
-      </button>
-    </nav>
+        </button>
+      );
+    }
+  };
+  return (
+    <>
+      <div className="top-nav">
+        <svg width="30" height="30">
+          <image id="nexxt-bot-logo-4" width="30" height="30" href={logo} />
+        </svg>
+        <UilBars
+          size={20}
+          onClick={() => sidebarToggle(isExpanded ? false : true)}
+        />
+      </div>
+      <nav
+        className="sidebar-inca"
+        style={{ width: isExpanded ? "250px" : isMobile ? "0px" : "65px" }}
+      >
+        <section>{arrayChildren}</section>
+        <footer>
+          <SideBarItem footer>
+            <a
+              className="sidebar-footer-item"
+              onClick={() => {
+                footerProps.openFeedback();
+              }}
+            >
+              <UilCommentAltLines size={20} />
+              {isExpanded && (
+                <span className="sidebar-item-text">Feedback</span>
+              )}
+            </a>
+          </SideBarItem>
+          <SideBarItem footer>
+            <a
+              className="sidebar-footer-item"
+              href={footerProps.helpDeskUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <UilQuestionCircle size={20} />
+              {isExpanded && <span className="sidebar-item-text">Help</span>}
+            </a>
+          </SideBarItem>
+          {profileChild}
+        </footer>
+        {renderButtons()}
+      </nav>
+    </>
   );
 }
 
@@ -113,11 +144,18 @@ export function SideBarItem(props) {
       </div>
     );
   } else {
+    let activeItem = "";
+    if (props.selectedLink === props.link) {
+      activeItem = "active-item";
+    }
+    if (props.isMobile && !props.isExpanded) {
+      activeItem = "";
+    }
     return (
       <div
-        className={`sidebar-item-container ${
-          props.selectedLink === props.link ? "active-item" : ""
-        } ${props.disabled ? "disabled" : ""}`}
+        className={`sidebar-item-container ${activeItem} ${
+          props.disabled ? "disabled" : ""
+        }`}
         style={{
           marginRight: props.isExpanded ? "0px" : "-3px",
         }}
