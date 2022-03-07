@@ -68,13 +68,29 @@ export function SideBar({
   return (
     <>
       <div className="top-nav">
-        <svg width="30" height="30">
-          <image id="nexxt-bot-logo-4" width="30" height="30" href={logo} />
-        </svg>
         <UilBars
-          size={20}
+          size={25}
           onClick={() => sidebarToggle(isExpanded ? false : true)}
         />
+        <div className="nav-logo">
+          <svg width="30" height="30" style={{ marginTop: "2px" }}>
+            <image
+              id="nexxt-bot-logo-4"
+              width="30"
+              height="30"
+              href={logo[0]}
+            />
+          </svg>
+          <svg width="100" height="35">
+            <image
+              id="nexxt-bot-logo-4"
+              width="80"
+              height="35"
+              href={logo[1]}
+            />
+          </svg>
+        </div>
+        <div style={{ width: "25px" }}></div>
       </div>
       <nav
         className="sidebar-inca"
