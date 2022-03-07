@@ -1,22 +1,25 @@
-@media (max-width: 600px) {
+@media (max-width: 1023px) {
   .sidebar-inca {
     display: none;
   }
   .top-nav {
     height: 65px;
     background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
     position: fixed;
     z-index: 100;
     width: 100%;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+  }
+  .nav-logo {
+    display: flex;
   }
 }
-@media (min-width: 601px) {
+@media (min-width: 1024px) {
   .top-nav {
     display: none;
   }
