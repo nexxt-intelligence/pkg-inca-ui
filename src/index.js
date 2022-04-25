@@ -1,15 +1,16 @@
-import "./styles/tailwind";
+import './styles/tailwind';
 
 export {
   SplitPaneModal,
   SplitPaneModalContent,
   SplitPaneModalActions,
-} from "./components/SplitPaneModal";
+} from './components/SplitPaneModal';
 
 export {
   MiniModal,
   MiniModalContent,
   MiniModalActions,
-} from "./components/MiniModal";
+} from './components/MiniModal';
 
-export { SideBar, SideBarItem } from "./components/SideBar";
+export { SideBar, SideBarItem } from './components/SideBar';
+export { ButtonSwitch } from './components/ButtonSwitch';
