@@ -1,6 +1,3 @@
-label {
-  margin: 0 !important;
-}
 .b-switch-ButtonSwitch {
   width: 100%;
   opacity: 1;
@@ -11,6 +8,7 @@ label {
   height: 2.5rem;
   position: relative;
   font-size: 12px;
+  margin: 0 !important;
 }
 .b-switch-switch-container {
   height: 100%;
