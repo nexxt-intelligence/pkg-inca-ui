@@ -1,0 +1,73 @@
+.b-switch-ButtonSwitch {
+  width: 100%;
+  opacity: 1;
+  background-color: rgba(240, 240, 240, 1);
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-block;
+  height: 2.5rem;
+  position: relative;
+  font-size: 12px;
+  margin: 0 !important;
+}
+.b-switch-switch-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  place-items: center;
+}
+
+.b-switch-switch-container .b-switch-option {
+  font-weight: 700;
+  padding: 0;
+  z-index: 10;
+}
+
+.b-switch-switch-container .b-switch-option.b-switch-active {
+  opacity: 1;
+  color: rgba(255, 255, 255, 1);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 300ms;
+}
+
+.b-switch-slider-input {
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.b-switch-ButtonSwitch .b-switch-slider {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1)
+    scaleY(1);
+}
+.b-switch-ButtonSwitch .b-switch-slider:before {
+  --tw-bg-opacity: 1;
+  background-color: rgba(45, 103, 203, var(--tw-bg-opacity));
+  border-radius: 9999px;
+  height: 100%;
+  position: absolute;
+  width: 50%;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-duration: 300ms;
+  content: "";
+}
+
+.b-switch-ButtonSwitch input:checked + .b-switch-slider:before {
+  --tw-translate-x: 100%;
+}
