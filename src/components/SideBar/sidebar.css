@@ -42,11 +42,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-a:hover {
-  color: #2d67cb;
-  transition: 0s;
-  text-decoration: none;
-}
+
 .sidebar-item-container {
   padding: 15px 22px;
   color: #595959;
