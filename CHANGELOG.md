@@ -1,6 +1,13 @@
 # inca-ui
 
+## 3.2.0
+
+### Minor Changes
+
+- 3739106: update README
+
 ## 3.1.0
+
 ### Minor Changes
 
 - 11211b5: test changeset
