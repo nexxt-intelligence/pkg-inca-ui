@@ -21,8 +21,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Publishing
 
-Run `yarn changeset` to upgrade the version (whether it be a patch, minor update, or major update).
-
-Then use `git add` on the resulting file in `.changeset/` and commit and push it along with your other changes.
-
-Upon pushing, the package will be automatically published to the npm registry!
+TODO!
