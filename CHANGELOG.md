@@ -1,5 +1,11 @@
 # inca-ui
 
+## 3.2.1
+
+### Patch Changes
+
+- 45550f9: fix README
+
 ## 3.2.0
 
 ### Minor Changes
