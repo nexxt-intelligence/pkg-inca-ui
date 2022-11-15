@@ -29,9 +29,6 @@ export default {
     peerDepsExternal(),
     resolve({ extensions }),
     postcss({
-      config: {
-        path: "./postcss.config.js",
-      },
       extensions: [".css"],
       minimize: true,
       inject: {

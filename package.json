@@ -8,12 +8,15 @@
     "lib"
   ],
   "scripts": {
+    "prestart": "yarn run tailwind",
     "test": "jest",
     "test:watch": "jest --watch",
-    "storybook": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006",
+    "prebuild": "yarn run tailwind",
     "build-storybook": "build-storybook",
     "build": "NODE_ENV=production rollup -c",
-    "release": "yarn build && changeset publish"
+    "release": "yarn build && changeset publish",
+    "tailwind": "npx tailwindcss -i ./tailwind.config.css -o ./src/styles/tailwind.css"
   },
   "eslintConfig": {
     "extends": [
@@ -54,26 +57,29 @@
     "@storybook/react": "^6.2.9",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
-    "autoprefixer": "^9",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.2.2",
     "core-js": "^3.14.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "postcss": "^7",
-    "postcss-loader": "^6.1.0",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
+    "postcss": "^8",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "7.0.1",
+    "postcss-preset-env": "6.7.0",
+    "postcss-safe-parser": "4.0.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-test-renderer": "^17.0.2",
     "regenerator-runtime": "^0.13.7",
     "rollup": "^2.51.2",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "rollup-plugin-postcss": "4.0.0",
+    "tailwindcss": "^3.1.4"
   },
   "peerDependencies": {
-    "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   }
 }
