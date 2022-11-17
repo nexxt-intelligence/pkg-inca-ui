@@ -1,7 +1,6 @@
 import React from "react";
 import { UilTimes } from "@iconscout/react-unicons";
 import "../../styles/tailwind.css";
-import "./SplitPaneModal.css";
 
 export function SplitPaneModal({
   isOpen,
@@ -10,16 +9,14 @@ export function SplitPaneModal({
   header,
   body,
   isBlurred = true,
-  darkLevel = "70",
   onClose,
   children,
 }) {
   return (
     isOpen && (
       <div
-        className={`flex justify-center items-center fixed left-0 top-0 bg-black bg-opacity-${darkLevel} h-screen w-screen z-100 ${
-          isBlurred && "blurEffect"
-        }`}
+        className={`flex justify-center items-center fixed left-0 top-0 bg-black/70 h-screen w-screen z-200 ${isBlurred &&
+          "blurEffect"}`}
       >
         <div className="bg-white grid grid-cols-2">
           <div className="p-5 bg-blue text-white flex items-center">

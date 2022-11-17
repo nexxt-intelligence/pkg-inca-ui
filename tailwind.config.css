@@ -4,9 +4,6 @@
 @tailwind colors;
 
 @layer components {
-  .inca-button {
-    @apply bg-blue flex justify-center items-center text-white hover:bg-opacity-80 h-8 py-2 px-4 font-bold space-x-1;
-  }
 }
 
 @layer utilities {
@@ -15,130 +12,12 @@
   }
 
   body {
+    @apply text-gray-700;
     font-family: "Source Sans Pro", sans-serif;
   }
 
-  .max-w-screen-xs {
-    max-width: 380px;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  input:disabled {
-    background-color: inherit;
-  }
-
-  .dashcard-menus .ant-select-selector {
-    border: none !important;
-    border-bottom: solid 1px #e5e7eb !important;
-    padding: 0px !important;
-    height: 24px !important;
-  }
-
-  .dashcard-menus .ant-select-arrow {
-    right: 0 !important;
-  }
-
-  .dashcard-menus .ant-select-selector input {
-    height: 20px !important;
-  }
-
-  .dashcard-menus .ant-select-selection-placeholder,
-  .dashcard-menus .ant-select-selection-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-    max-width: calc(100% - 20px);
-  }
-
-  .dashcard-menus .ant-select-focused .ant-select-selector {
-    box-shadow: none !important;
-    border-bottom: solid 1px #e5e7eb !important;
-  }
-
-  .spinner {
-    display: inline-block;
-    animation: spin 2s linear infinite;
-  }
-
-  .flip-v {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
-
-  .flip-h {
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-  }
-
-  .text-2xs {
-    font-size: 0.65rem;
-    line-height: 1rem;
-  }
-
-  .max-w-2xs {
-    max-width: 15rem;
-  }
-
-  @-webkit-keyframes autofill {
-    0%,
-    100% {
-      color: inherit !important;
-      background: transparent !important;
-    }
-  }
-
-  input:focus {
-    outline: none !important;
-  }
-  textarea:focus {
-    outline: none !important;
-  }
-
-  input:-webkit-autofill {
-    -webkit-animation-delay: 1s;
-    /* Safari support - any positive time runs instantly */
-    -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
-  }
-
-  input[type="search"]::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-  input[type="search"]::-ms-reveal {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  /* clears the 'X' from Chrome */
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    display: none;
+  .blurEffect {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
