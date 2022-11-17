@@ -10,7 +10,7 @@ export function MiniModal({ isOpen, isClosable = true, onClose, children }) {
   return (
     isOpen && (
       <div
-        className={`flex justify-center items-center fixed left-0 top-0 bg-black bg-opacity-25 h-screen w-screen z-100`}
+        className={`flex justify-center items-center fixed left-0 top-0 bg-black/25 h-screen w-screen z-100`}
         ref={ref}
       >
         <div ref={ref} className="bg-white p-5 flex flex-col">
