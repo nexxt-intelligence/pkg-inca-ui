@@ -15,27 +15,29 @@ export function SplitPaneModal({
   return (
     isOpen && (
       <div
-        className={`flex justify-center items-center fixed left-0 top-0 bg-black/70 h-screen w-screen z-200 ${isBlurred &&
-          "blurEffect"}`}
+        className={`inca-ui-flex inca-ui-justify-center inca-ui-items-center inca-ui-fixed inca-ui-left-0 inca-ui-top-0 inca-ui-bg-black/70 inca-ui-h-screen inca-ui-w-screen inca-ui-z-100 ${isBlurred &&
+          "inca-ui-blurEffect"}`}
       >
-        <div className="bg-white grid grid-cols-2">
-          <div className="p-5 bg-blue text-white flex items-center">
-            <div className="mx-10 w-80 pr-16">
+        <div className="inca-ui-bg-white inca-ui-grid inca-ui-grid-cols-2">
+          <div className="inca-ui-p-5 inca-ui-bg-blue inca-ui-text-white inca-ui-flex inca-ui-items-center">
+            <div className="inca-ui-mx-10 inca-ui-w-80 inca-ui-pr-16">
               {icon}
-              <h2 className="text-5xl my-3 font-bold">{header}</h2>
-              <p className="font-bold text-sm">{body}</p>
+              <h2 className="inca-ui-text-5xl inca-ui-my-3 inca-ui-font-bold">
+                {header}
+              </h2>
+              <p className="inca-ui-font-bold inca-ui-text-sm">{body}</p>
             </div>
           </div>
-          <div className="p-5 flex flex-col">
-            <div className="flex justify-end min-h-6">
+          <div className="inca-ui-p-5 inca-ui-flex inca-ui-flex-col">
+            <div className="inca-ui-flex inca-ui-justify-end inca-ui-min-h-6">
               <span>&nbsp;</span>
               {isClosable && (
-                <button className="unstyled" onClick={onClose}>
-                  <UilTimes className="text-default" />
+                <button className="inca-ui-unstyled" onClick={onClose}>
+                  <UilTimes className="inca-ui-text-default" />
                 </button>
               )}
             </div>
-            <div className="h-full">{children}</div>
+            <div className="inca-ui-h-full">{children}</div>
           </div>
         </div>
       </div>
@@ -45,11 +47,11 @@ export function SplitPaneModal({
 
 export function SplitPaneModalContent({ header, body, children }) {
   return (
-    <div className="flex flex-col flex-grow justify-center w-80 h-96 mx-10">
+    <div className="inca-ui-flex inca-ui-flex-col inca-ui-flex-grow inca-ui-justify-center inca-ui-w-80 inca-ui-h-96 inca-ui-mx-10">
       <div>
-        <div className="mb-4">
-          <h2 className="font-bold text-3xl">{header}</h2>
-          <p className="mt-1 text-xs">{body}</p>
+        <div className="inca-ui-mb-4">
+          <h2 className="inca-ui-font-bold inca-ui-text-3xl">{header}</h2>
+          <p className="inca-ui-mt-1 inca-ui-text-xs">{body}</p>
         </div>
         <div>{children}</div>
       </div>
@@ -58,7 +60,7 @@ export function SplitPaneModalContent({ header, body, children }) {
 }
 
 export function SplitPaneModalActions({ children }) {
-  return <div className="flex justify-end">{children}</div>;
+  return <div className="inca-ui-flex inca-ui-justify-end">{children}</div>;
 }
 
 export default SplitPaneModal;

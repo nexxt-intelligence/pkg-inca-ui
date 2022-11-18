@@ -1,4 +1,5 @@
 module.exports = {
+  prefix: "inca-ui-",
   mode: "jit",
   purge: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
@@ -22,6 +23,9 @@ module.exports = {
         blue: { DEFAULT: "#2D67CB" },
         red: { DEFAULT: "#d24d57" },
         green: { DEFAULT: "#368176" },
+      },
+      zIndex: {
+        "100": "100",
       },
     },
   },

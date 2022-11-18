@@ -12,11 +12,11 @@
   }
 
   body {
-    @apply text-gray-700;
+    @apply inca-ui-text-gray-700;
     font-family: "Source Sans Pro", sans-serif;
   }
 
-  .blurEffect {
+  .inca-ui-blurEffect {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }

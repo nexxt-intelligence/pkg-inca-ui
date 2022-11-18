@@ -559,139 +559,143 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.fixed {
+.inca-ui-fixed {
   position: fixed;
 }
 
-.left-0 {
+.inca-ui-left-0 {
   left: 0px;
 }
 
-.top-0 {
+.inca-ui-top-0 {
   top: 0px;
 }
 
-.mx-10 {
+.inca-ui-z-100 {
+  z-index: 100;
+}
+
+.inca-ui-mx-10 {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
 }
 
-.my-3 {
+.inca-ui-my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
 
-.mb-4 {
+.inca-ui-mb-4 {
   margin-bottom: 1rem;
 }
 
-.mt-1 {
+.inca-ui-mt-1 {
   margin-top: 0.25rem;
 }
 
-.flex {
+.inca-ui-flex {
   display: flex;
 }
 
-.grid {
+.inca-ui-grid {
   display: grid;
 }
 
-.h-screen {
+.inca-ui-h-screen {
   height: 100vh;
 }
 
-.h-full {
+.inca-ui-h-full {
   height: 100%;
 }
 
-.h-96 {
+.inca-ui-h-96 {
   height: 24rem;
 }
 
-.w-screen {
+.inca-ui-w-screen {
   width: 100vw;
 }
 
-.w-80 {
+.inca-ui-w-80 {
   width: 20rem;
 }
 
-.flex-grow {
+.inca-ui-flex-grow {
   flex-grow: 1;
 }
 
-.grid-cols-2 {
+.inca-ui-grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.flex-col {
+.inca-ui-flex-col {
   flex-direction: column;
 }
 
-.items-center {
+.inca-ui-items-center {
   align-items: center;
 }
 
-.justify-end {
+.inca-ui-justify-end {
   justify-content: flex-end;
 }
 
-.justify-center {
+.inca-ui-justify-center {
   justify-content: center;
 }
 
-.bg-black\/25 {
+.inca-ui-bg-black\/25 {
   background-color: rgb(0 0 0 / 0.25);
 }
 
-.bg-white {
+.inca-ui-bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-black\/70 {
+.inca-ui-bg-black\/70 {
   background-color: rgb(0 0 0 / 0.7);
 }
 
-.bg-blue {
+.inca-ui-bg-blue {
   --tw-bg-opacity: 1;
   background-color: rgb(45 103 203 / var(--tw-bg-opacity));
 }
 
-.p-5 {
+.inca-ui-p-5 {
   padding: 1.25rem;
 }
 
-.pr-16 {
+.inca-ui-pr-16 {
   padding-right: 4rem;
 }
 
-.text-3xl {
+.inca-ui-text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-.text-5xl {
+.inca-ui-text-5xl {
   font-size: 3rem;
   line-height: 1;
 }
 
-.text-sm {
+.inca-ui-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.text-xs {
+.inca-ui-text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-.font-bold {
+.inca-ui-font-bold {
   font-weight: 700;
 }
 
-.text-white {
+.inca-ui-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -706,7 +710,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.blurEffect {
+.inca-ui-blurEffect {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
