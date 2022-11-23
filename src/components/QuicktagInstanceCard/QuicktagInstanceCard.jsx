@@ -81,17 +81,19 @@ export const QuicktagInstanceCard = ({
 
   return (
     <div
-      className="inca-ui-cursor-pointer inca-ui-h-160 inca-ui-border inca-ui-rounded-md"
+      className="inca-ui-cursor-pointer inca-ui-border inca-ui-rounded-md inca-ui-flex inca-ui-flex-col"
       onClick={(e) => {
         e.preventDefault();
         window.location.href = redirectUrl;
       }}
     >
-      <div className="inca-ui-py-3 inca-ui-px-3 inca-ui-bg-slate-50">
-        <h6 className="inca-ui-font-medium inca-ui-mb-0">{QuestionLabel}</h6>
-        <p className="inca-ui-mb-2 inca-ui-text-sm inca-ui-font-light">
-          {StudyName}
-        </p>
+      <div className="inca-ui-flex-grow inca-ui-flex inca-ui-flex-col inca-ui-justify-between inca-ui-py-3 inca-ui-px-3 inca-ui-bg-slate-50">
+        <div>
+          <h6 className="inca-ui-font-medium inca-ui-mb-0">{QuestionLabel}</h6>
+          <p className="inca-ui-mb-2 inca-ui-text-sm inca-ui-font-light">
+            {StudyName}
+          </p>
+        </div>
         <div className="inca-ui-flex inca-ui-justify-between inca-ui-items-center inca-ui-text-sm">
           <span
             className={`inca-ui-font-medium

@@ -20,4 +20,8 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
+
+  .inca-ui-inca-button {
+    @apply inca-ui-bg-blue inca-ui-flex inca-ui-justify-center inca-ui-items-center inca-ui-text-white hover:inca-ui-bg-opacity-80 inca-ui-h-8 inca-ui-py-2 inca-ui-px-4 inca-ui-font-bold inca-ui-space-x-2 inca-ui-rounded;
+  }
 }
