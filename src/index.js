@@ -13,5 +13,10 @@ export {
 } from "./components/MiniModal";
 
 export { SideBar, SideBarItem } from "./components/SideBar";
+
 export { ButtonSwitch } from "./components/ButtonSwitch";
-export { QuicktagInstanceCard } from "./components/QuicktagInstanceCard";
+
+export { QuicktagInstanceCard } from "./components/QuickTagInstanceCard";
+export { QuickTagInstanceCardDirectory } from "./components/QuickTagInstanceCardDirectory";
+
+export { Pagination } from "./components/Pagination";

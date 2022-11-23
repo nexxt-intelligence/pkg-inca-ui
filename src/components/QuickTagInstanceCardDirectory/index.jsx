@@ -1,0 +1,1 @@
+export { QuickTagInstanceCardDirectory } from "./QuickTagInstanceCardDirectory";
