@@ -206,7 +206,7 @@ export const QuickTagInstanceCardDirectory = ({
           })}
         </>
       )}
-      <div className="inca-ui-w-full inca-ui-h-full inca-ui-flex inca-ui-flex-col">
+      <div className="inca-ui-w-full inca-ui-h-full inca-ui-flex inca-ui-flex-col inca-ui-bg-white inca-ui-rounded-xl inca-ui-p-4">
         <div className="inca-ui-mb-3 inca-ui-flex inca-ui-justify-between inca-ui-items-center">
           <div className="inca-ui-flex inca-ui-space-between inca-ui-items-center">
             <div className="inca-ui-border inca-ui-rounded inca-ui-py-2 inca-ui-px-3 inca-ui-mr-2 inca-ui-flex inca-ui-space-between inca-ui-items-center">
@@ -247,7 +247,6 @@ export const QuickTagInstanceCardDirectory = ({
                 onClick={() => {
                   setShowForm(true);
                 }}
-                type="button"
               >
                 <UilImport size={16} className="inca-ui-mr-2" />
                 Upload Your Own Data
@@ -258,7 +257,11 @@ export const QuickTagInstanceCardDirectory = ({
         <div className="inca-ui-w-full inca-ui-flex-grow">
           {loaded ? (
             quickTagInstanceCards.length > 0 ? (
-              <div className="inca-ui-h-full inca-ui-grid inca-ui-grid-cols-3 inca-ui-grid-rows-4 inca-ui-gap-3">
+              <div
+                className={`inca-ui-h-full inca-ui-grid inca-ui-grid-cols-3 inca-ui-gap-3 ${
+                  pageSize > 12 ? "" : "inca-ui-grid-rows-4"
+                }`}
+              >
                 {quickTagInstanceCards.map((o, i) => {
                   const redirectUrl = `${quickTagHostUrl}/?id=${o.QuickTagInstanceID}`;
                   return (
@@ -296,20 +299,18 @@ export const QuickTagInstanceCardDirectory = ({
             </div>
           )}
         </div>
-        <div className="inca-ui-flex inca-ui-justify-end">
+        <div className="inca-ui-flex inca-ui-justify-end mt-3">
           {loaded && (
-            <div className="">
-              <Pagination
-                pageSize={pageSize}
-                pageSizeOptions={12}
-                page={page}
-                pages={totalPages}
-                canPrevious={page > 0}
-                canNext={page < totalPages - 1}
-                onPageChange={handleOnPageChange}
-                onPageSizeChange={handleOnPageSizeChange}
-              />
-            </div>
+            <Pagination
+              pageSize={pageSize}
+              pageSizeOptions={PAGE_SIZE_OPTIONS}
+              page={page}
+              pages={totalPages}
+              canPrevious={page > 0}
+              canNext={page < totalPages - 1}
+              onPageChange={handleOnPageChange}
+              onPageSizeChange={handleOnPageSizeChange}
+            />
           )}
         </div>
       </div>
