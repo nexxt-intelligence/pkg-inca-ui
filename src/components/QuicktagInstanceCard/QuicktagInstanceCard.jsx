@@ -90,16 +90,16 @@ export const QuicktagInstanceCard = ({
       <div className="inca-ui-flex-grow inca-ui-flex inca-ui-flex-col inca-ui-justify-between inca-ui-py-3 inca-ui-px-3 inca-ui-bg-slate-50">
         <div>
           <h6 className="inca-ui-font-medium inca-ui-mb-0">{QuestionLabel}</h6>
-          <p className="inca-ui-mb-2 inca-ui-text-sm inca-ui-font-light">
+          <p className="inca-ui-mb-2 inca-ui-text-xs inca-ui-font-light">
             {StudyName}
           </p>
         </div>
-        <div className="inca-ui-flex inca-ui-justify-between inca-ui-items-center inca-ui-text-sm">
+        <div className="inca-ui-flex inca-ui-justify-between inca-ui-items-center inca-ui-text-xs">
           <span
-            className={`inca-ui-font-medium
+            className={`inca-ui-font-bold inca-ui-uppercase
               ${
                 Status === 0
-                  ? "inca-ui-text-amber-500"
+                  ? "inca-ui-text-yellow-400"
                   : "inca-ui-text-green-600"
               }`}
           >
@@ -130,20 +130,18 @@ export const QuicktagInstanceCard = ({
         <div className="inca-ui-flex">
           {!_.isNil(CsvUrl) && (
             <button
-              className="inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white inca-ui-mr-3"
-              type="button"
+              className="inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white inca-ui-mr-3 hover:inca-ui-bg-gray-100"
               onClick={handleDownload}
             >
               <UilImport className="inca-ui-text-slate-600" size={14} />
             </button>
           )}
           <button
-            className={`inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white inca-ui-mr-3 ${
+            className={`inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white inca-ui-mr-3 hover:inca-ui-bg-gray-100 ${
               favourites.includes(QuickTagInstanceID)
-                ? "inca-ui-bg-red-400 "
+                ? "inca-ui-bg-red-400 hover:inca-ui-bg-red-300"
                 : ""
             }`}
-            type="button"
             onClick={handleFavourite}
           >
             <UilHeart
@@ -156,8 +154,7 @@ export const QuicktagInstanceCard = ({
             />
           </button>
           <button
-            className="inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white"
-            type="button"
+            className="inca-ui-flex inca-ui-justify-center inca-ui-items-center focus:inca-ui-outline-none inca-ui-border inca-ui-rounded inca-ui-w-12 inca-ui-h-8 inca-ui-bg-white hover:inca-ui-bg-gray-100"
             onClick={handleDelete}
           >
             <UilTrashAlt size={14} className="inca-ui-text-slate-600" />

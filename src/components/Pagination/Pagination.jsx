@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./Pagination.css";
 import { UilAngleLeft, UilAngleRight } from "@iconscout/react-unicons";
 
 export const Pagination = ({
@@ -13,7 +12,7 @@ export const Pagination = ({
   onPageSizeChange,
 }) => {
   const getPagination = (current, last) => {
-    const delta = 1;
+    const delta = 2;
     const left = current - delta;
     const right = current + delta + 1;
     const range = Array.from({ length: last }, (v, index) => {
@@ -21,7 +20,7 @@ export const Pagination = ({
       if (i == 1 || i == last || (i >= left && i < right)) {
         return i;
       }
-    });
+    }).filter((v) => v !== undefined);
     const rangeWithDots = [];
     let l;
 
@@ -36,7 +35,6 @@ export const Pagination = ({
       rangeWithDots.push(i);
       l = i;
     }
-
     return rangeWithDots;
   };
 
@@ -44,86 +42,83 @@ export const Pagination = ({
   const paginatedPages = getPagination(page + 1, totalPages);
 
   return (
-    <div className="inca-ui-ReactTable">
-      <div className="inca-ui-pagination-bottom">
-        <div className="inca-ui-rt-pagination">
-          {pageSizeOptions.length > 1 && (
-            <div className="inca-ui-rt-pagination__page-size">
-              <label htmlFor="page-size--select">
-                <span>Per page: </span>
-                <select
-                  id="page-size--select"
-                  name="page-size--select"
-                  value={pageSize}
-                  onChange={(e) => onPageSizeChange(e.target.value)}
-                >
-                  {pageSizeOptions.map((value, index) => {
-                    return (
-                      <option key={index} value={value}>
-                        {value}
-                      </option>
-                    );
-                  })}
-                </select>
-              </label>
-            </div>
-          )}
-          {canPrevious ? (
-            <div
-              className="inca-ui-rt-pagination__prev-button"
-              onClick={() => {
-                onPageChange(+page - 1);
-              }}
+    <div className="inca-ui-w-max inca-ui-h-8 inca-ui-flex inca-ui-items-center inca-ui-space-x-2">
+      {pageSizeOptions.length > 1 && (
+        <div className="inca-ui-bg-white inca-ui-flex inca-ui-items-center inca-ui-justify-center inca-ui-rounded-full inca-ui-shadow inca-ui-px-4 inca-ui-py-1">
+          <label
+            className="inca-ui-flex inca-ui-m-0"
+            htmlFor="page-size--select"
+          >
+            <span>Per page: </span>
+            <select
+              className="inca-ui-bg-white inca-ui-outline-none inca-ui-border-none inca-ui-cursor-pointer"
+              id="page-size--select"
+              name="page-size--select"
+              value={pageSize}
+              onChange={(e) => onPageSizeChange(e.target.value)}
             >
-              <UilAngleLeft size={16} />
-            </div>
-          ) : (
-            <div className="inca-ui-rt-pagination__prev-button disabled">
-              <UilAngleLeft size={16} />
-            </div>
-          )}
-          <div className="inca-ui-rt-pagination__pages">
-            {paginatedPages.map((value, index) => {
-              const isActive = page + 1 === +value;
-              if (value === "...") {
+              {pageSizeOptions.map((value, index) => {
                 return (
-                  <span className="inca-ui-rt-pagination__page-no" key={index}>
-                    {" "}
-                    {value}{" "}
-                  </span>
-                );
-              } else {
-                return (
-                  <span
-                    key={index}
-                    className={`inca-ui-rt-pagination__page-no ${
-                      isActive ? "active" : ""
-                    }`}
-                    onClick={() => {
-                      onPageChange(+value - 1);
-                    }}
-                  >
+                  <option key={index} value={value}>
                     {value}
-                  </span>
+                  </option>
                 );
-              }
-            })}
-          </div>
-          {canNext ? (
-            <div
-              className="inca-ui-rt-pagination__next-button"
+              })}
+            </select>
+          </label>
+        </div>
+      )}
+
+      <div
+        className={`inca-ui-bg-white inca-ui-h-full inca-ui-rounded-full inca-ui-aspect-square inca-ui-flex inca-ui-items-center inca-ui-justify-center inca-ui-shadow ${
+          canPrevious
+            ? "inca-ui-cursor-pointer"
+            : "inca-ui-pointer-events-none inca-ui-text-gray-400 "
+        }`}
+        onClick={() => {
+          onPageChange(+page - 1);
+        }}
+      >
+        <UilAngleLeft size={20} />
+      </div>
+
+      <div className="inca-ui-bg-white inca-ui-h-full inca-ui-flex inca-ui-items-center inca-ui-rounded-full inca-ui-shadow">
+        {paginatedPages.map((value, index) => {
+          const isActive = page + 1 === +value;
+          const isTrunc = value === "...";
+
+          return (
+            <span
+              key={index}
+              className={`inca-ui-h-full inca-ui-aspect-square inca-ui-rounded-full inca-ui-flex inca-ui-justify-center inca-ui-items-center ${
+                isActive
+                  ? "inca-ui-bg-blue inca-ui-text-white inca-ui-cursor-default"
+                  : isTrunc
+                  ? "inca-ui-cursor-default"
+                  : "inca-ui-cursor-pointer"
+              }`}
               onClick={() => {
-                onPageChange(+page + 1);
+                if (!isTrunc) {
+                  onPageChange(+value - 1);
+                }
               }}
             >
-              <UilAngleRight size={16} />
-            </div>
-          ) : (
-            <div className="inca-ui-rt-pagination__next-button disabled">
-              <UilAngleRight size={16} />
-            </div>
-          )}
-        </div>
+              {value}
+            </span>
+          );
+        })}
+      </div>
+      <div
+        className={`inca-ui-bg-white inca-ui-h-full inca-ui-rounded-full inca-ui-aspect-square inca-ui-flex inca-ui-items-center inca-ui-justify-center inca-ui-shadow ${
+          canNext
+            ? "inca-ui-cursor-pointer"
+            : "inca-ui-pointer-events-none inca-ui-text-gray-400 "
+        }`}
+        onClick={() => {
+          onPageChange(+page + 1);
+        }}
+      >
+        <UilAngleRight size={20} />
       </div>
     </div>
   );
