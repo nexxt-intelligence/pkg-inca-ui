@@ -1,5 +1,11 @@
 # inca-ui
 
+## 3.3.0
+
+### Minor Changes
+
+- 9250e14: Upgrade React and Tailwind versions
+
 ## 3.2.1
 
 ### Patch Changes
