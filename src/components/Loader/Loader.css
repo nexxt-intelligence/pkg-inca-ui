@@ -120,3 +120,105 @@ DASHBOARD
 .modal-backdrop.show {
   opacity: 0.5;
 }
+
+/*******
+ BOT
+*******/
+/* .messageLoaderContainer {
+  height: 16px;
+  width: 40px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 999;
+}
+
+.three-balls {
+  margin: 0 auto;
+  width: 70px;
+  text-align: left;
+} */
+
+.ball {
+  position: relative;
+  margin: 0 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 2s infinite
+    cubic-bezier(0.62, 0.28, 0.23, 0.99) both;
+  animation: bouncedelay 2s infinite cubic-bezier(0.62, 0.28, 0.23, 0.99) both;
+}
+
+.ball1 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.ball2 {
+  -webkit-animation-delay: -0.08s;
+  animation-delay: -0.08s;
+}
+
+@keyframes bouncedelay {
+  0% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+  16.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  33.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+  50% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  66.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  83.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+  100% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+}
+
+@-webkit-keyframes bouncedelay {
+  0% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+  16.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  33.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+  50% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  66.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+  83.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+  100% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+}

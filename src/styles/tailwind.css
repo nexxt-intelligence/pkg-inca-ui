@@ -587,6 +587,10 @@ video {
   bottom: 0px;
 }
 
+.inca-ui-z-999 {
+  z-index: 999;
+}
+
 .inca-ui-z-1041 {
   z-index: 1041;
 }
@@ -599,9 +603,9 @@ video {
   margin: 0px;
 }
 
-.inca-ui-mx-10 {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
+.inca-ui-my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .inca-ui-mx-auto {
@@ -609,9 +613,26 @@ video {
   margin-right: auto;
 }
 
+.inca-ui-mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
 .inca-ui-my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+.inca-ui-mt-\[10\%\] {
+  margin-top: 10%;
+}
+
+.inca-ui-ml-auto {
+  margin-left: auto;
+}
+
+.inca-ui-mr-auto {
+  margin-right: auto;
 }
 
 .inca-ui-mb-4 {
@@ -670,6 +691,10 @@ video {
   height: 100vh;
 }
 
+.inca-ui-h-4 {
+  height: 1rem;
+}
+
 .inca-ui-h-8 {
   height: 2rem;
 }
@@ -680,6 +705,14 @@ video {
 
 .inca-ui-w-full {
   width: 100%;
+}
+
+.inca-ui-w-10 {
+  width: 2.5rem;
+}
+
+.inca-ui-w-16 {
+  width: 4rem;
 }
 
 .inca-ui-w-screen {
@@ -859,6 +892,10 @@ video {
   padding-right: 4rem;
 }
 
+.inca-ui-text-left {
+  text-align: left;
+}
+
 .inca-ui-text-center {
   text-align: center;
 }
@@ -988,6 +1025,80 @@ body {
 
 .inca-ui-inca-button:hover {
   --tw-bg-opacity: 0.8;
+}
+
+@keyframes bouncedelay {
+  0% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+
+  16.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  33.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+
+  50% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  66.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  83.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+
+  100% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+}
+
+@-webkit-keyframes bouncedelay {
+  0% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
+
+  16.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  33.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+
+  50% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  66.66% {
+    bottom: 0px;
+    background-color: #2d67cb;
+  }
+
+  83.33% {
+    bottom: 5px;
+    background-color: #9bb7e9;
+  }
+
+  100% {
+    bottom: 0;
+    background-color: #2d67cb;
+  }
 }
 
 @tailwind colors;

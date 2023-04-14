@@ -42,6 +42,18 @@ export const Loader = ({
       );
       break;
 
+    case "bot":
+      return (
+        <div className="inca-ui-h-4 inca-ui-w-10 inca-ui-mt-[10%] inca-ui-ml-auto inca-ui-mr-auto inca-ui-z-999">
+          <div className="inca-ui-my-0 inca-ui-mx-auto inca-ui-w-16 inca-ui-text-left">
+            <div className="ball ball1"></div>
+            <div className="ball ball2"></div>
+            <div className="ball ball3"></div>
+          </div>
+        </div>
+      );
+      break;
+
     // case "portal":
     default:
       if (!isFixed) {
