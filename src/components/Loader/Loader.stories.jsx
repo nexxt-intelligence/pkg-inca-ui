@@ -1,9 +1,10 @@
 import React from "react";
-import { Loader } from "./Loader";
+import { Loader, Spinner, Backdrop } from "./Loader";
 
 export default {
   title: "Loader",
   component: Loader,
+  subcomponents: { Spinner, Backdrop },
   description: `Loader.`,
   argTypes: {},
 };

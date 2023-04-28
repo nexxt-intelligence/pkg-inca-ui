@@ -89,7 +89,7 @@ export const Loader = ({
   }
 };
 
-const Spinner = ({ size, className }) => {
+export const Spinner = ({ size, className }) => {
   return (
     <div
       className={classnames("spinner", {
@@ -107,7 +107,16 @@ const Spinner = ({ size, className }) => {
   );
 };
 
-const Backdrop = ({ isOpen, isAbsolute }) => {
+/**
+ *
+ * Backdrop for the spinner
+ * Relative when backdrop is relative to specific area only
+ * Fix when backdrop cover all the area of the screen
+ * @param {boolean} isOpen - Open Backdrop. Part of props
+ * @param {boolean} isAbsolute -  Relative to area or fix to the screen
+ *
+ */
+export const Backdrop = ({ isOpen, isAbsolute }) => {
   return (
     <div
       className={classnames("modal-backdrop fade", {
