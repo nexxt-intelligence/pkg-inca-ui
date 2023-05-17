@@ -674,6 +674,10 @@ video {
   height: 24rem;
 }
 
+.inca-ui-min-h-48 {
+  min-height: 12rem;
+}
+
 .inca-ui-w-screen {
   width: 100vw;
 }
@@ -867,12 +871,16 @@ video {
   background-color: rgb(0 0 0 / 0.7);
 }
 
-.inca-ui-p-5 {
-  padding: 1.25rem;
+.inca-ui-p-10 {
+  padding: 2.5rem;
 }
 
 .inca-ui-p-4 {
   padding: 1rem;
+}
+
+.inca-ui-p-5 {
+  padding: 1.25rem;
 }
 
 .inca-ui-px-3 {
