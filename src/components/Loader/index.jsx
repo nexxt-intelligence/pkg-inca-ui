@@ -1,1 +1,1 @@
-export { Loader, Spinner, Backdrop } from "./Loader";
+export { Loader, Backdrop } from "./Loader";

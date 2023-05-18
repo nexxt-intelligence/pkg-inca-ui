@@ -23,4 +23,4 @@ export { Pagination } from "./components/Pagination";
 
 export { Toggle } from "./components/Toggle";
 
-export { Loader, Spinner, Backdrop } from "./components/Loader";
+export { Loader, Backdrop } from "./components/Loader";

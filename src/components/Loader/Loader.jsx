@@ -4,10 +4,6 @@ import ReactLoading from "react-loading";
 import "./Loader.css";
 
 export const Loader = ({
-  isFixed = false,
-  isInline = true,
-  colorclassname = "teal",
-  transparent = false,
   type = "cubes",
   color = "#2D67CB",
   text,
@@ -16,6 +12,8 @@ export const Loader = ({
   bgColor = "rgba(0, 0, 0, 0.5)",
   textColor = "white",
   packages,
+  size,
+  className,
 }) => {
   switch (packages) {
     case "dashboard":
@@ -56,55 +54,22 @@ export const Loader = ({
 
     // case "portal":
     default:
-      if (!isFixed) {
-        if (isInline) {
-          return (
-            <div className="inca-ui-flex inca-ui-w-full">
-              <Spinner className={colorclassname} />
-            </div>
-          );
-        } else {
-          return (
-            <div
-              className="inca-ui-absolute inca-ui-z-1041 inca-ui-top-0 inca-ui-left-0 inca-ui-w-screen inca-ui-h-screen inca-ui-flex inca-ui-items-center inca-ui-justify-center"
-              style={{
-                minHeight: "100%",
-                minWidth: "100%",
-                background: "rgb(245 245 245)",
-              }}
-            >
-              <Spinner className={colorclassname} />
-            </div>
-          );
-        }
-      }
       return (
-        <>
-          <div className="inca-ui-absolute inca-ui-z-1041 inca-ui-top-0 inca-ui-left-0 inca-ui-w-screen inca-ui-h-screen inca-ui-flex inca-ui-items-center inca-ui-justify-center">
-            <Spinner className={colorclassname} />
-          </div>
-          {!transparent && <Backdrop isOpen={true} />}
-        </>
+        <div
+          className={classnames("spinner", {
+            [size]: true,
+            className,
+          })}
+        >
+          <div
+            className={classnames("spinningCircle", {
+              [size]: true,
+              className,
+            })}
+          />
+        </div>
       );
   }
-};
-
-export const Spinner = ({ size, className }) => {
-  return (
-    <div
-      className={classnames("spinner", {
-        [size]: true,
-        className,
-      })}
-    >
-      <div
-        className={classnames("spinningCircle", {
-          [size]: true,
-          className,
-        })}
-      />
-    </div>
-  );
 };
 
 /**
