@@ -1,5 +1,11 @@
 # inca-ui
 
+## 3.3.1
+
+### Patch Changes
+
+- ace72b1: added fix for sidebar - styling changes
+
 ## 3.3.0
 
 ### Minor Changes
