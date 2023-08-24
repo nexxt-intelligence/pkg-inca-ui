@@ -44,12 +44,14 @@
 }
 
 .sidebar-item-container {
-  padding: 15px 22px;
+  padding: 0;
   color: #595959;
   cursor: pointer;
 }
 .sidebar-item-container a {
   color: inherit;
+  display: block;
+  padding: 15px 22px;
   transition: 0s;
 }
 .sidebar-item-container a:visited {
@@ -61,6 +63,10 @@
 }
 .sidebar-item-container:hover {
   color: #2d67cb;
+}
+
+.sidebar-item-container .sidebar-footer-item {
+  display: flex;
 }
 
 .logo-collapsed {
