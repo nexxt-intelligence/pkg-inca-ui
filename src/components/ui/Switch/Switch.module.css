@@ -1,0 +1,19 @@
+.track {
+    cursor: pointer;
+}
+
+.input:checked:not(:disabled) + .track {
+    border-color: var(--mantine-color-blue-7);
+}
+
+.input:checked:not(:disabled) + * > .thumb {
+    border-color: var(--mantine-color-blue-7);
+}
+
+.fullWidthRoot {
+    width: 100%;
+}
+
+.fullWidthBody {
+    justify-content: space-between;
+}

@@ -1,0 +1,101 @@
+.input {
+    --input-border-color: var(--mantine-color-gray-3);
+    --input-bg-color: white;
+    border-radius: var(--mantine-radius-sm);
+    border: 1px solid var(--input-border-color) !important;
+    background-color: var(--input-bg-color);
+    padding: 0 var(--mantine-spacing-sm);
+    height: 32px;
+    min-height: 32px;
+}
+
+.input::placeholder {
+    color: var(--mantine-color-gray-5);
+}
+
+.input:focus {
+    --input-border-color: var(--mantine-color-blue-6) !important;
+}
+
+.input[data-invalid='true'],
+.input[data-invalid='true']:focus {
+    --input-border-color: var(--mantine-color-red-6) !important;
+}
+
+.input[data-variant='filled'] {
+    --input-bg-color: color-mix(
+        in srgb,
+        var(--mantine-color-blue-6) 10%,
+        transparent
+    );
+    --input-border-color: transparent;
+}
+
+.input[data-variant='unstyled'] {
+    --input-border-color: transparent;
+    --input-bg-color: transparent;
+    user-select: none;
+}
+
+.input[data-variant='underline'] {
+    border: none !important;
+    border-bottom: 1px solid var(--input-border-color) !important;
+    border-radius: 0;
+}
+
+.tooltipIcon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rightFilledSection {
+    position: relative;
+    display: flex !important;
+    width: auto;
+    padding: 0 0.75rem;
+    background-color: var(--mantine-color-gray-2);
+    border-radius: 0 0.25rem 0.25rem 0;
+    border: 0.0625rem solid var(--mantine-color-gray-4);
+}
+
+.leftFilledSection {
+    position: relative;
+    pointer-events: initial;
+    display: flex !important;
+    width: auto;
+    padding: 0 0.75rem;
+    background-color: var(--mantine-color-gray-2);
+    border-radius: 0.25rem 0 0 0.25rem;
+    border: 0.0625rem solid var(--mantine-color-gray-4);
+    color: var(--mantine-color-gray-9);
+}
+
+.input[data-left-section='true'] {
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0 0.75rem;
+}
+
+.input[data-right-section='true'] {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.input[data-left-section='true'][data-right-section='true'] {
+    border-radius: 0;
+}
+
+.inputLabel {
+    display: inline-flex;
+}
+
+.inputWrapper {
+    display: flex;
+}
+
+.description {
+    white-space: pre-wrap;
+}
+
+.error {
+    white-space: pre-wrap;
+}

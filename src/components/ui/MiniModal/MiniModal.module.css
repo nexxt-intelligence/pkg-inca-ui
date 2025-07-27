@@ -1,0 +1,57 @@
+.miniModalOverlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+}
+
+.miniModal {
+    background-color: white;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.miniModalHeader {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 1.5rem;
+}
+
+.miniModalBody {
+    height: 100%;
+}
+
+.miniModalContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 20rem;
+    min-height: 12rem;
+    margin: 0 2.5rem;
+}
+
+.modalText {
+    margin-bottom: 1rem;
+}
+
+.modalTitle {
+    font-weight: bold;
+    font-size: 1.875rem;
+}
+
+.modalBody {
+    margin-top: 0.25rem;
+}
+
+.miniModalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

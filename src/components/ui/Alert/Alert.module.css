@@ -1,0 +1,8 @@
+.leftLine {
+    border-left: 4px solid;
+}
+
+.title {
+    margin-bottom: 8px;
+    font-weight: 600;
+}

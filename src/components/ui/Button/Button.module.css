@@ -1,0 +1,71 @@
+.button {
+    font-weight: 400;
+    font-size: 14px;
+    .leftIcon {
+        margin-right: 0.313rem;
+    }
+
+    &:focus {
+        border: 0.0625rem solid transparent;
+    }
+    &[data-variant='outline']:focus {
+        outline: none;
+        border: 0.0625rem solid rgb(45, 103, 203);
+    }
+
+    &[data-compact='true'] {
+        &[data-size='xs'] {
+        }
+        &[data-size='sm'] {
+            padding: 0 var(--mantine-spacing-2xs);
+            height: 24px;
+        }
+        &[data-size='md'] {
+        }
+        &[data-size='lg'] {
+        }
+        &[data-size='xl'] {
+        }
+    }
+    &[data-variant='subtle'] {
+        &:disabled {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}
+
+.modalCloseText {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.projectCard {
+    font-weight: 700;
+    color: black;
+    padding: 0;
+    &:hover {
+        color: var(--mantine-color-blue-6);
+        background-color: transparent;
+    }
+}
+
+.transparent {
+    background-color: transparent;
+    color: var(--mantine-color-blue-6);
+    &:hover {
+        background-color: transparent;
+        color: var(--mantine-color-blue-6);
+    }
+}
+
+.usefulLinks {
+    font-size: 18px;
+    padding: 0 8px;
+    display: flex;
+    color: black;
+    &:hover {
+        background-color: var(--mantine-color-blue-0);
+    }
+}

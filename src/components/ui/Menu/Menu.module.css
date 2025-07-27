@@ -1,0 +1,7 @@
+.dropdown {
+    padding: var(--mantine-spacing-2xs);
+}
+
+.item {
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+}
