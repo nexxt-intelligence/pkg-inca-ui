@@ -1,0 +1,9 @@
+.checkboxLabel {
+    font-size: 14px;
+}
+.checkboxInput {
+    cursor: pointer;
+    &:focus {
+        border: 0.0625rem solid rgb(206, 212, 218);
+    }
+}

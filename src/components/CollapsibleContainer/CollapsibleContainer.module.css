@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    border: 1px solid var(--mantine-color-gray-3); /** @TODO use theme colors from design system */
+    border-bottom: none;
+}
+
+.content {
+    padding: 0;
+}
+
+.control {
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-lg)
+        var(--mantine-spacing-sm) var(--mantine-spacing-md);
+}
+
+.panel[aria-hidden='false'] {
+    border-top: 1px solid var(--mantine-color-gray-3);
+}
+
+.label {
+    padding: 0;
+}

@@ -1,0 +1,7 @@
+.closeButton {
+    color: var(--mantine-color-default);
+}
+
+.closeButton:hover {
+    background-color: var(--mantine-color-gray-0);
+}

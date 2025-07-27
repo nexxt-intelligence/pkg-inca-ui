@@ -1,0 +1,109 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}
+
+.blurred {
+    backdrop-filter: blur(10px);
+}
+
+.modalContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    max-width: 900px;
+}
+
+.modalHeader {
+    padding: 20px;
+    background-color: var(--mantine-color-blue-6);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.headerContent {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    width: 20rem;
+    padding-right: 4rem;
+}
+
+.headerTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.headerDescription {
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.modalBody {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.closeButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 24px;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.closeIcon {
+    color: #000;
+    font-size: 24px;
+}
+
+.bodyContent {
+    height: 100%;
+}
+
+.modalContentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+    height: 24rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.modalContentHeader {
+    margin-bottom: 16px;
+}
+
+.contentTitle {
+    font-weight: bold;
+    font-size: 1.875rem;
+}
+
+.contentDescription {
+    margin-top: 4px;
+    font-size: 0.75rem;
+}
+
+.actionsContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
