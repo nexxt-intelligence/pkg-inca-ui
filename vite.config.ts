@@ -18,7 +18,7 @@ export default defineConfig({
     target: 'es2019',
     lib: {
       entry: 'src/index.tsx',
-      name: '@nexxt/inca-ui',
+      name: 'inca-ui',
       fileName: (format) => `inca-ui.${format}.js`,
       formats: ['es', 'cjs']
     },

@@ -5,6 +5,9 @@
   "main": "dist/inca-ui.cjs.js",
   "module": "dist/inca-ui.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b ./tsconfig.build.json && vite build",
