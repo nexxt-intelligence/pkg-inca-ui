@@ -1,5 +1,11 @@
 # inca-ui
 
+## 5.0.0
+
+### Major Changes
+
+- f548056: New version of inca-ui with Vite
+
 ## 3.3.1
 
 ### Patch Changes
