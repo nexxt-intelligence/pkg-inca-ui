@@ -1,15 +1,20 @@
-
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { theme } from './constants/theme';
 import './assets/global.css';
 
-{/** Extended Mantine UI Components */}
+/** Extended Mantine UI Components */
 export { default as Button, type ButtonProps } from './components/ui/Button';
 export { default as Input, type InputProps } from './components/ui/Input';
 export { default as Switch, type SwitchProps } from './components/ui/Switch';
-export { default as RadioGroup, type RadioGroupProps } from './components/ui/RadioGroup';
-export { default as Checkbox, type CheckboxProps } from './components/ui/Checkbox';
+export {
+    default as RadioGroup,
+    type RadioGroupProps
+} from './components/ui/RadioGroup';
+export {
+    default as Checkbox,
+    type CheckboxProps
+} from './components/ui/Checkbox';
 export { default as Tooltip, type TooltipProps } from './components/ui/Tooltip';
 export { default as AppShell } from './components/ui/AppShell';
 export { default as Alert, type AlertProps } from './components/ui/Alert';
@@ -28,7 +33,7 @@ export { default as Badge } from './components/ui/Badge';
 export { default as Icon } from './components/ui/Icon';
 export { default as ColorInput } from './components/ui/ColorInput';
 
-{/** UI Components from OLD inca ui */}
+/** UI Components from OLD inca ui */
 export {
     MiniModal,
     MiniModalContent,
@@ -40,25 +45,19 @@ export {
     SplitPaneModalContent
 } from './components/ui/SplitPaneModal';
 
-
-{/** Constants */}
+/** Constants */
 export * from './constants/theme';
 
-export { useConfirmationModal } from './hooks'
+export { useConfirmationModal } from './hooks';
 
 export const CustomMantineProvider = ({
     children
 }: {
     children: React.ReactNode;
 }) => {
-
     return (
-        <MantineProvider theme={theme} 
-            withCSSVariables
-            >
-            <ModalsProvider>
-                {children}
-            </ModalsProvider>
+        <MantineProvider theme={theme} withCSSVariables>
+            <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
     );
 };

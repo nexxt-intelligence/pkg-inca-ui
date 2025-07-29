@@ -1,5 +1,6 @@
 import type { MantineThemeOverride } from '@mantine/core';
 
+// https://v6.mantine.dev/styles/global-styles/
 export const theme: MantineThemeOverride = {
     fontFamily: 'Source Sans 3, sans-serif',
     primaryColor: 'blue',
