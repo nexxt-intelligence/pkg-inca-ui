@@ -1,5 +1,11 @@
 # inca-ui
 
+## 5.1.1
+
+### Patch Changes
+
+-   c83e5fc: cleaned up mantine exports by grouping them
+
 ## 5.1.0
 
 ### Minor Changes
