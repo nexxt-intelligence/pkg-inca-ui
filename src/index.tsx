@@ -61,3 +61,66 @@ export const CustomMantineProvider = ({
         </MantineProvider>
     );
 };
+
+/** Unmodified Mantine v6.0.21 Components */
+// Layout
+export { AspectRatio } from '@mantine/core';
+export { Center } from '@mantine/core';
+export { Container } from '@mantine/core';
+export { Flex } from '@mantine/core';
+export { Grid } from '@mantine/core';
+export { Group } from '@mantine/core';
+export { MediaQuery } from '@mantine/core';
+export { SimpleGrid } from '@mantine/core';
+export { Space } from '@mantine/core';
+export { Stack } from '@mantine/core';
+
+// Inputs
+export { Slider } from '@mantine/core';
+export { PinInput } from '@mantine/core';
+export { TransferList } from '@mantine/core';
+
+// Navigation
+export { Anchor } from '@mantine/core';
+export { Breadcrumbs } from '@mantine/core';
+export { Pagination } from '@mantine/core';
+
+// Data display
+export { BackgroundImage } from '@mantine/core';
+export { Image } from '@mantine/core';
+export { Indicator } from '@mantine/core';
+export { Kbd } from '@mantine/core';
+export { Spoiler } from '@mantine/core';
+export { Timeline } from '@mantine/core';
+
+// Overlay
+export { Affix } from '@mantine/core';
+export { Dialog } from '@mantine/core';
+export { Drawer } from '@mantine/core';
+export { HoverCard } from '@mantine/core';
+export { LoadingOverlay } from '@mantine/core';
+export { Overlay } from '@mantine/core';
+export { Popover } from '@mantine/core';
+
+// Typography
+export { Blockquote } from '@mantine/core';
+export { Code } from '@mantine/core';
+export { Highlight } from '@mantine/core';
+export { Mark } from '@mantine/core';
+export { Table } from '@mantine/core';
+export { Title } from '@mantine/core';
+
+// Feedback
+export { Loader } from '@mantine/core';
+export { Notification } from '@mantine/core';
+export { Progress } from '@mantine/core';
+export { RingProgress } from '@mantine/core';
+export { Skeleton } from '@mantine/core';
+
+// Miscellaneous
+export { Box } from '@mantine/core';
+export { Collapse } from '@mantine/core';
+export { Divider } from '@mantine/core';
+export { Paper } from '@mantine/core';
+export { Portal } from '@mantine/core';
+export { ScrollArea } from '@mantine/core';
