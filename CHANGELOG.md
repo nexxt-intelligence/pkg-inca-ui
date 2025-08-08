@@ -1,5 +1,11 @@
 # inca-ui
 
+## 5.2.0
+
+### Minor Changes
+
+-   0d82574: fixed some storybook styling bugs and updated Checkbox, Checkbox.Group and RadioGroup to allow nested content
+
 ## 5.1.1
 
 ### Patch Changes
