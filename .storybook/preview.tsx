@@ -1,3 +1,4 @@
+import '../src/assets/global.css';
 import React from 'react';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';

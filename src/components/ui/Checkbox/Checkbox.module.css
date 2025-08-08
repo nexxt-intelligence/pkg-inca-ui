@@ -1,9 +1,23 @@
 .checkboxLabel {
-    font-size: 14px;
+    font-size: var(--mantine-font-size-sm);
+    padding-left: var(--mantine-spacing-xs);
+}
+.checkboxGroupLabel {
+    font-size: var(--mantine-font-size-sm);
+}
+.checkboxInner {
+    margin-top: var(--mantine-spacing-3xs);
+    width: 1rem;
+    height: 1rem;
 }
 .checkboxInput {
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
     &:focus {
         border: 0.0625rem solid rgb(206, 212, 218);
     }
+}
+.checkboxDescription {
+    padding-left: var(--mantine-spacing-xs);
 }

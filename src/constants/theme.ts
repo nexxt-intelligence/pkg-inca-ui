@@ -2,11 +2,11 @@ import type { MantineThemeOverride } from '@mantine/core';
 
 // https://v6.mantine.dev/styles/global-styles/
 export const theme: MantineThemeOverride = {
-    fontFamily: 'Source Sans 3, sans-serif',
+    fontFamily: '"Source Sans 3", sans-serif',
     primaryColor: 'blue',
     headings: {
         fontWeight: 700,
-        fontFamily: 'Source Sans 3, sans-serif',
+        fontFamily: '"Source Sans 3", sans-serif',
         sizes: {
             h1: { fontSize: '2.5rem', lineHeight: '1.2' },
             h2: { fontSize: '2rem', lineHeight: '1.35' },
@@ -16,7 +16,7 @@ export const theme: MantineThemeOverride = {
             h6: { fontSize: '0.75rem', lineHeight: '1.33' }
         }
     },
-
+    defaultRadius: 'sm',
     fontSizes: {
         '2xs': '0.625rem',
         xs: '0.75rem',
@@ -26,6 +26,7 @@ export const theme: MantineThemeOverride = {
         xl: '1.25rem'
     },
     spacing: {
+        '3xs': '2px',
         '2xs': '4px',
         xs: '8px',
         sm: '12px',

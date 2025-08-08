@@ -2,13 +2,14 @@ import {
     Radio as MantineRadio,
     RadioProps as MantineRadioProps,
     RadioGroupProps as MantineRadioGroupProps,
-    Group
+    Flex,
+    Stack
 } from '@mantine/core';
 import classes from './RadioGroup.module.css';
 import cx from 'classnames';
 export interface RadioGroupProps
     extends Omit<MantineRadioGroupProps, 'children'> {
-    options: MantineRadioProps[];
+    options: (MantineRadioProps & { children?: React.ReactNode })[];
     row?: boolean;
 }
 
@@ -40,25 +41,32 @@ const RadioGroup = ({
             value={String(value)}
             {...props}
         >
-            <Group noWrap={row} spacing="md">
-                {options.map(({ label, value, description, disabled }) => {
-                    return (
-                        <MantineRadio
-                            classNames={{
-                                body: classes.radioBody,
-                                label: classes.radioLabel,
-                                radio: classes.radio
-                            }}
-                            description={description}
-                            disabled={groupDisabled || disabled}
-                            key={value}
-                            label={label}
-                            size={size}
-                            value={String(value)}
-                        />
-                    );
-                })}
-            </Group>
+            <Flex direction={row ? 'row' : 'column'} gap={row ? 'md' : 'xs'}>
+                {options.map(
+                    ({ label, value, description, disabled, children }) => {
+                        return (
+                            <>
+                                <MantineRadio
+                                    classNames={{
+                                        body: classes.radioBody,
+                                        label: classes.radioLabel,
+                                        radio: classes.radio,
+                                        inner: classes.radioInner,
+                                        description: classes.radioDescription
+                                    }}
+                                    description={description}
+                                    disabled={groupDisabled || disabled}
+                                    key={value}
+                                    label={label}
+                                    size={size}
+                                    value={String(value)}
+                                />
+                                {children && <Stack pl="xl">{children}</Stack>}
+                            </>
+                        );
+                    }
+                )}
+            </Flex>
         </MantineRadio.Group>
     );
 };
