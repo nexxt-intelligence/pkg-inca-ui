@@ -1,49 +1,38 @@
 import * as React from 'react';
 import { MantineNumberSize } from '@mantine/core';
 import * as TablerIcons from '@tabler/icons-react';
-import { theme } from '../../../constants/theme';
+
+export type TablerIconKeys = Extract<keyof typeof TablerIcons, `Icon${string}`>;
 
 type IconProps = {
-    type: string;
-    size?: MantineNumberSize | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    type: TablerIconKeys;
+    size?: MantineNumberSize | '2xs';
     color?: string;
 };
 
-const Icon = ({ type, size = 'sm', color = 'inherit' }: IconProps) => {
+const Icon = ({ type, size = 'sm', color }: IconProps) => {
     const iconSize = React.useMemo(() => {
         switch (size) {
             case '2xs':
-                return '8px';
+                return 8;
             case 'xs':
-                return '12px';
+                return 12;
             case 'sm':
-                return '16px';
+                return 16;
             case 'md':
-                return '20px';
+                return 20;
             case 'lg':
-                return '24px';
+                return 24;
             case 'xl':
-                return '32px';
+                return 32;
             default:
-                return '16px';
+                return 16;
         }
     }, [size]);
 
-    const IconComponent = TablerIcons[type as keyof typeof TablerIcons];
-    const props = {
-        size: iconSize,
-        color: theme.colors?.[color]?.[6] ?? undefined
-    };
+    const IconComponent = TablerIcons[type];
 
-    if (!IconComponent) {
-        console.warn(`Icon "${type}" not found in @tabler/icons-react`);
-        return null;
-    }
-
-    return React.createElement(
-        IconComponent as React.ComponentType<any>,
-        props
-    );
+    return <IconComponent size={iconSize} stroke={1.5} color={color} />;
 };
 
 export default Icon;

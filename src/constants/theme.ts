@@ -140,49 +140,44 @@ export const theme: MantineThemeOverride = {
         },
         ActionIcon: {
             sizes: {
-                xs: (theme) => ({
+                xs: () => ({
                     root: {
                         width: '16px',
                         height: '16px',
                         minWidth: '16px',
-                        minHeight: '16px',
-                        borderRadius: theme.radius.sm
+                        minHeight: '16px'
                     }
                 }),
-                sm: (theme) => ({
+                sm: () => ({
                     root: {
                         width: '20px',
                         height: '20px',
                         minWidth: '20px',
-                        minHeight: '20px',
-                        borderRadius: theme.radius.sm
+                        minHeight: '20px'
                     }
                 }),
-                md: (theme) => ({
+                md: () => ({
                     root: {
                         width: '24px',
                         height: '24px',
                         minWidth: '24px',
-                        minHeight: '24px',
-                        borderRadius: theme.radius.sm
+                        minHeight: '24px'
                     }
                 }),
-                lg: (theme) => ({
+                lg: () => ({
                     root: {
                         width: '32px',
                         height: '32px',
                         minWidth: '32px',
-                        minHeight: '32px',
-                        borderRadius: theme.radius.sm
+                        minHeight: '32px'
                     }
                 }),
-                xl: (theme) => ({
+                xl: () => ({
                     root: {
                         width: '40px',
                         height: '40px',
                         minWidth: '40px',
-                        minHeight: '40px',
-                        borderRadius: theme.radius.sm
+                        minHeight: '40px'
                     }
                 })
             }

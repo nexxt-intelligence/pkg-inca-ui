@@ -1,7 +1,7 @@
-import '../src/assets/global.css';
 import React from 'react';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+import '../src/assets/global.css';
 
 // import theme object you've exported in previous step
 import { theme } from '../src/constants/theme';
