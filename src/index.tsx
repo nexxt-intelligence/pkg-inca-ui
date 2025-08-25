@@ -4,7 +4,7 @@ import { theme } from './constants/theme';
 import './assets/global.css';
 
 /** Extended Mantine UI Components */
-export { default as Button, type ButtonProps } from './components/ui/Button';
+export { default as Button } from './components/ui/Button';
 export { default as Input, type InputProps } from './components/ui/Input';
 export { default as Switch, type SwitchProps } from './components/ui/Switch';
 export {

@@ -1,60 +1,37 @@
-import {
-    Button as MantineButton,
-    ButtonProps as MantineButtonProps
-} from '@mantine/core';
+import { Button as MantineButton } from '@mantine/core';
+import Icon from '../Icon';
 import classes from './Button.module.css';
-import { clsx } from '@mantine/core';
 
-export interface ButtonProps extends MantineButtonProps {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    variant?:
-        | MantineButtonProps['variant']
-        | 'modalCloseText'
-        | 'projectCard'
-        | 'transparent'
-        | 'usefulLinks';
-}
-
-const VARIANT_STYLES = {
-    modalCloseText: { size: 'xs', color: 'gray' },
-    projectCard: { size: 'xs', compact: true, uppercase: true },
-    usefulLinks: { size: 'lg', compact: true }
-};
+type ButtonProps = React.ComponentProps<typeof MantineButton>;
 
 const Button = ({
-    children,
-    color = 'blue',
+    color = 'primary',
     compact = false,
-    leftIcon,
-    onClick,
-    radius = 'md',
+    radius = 'sm',
     size = 'sm',
     type = 'button',
-    uppercase,
     variant = 'filled',
+    leftIcon,
+    rightIcon,
+    children,
     ...props
 }: ButtonProps) => {
-    const variantStyles =
-        (VARIANT_STYLES as Record<string, Partial<ButtonProps>>)[variant] || {};
     return (
         <MantineButton
-            className={clsx(classes.button, classes[variant])}
             classNames={{
-                root: leftIcon ? classes.iconPadding : '',
-                leftIcon: classes.leftIcon
+                leftIcon: classes.leftIcon,
+                rightIcon: classes.rightIcon
             }}
-            color={variantStyles.color || color}
-            compact={variantStyles.compact ?? compact}
-            data-compact={variantStyles.compact ?? compact}
-            data-variant={variant}
+            color={color}
+            compact={compact}
+            data-compact={compact}
             data-size={size}
-            leftIcon={leftIcon}
-            onClick={onClick}
             radius={radius}
-            size={variantStyles.size || size}
+            size={size}
             type={type}
-            uppercase={variantStyles.uppercase ?? uppercase}
             variant={variant}
+            leftIcon={leftIcon ? <Icon type={leftIcon} size={size} /> : null}
+            rightIcon={rightIcon ? <Icon type={rightIcon} size={size} /> : null}
             {...props}
         >
             {children}

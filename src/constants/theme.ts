@@ -122,18 +122,24 @@ export const theme: MantineThemeOverride = {
     components: {
         Button: {
             sizes: {
+                xs: (theme) => ({
+                    root: {
+                        padding: `0 ${theme.spacing.sm}`,
+                        height: '24px',
+                        '&[data-compact="true"]': {
+                            padding: `0 ${theme.spacing.xs}`,
+                            height: '20px'
+                        }
+                    }
+                }),
                 sm: (theme) => ({
                     root: {
                         padding: `0 ${theme.spacing.sm}`,
-                        borderRadius: theme.radius.sm,
-                        height: '32px'
-                    }
-                }),
-                'compact-sm': (theme) => ({
-                    root: {
-                        padding: `0 ${theme.spacing['2xs']} `,
-                        borderRadius: theme.radius.sm,
-                        height: '24px'
+                        height: '32px',
+                        '&[data-compact="true"]': {
+                            padding: `0 ${theme.spacing.xs}`,
+                            height: '24px'
+                        }
                     }
                 })
             }

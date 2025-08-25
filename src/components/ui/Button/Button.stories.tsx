@@ -1,100 +1,101 @@
-import Button from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import Icon from '../Icon';
+import Button from './index';
 
-export default {
+const meta: Meta<typeof Button> = {
     title: 'UI/Button',
     component: Button,
+    parameters: {
+        layout: 'centered'
+    },
     argTypes: {
         children: { control: 'text' },
         variant: {
             control: 'radio',
-            options: [
-                'outline',
-                'white',
-                'light',
-                'default',
-                'filled',
-                'gradient',
-                'subtle',
-                'modalCloseText',
-                'projectCard',
-                'transparent',
-                'usefulLinks'
-            ]
+            options: ['filled', 'default', 'subtle']
         },
         size: {
             control: 'radio',
-            options: ['xs', 'sm', 'md', 'lg', 'xl']
+            options: ['xs', 'sm']
+        },
+        compact: { control: 'boolean' },
+        uppercase: { control: 'boolean' },
+        disabled: { control: 'boolean' },
+        loading: { control: 'boolean' },
+        leftIcon: {
+            control: 'select',
+            options: [null, 'IconPlus', 'IconChevronDown']
+        },
+        rightIcon: {
+            control: 'select',
+            options: [null, 'IconPlus', 'IconChevronDown']
         },
         color: {
             control: 'select',
-            options: ['blue', 'red', 'green', 'gray', 'yellow']
-        },
-        disabled: { control: 'boolean' },
-        loading: { control: 'boolean' },
-        uppercase: { control: 'boolean' },
-        compact: { control: 'boolean' }
-    }
-} as Meta<typeof Button>;
-
-export const Primary: StoryObj<typeof Button> = {
-    args: {
-        children: 'Click Me',
-        variant: 'filled',
-        color: 'blue'
+            options: ['primary']
+        }
     }
 };
+export default meta;
 
-export const Outline: StoryObj<typeof Button> = {
-    args: {
-        children: 'Outline Button',
-        variant: 'outline',
-        color: 'blue'
-    }
+type Story = StoryObj<typeof Button>;
+
+const baseArgs = {
+    children: 'Click Me',
+    variant: 'filled',
+    size: 'sm',
+    compact: false,
+    uppercase: false,
+    disabled: false,
+    loading: false,
+    leftIcon: null,
+    rightIcon: null,
+    color: 'primary'
 };
 
-export const WithIcon: StoryObj<typeof Button> = {
-    args: {
-        children: 'Add Item',
-        leftIcon: <Icon type="IconPlus" size="sm" />,
-        variant: 'filled',
-        color: 'blue'
-    }
+export const Primary: Story = { args: baseArgs };
+
+export const Variants: Story = {
+    args: baseArgs,
+    argTypes: { variant: { control: false } },
+    render: (args) => (
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button {...args} variant="filled" />
+            <Button {...args} variant="default" />
+            <Button {...args} variant="subtle" />
+        </div>
+    )
 };
 
-export const Loading: StoryObj<typeof Button> = {
-    args: {
-        children: 'Loading...',
-        loading: true,
-        variant: 'filled',
-        color: 'blue'
-    }
+export const Sizes: Story = {
+    args: baseArgs,
+    argTypes: { size: { control: false } },
+    render: (args) => (
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button {...args} size="xs" />
+            <Button {...args} size="sm" />
+        </div>
+    )
 };
 
-export const Disabled: StoryObj<typeof Button> = {
-    args: {
-        children: 'Disabled Button',
-        disabled: true,
-        variant: 'filled',
-        color: 'blue'
-    }
+export const Icons: Story = {
+    args: baseArgs,
+    argTypes: { leftIcon: { control: false }, rightIcon: { control: false } },
+    render: (args) => (
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button {...args} leftIcon={'IconPlus'} />
+            <Button {...args} rightIcon={'IconPlus'} />
+            <Button {...args} leftIcon={'IconPlus'} rightIcon={'IconPlus'} />
+        </div>
+    )
 };
 
-export const Compact: StoryObj<typeof Button> = {
-    args: {
-        children: 'Compact Button',
-        compact: true,
-        variant: 'filled',
-        color: 'blue'
-    }
-};
-
-export const Uppercase: StoryObj<typeof Button> = {
-    args: {
-        children: 'Uppercase Button',
-        uppercase: true,
-        variant: 'filled',
-        color: 'blue'
-    }
+export const Compact: Story = {
+    args: baseArgs,
+    argTypes: { compact: { control: false } },
+    render: (args) => (
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button {...args} compact size="xs" />
+            <Button {...args} compact size="sm" />
+        </div>
+    )
 };
