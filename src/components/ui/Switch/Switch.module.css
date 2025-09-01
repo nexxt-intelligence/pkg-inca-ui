@@ -1,19 +1,9 @@
-.track {
+.switchTrack {
     cursor: pointer;
 }
-
-.input:checked:not(:disabled) + .track {
-    border-color: var(--mantine-color-blue-7);
+.switchLabel {
+    padding-left: var(--mantine-spacing-xs);
 }
-
-.input:checked:not(:disabled) + * > .thumb {
-    border-color: var(--mantine-color-blue-7);
-}
-
-.fullWidthRoot {
-    width: 100%;
-}
-
 .fullWidthBody {
     justify-content: space-between;
 }

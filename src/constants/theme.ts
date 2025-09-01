@@ -120,6 +120,27 @@ export const theme: MantineThemeOverride = {
         ]
     },
     components: {
+        Switch: {
+            styles: {
+                label: {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                }
+            }
+        },
+        InputWrapper: {
+            defaultProps: {
+                inputWrapperOrder: ['label', 'input', 'error', 'description']
+            },
+            styles: {
+                label: {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                }
+            }
+        },
         Button: {
             styles: {
                 root: {

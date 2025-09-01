@@ -2,3 +2,8 @@
     font-size: 12px;
     padding: var(--mantine-spacing-xs);
 }
+
+.tooltipChildren {
+    display: inline-flex;
+    order: 2;
+}
