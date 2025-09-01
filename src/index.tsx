@@ -4,7 +4,16 @@ import { theme } from './constants/theme';
 import './assets/global.css';
 
 /** Extended Mantine UI Components */
-export { default as Button } from './components/ui/Button';
+export { default as Button, type ButtonProps } from './components/ui/Button';
+export {
+    default as ActionIcon,
+    type ActionIconProps
+} from './components/ui/ActionIcon';
+export {
+    default as CloseButton,
+    type CloseButtonProps
+} from './components/ui/CloseButton';
+
 export { default as Input, type InputProps } from './components/ui/Input';
 export { default as Switch, type SwitchProps } from './components/ui/Switch';
 export {
@@ -21,11 +30,9 @@ export { default as Alert, type AlertProps } from './components/ui/Alert';
 export { default as List, type ListProps } from './components/ui/List';
 export { default as CollapsibleContainer } from './components/CollapsibleContainer';
 export { default as Tabs } from './components/ui/Tabs';
-export { default as ActionIcon } from './components/ui/ActionIcon';
 export { default as Select } from './components/ui/Select';
 export { default as MultiSelect } from './components/ui/MultiSelect';
 export { default as Menu, type MenuProps } from './components/ui/Menu';
-export { default as CloseButton } from './components/ui/CloseButton';
 export { default as Text } from './components/ui/Text';
 export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
 export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import Button from './index';
 
 const meta: Meta<typeof Button> = {
-    title: 'UI/Button',
+    title: 'UI/Buttons/Button',
     component: Button,
     parameters: {
         layout: 'centered'
@@ -23,11 +23,11 @@ const meta: Meta<typeof Button> = {
         loading: { control: 'boolean' },
         leftIcon: {
             control: 'select',
-            options: [null, 'IconPlus', 'IconChevronDown']
+            options: [undefined, 'IconPlus', 'IconChevronDown']
         },
         rightIcon: {
             control: 'select',
-            options: [null, 'IconPlus', 'IconChevronDown']
+            options: [undefined, 'IconPlus', 'IconChevronDown']
         },
         color: {
             control: 'select',
@@ -47,8 +47,8 @@ const baseArgs = {
     uppercase: false,
     disabled: false,
     loading: false,
-    leftIcon: null,
-    rightIcon: null,
+    leftIcon: undefined,
+    rightIcon: undefined,
     color: 'primary'
 };
 

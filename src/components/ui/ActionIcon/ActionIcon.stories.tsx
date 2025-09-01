@@ -3,7 +3,7 @@ import ActionIcon from './index';
 import { TablerIconKeys } from '../Icon';
 
 const meta: Meta<typeof ActionIcon> = {
-    title: 'UI/ActionIcon',
+    title: 'UI/Buttons/ActionIcon',
     component: ActionIcon,
     parameters: {
         layout: 'centered'

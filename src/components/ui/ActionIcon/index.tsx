@@ -1,9 +1,13 @@
-import { ActionIcon as MantineActionIcon } from '@mantine/core';
+import {
+    ActionIcon as MantineActionIcon,
+    ActionIconProps as MantineActionIconProps
+} from '@mantine/core';
 import Icon, { TablerIconKeys } from '../Icon';
 
-type ActionIconProps = React.ComponentProps<typeof MantineActionIcon> & {
+export interface ActionIconProps extends MantineActionIconProps {
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     icon: TablerIconKeys;
-};
+}
 
 const ActionIcon = ({
     icon,

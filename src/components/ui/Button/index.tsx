@@ -1,8 +1,16 @@
-import { Button as MantineButton } from '@mantine/core';
-import Icon from '../Icon';
+import {
+    Button as MantineButton,
+    ButtonProps as MantineButtonProps
+} from '@mantine/core';
+import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Button.module.css';
 
-type ButtonProps = React.ComponentProps<typeof MantineButton>;
+export interface ButtonProps extends MantineButtonProps {
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    // TODO: remove react.element later so only string can be accepted
+    leftIcon?: TablerIconKeys | React.ReactElement;
+    rightIcon?: TablerIconKeys | React.ReactElement;
+}
 
 const Button = ({
     color = 'primary',
@@ -30,8 +38,20 @@ const Button = ({
             size={size}
             type={type}
             variant={variant}
-            leftIcon={leftIcon ? <Icon type={leftIcon} size={size} /> : null}
-            rightIcon={rightIcon ? <Icon type={rightIcon} size={size} /> : null}
+            leftIcon={
+                typeof leftIcon === 'string' ? (
+                    <Icon type={leftIcon} size={size} />
+                ) : (
+                    leftIcon
+                )
+            }
+            rightIcon={
+                typeof rightIcon === 'string' ? (
+                    <Icon type={rightIcon} size={size} />
+                ) : (
+                    rightIcon
+                )
+            }
             {...props}
         >
             {children}

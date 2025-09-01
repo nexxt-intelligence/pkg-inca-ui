@@ -121,6 +121,11 @@ export const theme: MantineThemeOverride = {
     },
     components: {
         Button: {
+            styles: {
+                root: {
+                    fontWeight: 500
+                }
+            },
             sizes: {
                 xs: (theme) => ({
                     root: {
