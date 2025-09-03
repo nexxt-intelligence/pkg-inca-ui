@@ -1,57 +1,23 @@
-import * as React from 'react';
 import {
-    Group,
     Loader,
     Select as MantineSelect,
     SelectProps as MantineSelectProps
 } from '@mantine/core';
-import Text from '../Text';
-import Tooltip from '../Tooltip';
+import Label from '../Label';
+import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Select.module.css';
-import Icon from '../Icon';
 
-type SelectProps = {
-    showTooltip?: boolean;
-    tooltipText?: string;
+export interface SelectProps extends MantineSelectProps {
+    tooltip?: string;
+    icon?: TablerIconKeys;
     loading?: boolean;
-} & MantineSelectProps;
+}
 
-const Select = ({
-    showTooltip,
-    tooltipText,
-    label,
-    loading,
-    ...props
-}: SelectProps) => {
+const Select = ({ label, tooltip, icon, loading, ...props }: SelectProps) => {
     return (
         <MantineSelect
-            classNames={{
-                input: classes.input,
-                label: classes.label
-            }}
-            label={
-                showTooltip ? (
-                    <Group spacing="var(--mantine-spacing-2xs)">
-                        <Text size="sm" fw={400} span>
-                            {label}
-                        </Text>
-                        <Tooltip withArrow label={tooltipText || ''}>
-                            <Icon
-                                type="IconHelpCircle"
-                                size="xs"
-                                color="var(--mantine-color-gray-6)"
-                            />
-                        </Tooltip>
-                    </Group>
-                ) : label ? (
-                    <Text size="sm" fw={400} span>
-                        {label}
-                    </Text>
-                ) : null
-            }
-            labelProps={{
-                fw: 400
-            }}
+            label={<Label label={label} tooltip={tooltip} />}
+            icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             {...props}
             {...(loading
                 ? {
