@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.0.0
+
+### Major Changes
+
+-   dc20de2: refactor and update majority components, storybook wip
+
 ## 5.2.0
 
 ### Minor Changes
