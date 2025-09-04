@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.1.0
+
+### Minor Changes
+
+-   3c1b00c: added TextArea, NumberInput, SegmentedControl and updated MultiSelect and Alert
+
 ## 6.0.0
 
 ### Major Changes
