@@ -55,7 +55,14 @@ export const Multiline: StoryObj<typeof Tooltip> = {
 
 export const Positions: StoryObj<typeof Tooltip> = {
     render: () => (
-        <div style={{ display: 'flex', gap: '20px', padding: '50px', justifyContent: 'center' }}>
+        <div
+            style={{
+                display: 'flex',
+                gap: '20px',
+                padding: '50px',
+                justifyContent: 'center'
+            }}
+        >
             <Tooltip label="Top tooltip" position="top">
                 <Button>Top</Button>
             </Tooltip>
@@ -98,19 +105,19 @@ export const Disabled: StoryObj<typeof Tooltip> = {
     )
 };
 
-export const ReactNodeLabel: StoryObj<typeof Tooltip> = {
-    args: {
-        label: (
-            <div>
-                <strong>Rich content tooltip</strong>
-                <br />
-                <em>With multiple elements</em>
-            </div>
-        )
-    },
-    render: (args) => (
-        <Tooltip {...args}>
-            <Button>Rich content tooltip</Button>
-        </Tooltip>
-    )
-};
+// export const ReactNodeLabel: StoryObj<typeof Tooltip> = {
+//     args: {
+//         label: (
+//             <div>
+//                 <strong>Rich content tooltip</strong>
+//                 <br />
+//                 <em>With multiple elements</em>
+//             </div>
+//         )
+//     },
+//     render: (args) => (
+//         <Tooltip {...args}>
+//             <Button>Rich content tooltip</Button>
+//         </Tooltip>
+//     )
+// };
