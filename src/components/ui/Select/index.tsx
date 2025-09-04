@@ -5,7 +5,7 @@ import {
 } from '@mantine/core';
 import Label from '../Label';
 import Icon, { TablerIconKeys } from '../Icon';
-import classes from './Select.module.css';
+// import classes from './Select.module.css';
 
 export interface SelectProps extends MantineSelectProps {
     tooltip?: string;

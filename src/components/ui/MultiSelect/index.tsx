@@ -1,58 +1,24 @@
-import * as React from 'react';
 import {
-    Box,
-    CloseButton,
-    Group,
     Loader,
     MultiSelect as MantineMultiSelect,
-    MultiSelectProps as MantineMultiSelectProps,
-    MultiSelectValueProps
+    MultiSelectProps as MantineMultiSelectProps
 } from '@mantine/core';
-import Text from '../Text';
-import Tooltip from '../Tooltip';
-import classes from './MultiSelect.module.css';
-import Icon from '../Icon';
+import Label from '../Label';
 
-type MultiSelectProps = {
-    showTooltip?: boolean;
-    tooltipText?: string;
+export interface MultiSelectProps extends MantineMultiSelectProps {
+    tooltip?: string;
     loading?: boolean;
-} & MantineMultiSelectProps;
+}
 
 const MultiSelect = ({
-    showTooltip,
-    tooltipText,
+    tooltip,
     label,
     loading,
     ...props
 }: MultiSelectProps) => {
     return (
         <MantineMultiSelect
-            classNames={{
-                input: classes.input,
-                label: classes.label,
-                values: classes.values
-            }}
-            label={
-                showTooltip ? (
-                    <Group spacing="var(--mantine-spacing-2xs)">
-                        <Text size="sm" fw={400} span>
-                            {label}
-                        </Text>
-                        <Tooltip withArrow label={tooltipText || ''}>
-                            <Icon type="IconHelp" size="xs" color="gray" />
-                        </Tooltip>
-                    </Group>
-                ) : (
-                    <Text size="sm" fw={400} span>
-                        {label}
-                    </Text>
-                )
-            }
-            labelProps={{
-                fw: 400
-            }}
-            valueComponent={ValueComponent}
+            label={<Label label={label} tooltip={tooltip} />}
             {...props}
             {...(loading
                 ? {
@@ -60,29 +26,6 @@ const MultiSelect = ({
                   }
                 : {})}
         />
-    );
-};
-
-const ValueComponent = ({
-    label,
-    onRemove,
-    ...others
-}: MultiSelectValueProps) => {
-    return (
-        <div {...others}>
-            <Box className={classes.value_container}>
-                <Text span size="xs" fw={400} display="contents" truncate="end">
-                    {label}
-                </Text>
-                <CloseButton
-                    onMouseDown={onRemove}
-                    variant="transparent"
-                    size={22}
-                    iconSize={14}
-                    tabIndex={-1}
-                />
-            </Box>
-        </div>
     );
 };
 
