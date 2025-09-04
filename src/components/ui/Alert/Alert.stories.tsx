@@ -12,10 +12,6 @@ export default {
             control: 'radio',
             options: ['warning', 'info', 'success', 'danger']
         },
-        leftLine: {
-            control: 'boolean',
-            description: 'Whether to show a left line'
-        },
         variant: {
             description: 'The variant of the alert',
             control: 'radio',
@@ -29,7 +25,6 @@ export const Primary: StoryObj<typeof Alert> = {
         title: 'Alert title',
         children: 'Alert example',
         type: 'danger',
-        leftLine: false,
         variant: 'light'
     }
 };

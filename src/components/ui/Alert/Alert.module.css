@@ -1,8 +1,18 @@
-.leftLine {
-    border-left: 4px solid;
-}
-
-.title {
-    margin-bottom: 8px;
+.alertTitle {
+    margin-bottom: var(--mantine-spacing-2xs);
     font-weight: 600;
+}
+.alertRoot {
+    padding: var(--mantine-spacing-xs);
+}
+.alertRootHide {
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+}
+.alertIcon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: var(--mantine-spacing-xs);
+}
+.alertIconHide {
+    display: none;
 }

@@ -5,44 +5,46 @@ import {
 import Icon from '../Icon';
 import classes from './Alert.module.css';
 
-export type AlertProps = {
+export interface AlertProps extends MantineAlertProps {
     type: 'warning' | 'info' | 'success' | 'danger';
-    leftLine?: boolean;
-} & MantineAlertProps;
+    hideIcon?: boolean;
+}
 
 const alertTypes = {
     danger: {
         color: 'red',
-        icon: <Icon type="IconAlertTriangleFilled" />
+        icon: <Icon type="IconAlertTriangle" />
     },
     warning: {
         color: 'yellow',
-        icon: <Icon type="IconAlertTriangleFilled" />
+        icon: <Icon type="IconAlertTriangle" />
     },
     info: {
-        color: 'blue',
-        icon: <Icon type="IconInfoCircleFilled" />
+        color: 'primary',
+        icon: <Icon type="IconInfoCircle" />
     },
     success: {
         color: 'green',
-        icon: <Icon type="IconCheck" />
+        icon: <Icon type="IconCircleCheck" />
     }
 };
 
-export default function Alert(props: AlertProps) {
-    const type = alertTypes[props.type];
+const Alert = ({ type, children, hideIcon, ...props }: AlertProps) => {
+    const alertType = alertTypes[type];
 
     return (
         <MantineAlert
-            {...type}
+            {...alertType}
             {...props}
-            radius={0}
             classNames={{
-                root: props.leftLine ? classes.leftLine : '',
-                title: classes.title
+                root: hideIcon ? classes.alertRootHide : classes.alertRoot,
+                icon: hideIcon ? classes.alertIconHide : classes.alertIcon,
+                title: classes.alertTitle
             }}
         >
-            {props.children}
+            {children}
         </MantineAlert>
     );
-}
+};
+
+export default Alert;
