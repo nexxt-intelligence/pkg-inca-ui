@@ -26,11 +26,7 @@ const meta: Meta<typeof MultiSelect> = {
             control: 'object',
             description: 'Array of options for the MultiSelect'
         },
-        showTooltip: {
-            control: 'boolean',
-            description: 'Whether to show a tooltip icon next to the label'
-        },
-        tooltipText: {
+        tooltip: {
             control: 'text',
             description: 'Text to display in the tooltip'
         },
@@ -106,8 +102,7 @@ export const WithTooltip: Story = {
         label: 'Select Countries',
         placeholder: 'Choose countries you have visited',
         data: countriesData,
-        showTooltip: true,
-        tooltipText: 'Select all countries you have visited or plan to visit',
+        tooltip: 'Select all countries you have visited or plan to visit',
         searchable: true,
         clearable: true
     }
@@ -215,8 +210,7 @@ export const WithTooltipAndDescription: Story = {
         placeholder: 'Choose your favorite technologies',
         data: sampleData,
         description: 'Select the technologies you are most familiar with',
-        showTooltip: true,
-        tooltipText: 'This selection will be used to customize your experience',
+        tooltip: 'This selection will be used to customize your experience',
         searchable: true,
         clearable: true
     }
