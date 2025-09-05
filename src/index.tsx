@@ -31,6 +31,20 @@ export {
     default as TextInput,
     type TextInputProps
 } from './components/ui/TextInput';
+export {
+    default as TextArea,
+    type TextAreaProps
+} from './components/ui/TextArea';
+export {
+    default as NumberInput,
+    type NumberInputProps
+} from './components/ui/NumberInput';
+export {
+    default as SegmentedControl,
+    type SegmentedControlProps
+} from './components/ui/SegmentedControl';
+export { default as Label, type LabelProps } from './components/ui/Label';
+
 export { default as Select, type SelectProps } from './components/ui/Select';
 export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
 
