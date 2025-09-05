@@ -129,6 +129,14 @@ export const theme: MantineThemeOverride = {
                 }
             }
         },
+        Input: {
+            styles: {
+                input: {
+                    height: '2rem',
+                    minHeight: '2rem'
+                }
+            }
+        },
         InputWrapper: {
             defaultProps: {
                 inputWrapperOrder: ['label', 'input', 'error', 'description']

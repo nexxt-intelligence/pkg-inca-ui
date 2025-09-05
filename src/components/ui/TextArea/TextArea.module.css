@@ -1,3 +1,6 @@
+.textAreaInput {
+    height: auto;
+}
 .textAreaInput[data-variant='filled'] {
     background-color: var(--mantine-color-blue-0);
 }

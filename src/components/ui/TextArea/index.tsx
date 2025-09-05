@@ -24,7 +24,7 @@ const TextArea = ({
             }}
             data-variant={variant}
             variant={variant}
-            label={<Label label={label} tooltip={tooltip} />}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             minRows={minRows}
             {...props}
         />

@@ -16,7 +16,7 @@ export interface SelectProps extends MantineSelectProps {
 const Select = ({ label, tooltip, icon, loading, ...props }: SelectProps) => {
     return (
         <MantineSelect
-            label={<Label label={label} tooltip={tooltip} />}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             {...props}
             {...(loading

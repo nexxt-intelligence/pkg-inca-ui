@@ -18,7 +18,7 @@ const MultiSelect = ({
 }: MultiSelectProps) => {
     return (
         <MantineMultiSelect
-            label={<Label label={label} tooltip={tooltip} />}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
             {...(loading
                 ? {

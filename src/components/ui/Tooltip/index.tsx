@@ -26,7 +26,7 @@ const Tooltip = ({
             maw={320}
             {...props}
         >
-            <span className={classes.tooltipChildren}> {children}</span>
+            <span className={classes.tooltipChildren}>{children}</span>
         </MantineTooltip>
     );
 };

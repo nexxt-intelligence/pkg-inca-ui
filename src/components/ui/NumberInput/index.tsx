@@ -23,7 +23,7 @@ const NumberInput = ({
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             data-variant={variant}
             variant={variant}
-            label={<Label label={label} tooltip={tooltip} />}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
         />
     );

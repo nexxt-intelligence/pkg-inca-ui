@@ -25,7 +25,7 @@ const Switch = ({
                 track: classes.switchTrack,
                 label: classes.switchLabel
             }}
-            label={<Label label={label} tooltip={tooltip} />}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
         />
     );
