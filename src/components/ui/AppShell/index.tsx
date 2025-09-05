@@ -127,8 +127,9 @@ const AppShell = ({ ...props }: AppShellProps) => {
             }}
             navbar={
                 <Navbar
-                    hidden={!isNavbarOpen}
-                    className={classes.navbar}
+                    className={`${classes.navbar} ${
+                        isNavbarOpen ? '' : classes.hidden
+                    }`}
                     width={{ base: 85 }}
                     height={'auto'}
                 >
@@ -152,8 +153,9 @@ const AppShell = ({ ...props }: AppShellProps) => {
             header={
                 <Header
                     height={{ base: 64, md: 0 }}
-                    hidden={!isMobile}
-                    className={classes.header}
+                    className={`${classes.header} ${
+                        isMobile ? '' : classes.hidden
+                    }`}
                     p="sm"
                 >
                     <Burger
