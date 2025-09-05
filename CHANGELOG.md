@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.1.1
+
+### Patch Changes
+
+-   2ad47ab: Add exports for new components
+
 ## 6.1.0
 
 ### Minor Changes
