@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.2.0
+
+### Minor Changes
+
+-   f298c40: Update Label and AppShell
+
 ## 6.1.1
 
 ### Patch Changes
