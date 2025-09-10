@@ -4,3 +4,10 @@
 .textAreaInput[data-variant='filled'] {
     background-color: var(--mantine-color-blue-0);
 }
+.textAreaInputRequired {
+    order: -1;
+}
+.textAreaInput[data-readonly='true'] {
+    cursor: default;
+    pointer-events: none;
+}

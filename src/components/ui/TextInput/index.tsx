@@ -9,6 +9,7 @@ import classes from './TextInput.module.css';
 export interface TextInputProps extends MantineTextInputProps {
     tooltip?: string;
     icon?: TablerIconKeys;
+    readOnly?: boolean;
 }
 
 const TextInput = ({
@@ -16,6 +17,7 @@ const TextInput = ({
     tooltip,
     icon,
     variant = 'default',
+    readOnly,
     ...props
 }: TextInputProps) => {
     return (
@@ -28,6 +30,8 @@ const TextInput = ({
             data-variant={variant}
             variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            readOnly={readOnly}
+            data-readonly={readOnly}
             {...props}
         />
     );

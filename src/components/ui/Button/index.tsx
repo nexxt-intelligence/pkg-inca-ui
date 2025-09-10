@@ -16,7 +16,7 @@ const Button = ({
     color = 'primary',
     compact = false,
     radius = 'sm',
-    size = 'sm',
+    size = 'xs',
     type = 'button',
     variant = 'filled',
     leftIcon,

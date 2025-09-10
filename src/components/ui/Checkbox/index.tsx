@@ -7,7 +7,7 @@ import {
 import classes from './Checkbox.module.css';
 
 export interface CheckboxProps extends MantineCheckboxProps {
-    value: string;
+    value: string | number;
 }
 
 export interface CheckboxGroupProps

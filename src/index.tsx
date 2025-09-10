@@ -47,6 +47,7 @@ export { default as Label, type LabelProps } from './components/ui/Label';
 
 export { default as Select, type SelectProps } from './components/ui/Select';
 export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
+export { default as ColorInput } from './components/ui/ColorInput';
 
 export { default as Input, type InputProps } from './components/ui/Input';
 export { default as AppShell } from './components/ui/AppShell';
@@ -60,7 +61,6 @@ export { default as Text } from './components/ui/Text';
 export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
 export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
 export { default as Badge } from './components/ui/Badge';
-export { default as ColorInput } from './components/ui/ColorInput';
 
 /** UI Components from OLD inca ui */
 export {
@@ -110,6 +110,7 @@ export {
 export {
     //
     Slider,
+    PasswordInput,
     PinInput,
     TransferList
 } from '@mantine/core';

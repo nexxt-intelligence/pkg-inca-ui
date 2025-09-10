@@ -7,7 +7,7 @@ import {
 import classes from './Radio.module.css';
 
 export interface RadioProps extends MantineRadioProps {
-    value: string;
+    value: string | number;
 }
 
 export interface RadioGroupProps

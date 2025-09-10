@@ -1,7 +1,9 @@
 .textInput[data-variant='filled'] {
     background-color: var(--mantine-color-blue-0);
 }
-
 .textInputRequired {
     order: -1;
+}
+.textInput[data-readonly='true'] {
+    cursor: default;
 }

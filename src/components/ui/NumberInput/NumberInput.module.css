@@ -1,0 +1,10 @@
+.numberInput[data-variant='filled'] {
+    background-color: var(--mantine-color-blue-0);
+}
+.numberInputRequired {
+    order: -1;
+}
+.numberInput[data-readonly='true'] {
+    cursor: default;
+    pointer-events: none;
+}

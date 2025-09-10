@@ -5,7 +5,7 @@ import {
 import classes from './Tooltip.module.css';
 
 export interface TooltipProps extends MantineTooltipProps {
-    label: string;
+    label: string | React.ReactElement;
 }
 
 const Tooltip = ({
