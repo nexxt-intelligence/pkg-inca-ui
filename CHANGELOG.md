@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.0
+
+### Minor Changes
+
+-   e6642a3: update some component styling and update types
+
 ## 6.2.0
 
 ### Minor Changes
