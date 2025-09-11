@@ -9,12 +9,14 @@ interface TabPanelsProps {
     }[];
     defaultValue?: string;
     children: React.ReactNode;
+    fullWidth?: boolean;
 }
 
 const Tabs = ({
     tabs,
     defaultValue = tabs[0].value,
-    children
+    children,
+    fullWidth
 }: TabPanelsProps) => {
     /** Had to go with controlled tabs because of interference with React-tab in portal-client */
     const [activeTab, setActiveTab] = React.useState<string | null>(
@@ -34,7 +36,7 @@ const Tabs = ({
                     panel: classes.panel
                 }}
             >
-                <MantineTabs.List>
+                <MantineTabs.List grow={fullWidth}>
                     {tabs.map((tab) => (
                         <MantineTabs.Tab key={tab.value} value={tab.value}>
                             {tab.label}

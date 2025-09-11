@@ -133,7 +133,16 @@ export const theme: MantineThemeOverride = {
             styles: {
                 input: {
                     height: '2rem',
-                    minHeight: '2rem'
+                    minHeight: '2rem',
+                    paddingLeft: '8px',
+                    paddingRight: '8px',
+                    '&[data-variant="default"]': {
+                        borderColor: 'var(--mantine-color-gray-2)'
+                    },
+                    '&[data-variant="unstyled"]': {
+                        paddingLeft: '4px',
+                        paddingRight: '4px'
+                    }
                 }
             }
         },

@@ -15,6 +15,7 @@ export default function CollapsibleContainer({
             defaultValue={title}
             className={classes.container}
             classNames={{
+                item: classes.item,
                 content: classes.content,
                 panel: classes.panel,
                 control: classes.control,
@@ -22,7 +23,7 @@ export default function CollapsibleContainer({
             }}
         >
             <Accordion.Item value={title}>
-                <Accordion.Control fw={400}>{title}</Accordion.Control>
+                <Accordion.Control>{title}</Accordion.Control>
                 <Accordion.Panel>{children}</Accordion.Panel>
             </Accordion.Item>
         </Accordion>

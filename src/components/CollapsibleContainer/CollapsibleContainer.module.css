@@ -1,22 +1,21 @@
 .container {
     width: 100%;
-    border: 1px solid var(--mantine-color-gray-3); /** @TODO use theme colors from design system */
+    border: 1px solid var(--mantine-color-gray-2); /** @TODO use theme colors from design system */
+    border-radius: var(--mantine-radius-sm);
+    background-color: white;
+}
+.item {
     border-bottom: none;
 }
-
 .content {
     padding: 0;
 }
-
 .control {
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-lg)
-        var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
 }
-
 .panel[aria-hidden='false'] {
-    border-top: 1px solid var(--mantine-color-gray-3);
+    border-top: 1px solid var(--mantine-color-gray-2);
 }
-
 .label {
     padding: 0;
 }

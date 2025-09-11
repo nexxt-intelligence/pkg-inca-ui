@@ -4,6 +4,7 @@ import {
     MultiSelectProps as MantineMultiSelectProps
 } from '@mantine/core';
 import Label from '../Label';
+import classes from './MultiSelect.module.css';
 
 export interface MultiSelectProps extends MantineMultiSelectProps {
     tooltip?: string;
@@ -18,6 +19,9 @@ const MultiSelect = ({
 }: MultiSelectProps) => {
     return (
         <MantineMultiSelect
+            classNames={{
+                values: classes.multiSelectValues
+            }}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
             {...(loading
