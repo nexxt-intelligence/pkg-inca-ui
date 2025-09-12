@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.4
+
+### Patch Changes
+
+-   52826f4: fix input focus state again
+
 ## 6.3.3
 
 ### Patch Changes
