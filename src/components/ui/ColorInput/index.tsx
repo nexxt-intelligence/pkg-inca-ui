@@ -11,10 +11,17 @@ export interface ColorInputProps extends MantineColorInputProps {
     rightFilledSection?: React.ReactNode;
 }
 
-const ColorInput = ({ label, tooltip, ...props }: ColorInputProps) => {
+const ColorInput = ({
+    label,
+    tooltip,
+    variant = 'default',
+    ...props
+}: ColorInputProps) => {
     return (
         <MantineColorInput
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            variant={variant}
+            data-variant={variant}
             {...props}
         />
     );

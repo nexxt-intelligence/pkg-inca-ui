@@ -137,11 +137,19 @@ export const theme: MantineThemeOverride = {
                     paddingLeft: '8px',
                     paddingRight: '8px',
                     '&[data-variant="default"]': {
-                        borderColor: 'var(--mantine-color-gray-2)'
+                        borderColor: 'var(--mantine-color-gray-2)',
+                        '&:focus': {
+                            borderColor:
+                                'var(--mantine-color-blue-6) !important'
+                        }
                     },
                     '&[data-variant="unstyled"]': {
                         paddingLeft: '4px',
-                        paddingRight: '4px'
+                        paddingRight: '4px',
+                        '&:focus': {
+                            borderColor:
+                                'var(--mantine-color-blue-6) !important'
+                        }
                     }
                 }
             }

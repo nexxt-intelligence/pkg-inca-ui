@@ -13,11 +13,20 @@ export interface SelectProps extends MantineSelectProps {
     loading?: boolean;
 }
 
-const Select = ({ label, tooltip, icon, loading, ...props }: SelectProps) => {
+const Select = ({
+    label,
+    tooltip,
+    icon,
+    loading,
+    variant = 'default',
+    ...props
+}: SelectProps) => {
     return (
         <MantineSelect
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
+            variant={variant}
+            data-variant={variant}
             {...props}
             {...(loading
                 ? {

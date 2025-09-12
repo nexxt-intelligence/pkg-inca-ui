@@ -15,6 +15,7 @@ const MultiSelect = ({
     tooltip,
     label,
     loading,
+    variant = 'default',
     ...props
 }: MultiSelectProps) => {
     return (
@@ -23,6 +24,8 @@ const MultiSelect = ({
                 values: classes.multiSelectValues
             }}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            variant={variant}
+            data-variant={variant}
             {...props}
             {...(loading
                 ? {
