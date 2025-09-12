@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.3
+
+### Patch Changes
+
+-   008db92: small fix for focus border
+
 ## 6.3.2
 
 ### Patch Changes
