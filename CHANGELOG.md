@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.1
+
+### Patch Changes
+
+-   ce1f874: updated MultiSelect and CollapsibleContainer styling and added fullWidth prop to Tabs
+
 ## 6.3.0
 
 ### Minor Changes
