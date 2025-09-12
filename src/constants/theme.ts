@@ -137,16 +137,23 @@ export const theme: MantineThemeOverride = {
                     paddingLeft: '8px',
                     paddingRight: '8px',
                     '&[data-variant="default"]': {
-                        borderColor: 'var(--mantine-color-gray-2)',
+                        '&:not(:focus)': {
+                            borderColor: 'var(--mantine-color-gray-2)'
+                        },
                         '&:focus': {
-                            border: '1px solid var(--mantine-color-blue-6) !important'
+                            borderWidth: '1px',
+                            borderStyle: 'solid'
                         }
+                    },
+                    '&[data-variant="filled"]:focus': {
+                        borderWidth: '1px',
+                        borderStyle: 'solid'
                     },
                     '&[data-variant="unstyled"]': {
                         paddingLeft: '4px',
                         paddingRight: '4px',
-                        '&:focus': {
-                            border: '1px solid var(--mantine-color-blue-6) !important'
+                        '&[data-with-icon]': {
+                            paddingLeft: '2.25rem'
                         }
                     }
                 }
