@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.2
+
+### Patch Changes
+
+-   5b97f85: force focus border on inputs
+
 ## 6.3.1
 
 ### Patch Changes
