@@ -139,16 +139,14 @@ export const theme: MantineThemeOverride = {
                     '&[data-variant="default"]': {
                         borderColor: 'var(--mantine-color-gray-2)',
                         '&:focus': {
-                            borderColor:
-                                'var(--mantine-color-blue-6) !important'
+                            border: '1px solid var(--mantine-color-blue-6) !important'
                         }
                     },
                     '&[data-variant="unstyled"]': {
                         paddingLeft: '4px',
                         paddingRight: '4px',
                         '&:focus': {
-                            borderColor:
-                                'var(--mantine-color-blue-6) !important'
+                            border: '1px solid var(--mantine-color-blue-6) !important'
                         }
                     }
                 }
