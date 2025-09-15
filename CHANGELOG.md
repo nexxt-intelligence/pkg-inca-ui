@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.3.5
+
+### Patch Changes
+
+-   d5b9e46: update TextArea styling
+
 ## 6.3.4
 
 ### Patch Changes
