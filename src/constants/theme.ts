@@ -136,14 +136,9 @@ export const theme: MantineThemeOverride = {
                     minHeight: '2rem',
                     paddingLeft: '8px',
                     paddingRight: '8px',
-                    '&[data-variant="default"]': {
-                        '&:not(:focus)': {
-                            borderColor: 'var(--mantine-color-gray-2)'
-                        },
-                        '&:focus': {
-                            borderWidth: '1px',
-                            borderStyle: 'solid'
-                        }
+                    '&[data-variant="default"]:focus': {
+                        borderWidth: '1px',
+                        borderStyle: 'solid'
                     },
                     '&[data-variant="filled"]:focus': {
                         borderWidth: '1px',

@@ -15,8 +15,9 @@ const TextArea = ({
     label,
     tooltip,
     variant = 'default',
-    minRows = 2,
+    minRows = 1,
     readOnly,
+    autosize = true,
     ...props
 }: TextAreaProps) => {
     return (
@@ -28,6 +29,7 @@ const TextArea = ({
             data-variant={variant}
             variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            autosize={autosize}
             minRows={minRows}
             readOnly={readOnly}
             data-readonly={readOnly}

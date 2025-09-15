@@ -1,5 +1,6 @@
 .textAreaInput {
-    height: auto;
+    padding: var(--mantine-spacing-2xs) var(--mantine-spacing-xs);
+    min-height: 32px;
 }
 .textAreaInput[data-variant='filled'] {
     background-color: var(--mantine-color-blue-0);
