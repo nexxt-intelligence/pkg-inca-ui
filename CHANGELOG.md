@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.1
+
+### Patch Changes
+
+-   514e921: update styling for Tabs and CollapsibleContainer and in general
+
 ## 6.4.0
 
 ### Minor Changes
