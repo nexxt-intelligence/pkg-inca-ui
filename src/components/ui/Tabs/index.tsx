@@ -19,6 +19,7 @@ const Tabs = ({
     tabs,
     defaultValue = tabs[0].value,
     children,
+    variant = 'default',
     fullWidth
 }: TabsProps) => {
     /** Had to go with controlled tabs because of interference with React-tab in portal-client */
@@ -38,6 +39,7 @@ const Tabs = ({
                         : classes.tabsListHidden,
                     panel: classes.panel
                 }}
+                data-variant={variant}
             >
                 <MantineTabs.List grow={fullWidth}>
                     {tabs.map((tab) => (

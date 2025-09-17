@@ -6,7 +6,8 @@
     }
 }
 .content {
-    padding: 0;
+    padding: 0px var(--mantine-spacing-md) var(--mantine-spacing-sm)
+        var(--mantine-spacing-md);
 }
 .control {
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);

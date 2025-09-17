@@ -1,18 +1,30 @@
 .tabsList {
-    border-bottom: 1px solid var(--mantine-color-gray-3);
+    border-bottom: 1px solid var(--mantine-color-gray-2);
 }
-
 .tabsListHidden {
     border-bottom: none;
 }
-
 .tab {
     margin-bottom: -1px;
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    &:hover {
+        border-bottom: 2px solid transparent;
+    }
+}
+[data-variant='default'] .tabsList {
+    gap: var(--mantine-spacing-md);
+
+    .tab {
+        padding: var(--mantine-spacing-sm) 0px;
+        &:hover {
+            background-color: transparent;
+        }
+    }
 }
 
 .tab[data-active] {
     color: var(--mantine-color-blue-6);
+    border-bottom: 2px solid var(--mantine-color-blue-6);
 }
 
 .tab[data-active]:focus {

@@ -4,6 +4,7 @@ import type { MantineThemeOverride } from '@mantine/core';
 export const theme: MantineThemeOverride = {
     fontFamily: '"Source Sans 3", sans-serif',
     primaryColor: 'blue',
+    primaryShade: 6,
     headings: {
         fontWeight: 700,
         fontFamily: '"Source Sans 3", sans-serif',
@@ -26,7 +27,7 @@ export const theme: MantineThemeOverride = {
         lg: '1.125rem',
         xl: '1.25rem'
     },
-    lineHeight: 1.2,
+    lineHeight: 1.5,
     spacing: {
         '3xs': '2px',
         '2xs': '4px',
@@ -45,6 +46,15 @@ export const theme: MantineThemeOverride = {
         lg: '16px',
         xl: '24px',
         '2xl': '32px'
+    },
+    focusRingStyles: {
+        styles: () => ({
+            outline: '1px solid var(--mantine-color-blue-6)'
+        }),
+        inputStyles: () => ({
+            outline: 'none',
+            border: '1px solid var(--mantine-color-blue-6)'
+        })
     },
     colors: {
         // TODO: update colors
@@ -122,82 +132,6 @@ export const theme: MantineThemeOverride = {
         ]
     },
     components: {
-        Switch: {
-            styles: {
-                label: {
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                }
-            }
-        },
-        Input: {
-            styles: {
-                input: {
-                    height: '2rem',
-                    minHeight: '2rem',
-                    paddingLeft: '8px',
-                    paddingRight: '8px',
-                    '&[data-variant="default"]:focus': {
-                        borderWidth: '1px',
-                        borderStyle: 'solid'
-                    },
-                    '&[data-variant="filled"]:focus': {
-                        borderWidth: '1px',
-                        borderStyle: 'solid'
-                    },
-                    '&[data-variant="unstyled"]': {
-                        paddingLeft: '4px',
-                        paddingRight: '4px',
-                        '&[data-with-icon]': {
-                            paddingLeft: '2.25rem'
-                        }
-                    }
-                }
-            }
-        },
-        InputWrapper: {
-            defaultProps: {
-                inputWrapperOrder: ['label', 'input', 'error', 'description']
-            },
-            styles: {
-                label: {
-                    fontWeight: 400,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                }
-            }
-        },
-        Button: {
-            styles: {
-                root: {
-                    fontWeight: 500
-                }
-            },
-            sizes: {
-                xs: (theme) => ({
-                    root: {
-                        padding: `0 ${theme.spacing.sm}`,
-                        height: '1.5rem',
-                        '&[data-compact="true"]': {
-                            padding: `0 ${theme.spacing.xs}`,
-                            height: '1.25rem'
-                        }
-                    }
-                }),
-                sm: (theme) => ({
-                    root: {
-                        padding: `0 ${theme.spacing.sm}`,
-                        height: '2rem',
-                        '&[data-compact="true"]': {
-                            padding: `0 ${theme.spacing.xs}`,
-                            height: '1.5rem'
-                        }
-                    }
-                })
-            }
-        },
         ActionIcon: {
             sizes: {
                 xs: () => ({
@@ -240,6 +174,96 @@ export const theme: MantineThemeOverride = {
                         minHeight: '40px'
                     }
                 })
+            }
+        },
+        Button: {
+            styles: {
+                root: {
+                    fontWeight: 500
+                }
+            },
+            variants: {
+                default: () => ({
+                    root: {
+                        borderColor: 'var(--mantine-color-gray-2)'
+                    }
+                })
+            },
+            sizes: {
+                xs: () => ({
+                    root: {
+                        padding: '0 var(--mantine-spacing-sm)',
+                        height: '1.5rem',
+                        '&[data-compact="true"]': {
+                            padding: '0 var(--mantine-spacing-xs)',
+                            height: '1.25rem'
+                        }
+                    }
+                }),
+                sm: () => ({
+                    root: {
+                        padding: '0 var(--mantine-spacing-sm)',
+                        height: '2rem',
+                        '&[data-compact="true"]': {
+                            padding: '0 var(--mantine-spacing-xs)',
+                            height: '1.5rem'
+                        }
+                    }
+                })
+            }
+        },
+        Switch: {
+            styles: {
+                label: {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                }
+            }
+        },
+        Input: {
+            styles: {
+                input: {
+                    height: '2rem',
+                    minHeight: '2rem'
+                }
+            },
+            variants: {
+                default: () => ({
+                    input: {
+                        borderColor: 'var(--mantine-color-gray-2)',
+                        paddingLeft: 'var(--mantine-spacing-xs)',
+                        paddingRight: 'var(--mantine-spacing-xs)'
+                    }
+                }),
+                filled: () => ({
+                    input: {
+                        paddingLeft: 'var(--mantine-spacing-xs)',
+                        paddingRight: 'var(--mantine-spacing-xs)'
+                    }
+                }),
+                unstyled: () => ({
+                    input: {
+                        paddingLeft: 'var(--mantine-spacing-2xs)',
+                        paddingRight: 'var(--mantine-spacing-2xs)',
+                        '&[data-with-icon]': {
+                            paddingLeft: '2.25rem'
+                        }
+                    }
+                })
+            }
+        },
+        InputWrapper: {
+            defaultProps: {
+                inputWrapperOrder: ['label', 'input', 'error', 'description']
+            },
+            styles: {
+                label: {
+                    fontWeight: 400,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                }
             }
         }
     }
