@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.0
+
+### Minor Changes
+
+-   ffc8b4f: update styling and some props for Tabs, Alert, and CollapsibleContainer
+
 ## 6.3.5
 
 ### Patch Changes
