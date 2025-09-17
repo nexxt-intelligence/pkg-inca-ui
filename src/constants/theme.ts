@@ -9,22 +9,24 @@ export const theme: MantineThemeOverride = {
         fontFamily: '"Source Sans 3", sans-serif',
         sizes: {
             h1: { fontSize: '2.5rem', lineHeight: '1.2' },
-            h2: { fontSize: '2rem', lineHeight: '1.35' },
-            h3: { fontSize: '1.5rem', lineHeight: '1.33' },
+            h2: { fontSize: '2rem', lineHeight: '1.2' },
+            h3: { fontSize: '1.5rem', lineHeight: '1.2' },
             h4: { fontSize: '1.25rem', lineHeight: '1.2' },
-            h5: { fontSize: '1rem', lineHeight: '1.25' },
-            h6: { fontSize: '0.75rem', lineHeight: '1.33' }
+            h5: { fontSize: '1rem', lineHeight: '1.2' },
+            h6: { fontSize: '0.75rem', lineHeight: '1.2' }
         }
     },
+    cursorType: 'pointer',
     defaultRadius: 'sm',
     fontSizes: {
         '2xs': '0.625rem',
         xs: '0.75rem',
-        sm: '0.87rem',
+        sm: '0.875rem',
         md: '1rem',
         lg: '1.125rem',
         xl: '1.25rem'
     },
+    lineHeight: 1.2,
     spacing: {
         '3xs': '2px',
         '2xs': '4px',
@@ -160,6 +162,7 @@ export const theme: MantineThemeOverride = {
             },
             styles: {
                 label: {
+                    fontWeight: 400,
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '4px'
@@ -176,20 +179,20 @@ export const theme: MantineThemeOverride = {
                 xs: (theme) => ({
                     root: {
                         padding: `0 ${theme.spacing.sm}`,
-                        height: '24px',
+                        height: '1.5rem',
                         '&[data-compact="true"]': {
                             padding: `0 ${theme.spacing.xs}`,
-                            height: '20px'
+                            height: '1.25rem'
                         }
                     }
                 }),
                 sm: (theme) => ({
                     root: {
                         padding: `0 ${theme.spacing.sm}`,
-                        height: '32px',
+                        height: '2rem',
                         '&[data-compact="true"]': {
                             padding: `0 ${theme.spacing.xs}`,
-                            height: '24px'
+                            height: '1.5rem'
                         }
                     }
                 })

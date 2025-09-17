@@ -6,7 +6,7 @@ import Icon from '../Icon';
 import classes from './Alert.module.css';
 
 export interface AlertProps extends MantineAlertProps {
-    type: 'warning' | 'info' | 'success' | 'danger';
+    type: 'warning' | 'info' | 'success' | 'danger' | 'ai';
     hideIcon?: boolean;
 }
 
@@ -26,6 +26,10 @@ const alertTypes = {
     success: {
         color: 'green',
         icon: <Icon type="IconCircleCheck" />
+    },
+    ai: {
+        color: 'violet',
+        icon: <Icon type="IconSparkles" />
     }
 };
 

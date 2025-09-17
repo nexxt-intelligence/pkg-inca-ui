@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { Tabs as MantineTabs } from '@mantine/core';
+import {
+    Tabs as MantineTabs,
+    TabsProps as MantineTabsProps
+} from '@mantine/core';
 import classes from './Tabs.module.css';
 
-interface TabPanelsProps {
+export interface TabsProps extends MantineTabsProps {
     tabs: {
         label: string;
         value: string;
@@ -17,7 +20,7 @@ const Tabs = ({
     defaultValue = tabs[0].value,
     children,
     fullWidth
-}: TabPanelsProps) => {
+}: TabsProps) => {
     /** Had to go with controlled tabs because of interference with React-tab in portal-client */
     const [activeTab, setActiveTab] = React.useState<string | null>(
         defaultValue

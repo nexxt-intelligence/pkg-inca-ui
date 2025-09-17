@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { Accordion } from '@mantine/core';
-
+import { Accordion, AccordionProps } from '@mantine/core';
 import classes from './CollapsibleContainer.module.css';
 
-export default function CollapsibleContainer({
-    title,
-    children
-}: {
+export interface CollapsibleContainerProps extends AccordionProps {
     title: string;
     children: React.ReactNode;
-}) {
+    defaultOpen?: boolean;
+}
+
+const CollapsibleContainer = ({
+    title,
+    children,
+    defaultOpen = true
+}: CollapsibleContainerProps) => {
+    const defaultValue = defaultOpen ? title : null;
+
     return (
         <Accordion
-            defaultValue={title}
-            className={classes.container}
+            defaultValue={defaultValue}
+            variant="contained"
             classNames={{
                 item: classes.item,
                 content: classes.content,
@@ -21,6 +26,8 @@ export default function CollapsibleContainer({
                 control: classes.control,
                 label: classes.label
             }}
+            multiple={false}
+            w={'100%'}
         >
             <Accordion.Item value={title}>
                 <Accordion.Control>{title}</Accordion.Control>
@@ -28,4 +35,6 @@ export default function CollapsibleContainer({
             </Accordion.Item>
         </Accordion>
     );
-}
+};
+
+export default CollapsibleContainer;
