@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.2
+
+### Patch Changes
+
+-   a1c9080: more css updates
+
 ## 6.4.1
 
 ### Patch Changes
