@@ -8,3 +8,13 @@
     cursor: default;
     pointer-events: none;
 }
+.numberInputControlUp {
+    border-bottom-color: var(--mantine-color-gray-2);
+}
+.numberInputControl {
+    border-left-color: var(--mantine-color-gray-2);
+    cursor: pointer;
+    &:disabled {
+        cursor: default;
+    }
+}

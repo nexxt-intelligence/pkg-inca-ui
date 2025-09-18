@@ -24,7 +24,9 @@ const NumberInput = ({
         <MantineNumberInput
             classNames={{
                 input: classes.numberInput,
-                required: classes.numberInputRequired
+                required: classes.numberInputRequired,
+                controlUp: classes.numberInputControlUp,
+                control: classes.numberInputControl
             }}
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}

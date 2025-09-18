@@ -47,15 +47,7 @@ export const theme: MantineThemeOverride = {
         xl: '24px',
         '2xl': '32px'
     },
-    focusRingStyles: {
-        styles: () => ({
-            outline: '1px solid var(--mantine-color-blue-6)'
-        }),
-        inputStyles: () => ({
-            outline: 'none',
-            border: '1px solid var(--mantine-color-blue-6)'
-        })
-    },
+
     colors: {
         // TODO: update colors
         blue: [

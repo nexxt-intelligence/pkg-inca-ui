@@ -1,6 +1,8 @@
 .item {
     overflow: hidden;
     width: 100%;
+    border: 1px solid var(--mantine-color-gray-2);
+    background-color: white;
     &[data-active='true'] {
         background-color: white;
     }
