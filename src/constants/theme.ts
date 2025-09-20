@@ -255,6 +255,9 @@ export const theme: MantineThemeOverride = {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '4px'
+                },
+                error: {
+                    whiteSpace: 'normal'
                 }
             }
         }
