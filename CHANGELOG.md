@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.3
+
+### Patch Changes
+
+-   4c98e64: fix input error message wrapping
+
 ## 6.4.2
 
 ### Patch Changes
