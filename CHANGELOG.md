@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.4
+
+### Patch Changes
+
+-   b5aac09: add tooltip to CollapsibleContainer
+
 ## 6.4.3
 
 ### Patch Changes
