@@ -8,6 +8,7 @@ import classes from './Radio.module.css';
 
 export interface RadioProps extends MantineRadioProps {
     value: string | number;
+    disabled?: boolean;
 }
 
 export interface RadioGroupProps
@@ -15,6 +16,7 @@ export interface RadioGroupProps
     row?: boolean;
     options?: RadioProps[];
     children?: React.ReactNode;
+    disabled?: boolean;
 }
 
 const Radio = ({ ...props }: RadioProps) => {
@@ -36,10 +38,16 @@ const RadioGroup = ({
     row = false,
     options,
     children,
+    disabled,
     ...props
 }: RadioGroupProps) => {
     const radioOptions = options?.map(({ value, ...rest }) => (
-        <Radio key={value} value={value} {...rest} />
+        <Radio
+            key={value}
+            value={value}
+            disabled={disabled || rest.disabled}
+            {...rest}
+        />
     ));
     return (
         <MantineRadio.Group
