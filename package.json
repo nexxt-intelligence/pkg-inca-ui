@@ -1,6 +1,6 @@
 {
     "name": "inca-ui",
-    "version": "6.4.5",
+    "version": "6.4.6",
     "type": "module",
     "main": "dist/inca-ui.cjs.js",
     "module": "dist/inca-ui.es.js",
