@@ -1,4 +1,7 @@
 .multiSelectValues {
     min-height: 30px;
-    height: 30px;
+}
+
+.multiSelectInput {
+    height: auto;
 }

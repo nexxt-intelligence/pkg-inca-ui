@@ -21,7 +21,8 @@ const MultiSelect = ({
     return (
         <MantineMultiSelect
             classNames={{
-                values: classes.multiSelectValues
+                values: classes.multiSelectValues,
+                input: classes.multiSelectInput
             }}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             variant={variant}
