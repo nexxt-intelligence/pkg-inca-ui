@@ -25,8 +25,17 @@
 } */
 .label {
     display: flex;
+    padding: 0;
+}
+.title {
+    display: flex;
     align-items: center;
     gap: var(--mantine-spacing-2xs);
-    padding: 0;
     font-weight: 500;
+}
+.description {
+    margin-left: auto;
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-gray-6);
+    font-weight: 400;
 }

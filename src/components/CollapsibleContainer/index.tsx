@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Accordion, AccordionProps } from '@mantine/core';
+import { Accordion, AccordionProps, Stack } from '@mantine/core';
 import Tooltip from '../ui/Tooltip';
 import Icon from '../ui/Icon';
 import classes from './CollapsibleContainer.module.css';
+import Text from '../ui/Text';
 
 export interface CollapsibleContainerProps extends AccordionProps {
     title: string;
@@ -10,6 +11,7 @@ export interface CollapsibleContainerProps extends AccordionProps {
     defaultOpen?: boolean;
     tooltip?: string;
     tooltipType?: 'info' | 'warning';
+    description?: string;
 }
 
 const CollapsibleContainer = ({
@@ -17,7 +19,8 @@ const CollapsibleContainer = ({
     children,
     defaultOpen = true,
     tooltip,
-    tooltipType = 'info'
+    tooltipType = 'info',
+    description
 }: CollapsibleContainerProps) => {
     const defaultValue = defaultOpen ? title : null;
 
@@ -37,21 +40,38 @@ const CollapsibleContainer = ({
         >
             <Accordion.Item value={title} data-tooltiptype={tooltipType}>
                 <Accordion.Control>
-                    {title}
-                    {tooltip && (
-                        <Tooltip label={tooltip}>
-                            {tooltipType === 'info' && (
-                                <Icon type="IconHelp" size="sm" color="gray" />
+                    <Stack spacing={0}>
+                        <span className={classes.title}>
+                            {title}
+                            {tooltip && (
+                                <Tooltip label={tooltip}>
+                                    {tooltipType === 'info' && (
+                                        <Icon
+                                            type="IconHelp"
+                                            size="sm"
+                                            color="gray"
+                                        />
+                                    )}
+                                    {tooltipType === 'warning' && (
+                                        <Icon
+                                            type="IconAlertTriangle"
+                                            size="sm"
+                                            color="var(--mantine-color-yellow-6)"
+                                        />
+                                    )}
+                                </Tooltip>
                             )}
-                            {tooltipType === 'warning' && (
-                                <Icon
-                                    type="IconAlertTriangle"
-                                    size="sm"
-                                    color="var(--mantine-color-yellow-6)"
-                                />
-                            )}
-                        </Tooltip>
-                    )}
+                        </span>
+                        {description && (
+                            <Text
+                                className={classes.description}
+                                color="gray"
+                                size="sm"
+                            >
+                                {description}
+                            </Text>
+                        )}
+                    </Stack>
                 </Accordion.Control>
                 <Accordion.Panel>{children}</Accordion.Panel>
             </Accordion.Item>
