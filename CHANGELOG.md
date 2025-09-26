@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.6
+
+### Patch Changes
+
+-   58a20c6: fix multiselect overflow
+
 ## 6.4.5
 
 ### Patch Changes
