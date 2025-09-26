@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.4.7
+
+### Patch Changes
+
+-   357e3ad: add description to collapsible container header
+
 ## 6.4.6
 
 ### Patch Changes
