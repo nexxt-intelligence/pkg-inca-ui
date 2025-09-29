@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.2
+
+### Patch Changes
+
+-   81c152e: fix export ChatInput component
+
 ## 6.5.1
 
 ### Patch Changes
