@@ -44,9 +44,9 @@ const Alert = ({ type, children, hideIcon, ...props }: AlertProps) => {
                 root: hideIcon ? classes.alertRootHide : classes.alertRoot,
                 icon: hideIcon ? classes.alertIconHide : classes.alertIcon,
                 title: classes.alertTitle,
-                message: classes.alertMessage
+                message: classes.alertMessage,
+                closeButton: classes.alertCloseButton
             }}
-            data-with-close-button={props.withCloseButton ? true : undefined}
         >
             {children}
         </MantineAlert>

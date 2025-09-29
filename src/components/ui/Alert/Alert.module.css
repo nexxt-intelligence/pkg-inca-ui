@@ -16,6 +16,6 @@
 .alertIconHide {
     display: none;
 }
-.alertTitle[data-with-close-button] + .alertMessage {
-    padding-right: var(--mantine-spacing-md);
+.alertCloseButton {
+    margin-left: var(--mantine-spacing-md);
 }
