@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.1
+
+### Patch Changes
+
+-   2588581: fix Alert styling
+
 ## 6.5.0
 
 ### Minor Changes
