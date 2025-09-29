@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.0
+
+### Minor Changes
+
+-   8d258e6: add ChatInput component and update Alert and Label
+
 ## 6.4.7
 
 ### Patch Changes
