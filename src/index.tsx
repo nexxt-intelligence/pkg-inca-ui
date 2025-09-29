@@ -60,6 +60,11 @@ export {
     type CollapsibleContainerProps
 } from './components/CollapsibleContainer';
 
+export {
+    default as ChatInput,
+    type ChatInputProps
+} from './components/ChatInput';
+
 export { default as AppShell } from './components/ui/AppShell';
 export { default as List, type ListProps } from './components/ui/List';
 export { default as Menu, type MenuProps } from './components/ui/Menu';
