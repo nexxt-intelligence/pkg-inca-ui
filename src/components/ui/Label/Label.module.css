@@ -1,3 +1,5 @@
 .label {
     order: -2;
+    align-items: center;
+    display: inline-flex;
 }

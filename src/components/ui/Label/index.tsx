@@ -8,25 +8,27 @@ export interface LabelProps {
     required?: boolean;
     tooltip?: string;
     htmlFor?: string; // Add htmlFor when label is used standalone (not inside Mantine's label prop)
+    id?: string; // Add id when label is used standalone and for multiple inputs or elements (use aria-labelledby referencing this id)
 }
 
-const Label = ({ label, tooltip, required, htmlFor }: LabelProps) => {
-    const LabelContent = htmlFor ? (
-        <Input.Label required={required} htmlFor={htmlFor}>
-            {label}
-        </Input.Label>
-    ) : (
-        <span className={classes.label}>{label}</span>
+const Label = ({ label, tooltip, required, htmlFor, id }: LabelProps) => {
+    const tooltipIcon = tooltip && (
+        <Tooltip label={tooltip}>
+            <Icon type="IconHelp" size="xs" color="gray" />
+        </Tooltip>
     );
 
-    return (
+    return htmlFor || id ? (
+        <span className={classes.label}>
+            <Input.Label htmlFor={htmlFor} required={required} pr="2xs">
+                {id ? <span id={id}>{label}</span> : label}
+            </Input.Label>
+            {tooltipIcon}
+        </span>
+    ) : (
         <>
-            {LabelContent}
-            {tooltip && (
-                <Tooltip label={tooltip}>
-                    <Icon type="IconHelp" size="xs" color="gray" />
-                </Tooltip>
-            )}
+            <span className={classes.label}>{label}</span>
+            {tooltipIcon}
         </>
     );
 };

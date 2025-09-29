@@ -12,8 +12,10 @@
     width: 1rem;
     height: 1rem;
     margin-right: var(--mantine-spacing-xs);
-    margin-top: 0;
 }
 .alertIconHide {
     display: none;
+}
+.alertTitle[data-with-close-button] + .alertMessage {
+    padding-right: var(--mantine-spacing-md);
 }
