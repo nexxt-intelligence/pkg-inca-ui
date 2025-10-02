@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.3
+
+### Patch Changes
+
+-   fda18ca: fix AppShell footer logo position
+
 ## 6.5.2
 
 ### Patch Changes
