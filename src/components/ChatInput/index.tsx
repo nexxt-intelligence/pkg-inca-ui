@@ -9,7 +9,12 @@ export interface ChatInputProps extends TextAreaProps {
     disabled?: boolean;
 }
 
-const ChatInput = ({ handleSend, placeholder, disabled }: ChatInputProps) => {
+const ChatInput = ({
+    handleSend,
+    placeholder,
+    disabled,
+    ...props
+}: ChatInputProps) => {
     return (
         <Stack
             className={`${classes.chatInput} ${disabled && classes.disabled}`}
@@ -19,6 +24,7 @@ const ChatInput = ({ handleSend, placeholder, disabled }: ChatInputProps) => {
                 variant="unstyled"
                 placeholder={placeholder}
                 disabled={disabled}
+                {...props}
             />
             <Group position="apart">
                 <Group spacing={0}>{/* future icons here? */}</Group>
