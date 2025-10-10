@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.4
+
+### Patch Changes
+
+-   78a98ac: Pass through TextArea props from ChatInput
+
 ## 6.5.3
 
 ### Patch Changes
