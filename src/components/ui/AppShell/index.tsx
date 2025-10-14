@@ -40,7 +40,6 @@ const AppShell = ({ ...props }: AppShellProps) => {
         isNavbarOpen,
         toggleNavbar,
         signOut,
-        openFeedback,
         openHelp,
         userFirstName,
         userProfilePicture,
@@ -50,11 +49,6 @@ const AppShell = ({ ...props }: AppShellProps) => {
     const mobileStyles = isMobile ? classes.hidden : '';
 
     const navLinkBottomItems = [
-        {
-            label: 'Feedback',
-            onClick: openFeedback,
-            icon: <Icon type="IconMessage" size="md" />
-        },
         {
             label: 'Help',
             onClick: openHelp,
