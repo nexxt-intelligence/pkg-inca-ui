@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.5.5
+
+### Patch Changes
+
+-   3c48766: remove Feedback from AppShell nav
+
 ## 6.5.4
 
 ### Patch Changes
