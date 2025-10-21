@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.6.0
+
+### Minor Changes
+
+-   9c0a4a3: Allow `Alert` to manage it's own open/close state
+
 ## 6.5.5
 
 ### Patch Changes
