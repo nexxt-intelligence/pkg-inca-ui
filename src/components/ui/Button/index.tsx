@@ -4,6 +4,7 @@ import {
 } from '@mantine/core';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Button.module.css';
+import { clsx } from '@mantine/core';
 
 export interface ButtonProps extends MantineButtonProps {
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -22,10 +23,12 @@ const Button = ({
     leftIcon,
     rightIcon,
     children,
+    className,
     ...props
 }: ButtonProps) => {
     return (
         <MantineButton
+            className={clsx(className, classes.transition)}
             classNames={{
                 leftIcon: classes.leftIcon,
                 rightIcon: classes.rightIcon

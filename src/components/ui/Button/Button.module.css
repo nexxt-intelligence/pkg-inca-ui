@@ -10,3 +10,9 @@
 &:focus {
     border: 0.0625rem solid transparent;
 }
+
+.transition {
+    will-change: background-color, color, border-color;
+    transition: background-color 200ms ease, color 200ms ease,
+        border-color 200ms ease;
+}
