@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.6.1
+
+### Patch Changes
+
+-   b1087ac: Add short transition to button colors
+
 ## 6.6.0
 
 ### Minor Changes
