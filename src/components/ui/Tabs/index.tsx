@@ -11,6 +11,8 @@ export interface TabsProps extends MantineTabsProps {
         value: string;
     }[];
     defaultValue?: string;
+    value?: string | null;
+    onTabChange?: (value: string | null) => void;
     children: React.ReactNode;
     fullWidth?: boolean;
 }
@@ -18,6 +20,8 @@ export interface TabsProps extends MantineTabsProps {
 const Tabs = ({
     tabs,
     defaultValue = tabs[0].value,
+    value: controlledValue,
+    onTabChange: controlledOnTabChange,
     children,
     variant = 'default',
     fullWidth
@@ -27,11 +31,23 @@ const Tabs = ({
         defaultValue
     );
 
+    // Use controlled value if provided, otherwise use internal state
+    const currentValue =
+        controlledValue !== undefined ? controlledValue : activeTab;
+
+    const handleTabChange = (value: string | null) => {
+        // If controlled, call the parent's handler
+        if (controlledOnTabChange) controlledOnTabChange(value);
+
+        // If uncontrolled, update internal state
+        if (controlledValue === undefined) setActiveTab(value);
+    };
+
     return (
         <div onClick={(e) => e.stopPropagation()}>
             <MantineTabs
-                value={activeTab}
-                onTabChange={setActiveTab}
+                value={currentValue}
+                onTabChange={handleTabChange}
                 classNames={{
                     tab: classes.tab,
                     tabsList: tabs.length
