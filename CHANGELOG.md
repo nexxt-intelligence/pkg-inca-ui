@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.6.2
+
+### Patch Changes
+
+-   7c9fdf4: Allow external control of `Tabs` component
+
 ## 6.6.1
 
 ### Patch Changes
