@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.6.3
+
+### Patch Changes
+
+-   8fef596: fix Icon color
+
 ## 6.6.2
 
 ### Patch Changes
