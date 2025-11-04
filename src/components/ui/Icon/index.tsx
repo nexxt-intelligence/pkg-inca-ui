@@ -32,7 +32,14 @@ const Icon = ({ type, size = 'sm', color }: IconProps) => {
 
     const IconComponent = TablerIcons[type];
 
-    return <IconComponent size={iconSize} stroke={1.5} color={color} />;
+    return (
+        <IconComponent
+            size={iconSize}
+            stroke={1.5}
+            color={color}
+            style={{ color }}
+        />
+    );
 };
 
 export default Icon;
