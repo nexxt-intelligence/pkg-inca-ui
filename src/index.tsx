@@ -65,6 +65,7 @@ export {
     type ChatInputProps
 } from './components/ChatInput';
 
+export { default as Anchor, type AnchorProps } from './components/ui/Anchor';
 export { default as AppShell } from './components/ui/AppShell';
 export { default as List, type ListProps } from './components/ui/List';
 export { default as Menu, type MenuProps } from './components/ui/Menu';
@@ -131,7 +132,6 @@ export {
 // Navigation
 export {
     //
-    Anchor,
     Breadcrumbs,
     Pagination
 } from '@mantine/core';
