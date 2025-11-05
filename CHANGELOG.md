@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.7.0
+
+### Minor Changes
+
+-   e18dafc: add Anchor component
+
 ## 6.6.3
 
 ### Patch Changes
