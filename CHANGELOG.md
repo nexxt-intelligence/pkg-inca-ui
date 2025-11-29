@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.7.1
+
+### Patch Changes
+
+-   c8a8cff: fix: TextInput component to support ReactNode as icon
+
 ## 6.7.0
 
 ### Minor Changes
