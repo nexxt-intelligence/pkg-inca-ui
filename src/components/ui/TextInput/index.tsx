@@ -5,10 +5,11 @@ import {
 import Label from '../Label';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './TextInput.module.css';
+import { ReactNode } from 'react';
 
 export interface TextInputProps extends MantineTextInputProps {
     tooltip?: string;
-    icon?: TablerIconKeys;
+    icon?: TablerIconKeys | ReactNode;
     readOnly?: boolean;
 }
 
@@ -26,7 +27,13 @@ const TextInput = ({
                 input: classes.textInput,
                 required: classes.textInputRequired
             }}
-            icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
+            icon={
+                typeof icon === 'string' ? (
+                    <Icon type={icon as TablerIconKeys} />
+                ) : (
+                    icon
+                )
+            }
             data-variant={variant}
             variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
