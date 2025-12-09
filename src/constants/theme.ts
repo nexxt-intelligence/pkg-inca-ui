@@ -17,7 +17,6 @@ export const theme: MantineThemeOverride = {
             h6: { fontSize: '0.75rem', lineHeight: '1.2' }
         }
     },
-    cursorType: 'pointer',
     defaultRadius: 'sm',
     fontSizes: {
         '2xs': '0.625rem',
@@ -27,7 +26,7 @@ export const theme: MantineThemeOverride = {
         lg: '1.125rem',
         xl: '1.25rem'
     },
-    lineHeight: 1.5,
+    // lineHeight: 1.5,
     spacing: {
         '3xs': '2px',
         '2xs': '4px',

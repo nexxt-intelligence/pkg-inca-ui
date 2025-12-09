@@ -19,8 +19,8 @@ export interface AppShellProps extends MantineAppShellProps {
     isNavbarOpen: boolean;
     toggleNavbar: () => void;
     signOut: () => void;
-    openFeedback: () => void;
-    openHelp: () => void;
+    openFeedback?: () => void;
+    openHelp?: () => void;
     userFirstName?: string;
     userProfilePicture?: string;
 }
@@ -49,12 +49,12 @@ const AppShell = ({ ...props }: AppShellProps) => {
     const mobileStyles = isMobile ? classes.hidden : '';
 
     const navLinkBottomItems = [
-        {
+        openHelp && {
             label: 'Help',
             onClick: openHelp,
             icon: <Icon type="IconHelp" size="md" />
         },
-        {
+        (userFirstName || userProfilePicture) && {
             label: userFirstName ? userFirstName : 'Profile',
             onClick: () => setActiveLink('/manage-profile'),
             icon: userProfilePicture ? (
@@ -73,7 +73,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             onClick: signOut,
             icon: <Icon type="IconLogout" size="md" />
         }
-    ];
+    ].filter(Boolean) as NavLinkItem[];
 
     const renderNavLinks = (item: NavLinkItem[]) => {
         return item.map(

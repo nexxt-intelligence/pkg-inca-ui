@@ -1,6 +1,7 @@
 .radio {
     width: 1rem;
     height: 1rem;
+    cursor: pointer;
     &:disabled {
         cursor: default;
     }
@@ -18,7 +19,4 @@
 .radioError {
     padding-left: var(--mantine-spacing-xs);
     margin-top: 0;
-    &:disabled {
-        cursor: default;
-    }
 }
