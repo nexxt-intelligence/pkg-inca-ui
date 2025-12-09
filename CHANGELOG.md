@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.7.2
+
+### Patch Changes
+
+-   4992041: fix: update AppShell props to make openFeedback and openHelp optional; add cursor pointer to Checkbox and Radio styles
+
 ## 6.7.1
 
 ### Patch Changes
