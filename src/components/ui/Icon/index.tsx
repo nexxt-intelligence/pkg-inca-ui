@@ -26,7 +26,7 @@ const Icon = ({ type, size = 'sm', color }: IconProps) => {
             case 'xl':
                 return 32;
             default:
-                return 16;
+                return size || 16;
         }
     }, [size]);
 
