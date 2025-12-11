@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.7.3
+
+### Patch Changes
+
+-   b0f58c8: fix: add custom size prop to Icon
+
 ## 6.7.2
 
 ### Patch Changes
