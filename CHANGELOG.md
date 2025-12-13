@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.0
+
+### Minor Changes
+
+-   9d6dcbd: feat: update AppShell header and add fixed header support
+
 ## 6.7.3
 
 ### Patch Changes
