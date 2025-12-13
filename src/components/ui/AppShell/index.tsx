@@ -1,15 +1,18 @@
 import {
     AppShell as MantineAppShell,
     AppShellProps as MantineAppShellProps,
-    Header,
     Navbar,
     NavLink,
     NavLinkProps as MantineNavLinkProps,
     Footer,
-    Burger
+    Burger,
+    Title,
+    Stack,
+    Group
 } from '@mantine/core';
 import classes from './AppShell.module.css';
 import Icon from '../Icon';
+import Text from '../Text';
 
 export interface AppShellProps extends MantineAppShellProps {
     navLinkItems: NavLinkItem[];
@@ -23,6 +26,12 @@ export interface AppShellProps extends MantineAppShellProps {
     openHelp?: () => void;
     userFirstName?: string;
     userProfilePicture?: string;
+    isFixedHeader?: boolean;
+    headerSubtitle: string;
+    headerTitle: string;
+    headerBadge?: React.ReactNode;
+    headerRightContent?: React.ReactNode;
+    headerBottomContent?: React.ReactNode;
 }
 
 export interface NavLinkItem extends MantineNavLinkProps {
@@ -43,10 +52,14 @@ const AppShell = ({ ...props }: AppShellProps) => {
         openHelp,
         userFirstName,
         userProfilePicture,
+        headerSubtitle,
+        headerTitle,
+        headerBadge,
+        headerRightContent,
+        headerBottomContent,
+        isFixedHeader = false,
         children
     } = props;
-
-    const mobileStyles = isMobile ? classes.hidden : '';
 
     const navLinkBottomItems = [
         openHelp && {
@@ -119,16 +132,22 @@ const AppShell = ({ ...props }: AppShellProps) => {
                 root: classes.appShellRoot,
                 main: classes.appShellMain
             }}
+            data-fixed={isFixedHeader}
+            data-mobile={isMobile}
             navbar={
                 <Navbar
                     className={`${classes.navbar} ${
                         isNavbarOpen ? '' : classes.hidden
-                    }`}
+                    } `}
                     width={{ base: 85 }}
                     height={'auto'}
                 >
                     <Navbar.Section>
-                        <div className={`${classes.iconLogo} ${mobileStyles}`}>
+                        <div
+                            className={`${classes.iconLogo} ${
+                                isMobile ? classes.hidden : ''
+                            }`}
+                        >
                             <img
                                 width="30"
                                 height="30"
@@ -143,33 +162,6 @@ const AppShell = ({ ...props }: AppShellProps) => {
                         {renderNavLinks(navLinkBottomItems)}
                     </Navbar.Section>
                 </Navbar>
-            }
-            header={
-                <Header
-                    height={{ base: 64, md: 0 }}
-                    className={`${classes.header} ${
-                        isMobile ? '' : classes.hidden
-                    }`}
-                    p="sm"
-                >
-                    <Burger
-                        opened={isNavbarOpen}
-                        onClick={toggleNavbar}
-                        size="md"
-                    />
-                    <span className={classes.fullLogo}>
-                        <img
-                            width="30"
-                            height="30"
-                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
-                        />
-                        <img
-                            width="85"
-                            height="35"
-                            src="https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_logo_text.png"
-                        />
-                    </span>
-                </Header>
             }
             footer={
                 <Footer
@@ -192,6 +184,47 @@ const AppShell = ({ ...props }: AppShellProps) => {
                 </Footer>
             }
         >
+            <header className={classes.header}>
+                <Stack spacing={0}>
+                    {isMobile && (
+                        <div className={classes.mobileHeader}>
+                            <Burger
+                                opened={isNavbarOpen}
+                                onClick={toggleNavbar}
+                                size="sm"
+                                className={classes.burger}
+                            />
+                            <span className={classes.fullLogo}>
+                                <img
+                                    width="26"
+                                    height="26"
+                                    src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
+                                />
+                                <img
+                                    width="76"
+                                    height="32"
+                                    src="https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_logo_text.png"
+                                />
+                            </span>
+                        </div>
+                    )}
+                    <Stack spacing={0} className={classes.headerContent}>
+                        <Group spacing="sm">
+                            <Text className={classes.subtitle}>
+                                {headerSubtitle}
+                            </Text>
+                            {headerBadge}
+                        </Group>
+                        <Group position="apart">
+                            <Title order={1} className={classes.title}>
+                                {headerTitle}
+                            </Title>
+                            <Group spacing="sm">{headerRightContent}</Group>
+                        </Group>
+                        {headerBottomContent}
+                    </Stack>
+                </Stack>
+            </header>
             {children}
         </MantineAppShell>
     );
