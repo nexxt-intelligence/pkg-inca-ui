@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.1
+
+### Patch Changes
+
+-   9b6747b: fix Badge component
+
 ## 6.8.0
 
 ### Minor Changes
