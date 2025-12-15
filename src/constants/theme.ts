@@ -120,6 +120,18 @@ export const theme: MantineThemeOverride = {
             '#F79009',
             '#DC6803',
             '#B54708'
+        ],
+        violet: [
+            '#F3F0FF',
+            '#E5DBFF',
+            '#D0B5FF',
+            '#B197FC',
+            '#9775FA',
+            '#845EF7',
+            '#7950F2',
+            '#7048E8',
+            '#6741D9',
+            '#5F3DC4'
         ]
     },
     components: {
@@ -209,6 +221,74 @@ export const theme: MantineThemeOverride = {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '4px'
+                }
+            }
+        },
+        Badge: {
+            variants: {
+                filled: (theme, params) => {
+                    if (params.color === 'yellow') {
+                        return {
+                            root: {
+                                color: '#000000'
+                            }
+                        };
+                    }
+                    if (params.color === 'green') {
+                        return {
+                            root: {
+                                backgroundColor: theme.colors.green[7]
+                            }
+                        };
+                    }
+                    if (params.color === 'dark') {
+                        return {
+                            root: {
+                                backgroundColor: theme.colors.gray[7]
+                            }
+                        };
+                    }
+                    return { root: {} };
+                },
+                light: (theme, params) => {
+                    if (params.color === 'dark') {
+                        return {
+                            root: {
+                                borderColor: theme.colors.gray[2],
+                                color: theme.colors.gray[7]
+                            }
+                        };
+                    }
+                    return { root: {} };
+                },
+                outline: (theme, params) => {
+                    if (params.color === 'dark') {
+                        return {
+                            root: {
+                                borderColor: theme.colors.gray[2],
+                                color: theme.colors.gray[7]
+                            }
+                        };
+                    }
+                    return { root: {} };
+                },
+                dot: (theme, params) => {
+                    if (params.color === 'dark') {
+                        return {
+                            root: {
+                                borderColor: theme.colors.gray[2],
+                                color: '#000000',
+                                '&::before': {
+                                    backgroundColor: theme.colors.gray[7]
+                                }
+                            }
+                        };
+                    }
+                    return {
+                        root: {
+                            color: '#000000'
+                        }
+                    };
                 }
             }
         },

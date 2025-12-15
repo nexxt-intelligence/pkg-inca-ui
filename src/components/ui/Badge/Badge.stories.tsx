@@ -25,6 +25,7 @@ const meta: Meta<typeof Badge> = {
                 'gray',
                 'green',
                 'orange',
+                'dark',
                 'red',
                 'yellow',
                 'indigo',
