@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.2
+
+### Patch Changes
+
+-   5db013a: Fix AppShell text sizes
+
 ## 6.8.1
 
 ### Patch Changes
