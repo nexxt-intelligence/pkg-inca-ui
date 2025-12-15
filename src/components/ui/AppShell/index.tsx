@@ -210,13 +210,18 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     )}
                     <Stack spacing={0} className={classes.headerContent}>
                         <Group spacing="sm">
-                            <Text className={classes.subtitle}>
+                            <Text
+                                className={classes.subtitle}
+                                size="md"
+                                fw={600}
+                                tt="uppercase"
+                            >
                                 {headerSubtitle}
                             </Text>
                             {headerBadge}
                         </Group>
                         <Group position="apart">
-                            <Title order={1} className={classes.title}>
+                            <Title className={classes.title} size="h2">
                                 {headerTitle}
                             </Title>
                             <Group spacing="sm">{headerRightContent}</Group>

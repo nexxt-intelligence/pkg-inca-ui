@@ -52,7 +52,9 @@ export const Default: StoryObj<typeof AppShell> = {
         openFeedback: () => console.log('Open feedback'),
         openHelp: () => console.log('Open help'),
         userFirstName: 'John',
-        children: <div style={{ padding: '20px' }}>Main content area</div>
+        children: <div style={{ padding: '20px' }}>Main content area</div>,
+        headerTitle: 'Project Directory',
+        headerSubtitle: 'Hello, John!'
     }
 };
 
@@ -68,7 +70,8 @@ export const WithUserProfile: StoryObj<typeof AppShell> = {
     args: {
         ...Default.args,
         userFirstName: 'Jane Doe',
-        userProfilePicture: 'https://images.unsplash.com/photo-1494790108755-2616b612b12c?w=32&h=32&fit=crop&crop=face'
+        userProfilePicture:
+            'https://images.unsplash.com/photo-1494790108755-2616b612b12c?w=32&h=32&fit=crop&crop=face'
     }
 };
 

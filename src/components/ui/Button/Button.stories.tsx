@@ -15,7 +15,7 @@ const meta: Meta<typeof Button> = {
         },
         size: {
             control: 'radio',
-            options: ['xs', 'sm']
+            options: ['xs', 'sm', 'md', 'lg']
         },
         compact: { control: 'boolean' },
         uppercase: { control: 'boolean' },

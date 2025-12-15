@@ -17,15 +17,9 @@
     position: static;
 }
 .subtitle {
-    font-weight: 600;
-    text-transform: uppercase;
     color: var(--mantine-color-gray-7);
-    line-height: 120%;
 }
 .title {
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 120%;
     color: var(--mantine-color-gray-7);
 }
 

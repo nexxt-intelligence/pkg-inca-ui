@@ -6,15 +6,15 @@ export const theme: MantineThemeOverride = {
     primaryColor: 'blue',
     primaryShade: 6,
     headings: {
-        fontWeight: 700,
+        fontWeight: 600,
         fontFamily: '"Source Sans 3", sans-serif',
         sizes: {
-            h1: { fontSize: '2.5rem', lineHeight: '1.2' },
-            h2: { fontSize: '2rem', lineHeight: '1.2' },
-            h3: { fontSize: '1.5rem', lineHeight: '1.2' },
-            h4: { fontSize: '1.25rem', lineHeight: '1.2' },
-            h5: { fontSize: '1rem', lineHeight: '1.2' },
-            h6: { fontSize: '0.75rem', lineHeight: '1.2' }
+            h1: { fontSize: '40px', lineHeight: '1.2' },
+            h2: { fontSize: '36px', lineHeight: '1.2' },
+            h3: { fontSize: '32px', lineHeight: '1.2' },
+            h4: { fontSize: '24px', lineHeight: '1.2' },
+            h5: { fontSize: '20px', lineHeight: '1.2' },
+            h6: { fontSize: '16px', lineHeight: '1.2' }
         }
     },
     defaultRadius: 'sm',
@@ -26,7 +26,7 @@ export const theme: MantineThemeOverride = {
         lg: '1.125rem',
         xl: '1.25rem'
     },
-    // lineHeight: 1.5,
+    lineHeight: 1.5,
     spacing: {
         '3xs': '2px',
         '2xs': '4px',
