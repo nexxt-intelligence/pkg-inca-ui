@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.6
+
+### Patch Changes
+
+-   9c353d0: fix ActionCard label styling
+
 ## 6.8.5
 
 ### Patch Changes
