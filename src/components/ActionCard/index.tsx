@@ -19,7 +19,14 @@ const ActionCard = ({
     disabled
 }: ActionCardProps) => {
     return (
-        <Button className={classes.root} onClick={onClick} disabled={disabled}>
+        <Button
+            className={classes.root}
+            onClick={onClick}
+            disabled={disabled}
+            classNames={{
+                label: classes.label
+            }}
+        >
             <Center h={340}>
                 <Stack spacing="xl" align="center">
                     <Icon size="48px" type={icon} />

@@ -6,3 +6,7 @@
     max-width: 586px;
     border-radius: var(--mantine-radius-sm);
 }
+
+.label {
+    white-space: pre-line;
+}
