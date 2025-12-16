@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.3
+
+### Patch Changes
+
+-   47613f6: fix: default button size to sm
+
 ## 6.8.2
 
 ### Patch Changes
