@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.4
+
+### Patch Changes
+
+-   68a3356: Introduce ActionCard component
+
 ## 6.8.3
 
 ### Patch Changes
