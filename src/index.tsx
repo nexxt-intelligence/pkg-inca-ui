@@ -56,6 +56,10 @@ export {
 export { default as Tabs, type TabsProps } from './components/ui/Tabs';
 export { default as Alert, type AlertProps } from './components/ui/Alert';
 export {
+    default as ActionCard,
+    type ActionCardProps
+} from './components/ActionCard';
+export {
     default as CollapsibleContainer,
     type CollapsibleContainerProps
 } from './components/CollapsibleContainer';
