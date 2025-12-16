@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.5
+
+### Patch Changes
+
+-   ecbc6c5: fix ActionCard import
+
 ## 6.8.4
 
 ### Patch Changes
