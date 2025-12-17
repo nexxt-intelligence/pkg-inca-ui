@@ -183,6 +183,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     </a>
                 </Footer>
             }
+            {...props}
         >
             <header className={classes.header}>
                 <Stack spacing={0}>
