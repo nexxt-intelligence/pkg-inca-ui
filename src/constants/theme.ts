@@ -276,6 +276,7 @@ export const theme: MantineThemeOverride = {
                     if (params.color === 'dark') {
                         return {
                             root: {
+                                backgroundColor: 'white',
                                 borderColor: theme.colors.gray[2],
                                 color: '#000000',
                                 '&::before': {
@@ -286,6 +287,7 @@ export const theme: MantineThemeOverride = {
                     }
                     return {
                         root: {
+                            backgroundColor: 'white',
                             color: '#000000'
                         }
                     };
