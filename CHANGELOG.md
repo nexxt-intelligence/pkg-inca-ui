@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.7
+
+### Patch Changes
+
+-   815bdb0: fix Badge background color
+
 ## 6.8.6
 
 ### Patch Changes
