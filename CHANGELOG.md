@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.10
+
+### Patch Changes
+
+-   e86113d: fix: make List children prop optional
+
 ## 6.8.9
 
 ### Patch Changes
