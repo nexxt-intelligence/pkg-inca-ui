@@ -3,8 +3,9 @@ import {
     ListProps as MantineListProps
 } from '@mantine/core';
 
-export interface ListProps extends MantineListProps {
+export interface ListProps extends Omit<MantineListProps, 'children'> {
     items?: string[];
+    children?: React.ReactNode;
 }
 
 const List = ({ items, children, ...props }: ListProps) => {
