@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { modals } from '@mantine/modals';
 import Text from '../components/ui/Text';
+import { OpenConfirmModal } from '@mantine/modals/lib/context';
 
 type ConfirmationModalProps = {
     title: string;
@@ -8,14 +9,15 @@ type ConfirmationModalProps = {
     cancelLabel?: string;
     message?: string;
     children?: React.ReactNode;
-};
+} & OpenConfirmModal;
 
 export const useConfirmationModal = () => {
     const showConfirmationModal = ({
         title,
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        children = <></>
+        children = <></>,
+        hideCancelButton = false
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
