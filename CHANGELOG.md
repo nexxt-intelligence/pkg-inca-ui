@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.8
+
+### Patch Changes
+
+-   1e43d35: fix: spread props in AppShell component
+
 ## 6.8.7
 
 ### Patch Changes
