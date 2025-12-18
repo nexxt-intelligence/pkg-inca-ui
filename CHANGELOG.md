@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.9
+
+### Patch Changes
+
+-   f5f02c3: fix: update List props to make items optional and handle children
+
 ## 6.8.8
 
 ### Patch Changes
