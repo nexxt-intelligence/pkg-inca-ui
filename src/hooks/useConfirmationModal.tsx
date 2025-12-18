@@ -16,8 +16,7 @@ export const useConfirmationModal = () => {
         title,
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        children = <></>,
-        hideCancelButton = false
+        children = <></>
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
