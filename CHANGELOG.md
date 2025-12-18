@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.13
+
+### Patch Changes
+
+-   0e724b0: expose ConfirmationModalProps
+
 ## 6.8.12
 
 ### Patch Changes
