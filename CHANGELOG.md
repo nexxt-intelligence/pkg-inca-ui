@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.11
+
+### Patch Changes
+
+-   e9bdd2a: improve confirmModal props
+
 ## 6.8.10
 
 ### Patch Changes
