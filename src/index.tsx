@@ -95,7 +95,7 @@ export {
 /** Constants */
 export * from './constants/theme';
 
-export { useConfirmationModal } from './hooks';
+export { useConfirmationModal, type ConfirmationModalProps } from './hooks';
 
 export const CustomMantineProvider = ({
     children

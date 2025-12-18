@@ -1,1 +1,4 @@
-export { useConfirmationModal } from './useConfirmationModal';
+export {
+    useConfirmationModal,
+    type ConfirmationModalProps
+} from './useConfirmationModal';

@@ -3,7 +3,7 @@ import { modals } from '@mantine/modals';
 import Text from '../components/ui/Text';
 import { OpenConfirmModal } from '@mantine/modals/lib/context';
 
-type ConfirmationModalProps = {
+export type ConfirmationModalProps = {
     title: string;
     confirmLabel?: string;
     cancelLabel?: string;
@@ -16,7 +16,8 @@ export const useConfirmationModal = () => {
         title,
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        children = <></>
+        children = <></>,
+        ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
@@ -24,7 +25,8 @@ export const useConfirmationModal = () => {
                 children,
                 labels: { confirm: confirmLabel, cancel: cancelLabel },
                 onCancel: () => resolve(false),
-                onConfirm: () => resolve(true)
+                onConfirm: () => resolve(true),
+                ...props
             });
         });
     };
@@ -33,7 +35,8 @@ export const useConfirmationModal = () => {
         title,
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        message = ''
+        message = '',
+        ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
@@ -41,7 +44,11 @@ export const useConfirmationModal = () => {
                 children: <Text>{message}</Text>,
                 labels: { confirm: confirmLabel, cancel: cancelLabel },
                 onCancel: () => resolve(false),
-                onConfirm: () => resolve(true)
+                onConfirm: () => resolve(true),
+                cancelProps: {
+                    display: 'none'
+                },
+                ...props
             });
         });
     };
