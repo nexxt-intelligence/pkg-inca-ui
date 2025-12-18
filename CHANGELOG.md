@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.12
+
+### Patch Changes
+
+-   373bf2a: fix types
+
 ## 6.8.11
 
 ### Patch Changes
