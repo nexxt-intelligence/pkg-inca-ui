@@ -45,9 +45,6 @@ export const useConfirmationModal = () => {
                 labels: { confirm: confirmLabel, cancel: cancelLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
-                cancelProps: {
-                    display: 'none'
-                },
                 ...props
             });
         });
