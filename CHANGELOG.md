@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.1
+
+### Patch Changes
+
+-   7f04989: fix: List overflow bug
+
 ## 6.9.0
 
 ### Minor Changes
