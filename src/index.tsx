@@ -77,6 +77,7 @@ export { default as Text } from './components/ui/Text';
 export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
 export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
 export { default as Badge } from './components/ui/Badge';
+export { default as Prism } from './components/ui/Prism';
 
 export { default as Input, type InputProps } from './components/ui/Input';
 
