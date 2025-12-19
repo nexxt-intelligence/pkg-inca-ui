@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.0
+
+### Minor Changes
+
+-   d6c4056: feat: add Prism component
+
 ## 6.8.14
 
 ### Patch Changes
