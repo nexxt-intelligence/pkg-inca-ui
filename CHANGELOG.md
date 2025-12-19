@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.8.14
+
+### Patch Changes
+
+-   ed7a1a7: fix bug
+
 ## 6.8.13
 
 ### Patch Changes
