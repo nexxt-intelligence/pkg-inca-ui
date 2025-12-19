@@ -1,0 +1,26 @@
+/* TEMP: custom styling for List overflow bug that was fixed in newer version of Mantine v8.3.10 https://github.com/mantinedev/mantine/pull/8269 */
+.root {
+    --list-marker-gap: var(--mantine-spacing-lg);
+    list-style-position: outside;
+    padding-inline-start: var(--list-marker-gap);
+
+    &[data-type='none'] {
+        --list-marker-gap: 0;
+    }
+
+    &[data-type='none'][data-with-padding] {
+        --list-marker-gap: var(--mantine-spacing-lg);
+    }
+
+    &[data-with-padding] {
+        padding-inline-start: calc(
+            var(--list-marker-gap) + var(--mantine-spacing-md)
+        );
+    }
+    .item {
+        white-space: normal;
+        &:where(:not(:first-of-type)) {
+            margin-top: var(--mantine-spacing-2xs, 0);
+        }
+    }
+}
