@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.2
+
+### Patch Changes
+
+-   0d8801d: fix styling for ActionCard
+
 ## 6.9.1
 
 ### Patch Changes
