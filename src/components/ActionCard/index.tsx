@@ -28,10 +28,10 @@ const ActionCard = ({
             }}
         >
             <Center h={340}>
-                <Stack spacing="xl" align="center">
-                    <Icon size="48px" type={icon} />
-                    <Title size="h3">{title}</Title>
-                    <Text align="center" size="md">
+                <Stack spacing="xs" align="center">
+                    <Icon size="36px" type={icon} />
+                    <Text size="xl">{title}</Text>
+                    <Text align="center" size="xs">
                         {description}
                     </Text>
                 </Stack>

@@ -1,9 +1,8 @@
 .root {
     flex: 1;
-    height: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 586px;
+    height: 230px;
+    padding: var(--mantine-spacing-md);
+    max-width: 350px;
     border-radius: var(--mantine-radius-sm);
 }
 
