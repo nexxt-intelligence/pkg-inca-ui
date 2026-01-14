@@ -27,8 +27,8 @@ export interface AppShellProps extends MantineAppShellProps {
     userFirstName?: string;
     userProfilePicture?: string;
     isFixedHeader?: boolean;
-    headerSubtitle: string;
-    headerTitle: string;
+    headerSubtitle?: string;
+    headerTitle?: string; // TODO: revert back to required
     headerBadge?: React.ReactNode;
     headerRightContent?: React.ReactNode;
     headerBottomContent?: React.ReactNode;
@@ -185,7 +185,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             }
             {...props}
         >
-            <header className={classes.header}>
+            <header className={headerTitle ? classes.header : ''}>
                 <Stack spacing={0}>
                     {isMobile && (
                         <div className={classes.mobileHeader}>
