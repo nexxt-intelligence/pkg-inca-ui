@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.3
+
+### Patch Changes
+
+-   5d243e8: fix: temp make AppShell header props optional
+
 ## 6.9.2
 
 ### Patch Changes
