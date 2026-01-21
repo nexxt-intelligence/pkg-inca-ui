@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.4
+
+### Patch Changes
+
+-   eadb17d: feat: add tooltip to Checkbox and Radio Groups
+
 ## 6.9.3
 
 ### Patch Changes
