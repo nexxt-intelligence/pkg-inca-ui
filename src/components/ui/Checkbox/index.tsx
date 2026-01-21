@@ -4,6 +4,7 @@ import {
     CheckboxGroupProps as MantineCheckboxGroupProps,
     Flex
 } from '@mantine/core';
+import Label from '../Label';
 import classes from './Checkbox.module.css';
 
 export interface CheckboxProps extends MantineCheckboxProps {
@@ -15,6 +16,7 @@ export interface CheckboxGroupProps
     row?: boolean;
     options?: CheckboxProps[];
     children?: React.ReactNode;
+    tooltip?: string;
 }
 
 const Checkbox = ({ ...props }: CheckboxProps) => {
@@ -36,6 +38,8 @@ const CheckboxGroup = ({
     row = false,
     options,
     children,
+    tooltip,
+    label,
     ...props
 }: CheckboxGroupProps) => {
     const checkboxOptions = options?.map(({ value, ...rest }) => (
@@ -44,6 +48,7 @@ const CheckboxGroup = ({
     return (
         <MantineCheckbox.Group
             inputWrapperOrder={['label', 'input', 'description', 'error']}
+            label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
         >
             <Flex
