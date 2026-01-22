@@ -26,6 +26,7 @@ export interface AppShellProps extends MantineAppShellProps {
     openHelp?: () => void;
     userFirstName?: string;
     userProfilePicture?: string;
+    manageProfileUrl?: string;
     isFixedHeader?: boolean;
     headerSubtitle?: string;
     headerTitle?: string; // TODO: revert back to required
@@ -49,16 +50,20 @@ const AppShell = ({ ...props }: AppShellProps) => {
         isNavbarOpen,
         toggleNavbar,
         signOut,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        openFeedback,
         openHelp,
         userFirstName,
         userProfilePicture,
+        manageProfileUrl,
         headerSubtitle,
         headerTitle,
         headerBadge,
         headerRightContent,
         headerBottomContent,
         isFixedHeader = false,
-        children
+        children,
+        ...mantineAppShellProps
     } = props;
 
     const navLinkBottomItems = [
@@ -69,7 +74,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
         },
         (userFirstName || userProfilePicture) && {
             label: userFirstName ? userFirstName : 'Profile',
-            onClick: () => setActiveLink('/manage-profile'),
+            onClick: () => setActiveLink(manageProfileUrl || '/manage-profile'),
             icon: userProfilePicture ? (
                 <span className={classes.userProfilePictureContainer}>
                     <img
@@ -183,7 +188,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     </a>
                 </Footer>
             }
-            {...props}
+            {...mantineAppShellProps}
         >
             <header className={headerTitle ? classes.header : ''}>
                 <Stack spacing={0}>
