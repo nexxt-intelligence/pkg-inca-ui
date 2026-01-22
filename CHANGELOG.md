@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.5
+
+### Patch Changes
+
+-   5c33ff2: fix: hardcoded user profile link
+
 ## 6.9.4
 
 ### Patch Changes
