@@ -1,5 +1,11 @@
 # inca-ui
 
+## 6.9.6
+
+### Patch Changes
+
+-   055d265: refactor: update Badge and Icon components, enhance theme configuration, and clean up unused code
+
 ## 6.9.5
 
 ### Patch Changes
