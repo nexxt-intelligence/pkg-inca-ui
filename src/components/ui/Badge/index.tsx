@@ -10,20 +10,13 @@ type BadgeProps = MantineBadgeProps & {
 };
 
 export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
-    const fontSize = {
-        xs: '2xs',
-        sm: '2xs',
-        md: 'xs',
-        lg: 'sm',
-        xl: 'md'
-    };
     return (
         <MantineBadge
             className={classes.badge}
             data-size={size}
+            classNames={{ leftSection: classes.leftSection }}
             size={size}
             fw={600}
-            fz={fontSize?.[size as keyof typeof fontSize]}
             {...props}
         >
             {children}

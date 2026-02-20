@@ -5,26 +5,26 @@ export const theme: MantineThemeOverride = {
     fontFamily: '"Source Sans 3", sans-serif',
     primaryColor: 'blue',
     primaryShade: 6,
+    black: '#212529', // Text/default → gray/9
     headings: {
         fontWeight: 600,
-        fontFamily: '"Source Sans 3", sans-serif',
         sizes: {
-            h1: { fontSize: '40px', lineHeight: '1.2' },
-            h2: { fontSize: '36px', lineHeight: '1.2' },
-            h3: { fontSize: '32px', lineHeight: '1.2' },
-            h4: { fontSize: '24px', lineHeight: '1.2' },
-            h5: { fontSize: '20px', lineHeight: '1.2' },
-            h6: { fontSize: '16px', lineHeight: '1.2' }
+            h1: { fontSize: '40px', lineHeight: '1.2' }, // xl
+            h2: { fontSize: '36px', lineHeight: '1.2' }, // lg
+            h3: { fontSize: '32px', lineHeight: '1.2' }, // md
+            h4: { fontSize: '24px', lineHeight: '1.2' }, // sm
+            h5: { fontSize: '20px', lineHeight: '1.2' }, // xs
+            h6: { fontSize: '16px', lineHeight: '1.2' } // 2xs
         }
     },
     defaultRadius: 'sm',
     fontSizes: {
-        '2xs': '0.625rem',
-        xs: '0.75rem',
-        sm: '0.875rem',
-        md: '1rem',
-        lg: '1.125rem',
-        xl: '1.25rem'
+        '2xs': '0.625rem', // 10px
+        xs: '0.75rem', // 12px
+        sm: '0.875rem', // 14px
+        md: '1rem', // 16px
+        lg: '1.125rem', // 18px
+        xl: '1.25rem' // 20px
     },
     lineHeight: 1.5,
     spacing: {
@@ -186,29 +186,29 @@ export const theme: MantineThemeOverride = {
                 }
             },
             variants: {
-                default: () => ({
+                default: (theme) => ({
                     root: {
-                        borderColor: 'var(--mantine-color-gray-2)'
+                        borderColor: theme.colors.gray[2]
                     }
                 })
             },
             sizes: {
-                xs: () => ({
+                xs: (theme) => ({
                     root: {
-                        padding: '0 var(--mantine-spacing-sm)',
+                        padding: `0 ${theme.spacing.sm}`,
                         height: '1.5rem',
                         '&[data-compact="true"]': {
-                            padding: '0 var(--mantine-spacing-xs)',
+                            padding: `0 ${theme.spacing.xs}`,
                             height: '1.25rem'
                         }
                     }
                 }),
-                sm: () => ({
+                sm: (theme) => ({
                     root: {
-                        padding: '0 var(--mantine-spacing-sm)',
+                        padding: `0 ${theme.spacing.sm}`,
                         height: '2rem',
                         '&[data-compact="true"]': {
-                            padding: '0 var(--mantine-spacing-xs)',
+                            padding: `0 ${theme.spacing.xs}`,
                             height: '1.5rem'
                         }
                     }
@@ -225,12 +225,30 @@ export const theme: MantineThemeOverride = {
             }
         },
         Badge: {
+            sizes: {
+                sm: (theme) => ({
+                    root: {
+                        fontSize: '0.625rem',
+                        height: '16px',
+                        lineHeight: 'normal',
+                        padding: `0 ${theme.spacing.xs}`
+                    }
+                }),
+                md: (theme) => ({
+                    root: {
+                        fontSize: '0.75rem',
+                        height: '20px',
+                        lineHeight: 'normal',
+                        padding: `0 ${theme.spacing.xs}`
+                    }
+                })
+            },
             variants: {
                 filled: (theme, params) => {
                     if (params.color === 'yellow') {
                         return {
                             root: {
-                                color: '#000000'
+                                color: theme.black
                             }
                         };
                     }
@@ -276,9 +294,9 @@ export const theme: MantineThemeOverride = {
                     if (params.color === 'dark') {
                         return {
                             root: {
-                                backgroundColor: 'white',
+                                backgroundColor: theme.white,
                                 borderColor: theme.colors.gray[2],
-                                color: '#000000',
+                                color: theme.black,
                                 '&::before': {
                                     backgroundColor: theme.colors.gray[7]
                                 }
@@ -287,8 +305,8 @@ export const theme: MantineThemeOverride = {
                     }
                     return {
                         root: {
-                            backgroundColor: 'white',
-                            color: '#000000'
+                            backgroundColor: theme.white,
+                            color: theme.black
                         }
                     };
                 }
@@ -302,23 +320,23 @@ export const theme: MantineThemeOverride = {
                 }
             },
             variants: {
-                default: () => ({
+                default: (theme) => ({
                     input: {
-                        borderColor: 'var(--mantine-color-gray-2)',
-                        paddingLeft: 'var(--mantine-spacing-xs)',
-                        paddingRight: 'var(--mantine-spacing-xs)'
+                        borderColor: theme.colors.gray[2],
+                        paddingLeft: theme.spacing.xs,
+                        paddingRight: theme.spacing.xs
                     }
                 }),
-                filled: () => ({
+                filled: (theme) => ({
                     input: {
-                        paddingLeft: 'var(--mantine-spacing-xs)',
-                        paddingRight: 'var(--mantine-spacing-xs)'
+                        paddingLeft: theme.spacing.xs,
+                        paddingRight: theme.spacing.xs
                     }
                 }),
-                unstyled: () => ({
+                unstyled: (theme) => ({
                     input: {
-                        paddingLeft: 'var(--mantine-spacing-2xs)',
-                        paddingRight: 'var(--mantine-spacing-2xs)',
+                        paddingLeft: theme.spacing['2xs'],
+                        paddingRight: theme.spacing['2xs'],
                         '&[data-with-icon]': {
                             paddingLeft: '2.25rem'
                         }
@@ -341,6 +359,13 @@ export const theme: MantineThemeOverride = {
                     whiteSpace: 'normal'
                 }
             }
+        },
+        Title: {
+            styles: (theme) => ({
+                root: {
+                    color: theme.black
+                }
+            })
         }
     }
 };

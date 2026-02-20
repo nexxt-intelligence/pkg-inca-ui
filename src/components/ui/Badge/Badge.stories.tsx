@@ -16,7 +16,7 @@ const meta: Meta<typeof Badge> = {
         },
         size: {
             control: 'select',
-            options: ['xs', 'sm', 'md', 'lg', 'xl']
+            options: ['sm', 'md']
         },
         color: {
             control: 'select',
@@ -61,20 +61,11 @@ export const Default: Story = {
 export const Sizes: Story = {
     render: () => (
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Badge size="xs" color="blue">
-                Extra Small
-            </Badge>
             <Badge size="sm" color="blue">
                 Small
             </Badge>
             <Badge size="md" color="blue">
                 Medium
-            </Badge>
-            <Badge size="lg" color="blue">
-                Large
-            </Badge>
-            <Badge size="xl" color="blue">
-                Extra Large
             </Badge>
         </div>
     )

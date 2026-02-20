@@ -1,20 +1,4 @@
-.badge {
-    /* line-height: 0; */
-}
-
-.badge[data-size='sm'] {
-    padding: 0 var(--mantine-spacing-xs);
-    height: 16px;
-}
-.badge[data-size='md'] {
-    padding: 0 var(--mantine-spacing-sm);
-    height: 20px;
-}
-.badge[data-size='lg'] {
-    padding: 0 var(--mantine-spacing-md);
-    height: 24px;
-}
-.badge[data-size='xl'] {
-    padding: 0 var(--mantine-spacing-lg);
-    height: 28px;
+.leftSection {
+    display: flex;
+    align-items: center;
 }

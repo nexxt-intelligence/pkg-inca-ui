@@ -69,7 +69,6 @@ export {
     type ChatInputProps
 } from './components/ChatInput';
 
-export { default as Anchor, type AnchorProps } from './components/ui/Anchor';
 export { default as AppShell } from './components/ui/AppShell';
 export { default as List, type ListProps } from './components/ui/List';
 export { default as Menu, type MenuProps } from './components/ui/Menu';
@@ -125,18 +124,31 @@ export {
     Stack
 } from '@mantine/core';
 
+// Buttons
+export {
+    //
+    CopyButton,
+    FileButton
+} from '@mantine/core';
+
 // Inputs
 export {
     //
-    Slider,
+    Autocomplete,
+    Chip,
+    FileInput,
+    JsonInput,
     PasswordInput,
     PinInput,
+    Rating,
+    Slider,
     TransferList
 } from '@mantine/core';
 
 // Navigation
 export {
     //
+    Anchor,
     Breadcrumbs,
     Pagination
 } from '@mantine/core';
@@ -144,6 +156,8 @@ export {
 // Data display
 export {
     BackgroundImage,
+    Card,
+    ColorSwatch,
     Image,
     Indicator,
     Kbd,
@@ -158,6 +172,7 @@ export {
     Drawer,
     HoverCard,
     LoadingOverlay,
+    Modal,
     Overlay,
     Popover
 } from '@mantine/core';
@@ -187,6 +202,7 @@ export {
     Box,
     Collapse,
     Divider,
+    FocusTrap,
     Paper,
     Portal,
     ScrollArea

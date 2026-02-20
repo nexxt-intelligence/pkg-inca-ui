@@ -8,6 +8,10 @@ label {
     margin-bottom: 0 !important;
 }
 
-:root {
-    --mantine-color-default: black;
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    color: var(--color-text-default);
 }
