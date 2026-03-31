@@ -16,3 +16,7 @@
     transition: background-color 200ms ease, color 200ms ease,
         border-color 200ms ease;
 }
+
+[data-color='yellow'][data-variant='filled'] {
+    color: var(--mantine-color-gray-9);
+}

@@ -6,8 +6,8 @@ import Icon from '../Icon';
 import classes from './Alert.module.css';
 import { useState } from 'react';
 
-export interface AlertProps extends Omit<MantineAlertProps, 'onClose'> {
-    type: 'warning' | 'info' | 'success' | 'danger' | 'ai';
+export interface AlertProps extends MantineAlertProps {
+    type?: 'warning' | 'info' | 'success' | 'danger' | 'ai';
     hideIcon?: boolean;
     open?: boolean;
     defaultOpen?: boolean;
@@ -38,7 +38,7 @@ const alertTypes = {
 };
 
 const Alert = ({
-    type,
+    type = 'info',
     children,
     hideIcon,
     open: controlledOpen,
@@ -64,8 +64,6 @@ const Alert = ({
 
     return (
         <MantineAlert
-            {...alertType}
-            {...props}
             onClose={handleClose}
             classNames={{
                 root: hideIcon ? classes.alertRootHide : classes.alertRoot,
@@ -74,6 +72,8 @@ const Alert = ({
                 message: classes.alertMessage,
                 closeButton: classes.alertCloseButton
             }}
+            {...alertType}
+            {...props}
         >
             {children}
         </MantineAlert>

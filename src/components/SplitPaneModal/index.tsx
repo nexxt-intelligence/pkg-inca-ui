@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // TODO: temp component needs refactor
 import classes from './SplitPaneModal.module.css';
-import Icon from '../Icon';
+import Icon from '../ui/Icon';
 
 export function SplitPaneModal({
     isOpen,

@@ -14,7 +14,10 @@ export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
         <MantineBadge
             className={classes.badge}
             data-size={size}
-            classNames={{ leftSection: classes.leftSection }}
+            classNames={{
+                leftSection: classes.leftSection,
+                root: classes.root
+            }}
             size={size}
             fw={600}
             {...props}

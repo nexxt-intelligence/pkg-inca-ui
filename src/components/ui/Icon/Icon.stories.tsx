@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Icon, { TablerIconKeys } from './index';
 
-const meta: Meta<typeof Icon> = {
-    title: 'UI/Icon',
+export default {
+    title: 'UI/Data Display/Icon',
     component: Icon,
     argTypes: {
         type: {
@@ -13,57 +13,51 @@ const meta: Meta<typeof Icon> = {
                 'IconUser',
                 'IconPlus',
                 'IconPencil',
-                'IconDotsVertical',
                 'IconSettings',
-                'IconTrash'
+                'IconTrash',
+                'IconCheck',
+                'IconX'
             ]
         },
         size: {
-            control: 'select',
-            options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl']
+            control: 'radio',
+            options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'sm' } }
         },
         color: {
             control: 'select',
-            options: ['blue', 'red', 'green', 'gray', 'yellow']
+            options: ['blue', 'red', 'green', 'gray', 'yellow', 'orange']
         }
+    }
+} as Meta<typeof Icon>;
+
+export const Primary: StoryObj<typeof Icon> = {
+    args: {
+        type: 'IconHeart' as TablerIconKeys,
+        size: 'md',
+        color: 'red'
     }
 };
 
-export default meta;
-
-type Story = StoryObj<typeof Icon>;
-
-const baseArgs = {
-    type: 'IconHeart' as TablerIconKeys,
-    size: 'md',
-    color: 'red'
-};
-
-export const Default: Story = { args: baseArgs };
-
-export const Sizes: Story = {
-    args: baseArgs,
-    argTypes: { size: { control: false } },
-    render: (args) => (
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Icon {...args} size="xs" />
-            <Icon {...args} size="sm" />
-            <Icon {...args} size="md" />
-            <Icon {...args} size="lg" />
-            <Icon {...args} size="xl" />
-        </div>
-    )
-};
-export const Colors: Story = {
-    args: baseArgs,
-    argTypes: { size: { control: false } },
-    render: (args) => (
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Icon {...args} color="red" />
-            <Icon {...args} color="green" />
-            <Icon {...args} color="blue" />
-            <Icon {...args} color="yellow" />
-            <Icon {...args} color="orange" />
+export const AllSizes: StoryObj<typeof Icon> = {
+    render: () => (
+        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end' }}>
+            {(['2xs', 'xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+                <div
+                    key={size}
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: 6
+                    }}
+                >
+                    <Icon type="IconHeart" size={size} color="red" />
+                    <span style={{ fontSize: 11, color: '#868e96' }}>
+                        {size}
+                    </span>
+                </div>
+            ))}
         </div>
     )
 };

@@ -1,23 +1,32 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import SegmentedControl from './index';
 
-const meta: Meta<typeof SegmentedControl> = {
-    title: 'UI/SegmentedControl',
+export default {
+    title: 'UI/Inputs/SegmentedControl',
     component: SegmentedControl,
-    tags: ['autodocs'],
-    argTypes: {}
-};
+    argTypes: {
+        orientation: {
+            control: 'radio',
+            options: ['horizontal', 'vertical'],
+            table: { defaultValue: { summary: 'horizontal' } }
+        },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        fullWidth: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        }
+    }
+} as Meta<typeof SegmentedControl>;
 
-export default meta;
-type Story = StoryObj<typeof SegmentedControl>;
-
-export const Default: Story = {
+export const Primary: StoryObj<typeof SegmentedControl> = {
     args: {
         data: [
             { value: 'react', label: 'React' },
             { value: 'vue', label: 'Vue' },
-            { value: 'angular', label: 'Angular' },
-            { value: 'svelte', label: 'Svelte' }
+            { value: 'angular', label: 'Angular' }
         ]
     }
 };

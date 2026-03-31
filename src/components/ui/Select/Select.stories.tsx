@@ -1,96 +1,97 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Select from './index';
-import { SelectItem } from '@mantine/core';
+import QuestionSelectItem from './SelectItem/QuestionSelectItem';
+import FontSelectItem from './SelectItem/FontSelectItem';
 
-const meta: Meta<typeof Select> = {
-    title: 'UI/Select',
+export default {
+    title: 'UI/Inputs/Select',
     component: Select,
-    tags: ['autodocs'],
     argTypes: {
         label: { control: 'text' },
         placeholder: { control: 'text' },
-        disabled: { control: 'boolean' },
-        required: { control: 'boolean' },
+        tooltip: { control: 'text' },
+        loading: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        required: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         error: { control: 'text' },
+        searchable: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        clearable: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         size: {
-            control: 'select',
-            options: ['xs', 'sm', 'md', 'lg', 'xl']
+            control: 'radio',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'sm' } }
         }
     }
-};
+} as Meta<typeof Select>;
 
-export default meta;
-type Story = StoryObj<typeof Select>;
-
-const defaultData: SelectItem[] = [
-    { value: 'react', label: 'React' },
-    { value: 'vue', label: 'Vue' },
-    { value: 'angular', label: 'Angular' },
-    { value: 'svelte', label: 'Svelte' }
-];
-
-export const Default: Story = {
+export const Primary: StoryObj<typeof Select> = {
     args: {
         label: 'Select an option',
         placeholder: 'Pick a value',
-        data: defaultData
+        data: [
+            { value: 'react', label: 'React' },
+            { value: 'vue', label: 'Vue' },
+            { value: 'angular', label: 'Angular' },
+            { value: 'svelte', label: 'Svelte' }
+        ]
     }
 };
 
-export const WithError: Story = {
+export const WithQuestionSelectItem: StoryObj<typeof Select> = {
+    name: 'Custom Item — QuestionSelectItem',
     args: {
-        ...Default.args,
-        error: 'This field is required'
+        label: 'Select a question',
+        placeholder: 'Pick a question',
+        itemComponent: QuestionSelectItem,
+        data: [
+            {
+                value: 'q1',
+                label: 'What is your age?',
+                title: 'Age',
+                imageUrl: 'https://i.pravatar.cc/24?img=1'
+            },
+            {
+                value: 'q2',
+                label: 'What is your occupation?',
+                title: 'Occupation',
+                imageUrl: 'https://i.pravatar.cc/24?img=2'
+            },
+            {
+                value: 'q3',
+                label: 'What is your income?',
+                title: 'Income',
+                imageUrl: 'https://i.pravatar.cc/24?img=3'
+            }
+        ] as any
     }
 };
 
-export const Disabled: Story = {
+export const WithFontSelectItem: StoryObj<typeof Select> = {
+    name: 'Custom Item — FontSelectItem',
     args: {
-        ...Default.args,
-        disabled: true
+        label: 'Select a font',
+        placeholder: 'Pick a font',
+        itemComponent: FontSelectItem,
+        data: [
+            { value: 'Inter, sans-serif', label: 'Inter' },
+            { value: 'Georgia, serif', label: 'Georgia' },
+            { value: "'Courier New', monospace", label: 'Courier New' },
+            { value: 'Arial, sans-serif', label: 'Arial' }
+        ]
     }
-};
-
-export const Required: Story = {
-    args: {
-        ...Default.args,
-        required: true
-    }
-};
-
-export const DifferentSizes: Story = {
-    render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <Select
-                size="xs"
-                label="Extra Small"
-                placeholder="Pick a value"
-                data={defaultData}
-            />
-            <Select
-                size="sm"
-                label="Small"
-                placeholder="Pick a value"
-                data={defaultData}
-            />
-            <Select
-                size="md"
-                label="Medium"
-                placeholder="Pick a value"
-                data={defaultData}
-            />
-            <Select
-                size="lg"
-                label="Large"
-                placeholder="Pick a value"
-                data={defaultData}
-            />
-            <Select
-                size="xl"
-                label="Extra Large"
-                placeholder="Pick a value"
-                data={defaultData}
-            />
-        </div>
-    )
 };

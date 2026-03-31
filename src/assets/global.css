@@ -12,6 +12,12 @@ label {
     -webkit-font-smoothing: antialiased;
 }
 
+*:disabled,
+*[disabled],
+*[data-disabled] {
+    cursor: not-allowed !important;
+}
+
 body {
     color: var(--color-text-default);
 }

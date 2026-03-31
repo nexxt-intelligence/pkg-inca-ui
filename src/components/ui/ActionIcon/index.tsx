@@ -12,11 +12,19 @@ export interface ActionIconProps extends MantineActionIconProps {
 const ActionIcon = ({
     icon,
     variant = 'filled',
+    color = 'primary',
+    size = 'sm',
     ...props
 }: ActionIconProps) => {
     return (
-        <MantineActionIcon data-variant={variant} variant={variant} {...props}>
-            <Icon type={icon} size={props.size} />
+        <MantineActionIcon
+            data-variant={variant}
+            variant={variant}
+            color={color}
+            size={size}
+            {...props}
+        >
+            <Icon type={icon} size={size} />
         </MantineActionIcon>
     );
 };

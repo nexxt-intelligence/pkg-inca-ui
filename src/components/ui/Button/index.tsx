@@ -35,8 +35,10 @@ const Button = ({
             }}
             color={color}
             compact={compact}
+            data-color={color}
             data-compact={compact}
             data-size={size}
+            data-variant={variant}
             radius={radius}
             size={size}
             type={type}

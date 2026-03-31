@@ -16,6 +16,7 @@ const MultiSelect = ({
     label,
     loading,
     variant = 'default',
+    withinPortal = true,
     ...props
 }: MultiSelectProps) => {
     return (
@@ -27,6 +28,7 @@ const MultiSelect = ({
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             variant={variant}
             data-variant={variant}
+            withinPortal={withinPortal}
             {...props}
             {...(loading
                 ? {

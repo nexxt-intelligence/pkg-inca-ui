@@ -19,6 +19,7 @@ const Select = ({
     icon,
     loading,
     variant = 'default',
+    withinPortal = true,
     ...props
 }: SelectProps) => {
     return (
@@ -27,6 +28,7 @@ const Select = ({
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             variant={variant}
             data-variant={variant}
+            withinPortal={withinPortal}
             {...props}
             {...(loading
                 ? {

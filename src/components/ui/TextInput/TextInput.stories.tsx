@@ -1,28 +1,46 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TextInput from './index';
 
-const meta: Meta<typeof TextInput> = {
-    title: 'UI/TextInput',
+export default {
+    title: 'UI/Inputs/TextInput',
     component: TextInput,
-    parameters: {
-        layout: 'centered'
-    },
     argTypes: {
-        variant: {
-            control: 'radio',
-            options: ['default', 'filled', 'unstyled']
-        }
-    },
-    tags: ['autodocs']
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
+        tooltip: { control: 'text' },
+        icon: {
+            control: 'select',
+            options: [
+                undefined,
+                'IconSearch',
+                'IconUser',
+                'IconMail',
+                'IconLock'
+            ]
+        },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        readOnly: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        error: { control: 'text' }
+    }
+} as Meta<typeof TextInput>;
+
+export const Primary: StoryObj<typeof TextInput> = {
+    args: {
+        label: 'Text input',
+        placeholder: 'Enter text here'
+    }
 };
 
-export default meta;
-
-export const Default: StoryObj<typeof TextInput> = {
+export const WithIcon: StoryObj<typeof TextInput> = {
     args: {
-        label: 'Default Input',
-        placeholder: 'Enter text here',
-        tooltip: 'This is a tooltip'
-    },
-    render: (args) => <TextInput {...args} />
+        label: 'Search',
+        placeholder: 'Type to search...',
+        icon: 'IconSearch'
+    }
 };

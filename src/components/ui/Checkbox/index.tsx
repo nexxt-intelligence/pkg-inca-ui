@@ -17,6 +17,7 @@ export interface CheckboxGroupProps
     options?: CheckboxProps[];
     children?: React.ReactNode;
     tooltip?: string;
+    disabled?: boolean;
 }
 
 const Checkbox = ({ ...props }: CheckboxProps) => {
@@ -40,10 +41,11 @@ const CheckboxGroup = ({
     children,
     tooltip,
     label,
+    disabled,
     ...props
 }: CheckboxGroupProps) => {
     const checkboxOptions = options?.map(({ value, ...rest }) => (
-        <Checkbox key={value} value={value} {...rest} />
+        <Checkbox key={value} value={value} disabled={disabled} {...rest} />
     ));
     return (
         <MantineCheckbox.Group

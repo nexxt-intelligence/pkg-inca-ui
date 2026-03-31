@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // TODO: temp component needs refactor
 import classes from './MiniModal.module.css';
-import Icon from '../Icon';
+import Icon from '../ui/Icon';
 
 export function MiniModal({
     isOpen,

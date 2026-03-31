@@ -18,6 +18,8 @@ const TextArea = ({
     minRows = 1,
     readOnly,
     autosize = true,
+    rightSection,
+    rightSectionWidth,
     ...props
 }: TextAreaProps) => {
     return (
@@ -33,6 +35,19 @@ const TextArea = ({
             minRows={minRows}
             readOnly={readOnly}
             data-readonly={readOnly}
+            rightSection={rightSection}
+            rightSectionWidth={rightSectionWidth}
+            styles={
+                rightSection
+                    ? {
+                          input: {
+                              paddingRight: rightSectionWidth
+                                  ? `calc(${rightSectionWidth}px + 16px)`
+                                  : 36
+                          }
+                      }
+                    : undefined
+            }
             {...props}
         />
     );

@@ -1,79 +1,69 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TabPanels from './index';
-import { Tabs } from '@mantine/core';
+import Tabs from './index';
 
-const meta: Meta<typeof TabPanels> = {
-    title: 'UI/Tabs',
-    component: TabPanels,
-    parameters: {
-        layout: 'centered'
-    },
-    tags: ['autodocs']
-};
-
-export default meta;
-type Story = StoryObj<typeof TabPanels>;
+export default {
+    title: 'UI/Navigation/Tabs',
+    component: Tabs,
+    argTypes: {
+        variant: {
+            control: 'radio',
+            options: ['default', 'outline', 'pills'],
+            table: { defaultValue: { summary: 'default' } }
+        },
+        fullWidth: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        }
+    }
+} as Meta<typeof Tabs>;
 
 const tabs = [
-    { label: 'First Tab', value: 'first' },
-    { label: 'Second Tab', value: 'second' },
-    { label: 'Third Tab', value: 'third' }
+    { label: 'First', value: 'first' },
+    { label: 'Second', value: 'second' },
+    { label: 'Third', value: 'third' }
 ];
 
-export const Default: Story = {
+const panels = (
+    <>
+        <Tabs.Panel value="first" pt="xs">
+            First tab content
+        </Tabs.Panel>
+        <Tabs.Panel value="second" pt="xs">
+            Second tab content
+        </Tabs.Panel>
+        <Tabs.Panel value="third" pt="xs">
+            Third tab content
+        </Tabs.Panel>
+    </>
+);
+
+export const Default: StoryObj<typeof Tabs> = {
     args: {
         tabs,
         defaultValue: 'first',
-        children: (
-            <Tabs.List>
-                <Tabs.Panel value="first">First</Tabs.Panel>
-                <Tabs.Panel value="second">Second</Tabs.Panel>
-                <Tabs.Panel value="third">Third</Tabs.Panel>
-            </Tabs.List>
-        )
+        children: panels
     }
 };
 
-export const WithCustomContent: Story = {
-    args: {
-        tabs,
-        defaultValue: 'second',
-        children: (
-            <Tabs.List>
-                <Tabs.Panel value="first">
-                    <div
+export const Variants: StoryObj<typeof Tabs> = {
+    render: () => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+            {(['default', 'outline', 'pills'] as const).map((variant) => (
+                <div key={variant}>
+                    <p
                         style={{
-                            padding: '20px',
-                            backgroundColor: '#f0f0f0'
+                            fontSize: 11,
+                            color: '#868e96',
+                            marginBottom: 8
                         }}
                     >
-                        <h3>Custom Content 1</h3>
-                        <p>This is some custom content for the first tab.</p>
-                    </div>
-                </Tabs.Panel>
-                <Tabs.Panel value="second">
-                    <div
-                        style={{
-                            padding: '20px',
-                            backgroundColor: '#e0e0e0'
-                        }}
-                    >
-                        <h3>Custom Content 2</h3>
-                        <p>This is some custom content for the second tab.</p>
-                    </div>
-                </Tabs.Panel>
-                <Tabs.Panel value="third">
-                    <div
-                        style={{
-                            padding: '20px',
-                            backgroundColor: '#d0d0d0'
-                        }}
-                    >
-                        <h3>Custom Content 3</h3>
-                        <p>This is some custom content for the third tab.</p>
-                    </div>
-                </Tabs.Panel>
-            </Tabs.List>
-        )
-    }
+                        {variant}
+                    </p>
+                    <Tabs tabs={tabs} defaultValue="first" variant={variant}>
+                        {panels}
+                    </Tabs>
+                </div>
+            ))}
+        </div>
+    )
 };

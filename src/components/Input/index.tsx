@@ -6,9 +6,9 @@ import {
     NumberInputProps,
     PasswordInputProps
 } from '@mantine/core';
-import Tooltip from '../Tooltip';
+import Tooltip from '../ui/Tooltip';
 import classes from './Input.module.css';
-import Icon from '../Icon';
+import Icon from '../ui/Icon';
 
 export interface InputProps {
     tooltip?: string;

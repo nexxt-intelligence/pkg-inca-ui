@@ -1,29 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TextArea from './index';
 
-const meta: Meta<typeof TextArea> = {
-    title: 'UI/TextArea',
+export default {
+    title: 'UI/Inputs/TextArea',
     component: TextArea,
-    parameters: {
-        layout: 'centered'
-    },
     argTypes: {
-        variant: {
-            control: 'radio',
-            options: ['default', 'filled', 'unstyled']
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
+        tooltip: { control: 'text' },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        readOnly: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        error: { control: 'text' },
+        minRows: {
+            control: 'number',
+            table: { defaultValue: { summary: '1' } }
+        },
+        autosize: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'true' } }
         }
-    },
-    tags: ['autodocs']
-};
+    }
+} as Meta<typeof TextArea>;
 
-export default meta;
-
-export const Default: StoryObj<typeof TextArea> = {
+export const Primary: StoryObj<typeof TextArea> = {
     args: {
-        label: 'Default Input',
-        placeholder: 'Enter text here',
-        tooltip: 'This is a tooltip'
-        // variant: 'filled'
-    },
-    render: (args) => <TextArea {...args} />
+        label: 'Text area',
+        placeholder: 'Enter text here'
+    }
 };

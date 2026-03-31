@@ -6,6 +6,7 @@ export const theme: MantineThemeOverride = {
     primaryColor: 'blue',
     primaryShade: 6,
     black: '#212529', // Text/default → gray/9
+    cursorType: 'pointer',
     headings: {
         fontWeight: 600,
         sizes: {
@@ -210,6 +211,16 @@ export const theme: MantineThemeOverride = {
                         '&[data-compact="true"]': {
                             padding: `0 ${theme.spacing.xs}`,
                             height: '1.5rem'
+                        }
+                    }
+                }),
+                md: (theme) => ({
+                    root: {
+                        padding: `0 ${theme.spacing.sm}`,
+                        height: '2.5rem',
+                        '&[data-compact="true"]': {
+                            padding: `0 ${theme.spacing.xs}`,
+                            height: '1.75rem'
                         }
                     }
                 })

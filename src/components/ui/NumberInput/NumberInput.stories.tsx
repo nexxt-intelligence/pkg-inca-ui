@@ -1,28 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import NumberInput from './index';
 
-const meta: Meta<typeof NumberInput> = {
-    title: 'UI/NumberInput',
+export default {
+    title: 'UI/Inputs/NumberInput',
     component: NumberInput,
-    parameters: {
-        layout: 'centered'
-    },
     argTypes: {
-        variant: {
-            control: 'radio',
-            options: ['default', 'filled', 'unstyled']
-        }
-    },
-    tags: ['autodocs']
-};
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
+        tooltip: { control: 'text' },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        readOnly: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        error: { control: 'text' },
+        min: { control: 'number' },
+        max: { control: 'number' }
+    }
+} as Meta<typeof NumberInput>;
 
-export default meta;
-
-export const Default: StoryObj<typeof NumberInput> = {
+export const Primary: StoryObj<typeof NumberInput> = {
     args: {
-        label: 'Default Input',
-        placeholder: 'Enter text here',
-        tooltip: 'This is a tooltip'
-    },
-    render: (args) => <NumberInput {...args} />
+        label: 'Number',
+        placeholder: 'Enter a number'
+    }
 };

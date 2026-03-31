@@ -1,10 +1,11 @@
+import * as React from 'react';
 import { Input } from '@mantine/core';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import classes from './Label.module.css';
 
 export interface LabelProps {
-    label: string;
+    label: React.ReactNode;
     required?: boolean;
     tooltip?: string;
     htmlFor?: string; // Add htmlFor when label is used standalone (not inside Mantine's label prop)

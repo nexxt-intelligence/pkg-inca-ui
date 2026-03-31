@@ -8,15 +8,18 @@ import {
 import Text from '../Text';
 import classes from './Menu.module.css';
 
-type MenuItem = {
+export type MenuItem = {
     label: string;
     disabled?: boolean;
     onClick?: () => void;
 } & MantineMenuItemProps;
 
-export type MenuProps = MantineMenuProps & { items: MenuItem[] };
+export type MenuProps = MantineMenuProps & {
+    items?: MenuItem[];
+    menuContent?: React.ReactNode;
+};
 
-export default function Menu({ items, children, ...props }: MenuProps) {
+function Menu({ items, menuContent, children, ...props }: MenuProps) {
     return (
         <MantineMenu
             classNames={{
@@ -24,9 +27,10 @@ export default function Menu({ items, children, ...props }: MenuProps) {
                 item: classes.item
             }}
             withinPortal
-            closeOnClickOutside
+            closeOnClickOutside={true}
             closeOnEscape
             closeOnItemClick
+            position="bottom"
             zIndex={1000}
             radius="sm"
             {...props}
@@ -35,16 +39,26 @@ export default function Menu({ items, children, ...props }: MenuProps) {
                 <span>{children}</span>
             </MantineMenu.Target>
             <MantineMenu.Dropdown>
-                {items.map((item) => (
-                    <MantineMenu.Item
-                        key={item.label}
-                        onClick={item.onClick}
-                        {...item}
-                    >
-                        <Text size="xs">{item.label}</Text>
-                    </MantineMenu.Item>
-                ))}
+                {menuContent
+                    ? menuContent
+                    : items?.map((item) => (
+                          <MantineMenu.Item
+                              key={item.label}
+                              onClick={item.onClick}
+                              {...item}
+                          >
+                              <Text>{item.label}</Text>
+                          </MantineMenu.Item>
+                      ))}
             </MantineMenu.Dropdown>
         </MantineMenu>
     );
 }
+
+Menu.Item = MantineMenu.Item;
+Menu.Label = MantineMenu.Label;
+Menu.Divider = MantineMenu.Divider;
+Menu.Dropdown = MantineMenu.Dropdown;
+Menu.Target = MantineMenu.Target;
+
+export default Menu;

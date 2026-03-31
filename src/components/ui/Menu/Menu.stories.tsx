@@ -3,103 +3,36 @@ import Menu from './index';
 import Button from '../Button';
 import Icon from '../Icon';
 
-const meta: Meta<typeof Menu> = {
-    title: 'UI/Menu',
+export default {
+    title: 'UI/Overlays/Menu',
     component: Menu,
-    tags: ['autodocs'],
     argTypes: {
         position: {
-            control: 'select',
-            options: ['bottom', 'top', 'left', 'right']
+            control: 'radio',
+            options: ['bottom', 'top', 'left', 'right'],
+            table: { defaultValue: { summary: 'bottom' } }
         },
         shadow: {
-            control: 'select',
-            options: ['xs', 'sm', 'md', 'lg', 'xl']
+            control: 'radio',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'md' } }
         }
     }
-};
+} as Meta<typeof Menu>;
 
-export default meta;
-type Story = StoryObj<typeof Menu>;
-
-const defaultItems = [
-    {
-        label: 'Profile',
-        icon: <Icon type="IconUser" size="sm" />
-    },
-    {
-        label: 'Settings',
-        icon: <Icon type="IconSettings" size="sm" />
-    },
-    {
-        label: 'Logout',
-        icon: <Icon type="IconLogout" size="sm" />,
-        color: 'red'
-    }
-];
-
-export const Default: Story = {
+export const Primary: StoryObj<typeof Menu> = {
     args: {
         position: 'bottom',
         shadow: 'md',
-        items: defaultItems,
-        children: (
-            <Button rightIcon={<Icon type="IconChevronDown" size="sm" />}>
-                Open Menu
-            </Button>
-        )
-    }
-};
-
-export const TopPosition: Story = {
-    args: {
-        ...Default.args,
-        position: 'top'
-    }
-};
-
-export const WithDisabledItems: Story = {
-    args: {
-        ...Default.args,
         items: [
-            {
-                label: 'Profile',
-                icon: <Icon type="IconUser" size="sm" />
-            },
-            {
-                label: 'Settings',
-                icon: <Icon type="IconSettings" size="sm" />,
-                disabled: true
-            },
+            { label: 'Profile', icon: <Icon type="IconUser" size="sm" /> },
+            { label: 'Settings', icon: <Icon type="IconSettings" size="sm" /> },
             {
                 label: 'Logout',
                 icon: <Icon type="IconLogout" size="sm" />,
                 color: 'red'
             }
-        ]
-    }
-};
-
-export const WithOnClick: Story = {
-    args: {
-        ...Default.args,
-        items: [
-            {
-                label: 'Profile',
-                icon: <Icon type="IconUser" size="sm" />,
-                onClick: () => console.log('Profile clicked')
-            },
-            {
-                label: 'Settings',
-                icon: <Icon type="IconSettings" size="sm" />,
-                onClick: () => console.log('Settings clicked')
-            },
-            {
-                label: 'Logout',
-                icon: <Icon type="IconLogout" size="sm" />,
-                color: 'red',
-                onClick: () => console.log('Logout clicked')
-            }
-        ]
+        ],
+        children: <Button>Open Menu</Button>
     }
 };

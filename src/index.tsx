@@ -78,19 +78,19 @@ export { default as FontSelectItem } from './components/ui/Select/SelectItem/Fon
 export { default as Badge } from './components/ui/Badge';
 export { default as Prism } from './components/ui/Prism';
 
-export { default as Input, type InputProps } from './components/ui/Input';
-
+// TODO: Remove these
+export { default as Input, type InputProps } from './components/Input';
 /** UI Components from OLD inca ui */
 export {
     MiniModal,
     MiniModalContent,
     MiniModalActions
-} from './components/ui/MiniModal';
+} from './components/MiniModal';
 export {
     SplitPaneModal,
     SplitPaneModalActions,
     SplitPaneModalContent
-} from './components/ui/SplitPaneModal';
+} from './components/SplitPaneModal';
 
 /** Constants */
 export * from './constants/theme';

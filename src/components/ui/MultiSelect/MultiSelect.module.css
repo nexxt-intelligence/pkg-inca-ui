@@ -1,7 +1,13 @@
 .multiSelectValues {
-    min-height: 30px;
+    min-height: 31px;
+    button {
+        color: var(--mantine-color-gray-6);
+    }
 }
 
 .multiSelectInput {
     height: auto;
+    input::-webkit-search-cancel-button {
+        display: none;
+    }
 }
