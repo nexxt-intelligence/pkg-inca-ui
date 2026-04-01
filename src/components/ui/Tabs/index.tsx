@@ -9,12 +9,14 @@ export interface TabsProps extends MantineTabsProps {
     tabs: {
         label: string;
         value: string;
+        disabled?: boolean;
     }[];
     defaultValue?: string;
     value?: string | null;
     onTabChange?: (value: string | null) => void;
     children: React.ReactNode;
     fullWidth?: boolean;
+    variant?: 'default' | 'outline' | 'pills' | 'contained';
 }
 
 const Tabs = ({
@@ -50,16 +52,19 @@ const Tabs = ({
                 onTabChange={handleTabChange}
                 classNames={{
                     tab: classes.tab,
-                    tabsList: tabs.length
-                        ? classes.tabsList
-                        : classes.tabsListHidden,
+                    tabsList: classes.tabsList,
                     panel: classes.panel
                 }}
+                variant={variant}
                 data-variant={variant}
             >
                 <MantineTabs.List grow={fullWidth}>
                     {tabs.map((tab) => (
-                        <MantineTabs.Tab key={tab.value} value={tab.value}>
+                        <MantineTabs.Tab
+                            key={tab.value}
+                            value={tab.value}
+                            disabled={tab.disabled}
+                        >
                             {tab.label}
                         </MantineTabs.Tab>
                     ))}

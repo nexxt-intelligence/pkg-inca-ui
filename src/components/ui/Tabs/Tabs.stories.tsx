@@ -7,7 +7,7 @@ export default {
     argTypes: {
         variant: {
             control: 'radio',
-            options: ['default', 'outline', 'pills'],
+            options: ['default', 'outline', 'pills', 'contained'],
             table: { defaultValue: { summary: 'default' } }
         },
         fullWidth: {
@@ -48,22 +48,28 @@ export const Default: StoryObj<typeof Tabs> = {
 export const Variants: StoryObj<typeof Tabs> = {
     render: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            {(['default', 'outline', 'pills'] as const).map((variant) => (
-                <div key={variant}>
-                    <p
-                        style={{
-                            fontSize: 11,
-                            color: '#868e96',
-                            marginBottom: 8
-                        }}
-                    >
-                        {variant}
-                    </p>
-                    <Tabs tabs={tabs} defaultValue="first" variant={variant}>
-                        {panels}
-                    </Tabs>
-                </div>
-            ))}
+            {(['default', 'outline', 'pills', 'contained'] as const).map(
+                (variant) => (
+                    <div key={variant}>
+                        <p
+                            style={{
+                                fontSize: 11,
+                                color: '#868e96',
+                                marginBottom: 8
+                            }}
+                        >
+                            {variant}
+                        </p>
+                        <Tabs
+                            tabs={tabs}
+                            defaultValue="first"
+                            variant={variant}
+                        >
+                            {panels}
+                        </Tabs>
+                    </div>
+                )
+            )}
         </div>
     )
 };
