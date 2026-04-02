@@ -17,6 +17,7 @@ export const useConfirmationModal = () => {
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
         children = <></>,
+        centered = true,
         ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
@@ -26,6 +27,9 @@ export const useConfirmationModal = () => {
                 labels: { confirm: confirmLabel, cancel: cancelLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
+                groupProps: { position: 'apart', mt: 'md' },
+                styles: { title: { fontWeight: 500 } },
+                centered,
                 ...props
             });
         });
@@ -36,6 +40,7 @@ export const useConfirmationModal = () => {
         confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
         message = '',
+        centered = true,
         ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
@@ -45,6 +50,9 @@ export const useConfirmationModal = () => {
                 labels: { confirm: confirmLabel, cancel: cancelLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
+                groupProps: { position: 'apart', mt: 'md' },
+                styles: { title: { fontWeight: 500 } },
+                centered,
                 ...props
             });
         });

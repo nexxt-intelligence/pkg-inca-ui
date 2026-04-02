@@ -77,6 +77,7 @@ export { default as QuestionSelectItem } from './components/ui/Select/SelectItem
 export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
 export { default as Badge } from './components/ui/Badge';
 export { default as Prism } from './components/ui/Prism';
+export { default as Modal } from './components/ui/Modal';
 
 // TODO: Remove these
 export { default as Input, type InputProps } from './components/Input';
@@ -172,7 +173,6 @@ export {
     Drawer,
     HoverCard,
     LoadingOverlay,
-    Modal,
     Overlay,
     Popover
 } from '@mantine/core';
