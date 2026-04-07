@@ -64,21 +64,21 @@ const Input = ({
         case 'number':
             return (
                 <MantineNumberInput
-                    {...(commonProps as NumberInputProps)}
+                    {...(commonProps as unknown as NumberInputProps)}
                     data-variant={variant}
                 />
             );
         case 'password':
             return (
                 <MantinePasswordInput
-                    {...(commonProps as PasswordInputProps)}
+                    {...(commonProps as unknown as PasswordInputProps)}
                     data-variant={variant}
                 />
             );
         default:
             return (
                 <MantineTextInput
-                    {...(commonProps as TextInputProps)}
+                    {...(commonProps as unknown as TextInputProps)}
                     data-variant={variant}
                 />
             );

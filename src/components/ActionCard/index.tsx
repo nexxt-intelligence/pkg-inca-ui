@@ -1,4 +1,4 @@
-import { Title, Center, Stack, Button } from '@mantine/core';
+import { Center, Stack, Button } from '@mantine/core';
 import Icon, { TablerIconKeys } from '../ui/Icon';
 import Text from '../ui/Text';
 import classes from './ActionCard.module.css';

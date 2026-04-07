@@ -22,7 +22,7 @@
         "noUnusedParameters": false,
         "noImplicitAny": false,
         "strictNullChecks": false,
-        "allowSyntheticDefaultImports": false,
+        "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
     },

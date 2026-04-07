@@ -97,7 +97,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
         return item.map(
             ({ label, disabled, icon, healthIcon, url, onClick }) => (
                 <NavLink
-                    key={label}
+                    key={String(label)}
                     classNames={{
                         root: classes.navLinkRoot,
                         icon: classes.navLinkIcon,
