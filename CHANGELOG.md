@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.0.0
+
+### Major Changes
+
+-   3f906f3: clean up components and stories; add contained variant to Tabs; add Modal component and update useConfirmationModal hook
+
 ## 6.9.6
 
 ### Patch Changes
