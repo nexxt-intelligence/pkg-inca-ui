@@ -1,20 +1,16 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import Modal, { ModalProps } from './index';
+
+import { Group } from '@mantine/core';
+import { useState } from 'react';
+
 import Button from '../Button';
 import Text from '../Text';
-import { Group } from '@mantine/core';
+import Modal, { ModalProps } from './index';
 
 export default {
-    title: 'UI/Overlays/Modal',
-    component: Modal,
     argTypes: {
-        title: { control: 'text' },
+        cancelLabel: { control: 'text' },
         centered: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'true' } }
-        },
-        withCloseButton: {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
         },
@@ -26,13 +22,19 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
         },
+        confirmLabel: { control: 'text' },
         fullScreen: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        cancelLabel: { control: 'text' },
-        confirmLabel: { control: 'text' }
-    }
+        title: { control: 'text' },
+        withCloseButton: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'true' } }
+        }
+    },
+    component: Modal,
+    title: 'UI/Overlays/Modal'
 } as Meta<typeof Modal>;
 
 const ModalStory = (args: Partial<ModalProps>) => {
@@ -40,7 +42,7 @@ const ModalStory = (args: Partial<ModalProps>) => {
     return (
         <>
             <Button onClick={() => setOpened(true)}>Open Modal</Button>
-            <Modal {...args} opened={opened} onClose={() => setOpened(false)}>
+            <Modal {...args} onClose={() => setOpened(false)} opened={opened}>
                 <Text size="sm">
                     This is the modal body content. You can put any React
                     content here.
@@ -51,10 +53,10 @@ const ModalStory = (args: Partial<ModalProps>) => {
 };
 
 export const Default: StoryObj<typeof Modal> = {
-    render: (args) => <ModalStory {...args} />,
     args: {
         title: 'Modal Title'
-    }
+    },
+    render: (args) => <ModalStory {...args} />
 };
 
 const CustomFooterStory = (args: Partial<ModalProps>) => {
@@ -64,20 +66,18 @@ const CustomFooterStory = (args: Partial<ModalProps>) => {
             <Button onClick={() => setOpened(true)}>Open Modal</Button>
             <Modal
                 {...args}
-                opened={opened}
-                onClose={() => setOpened(false)}
                 footer={
                     <>
                         <Button
-                            variant="subtle"
                             onClick={() => setOpened(false)}
+                            variant="subtle"
                         >
                             Preview
                         </Button>
                         <Group position="right" spacing="xs">
                             <Button
-                                variant="default"
                                 onClick={() => setOpened(false)}
+                                variant="default"
                             >
                                 Cancel
                             </Button>
@@ -87,6 +87,8 @@ const CustomFooterStory = (args: Partial<ModalProps>) => {
                         </Group>
                     </>
                 }
+                onClose={() => setOpened(false)}
+                opened={opened}
             >
                 <Text size="sm">
                     Your survey is ready to go live. You can preview it before
@@ -98,8 +100,8 @@ const CustomFooterStory = (args: Partial<ModalProps>) => {
 };
 
 export const CustomFooter: StoryObj<typeof Modal> = {
-    render: (args) => <CustomFooterStory {...args} />,
     args: {
         title: 'Submit Survey'
-    }
+    },
+    render: (args) => <CustomFooterStory {...args} />
 };

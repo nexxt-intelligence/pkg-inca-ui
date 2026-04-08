@@ -1,35 +1,36 @@
 import {
+    Flex,
     Radio as MantineRadio,
-    RadioProps as MantineRadioProps,
     RadioGroupProps as MantineRadioGroupProps,
-    Flex
+    RadioProps as MantineRadioProps
 } from '@mantine/core';
+
 import Label from '../Label';
 import classes from './Radio.module.css';
 
-export interface RadioProps extends MantineRadioProps {
-    value: string | number;
-    disabled?: boolean;
-}
-
 export interface RadioGroupProps
     extends Omit<MantineRadioGroupProps, 'children'> {
-    row?: boolean;
-    options?: RadioProps[];
     children?: React.ReactNode;
     disabled?: boolean;
+    options?: RadioProps[];
+    row?: boolean;
     tooltip?: string;
+}
+
+export interface RadioProps extends MantineRadioProps {
+    disabled?: boolean;
+    value: number | string;
 }
 
 const Radio = ({ ...props }: RadioProps) => {
     return (
         <MantineRadio
             classNames={{
-                label: classes.radioLabel,
-                inner: classes.radioInner,
-                radio: classes.radio,
                 description: classes.radioDescription,
-                error: classes.radioError
+                error: classes.radioError,
+                inner: classes.radioInner,
+                label: classes.radioLabel,
+                radio: classes.radio
             }}
             {...props}
         />
@@ -37,19 +38,19 @@ const Radio = ({ ...props }: RadioProps) => {
 };
 
 const RadioGroup = ({
-    row = false,
-    options,
     children,
     disabled,
-    tooltip,
     label,
+    options,
+    row = false,
+    tooltip,
     ...props
 }: RadioGroupProps) => {
     const radioOptions = options?.map(({ value, ...rest }) => (
         <Radio
+            disabled={disabled || rest.disabled}
             key={value}
             value={value}
-            disabled={disabled || rest.disabled}
             {...rest}
         />
     ));

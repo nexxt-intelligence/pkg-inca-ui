@@ -2,39 +2,39 @@ import {
     Textarea as MantineTextarea,
     TextareaProps as MantineTextareaProps
 } from '@mantine/core';
+
 import Label from '../Label';
 import classes from './TextArea.module.css';
 
 export interface TextAreaProps extends MantineTextareaProps {
-    tooltip?: string;
     placeholder?: string;
     readOnly?: boolean;
+    tooltip?: string;
 }
 
 const TextArea = ({
+    autosize = true,
     label,
-    tooltip,
-    variant = 'default',
     minRows = 1,
     readOnly,
-    autosize = true,
     rightSection,
     rightSectionWidth,
+    tooltip,
+    variant = 'default',
     ...props
 }: TextAreaProps) => {
     return (
         <MantineTextarea
+            autosize={autosize}
             classNames={{
                 input: classes.textAreaInput,
                 required: classes.textAreaInputRequired
             }}
+            data-readonly={readOnly}
             data-variant={variant}
-            variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
-            autosize={autosize}
             minRows={minRows}
             readOnly={readOnly}
-            data-readonly={readOnly}
             rightSection={rightSection}
             rightSectionWidth={rightSectionWidth}
             styles={
@@ -48,6 +48,7 @@ const TextArea = ({
                       }
                     : undefined
             }
+            variant={variant}
             {...props}
         />
     );

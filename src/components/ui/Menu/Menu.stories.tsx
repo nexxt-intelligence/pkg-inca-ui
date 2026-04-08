@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Menu from './index';
+
 import Button from '../Button';
 import Icon from '../Icon';
+import Menu from './index';
 
 export default {
-    title: 'UI/Overlays/Menu',
-    component: Menu,
     argTypes: {
         position: {
             control: 'radio',
@@ -17,22 +16,24 @@ export default {
             options: ['xs', 'sm', 'md', 'lg', 'xl'],
             table: { defaultValue: { summary: 'md' } }
         }
-    }
+    },
+    component: Menu,
+    title: 'UI/Overlays/Menu'
 } as Meta<typeof Menu>;
 
 export const Primary: StoryObj<typeof Menu> = {
     args: {
-        position: 'bottom',
-        shadow: 'md',
+        children: <Button>Open Menu</Button>,
         items: [
-            { label: 'Profile', icon: <Icon type="IconUser" size="sm" /> },
-            { label: 'Settings', icon: <Icon type="IconSettings" size="sm" /> },
+            { icon: <Icon size="sm" type="IconUser" />, label: 'Profile' },
+            { icon: <Icon size="sm" type="IconSettings" />, label: 'Settings' },
             {
-                label: 'Logout',
-                icon: <Icon type="IconLogout" size="sm" />,
-                color: 'red'
+                color: 'red',
+                icon: <Icon size="sm" type="IconLogout" />,
+                label: 'Logout'
             }
         ],
-        children: <Button>Open Menu</Button>
+        position: 'bottom',
+        shadow: 'md'
     }
 };

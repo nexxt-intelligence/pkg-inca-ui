@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Prism from './index';
 
 export default {
-    title: 'UI/Other Packages/Prism',
-    component: Prism,
     argTypes: {
+        copiedLabel: { control: 'text' },
+        copyLabel: { control: 'text' },
         language: {
             control: 'select',
             options: [
@@ -20,15 +21,15 @@ export default {
         withLineNumbers: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
-        },
-        copyLabel: { control: 'text' },
-        copiedLabel: { control: 'text' }
-    }
+        }
+    },
+    component: Prism,
+    title: 'UI/Other Packages/Prism'
 } as Meta<typeof Prism>;
 
 export const Primary: StoryObj<typeof Prism> = {
     args: {
-        language: 'tsx',
-        children: `function Hello() {\n  return <div>Hello World</div>;\n}`
+        children: `function Hello() {\n  return <div>Hello World</div>;\n}`,
+        language: 'tsx'
     }
 };

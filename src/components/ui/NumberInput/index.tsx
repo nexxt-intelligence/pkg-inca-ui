@@ -2,38 +2,39 @@ import {
     NumberInput as MantineNumberInput,
     NumberInputProps as MantineNumberInputProps
 } from '@mantine/core';
-import Label from '../Label';
+
 import Icon, { TablerIconKeys } from '../Icon';
+import Label from '../Label';
 import classes from './NumberInput.module.css';
 
 export interface NumberInputProps extends MantineNumberInputProps {
-    tooltip?: string;
     icon?: TablerIconKeys;
     readOnly?: boolean;
+    tooltip?: string;
 }
 
 const NumberInput = ({
-    label,
-    tooltip,
     icon,
-    variant = 'default',
+    label,
     readOnly,
+    tooltip,
+    variant = 'default',
     ...props
 }: NumberInputProps) => {
     return (
         <MantineNumberInput
             classNames={{
-                input: classes.numberInput,
-                required: classes.numberInputRequired,
+                control: classes.numberInputControl,
                 controlUp: classes.numberInputControlUp,
-                control: classes.numberInputControl
+                input: classes.numberInput,
+                required: classes.numberInputRequired
             }}
+            data-readonly={readOnly}
+            data-variant={variant}
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
-            data-variant={variant}
-            variant={variant}
             readOnly={readOnly}
-            data-readonly={readOnly}
+            variant={variant}
             {...props}
         />
     );

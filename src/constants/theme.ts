@@ -2,52 +2,7 @@ import type { MantineThemeOverride } from '@mantine/core';
 
 // https://v6.mantine.dev/styles/global-styles/
 export const theme: MantineThemeOverride = {
-    fontFamily: '"Source Sans 3", sans-serif',
-    primaryColor: 'blue',
-    primaryShade: 6,
     black: '#212529', // Text/default → gray/9
-    cursorType: 'pointer',
-    headings: {
-        fontWeight: 600,
-        sizes: {
-            h1: { fontSize: '40px', lineHeight: '1.2' }, // xl
-            h2: { fontSize: '36px', lineHeight: '1.2' }, // lg
-            h3: { fontSize: '32px', lineHeight: '1.2' }, // md
-            h4: { fontSize: '24px', lineHeight: '1.2' }, // sm
-            h5: { fontSize: '20px', lineHeight: '1.2' }, // xs
-            h6: { fontSize: '16px', lineHeight: '1.2' } // 2xs
-        }
-    },
-    defaultRadius: 'sm',
-    fontSizes: {
-        '2xs': '0.625rem', // 10px
-        xs: '0.75rem', // 12px
-        sm: '0.875rem', // 14px
-        md: '1rem', // 16px
-        lg: '1.125rem', // 18px
-        xl: '1.25rem' // 20px
-    },
-    lineHeight: 1.5,
-    spacing: {
-        '3xs': '2px',
-        '2xs': '4px',
-        xs: '8px',
-        sm: '12px',
-        md: '16px',
-        lg: '20px',
-        xl: '24px',
-        '2xl': '32px',
-        '3xl': '40px'
-    },
-    radius: {
-        xs: '2px',
-        sm: '4px',
-        md: '8px',
-        lg: '16px',
-        xl: '24px',
-        '2xl': '32px'
-    },
-
     colors: {
         // TODO: update colors
         blue: [
@@ -110,18 +65,6 @@ export const theme: MantineThemeOverride = {
             '#C22605',
             '#AA1B00'
         ],
-        yellow: [
-            '#FFF9DF',
-            '#FFF1CA',
-            '#FFE399',
-            '#FFD363',
-            '#FFCB48',
-            '#FFBD18',
-            '#FFB902',
-            '#F79009',
-            '#DC6803',
-            '#B54708'
-        ],
         violet: [
             '#F3F0FF',
             '#E5DBFF',
@@ -133,118 +76,67 @@ export const theme: MantineThemeOverride = {
             '#7048E8',
             '#6741D9',
             '#5F3DC4'
+        ],
+        yellow: [
+            '#FFF9DF',
+            '#FFF1CA',
+            '#FFE399',
+            '#FFD363',
+            '#FFCB48',
+            '#FFBD18',
+            '#FFB902',
+            '#F79009',
+            '#DC6803',
+            '#B54708'
         ]
     },
     components: {
         ActionIcon: {
             sizes: {
-                xs: () => ({
+                lg: () => ({
                     root: {
-                        width: '16px',
-                        height: '16px',
-                        minWidth: '16px',
-                        minHeight: '16px'
-                    }
-                }),
-                sm: () => ({
-                    root: {
-                        width: '20px',
-                        height: '20px',
-                        minWidth: '20px',
-                        minHeight: '20px'
+                        height: '32px',
+                        minHeight: '32px',
+                        minWidth: '32px',
+                        width: '32px'
                     }
                 }),
                 md: () => ({
                     root: {
-                        width: '24px',
                         height: '24px',
+                        minHeight: '24px',
                         minWidth: '24px',
-                        minHeight: '24px'
+                        width: '24px'
                     }
                 }),
-                lg: () => ({
+                sm: () => ({
                     root: {
-                        width: '32px',
-                        height: '32px',
-                        minWidth: '32px',
-                        minHeight: '32px'
+                        height: '20px',
+                        minHeight: '20px',
+                        minWidth: '20px',
+                        width: '20px'
                     }
                 }),
                 xl: () => ({
                     root: {
-                        width: '40px',
                         height: '40px',
+                        minHeight: '40px',
                         minWidth: '40px',
-                        minHeight: '40px'
-                    }
-                })
-            }
-        },
-        Button: {
-            styles: {
-                root: {
-                    fontWeight: 500
-                }
-            },
-            variants: {
-                default: (theme) => ({
-                    root: {
-                        borderColor: theme.colors.gray[2]
-                    }
-                })
-            },
-            sizes: {
-                xs: (theme) => ({
-                    root: {
-                        padding: `0 ${theme.spacing.sm}`,
-                        height: '1.5rem',
-                        '&[data-compact="true"]': {
-                            padding: `0 ${theme.spacing.xs}`,
-                            height: '1.25rem'
-                        }
+                        width: '40px'
                     }
                 }),
-                sm: (theme) => ({
+                xs: () => ({
                     root: {
-                        padding: `0 ${theme.spacing.sm}`,
-                        height: '2rem',
-                        '&[data-compact="true"]': {
-                            padding: `0 ${theme.spacing.xs}`,
-                            height: '1.5rem'
-                        }
-                    }
-                }),
-                md: (theme) => ({
-                    root: {
-                        padding: `0 ${theme.spacing.sm}`,
-                        height: '2.5rem',
-                        '&[data-compact="true"]': {
-                            padding: `0 ${theme.spacing.xs}`,
-                            height: '1.75rem'
-                        }
+                        height: '16px',
+                        minHeight: '16px',
+                        minWidth: '16px',
+                        width: '16px'
                     }
                 })
-            }
-        },
-        Switch: {
-            styles: {
-                label: {
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                }
             }
         },
         Badge: {
             sizes: {
-                sm: (theme) => ({
-                    root: {
-                        fontSize: '0.625rem',
-                        height: '16px',
-                        lineHeight: 'normal',
-                        padding: `0 ${theme.spacing.xs}`
-                    }
-                }),
                 md: (theme) => ({
                     root: {
                         fontSize: '0.75rem',
@@ -252,9 +144,37 @@ export const theme: MantineThemeOverride = {
                         lineHeight: 'normal',
                         padding: `0 ${theme.spacing.xs}`
                     }
+                }),
+                sm: (theme) => ({
+                    root: {
+                        fontSize: '0.625rem',
+                        height: '16px',
+                        lineHeight: 'normal',
+                        padding: `0 ${theme.spacing.xs}`
+                    }
                 })
             },
             variants: {
+                dot: (theme, params) => {
+                    if (params.color === 'dark') {
+                        return {
+                            root: {
+                                '&::before': {
+                                    backgroundColor: theme.colors.gray[7]
+                                },
+                                backgroundColor: theme.white,
+                                borderColor: theme.colors.gray[2],
+                                color: theme.black
+                            }
+                        };
+                    }
+                    return {
+                        root: {
+                            backgroundColor: theme.white,
+                            color: theme.black
+                        }
+                    };
+                },
                 filled: (theme, params) => {
                     if (params.color === 'yellow') {
                         return {
@@ -300,27 +220,53 @@ export const theme: MantineThemeOverride = {
                         };
                     }
                     return { root: {} };
-                },
-                dot: (theme, params) => {
-                    if (params.color === 'dark') {
-                        return {
-                            root: {
-                                backgroundColor: theme.white,
-                                borderColor: theme.colors.gray[2],
-                                color: theme.black,
-                                '&::before': {
-                                    backgroundColor: theme.colors.gray[7]
-                                }
-                            }
-                        };
-                    }
-                    return {
-                        root: {
-                            backgroundColor: theme.white,
-                            color: theme.black
-                        }
-                    };
                 }
+            }
+        },
+        Button: {
+            sizes: {
+                md: (theme) => ({
+                    root: {
+                        '&[data-compact="true"]': {
+                            height: '1.75rem',
+                            padding: `0 ${theme.spacing.xs}`
+                        },
+                        height: '2.5rem',
+                        padding: `0 ${theme.spacing.sm}`
+                    }
+                }),
+                sm: (theme) => ({
+                    root: {
+                        '&[data-compact="true"]': {
+                            height: '1.5rem',
+                            padding: `0 ${theme.spacing.xs}`
+                        },
+                        height: '2rem',
+                        padding: `0 ${theme.spacing.sm}`
+                    }
+                }),
+                xs: (theme) => ({
+                    root: {
+                        '&[data-compact="true"]': {
+                            height: '1.25rem',
+                            padding: `0 ${theme.spacing.xs}`
+                        },
+                        height: '1.5rem',
+                        padding: `0 ${theme.spacing.sm}`
+                    }
+                })
+            },
+            styles: {
+                root: {
+                    fontWeight: 500
+                }
+            },
+            variants: {
+                default: (theme) => ({
+                    root: {
+                        borderColor: theme.colors.gray[2]
+                    }
+                })
             }
         },
         Input: {
@@ -346,11 +292,11 @@ export const theme: MantineThemeOverride = {
                 }),
                 unstyled: (theme) => ({
                     input: {
-                        paddingLeft: theme.spacing['2xs'],
-                        paddingRight: theme.spacing['2xs'],
                         '&[data-with-icon]': {
                             paddingLeft: '2.25rem'
-                        }
+                        },
+                        paddingLeft: theme.spacing['2xs'],
+                        paddingRight: theme.spacing['2xs']
                     }
                 })
             }
@@ -360,14 +306,23 @@ export const theme: MantineThemeOverride = {
                 inputWrapperOrder: ['label', 'input', 'error', 'description']
             },
             styles: {
-                label: {
-                    fontWeight: 400,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                },
                 error: {
                     whiteSpace: 'normal'
+                },
+                label: {
+                    alignItems: 'center',
+                    display: 'inline-flex',
+                    fontWeight: 400,
+                    gap: '4px'
+                }
+            }
+        },
+        Switch: {
+            styles: {
+                label: {
+                    alignItems: 'center',
+                    display: 'inline-flex',
+                    gap: '4px'
                 }
             }
         },
@@ -378,5 +333,50 @@ export const theme: MantineThemeOverride = {
                 }
             })
         }
+    },
+    cursorType: 'pointer',
+    defaultRadius: 'sm',
+    fontFamily: '"Source Sans 3", sans-serif',
+    fontSizes: {
+        '2xs': '0.625rem', // 10px
+        lg: '1.125rem', // 18px
+        md: '1rem', // 16px
+        sm: '0.875rem', // 14px
+        xl: '1.25rem', // 20px
+        xs: '0.75rem' // 12px
+    },
+    headings: {
+        fontWeight: 600,
+        sizes: {
+            h1: { fontSize: '40px', lineHeight: '1.2' }, // xl
+            h2: { fontSize: '36px', lineHeight: '1.2' }, // lg
+            h3: { fontSize: '32px', lineHeight: '1.2' }, // md
+            h4: { fontSize: '24px', lineHeight: '1.2' }, // sm
+            h5: { fontSize: '20px', lineHeight: '1.2' }, // xs
+            h6: { fontSize: '16px', lineHeight: '1.2' } // 2xs
+        }
+    },
+    lineHeight: 1.5,
+    primaryColor: 'blue',
+    primaryShade: 6,
+
+    radius: {
+        '2xl': '32px',
+        lg: '16px',
+        md: '8px',
+        sm: '4px',
+        xl: '24px',
+        xs: '2px'
+    },
+    spacing: {
+        '2xl': '32px',
+        '2xs': '4px',
+        '3xl': '40px',
+        '3xs': '2px',
+        lg: '20px',
+        md: '16px',
+        sm: '12px',
+        xl: '24px',
+        xs: '8px'
     }
 };

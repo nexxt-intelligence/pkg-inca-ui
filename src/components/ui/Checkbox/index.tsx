@@ -1,34 +1,35 @@
 import {
+    Flex,
     Checkbox as MantineCheckbox,
-    CheckboxProps as MantineCheckboxProps,
     CheckboxGroupProps as MantineCheckboxGroupProps,
-    Flex
+    CheckboxProps as MantineCheckboxProps
 } from '@mantine/core';
+
 import Label from '../Label';
 import classes from './Checkbox.module.css';
 
-export interface CheckboxProps extends MantineCheckboxProps {
-    value: string | number;
-}
-
 export interface CheckboxGroupProps
     extends Omit<MantineCheckboxGroupProps, 'children'> {
-    row?: boolean;
-    options?: CheckboxProps[];
     children?: React.ReactNode;
-    tooltip?: string;
     disabled?: boolean;
+    options?: CheckboxProps[];
+    row?: boolean;
+    tooltip?: string;
+}
+
+export interface CheckboxProps extends MantineCheckboxProps {
+    value: number | string;
 }
 
 const Checkbox = ({ ...props }: CheckboxProps) => {
     return (
         <MantineCheckbox
             classNames={{
-                label: classes.checkboxLabel,
+                description: classes.checkboxDescription,
+                error: classes.checkboxError,
                 inner: classes.checkboxInner,
                 input: classes.checkboxInput,
-                description: classes.checkboxDescription,
-                error: classes.checkboxError
+                label: classes.checkboxLabel
             }}
             {...props}
         />
@@ -36,16 +37,16 @@ const Checkbox = ({ ...props }: CheckboxProps) => {
 };
 
 const CheckboxGroup = ({
-    row = false,
-    options,
     children,
-    tooltip,
-    label,
     disabled,
+    label,
+    options,
+    row = false,
+    tooltip,
     ...props
 }: CheckboxGroupProps) => {
     const checkboxOptions = options?.map(({ value, ...rest }) => (
-        <Checkbox key={value} value={value} disabled={disabled} {...rest} />
+        <Checkbox disabled={disabled} key={value} value={value} {...rest} />
     ));
     return (
         <MantineCheckbox.Group

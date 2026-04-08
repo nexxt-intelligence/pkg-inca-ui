@@ -1,22 +1,23 @@
-import {
-    SplitPaneModal,
-    SplitPaneModalContent,
-    SplitPaneModalActions
-} from './index';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
 import Button from '../ui/Button';
 import Icon from '../ui/Icon';
+import {
+    SplitPaneModal,
+    SplitPaneModalActions,
+    SplitPaneModalContent
+} from './index';
 
 export default {
-    title: 'Components/SplitPaneModal',
-    component: SplitPaneModal,
     argTypes: {
-        isClosable: { control: 'boolean' },
-        isBlurred: { control: 'boolean' },
+        body: { control: 'text' },
         header: { control: 'text' },
-        body: { control: 'text' }
-    }
+        isBlurred: { control: 'boolean' },
+        isClosable: { control: 'boolean' }
+    },
+    component: SplitPaneModal,
+    title: 'Components/SplitPaneModal'
 } as Meta<typeof SplitPaneModal>;
 
 const SplitPaneModalStory = (args: any) => {
@@ -26,20 +27,20 @@ const SplitPaneModalStory = (args: any) => {
             <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
             <SplitPaneModal
                 {...args}
+                body="Configure your application settings"
+                header="Settings"
+                icon={<Icon color="blue" size="lg" type="IconSettings" />}
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
-                icon={<Icon type="IconSettings" size="lg" color="blue" />}
-                header="Settings"
-                body="Configure your application settings"
             >
                 <SplitPaneModalContent
-                    header="General Settings"
                     body="Adjust your preferences"
+                    header="General Settings"
                 >
                     <SplitPaneModalActions>
                         <Button
-                            variant="default"
                             onClick={() => setIsOpen(false)}
+                            variant="default"
                         >
                             Cancel
                         </Button>
@@ -52,6 +53,6 @@ const SplitPaneModalStory = (args: any) => {
 };
 
 export const Primary: StoryObj<typeof SplitPaneModal> = {
-    render: (args) => <SplitPaneModalStory {...args} />,
-    args: { isClosable: true, isBlurred: true }
+    args: { isBlurred: true, isClosable: true },
+    render: (args) => <SplitPaneModalStory {...args} />
 };

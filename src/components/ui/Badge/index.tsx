@@ -1,25 +1,26 @@
-import * as React from 'react';
 import {
     Badge as MantineBadge,
     BadgeProps as MantineBadgeProps
 } from '@mantine/core';
+import * as React from 'react';
+
 import classes from './Badge.module.css';
 
-type BadgeProps = MantineBadgeProps & {
+type BadgeProps = {
     children: React.ReactNode;
-};
+} & MantineBadgeProps;
 
 export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
     return (
         <MantineBadge
             className={classes.badge}
-            data-size={size}
             classNames={{
                 leftSection: classes.leftSection,
                 root: classes.root
             }}
-            size={size}
+            data-size={size}
             fw={600}
+            size={size}
             {...props}
         >
             {children}

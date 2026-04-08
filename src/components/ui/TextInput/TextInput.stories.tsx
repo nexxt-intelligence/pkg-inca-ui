@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import TextInput from './index';
 
 export default {
-    title: 'UI/Inputs/TextInput',
-    component: TextInput,
     argTypes: {
-        label: { control: 'text' },
-        placeholder: { control: 'text' },
-        tooltip: { control: 'text' },
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        error: { control: 'text' },
         icon: {
             control: 'select',
             options: [
@@ -18,16 +19,16 @@ export default {
                 'IconLock'
             ]
         },
-        disabled: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
-        },
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
         readOnly: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        error: { control: 'text' }
-    }
+        tooltip: { control: 'text' }
+    },
+    component: TextInput,
+    title: 'UI/Inputs/TextInput'
 } as Meta<typeof TextInput>;
 
 export const Primary: StoryObj<typeof TextInput> = {
@@ -39,8 +40,8 @@ export const Primary: StoryObj<typeof TextInput> = {
 
 export const WithIcon: StoryObj<typeof TextInput> = {
     args: {
+        icon: 'IconSearch',
         label: 'Search',
-        placeholder: 'Type to search...',
-        icon: 'IconSearch'
+        placeholder: 'Type to search...'
     }
 };

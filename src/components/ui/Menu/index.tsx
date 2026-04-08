@@ -1,38 +1,38 @@
-import * as React from 'react';
-
 import {
     Menu as MantineMenu,
-    MenuProps as MantineMenuProps,
-    MenuItemProps as MantineMenuItemProps
+    MenuItemProps as MantineMenuItemProps,
+    MenuProps as MantineMenuProps
 } from '@mantine/core';
+import * as React from 'react';
+
 import Text from '../Text';
 import classes from './Menu.module.css';
 
 export type MenuItem = {
-    label: string;
     disabled?: boolean;
+    label: string;
     onClick?: () => void;
 } & MantineMenuItemProps;
 
-export type MenuProps = MantineMenuProps & {
+export type MenuProps = {
     items?: MenuItem[];
     menuContent?: React.ReactNode;
-};
+} & MantineMenuProps;
 
-function Menu({ items, menuContent, children, ...props }: MenuProps) {
+function Menu({ children, items, menuContent, ...props }: MenuProps) {
     return (
         <MantineMenu
             classNames={{
                 dropdown: classes.dropdown,
                 item: classes.item
             }}
-            withinPortal
             closeOnClickOutside={true}
             closeOnEscape
             closeOnItemClick
             position="bottom"
-            zIndex={1000}
             radius="sm"
+            withinPortal
+            zIndex={1000}
             {...props}
         >
             <MantineMenu.Target>

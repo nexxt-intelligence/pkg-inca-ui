@@ -2,23 +2,24 @@ import {
     TextInput as MantineTextInput,
     TextInputProps as MantineTextInputProps
 } from '@mantine/core';
-import Label from '../Label';
-import Icon, { TablerIconKeys } from '../Icon';
-import classes from './TextInput.module.css';
 import { ReactNode } from 'react';
 
+import Icon, { TablerIconKeys } from '../Icon';
+import Label from '../Label';
+import classes from './TextInput.module.css';
+
 export interface TextInputProps extends MantineTextInputProps {
-    tooltip?: string;
-    icon?: TablerIconKeys | ReactNode;
+    icon?: ReactNode | TablerIconKeys;
     readOnly?: boolean;
+    tooltip?: string;
 }
 
 const TextInput = ({
-    label,
-    tooltip,
     icon,
-    variant = 'default',
+    label,
     readOnly,
+    tooltip,
+    variant = 'default',
     ...props
 }: TextInputProps) => {
     return (
@@ -27,6 +28,8 @@ const TextInput = ({
                 input: classes.textInput,
                 required: classes.textInputRequired
             }}
+            data-readonly={readOnly}
+            data-variant={variant}
             icon={
                 typeof icon === 'string' ? (
                     <Icon type={icon as TablerIconKeys} />
@@ -34,11 +37,9 @@ const TextInput = ({
                     icon
                 )
             }
-            data-variant={variant}
-            variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             readOnly={readOnly}
-            data-readonly={readOnly}
+            variant={variant}
             {...props}
         />
     );

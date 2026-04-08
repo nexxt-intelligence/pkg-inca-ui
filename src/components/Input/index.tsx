@@ -1,50 +1,54 @@
 import {
-    TextInput as MantineTextInput,
     NumberInput as MantineNumberInput,
     PasswordInput as MantinePasswordInput,
-    TextInputProps,
+    TextInput as MantineTextInput,
     NumberInputProps,
-    PasswordInputProps
+    PasswordInputProps,
+    TextInputProps
 } from '@mantine/core';
+
+import Icon from '../ui/Icon';
 import Tooltip from '../ui/Tooltip';
 import classes from './Input.module.css';
-import Icon from '../ui/Icon';
 
 export interface InputProps {
-    tooltip?: string;
-    multilineTooltip?: boolean;
     leftFilledSection?: React.ReactNode;
+    multilineTooltip?: boolean;
     rightFilledSection?: React.ReactNode;
+    tooltip?: string;
     variant?: string;
 }
 
 const Input = ({
-    label,
-    tooltip,
-    multilineTooltip,
     icon,
+    label,
     leftFilledSection,
+    multilineTooltip,
     rightFilledSection,
     rightSection,
+    tooltip,
     type = 'text',
     variant = 'default',
     ...props
 }: InputProps & TextInputProps) => {
     const commonProps = {
         classNames: {
-            rightSection: rightFilledSection ? classes.rightFilledSection : '',
-            icon: leftFilledSection ? classes.leftFilledSection : '',
-            label: classes.inputLabel,
-            input: classes.input,
-            wrapper: classes.inputWrapper,
             description: classes.description,
-            error: classes.error
+            error: classes.error,
+            icon: leftFilledSection ? classes.leftFilledSection : '',
+            input: classes.input,
+            label: classes.inputLabel,
+            rightSection: rightFilledSection ? classes.rightFilledSection : '',
+            wrapper: classes.inputWrapper
         },
+        'data-left-section': Boolean(leftFilledSection),
+        'data-right-section': Boolean(rightFilledSection),
+        icon: leftFilledSection || icon,
         label: tooltip ? (
             <span className={classes.tooltipIcon}>
                 {label}
                 <Tooltip label={tooltip} multiline={multilineTooltip}>
-                    <Icon type="IconHelpCircleFilled" size="md" />
+                    <Icon size="md" type="IconHelpCircleFilled" />
                 </Tooltip>
             </span>
         ) : (
@@ -53,9 +57,6 @@ const Input = ({
         labelProps: {
             fw: 400
         },
-        'data-left-section': Boolean(leftFilledSection),
-        'data-right-section': Boolean(rightFilledSection),
-        icon: leftFilledSection || icon,
         rightSection: rightFilledSection || rightSection,
         ...props
     };

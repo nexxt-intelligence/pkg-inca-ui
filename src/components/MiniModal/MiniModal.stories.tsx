@@ -1,14 +1,15 @@
-import { MiniModal, MiniModalContent, MiniModalActions } from './index';
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
 import Button from '../ui/Button';
+import { MiniModal, MiniModalActions, MiniModalContent } from './index';
 
 export default {
-    title: 'Components/MiniModal',
-    component: MiniModal,
     argTypes: {
         isClosable: { control: 'boolean' }
-    }
+    },
+    component: MiniModal,
+    title: 'Components/MiniModal'
 } as Meta<typeof MiniModal>;
 
 const MiniModalStory = (args: any) => {
@@ -22,13 +23,13 @@ const MiniModalStory = (args: any) => {
                 onClose={() => setIsOpen(false)}
             >
                 <MiniModalContent
-                    header="Modal Title"
                     body="Modal body content."
+                    header="Modal Title"
                 >
                     <MiniModalActions>
                         <Button
-                            variant="default"
                             onClick={() => setIsOpen(false)}
+                            variant="default"
                         >
                             Cancel
                         </Button>
@@ -43,6 +44,6 @@ const MiniModalStory = (args: any) => {
 };
 
 export const Primary: StoryObj<typeof MiniModal> = {
-    render: (args) => <MiniModalStory {...args} />,
-    args: { isClosable: true }
+    args: { isClosable: true },
+    render: (args) => <MiniModalStory {...args} />
 };

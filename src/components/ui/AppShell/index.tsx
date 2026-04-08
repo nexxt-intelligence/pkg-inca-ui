@@ -1,38 +1,39 @@
 import {
+    Burger,
+    Footer,
+    Group,
     AppShell as MantineAppShell,
     AppShellProps as MantineAppShellProps,
+    NavLinkProps as MantineNavLinkProps,
     Navbar,
     NavLink,
-    NavLinkProps as MantineNavLinkProps,
-    Footer,
-    Burger,
-    Title,
     Stack,
-    Group
+    Title
 } from '@mantine/core';
-import classes from './AppShell.module.css';
+
 import Icon from '../Icon';
 import Text from '../Text';
+import classes from './AppShell.module.css';
 
 export interface AppShellProps extends MantineAppShellProps {
-    navLinkItems: NavLinkItem[];
     activeLink: string;
-    setActiveLink: (url: string) => void;
-    isMobile: boolean;
-    isNavbarOpen: boolean;
-    toggleNavbar: () => void;
-    signOut: () => void;
-    openFeedback?: () => void;
-    openHelp?: () => void;
-    userFirstName?: string;
-    userProfilePicture?: string;
-    manageProfileUrl?: string;
-    isFixedHeader?: boolean;
+    headerBadge?: React.ReactNode;
+    headerBottomContent?: React.ReactNode;
+    headerRightContent?: React.ReactNode;
     headerSubtitle?: string;
     headerTitle?: string; // TODO: revert back to required
-    headerBadge?: React.ReactNode;
-    headerRightContent?: React.ReactNode;
-    headerBottomContent?: React.ReactNode;
+    isFixedHeader?: boolean;
+    isMobile: boolean;
+    isNavbarOpen: boolean;
+    manageProfileUrl?: string;
+    navLinkItems: NavLinkItem[];
+    openFeedback?: () => void;
+    openHelp?: () => void;
+    setActiveLink: (url: string) => void;
+    signOut: () => void;
+    toggleNavbar: () => void;
+    userFirstName?: string;
+    userProfilePicture?: string;
 }
 
 export interface NavLinkItem extends MantineNavLinkProps {
@@ -43,67 +44,68 @@ export interface NavLinkItem extends MantineNavLinkProps {
 
 const AppShell = ({ ...props }: AppShellProps) => {
     const {
-        navLinkItems,
         activeLink,
-        setActiveLink,
+        children,
+        headerBadge,
+        headerBottomContent,
+        headerRightContent,
+        headerSubtitle,
+        headerTitle,
+        isFixedHeader = false,
         isMobile,
         isNavbarOpen,
-        toggleNavbar,
-        signOut,
+        manageProfileUrl,
+        navLinkItems,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         openFeedback,
         openHelp,
+        setActiveLink,
+        signOut,
+        toggleNavbar,
         userFirstName,
         userProfilePicture,
-        manageProfileUrl,
-        headerSubtitle,
-        headerTitle,
-        headerBadge,
-        headerRightContent,
-        headerBottomContent,
-        isFixedHeader = false,
-        children,
         ...mantineAppShellProps
     } = props;
 
     const navLinkBottomItems = [
         openHelp && {
+            icon: <Icon size="md" type="IconHelp" />,
             label: 'Help',
-            onClick: openHelp,
-            icon: <Icon type="IconHelp" size="md" />
+            onClick: openHelp
         },
         (userFirstName || userProfilePicture) && {
-            label: userFirstName ? userFirstName : 'Profile',
-            onClick: () => setActiveLink(manageProfileUrl || '/manage-profile'),
             icon: userProfilePicture ? (
                 <span className={classes.userProfilePictureContainer}>
                     <img
-                        src={userProfilePicture}
                         className={classes.userProfilePicture}
+                        src={userProfilePicture}
                     />
                 </span>
             ) : (
-                <Icon type="IconUserCircle" size="md" />
-            )
+                <Icon size="md" type="IconUserCircle" />
+            ),
+            label: userFirstName ? userFirstName : 'Profile',
+            onClick: () => setActiveLink(manageProfileUrl || '/manage-profile')
         },
         {
+            icon: <Icon size="md" type="IconLogout" />,
             label: 'Logout',
-            onClick: signOut,
-            icon: <Icon type="IconLogout" size="md" />
+            onClick: signOut
         }
     ].filter(Boolean) as NavLinkItem[];
 
     const renderNavLinks = (item: NavLinkItem[]) => {
         return item.map(
-            ({ label, disabled, icon, healthIcon, url, onClick }) => (
+            ({ disabled, healthIcon, icon, label, onClick, url }) => (
                 <NavLink
-                    key={String(label)}
+                    active={url ? activeLink === url.split('?')[0] : undefined}
                     classNames={{
-                        root: classes.navLinkRoot,
+                        body: classes.navLinkBody,
                         icon: classes.navLinkIcon,
                         label: classes.navLinkLabel,
-                        body: classes.navLinkBody
+                        root: classes.navLinkRoot
                     }}
+                    disabled={disabled}
                     icon={
                         healthIcon ? (
                             <>
@@ -114,9 +116,8 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             icon
                         )
                     }
+                    key={String(label)}
                     label={label}
-                    active={url ? activeLink === url.split('?')[0] : undefined}
-                    disabled={disabled}
                     onClick={() => {
                         if (onClick) {
                             onClick();
@@ -131,21 +132,40 @@ const AppShell = ({ ...props }: AppShellProps) => {
 
     return (
         <MantineAppShell
-            layout={!isMobile ? 'alt' : 'default'}
-            navbarOffsetBreakpoint={isNavbarOpen ? '' : 'md'}
             classNames={{
-                root: classes.appShellRoot,
-                main: classes.appShellMain
+                main: classes.appShellMain,
+                root: classes.appShellRoot
             }}
             data-fixed={isFixedHeader}
             data-mobile={isMobile}
+            footer={
+                <Footer
+                    className={classes.footer}
+                    height={32}
+                    withBorder={false}
+                    zIndex={1}
+                >
+                    <a
+                        className="by-logo"
+                        href="https://nexxt.in"
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                        <img
+                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
+                            width={200}
+                        />
+                    </a>
+                </Footer>
+            }
+            layout={!isMobile ? 'alt' : 'default'}
             navbar={
                 <Navbar
                     className={`${classes.navbar} ${
                         isNavbarOpen ? '' : classes.hidden
                     } `}
-                    width={{ base: 85 }}
                     height={'auto'}
+                    width={{ base: 85 }}
                 >
                     <Navbar.Section>
                         <div
@@ -154,9 +174,9 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             }`}
                         >
                             <img
-                                width="30"
                                 height="30"
                                 src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
+                                width="30"
                             />
                         </div>
                     </Navbar.Section>
@@ -168,26 +188,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     </Navbar.Section>
                 </Navbar>
             }
-            footer={
-                <Footer
-                    height={32}
-                    className={classes.footer}
-                    withBorder={false}
-                    zIndex={1}
-                >
-                    <a
-                        className="by-logo"
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://nexxt.in"
-                    >
-                        <img
-                            width={200}
-                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
-                        />
-                    </a>
-                </Footer>
-            }
+            navbarOffsetBreakpoint={isNavbarOpen ? '' : 'md'}
             {...mantineAppShellProps}
         >
             <header className={headerTitle ? classes.header : ''}>
@@ -195,31 +196,31 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     {isMobile && (
                         <div className={classes.mobileHeader}>
                             <Burger
-                                opened={isNavbarOpen}
-                                onClick={toggleNavbar}
-                                size="sm"
                                 className={classes.burger}
+                                onClick={toggleNavbar}
+                                opened={isNavbarOpen}
+                                size="sm"
                             />
                             <span className={classes.fullLogo}>
                                 <img
-                                    width="26"
                                     height="26"
                                     src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
+                                    width="26"
                                 />
                                 <img
-                                    width="76"
                                     height="32"
                                     src="https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_logo_text.png"
+                                    width="76"
                                 />
                             </span>
                         </div>
                     )}
-                    <Stack spacing={0} className={classes.headerContent}>
+                    <Stack className={classes.headerContent} spacing={0}>
                         <Group spacing="sm">
                             <Text
                                 className={classes.subtitle}
-                                size="md"
                                 fw={600}
+                                size="md"
                                 tt="uppercase"
                             >
                                 {headerSubtitle}

@@ -1,12 +1,20 @@
-import Tooltip from './index';
 import { Meta, StoryObj } from '@storybook/react';
+
 import Button from '../Button';
+import Tooltip from './index';
 
 export default {
-    title: 'UI/Overlays/Tooltip',
-    component: Tooltip,
     argTypes: {
+        disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         label: { control: 'text' },
+        multiline: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'true' } }
+        },
+        opened: { control: 'boolean' },
         position: {
             control: 'radio',
             options: ['top', 'bottom', 'left', 'right'],
@@ -15,17 +23,10 @@ export default {
         withArrow: {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
-        },
-        multiline: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'true' } }
-        },
-        opened: { control: 'boolean' },
-        disabled: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
         }
-    }
+    },
+    component: Tooltip,
+    title: 'UI/Overlays/Tooltip'
 } as Meta<typeof Tooltip>;
 
 export const Primary: StoryObj<typeof Tooltip> = {

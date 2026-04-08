@@ -1,32 +1,30 @@
-import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import Button from './index';
+import * as React from 'react';
+
 import { TablerIconKeys } from '../Icon';
+import Button from './index';
 
 const columnStyle: React.CSSProperties = {
+    alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     gap: 6
 };
 
-const labelStyle: React.CSSProperties = { fontSize: 11, color: '#868e96' };
+const labelStyle: React.CSSProperties = { color: '#868e96', fontSize: 11 };
 
 export default {
-    title: 'UI/Buttons/Button',
-    component: Button,
+    args: {
+        children: 'Button',
+        color: 'primary',
+        compact: false,
+        disabled: false,
+        loading: false,
+        size: 'sm',
+        variant: 'filled'
+    },
     argTypes: {
         children: { control: 'text' },
-        variant: {
-            control: 'radio',
-            options: ['filled', 'subtle', 'outline', 'default'],
-            table: { defaultValue: { summary: 'filled' } }
-        },
-        size: {
-            control: 'radio',
-            options: ['xs', 'sm', 'md'],
-            table: { defaultValue: { summary: 'sm' } }
-        },
         color: {
             control: 'radio',
             options: ['primary', 'green', 'yellow', 'red'],
@@ -37,10 +35,6 @@ export default {
             table: { defaultValue: { summary: 'false' } }
         },
         disabled: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
-        },
-        loading: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
@@ -55,6 +49,10 @@ export default {
                 'IconTrash'
             ]
         },
+        loading: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         rightIcon: {
             control: 'select',
             options: [
@@ -65,17 +63,20 @@ export default {
                 'IconSettings',
                 'IconTrash'
             ]
+        },
+        size: {
+            control: 'radio',
+            options: ['xs', 'sm', 'md'],
+            table: { defaultValue: { summary: 'sm' } }
+        },
+        variant: {
+            control: 'radio',
+            options: ['filled', 'subtle', 'outline', 'default'],
+            table: { defaultValue: { summary: 'filled' } }
         }
     },
-    args: {
-        children: 'Button',
-        variant: 'filled',
-        size: 'sm',
-        color: 'primary',
-        compact: false,
-        disabled: false,
-        loading: false
-    }
+    component: Button,
+    title: 'UI/Buttons/Button'
 } as Meta<typeof Button>;
 
 export const Primary: StoryObj<typeof Button> = {};
@@ -83,7 +84,7 @@ export const Primary: StoryObj<typeof Button> = {};
 export const Variants: StoryObj<typeof Button> = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
             {(['filled', 'subtle', 'outline', 'default'] as const).map(
                 (variant) => (
                     <div key={variant} style={columnStyle}>
@@ -101,7 +102,7 @@ export const Variants: StoryObj<typeof Button> = {
 export const Sizes: StoryObj<typeof Button> = {
     argTypes: { size: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
             {(['xs', 'sm', 'md'] as const).map((size) => (
                 <div key={size} style={columnStyle}>
                     <Button {...args} size={size}>
@@ -124,10 +125,10 @@ export const Colors: StoryObj<typeof Button> = {
             {(['filled', 'subtle', 'outline'] as const).map((variant) => (
                 <div
                     key={variant}
-                    style={{ display: 'flex', gap: 12, alignItems: 'center' }}
+                    style={{ alignItems: 'center', display: 'flex', gap: 12 }}
                 >
                     <span
-                        style={{ ...labelStyle, width: 48, textAlign: 'right' }}
+                        style={{ ...labelStyle, textAlign: 'right', width: 48 }}
                     >
                         {variant}
                     </span>
@@ -135,9 +136,9 @@ export const Colors: StoryObj<typeof Button> = {
                         (color) => (
                             <Button
                                 {...args}
+                                color={color}
                                 key={color}
                                 variant={variant}
-                                color={color}
                             >
                                 {color.charAt(0).toUpperCase() + color.slice(1)}
                             </Button>
@@ -158,22 +159,22 @@ export const WithIcons: StoryObj<typeof Button> = {
     render: (args) => {
         const iconCombos = [
             {
+                children: 'Add Item',
                 label: 'leftIcon',
                 leftIcon: 'IconPlus' as TablerIconKeys,
-                rightIcon: undefined,
-                children: 'Add Item'
+                rightIcon: undefined
             },
             {
+                children: 'Dropdown',
                 label: 'rightIcon',
                 leftIcon: undefined,
-                rightIcon: 'IconChevronDown' as TablerIconKeys,
-                children: 'Dropdown'
+                rightIcon: 'IconChevronDown' as TablerIconKeys
             },
             {
+                children: 'Send',
                 label: 'both',
                 leftIcon: 'IconSend' as TablerIconKeys,
-                rightIcon: 'IconChevronRight' as TablerIconKeys,
-                children: 'Send'
+                rightIcon: 'IconChevronRight' as TablerIconKeys
             }
         ] as const;
         return (
@@ -183,28 +184,28 @@ export const WithIcons: StoryObj<typeof Button> = {
                         <div
                             key={variant}
                             style={{
+                                alignItems: 'center',
                                 display: 'flex',
-                                gap: 12,
-                                alignItems: 'center'
+                                gap: 12
                             }}
                         >
                             <span
                                 style={{
                                     ...labelStyle,
-                                    width: 48,
-                                    textAlign: 'right'
+                                    textAlign: 'right',
+                                    width: 48
                                 }}
                             >
                                 {variant}
                             </span>
                             {iconCombos.map(
-                                ({ label, leftIcon, rightIcon, children }) => (
+                                ({ children, label, leftIcon, rightIcon }) => (
                                     <Button
                                         {...args}
                                         key={label}
-                                        variant={variant}
                                         leftIcon={leftIcon}
                                         rightIcon={rightIcon}
+                                        variant={variant}
                                     >
                                         {children}
                                     </Button>

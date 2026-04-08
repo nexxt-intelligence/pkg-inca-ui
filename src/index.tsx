@@ -1,91 +1,29 @@
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+
 import { theme } from './constants/theme';
 import './assets/global.css';
 
-/** Extended Mantine UI Components */
-export { default as Button, type ButtonProps } from './components/ui/Button';
-export {
-    default as ActionIcon,
-    type ActionIconProps
-} from './components/ui/ActionIcon';
-export {
-    default as CloseButton,
-    type CloseButtonProps
-} from './components/ui/CloseButton';
-
-export {
-    default as Checkbox,
-    type CheckboxProps,
-    type CheckboxGroupProps
-} from './components/ui/Checkbox';
-export {
-    default as Radio,
-    type RadioProps,
-    type RadioGroupProps
-} from './components/ui/Radio';
-export { default as Switch, type SwitchProps } from './components/ui/Switch';
-export { default as Tooltip, type TooltipProps } from './components/ui/Tooltip';
-
-export {
-    default as TextInput,
-    type TextInputProps
-} from './components/ui/TextInput';
-export {
-    default as TextArea,
-    type TextAreaProps
-} from './components/ui/TextArea';
-export {
-    default as NumberInput,
-    type NumberInputProps
-} from './components/ui/NumberInput';
-export {
-    default as SegmentedControl,
-    type SegmentedControlProps
-} from './components/ui/SegmentedControl';
-export { default as Label, type LabelProps } from './components/ui/Label';
-
-export { default as Select, type SelectProps } from './components/ui/Select';
-export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
-export { default as ColorInput } from './components/ui/ColorInput';
-export {
-    default as MultiSelect,
-    type MultiSelectProps
-} from './components/ui/MultiSelect';
-
-export { default as Tabs, type TabsProps } from './components/ui/Tabs';
-export { default as Alert, type AlertProps } from './components/ui/Alert';
 export {
     default as ActionCard,
     type ActionCardProps
 } from './components/ActionCard';
 export {
-    default as CollapsibleContainer,
-    type CollapsibleContainerProps
-} from './components/CollapsibleContainer';
-
-export {
     default as ChatInput,
     type ChatInputProps
 } from './components/ChatInput';
-
-export { default as AppShell } from './components/ui/AppShell';
-export { default as List, type ListProps } from './components/ui/List';
-export { default as Menu, type MenuProps } from './components/ui/Menu';
-export { default as Text } from './components/ui/Text';
-export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
-export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
-export { default as Badge } from './components/ui/Badge';
-export { default as Prism } from './components/ui/Prism';
-export { default as Modal } from './components/ui/Modal';
+export {
+    default as CollapsibleContainer,
+    type CollapsibleContainerProps
+} from './components/CollapsibleContainer';
 
 // TODO: Remove these
 export { default as Input, type InputProps } from './components/Input';
 /** UI Components from OLD inca ui */
 export {
     MiniModal,
-    MiniModalContent,
-    MiniModalActions
+    MiniModalActions,
+    MiniModalContent
 } from './components/MiniModal';
 export {
     SplitPaneModal,
@@ -93,10 +31,68 @@ export {
     SplitPaneModalContent
 } from './components/SplitPaneModal';
 
+/** Extended Mantine UI Components */
+export {
+    default as ActionIcon,
+    type ActionIconProps
+} from './components/ui/ActionIcon';
+export { default as Alert, type AlertProps } from './components/ui/Alert';
+export { default as AppShell } from './components/ui/AppShell';
+export { default as Badge } from './components/ui/Badge';
+export { default as Button, type ButtonProps } from './components/ui/Button';
+export {
+    default as Checkbox,
+    type CheckboxGroupProps,
+    type CheckboxProps
+} from './components/ui/Checkbox';
+export {
+    default as CloseButton,
+    type CloseButtonProps
+} from './components/ui/CloseButton';
+export { default as ColorInput } from './components/ui/ColorInput';
+export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
+export { default as Label, type LabelProps } from './components/ui/Label';
+export { default as List, type ListProps } from './components/ui/List';
+export { default as Menu, type MenuProps } from './components/ui/Menu';
+export { default as Modal } from './components/ui/Modal';
+export {
+    default as MultiSelect,
+    type MultiSelectProps
+} from './components/ui/MultiSelect';
+export {
+    default as NumberInput,
+    type NumberInputProps
+} from './components/ui/NumberInput';
+export { default as Prism } from './components/ui/Prism';
+export {
+    default as Radio,
+    type RadioGroupProps,
+    type RadioProps
+} from './components/ui/Radio';
+export {
+    default as SegmentedControl,
+    type SegmentedControlProps
+} from './components/ui/SegmentedControl';
+export { default as Select, type SelectProps } from './components/ui/Select';
+export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
+export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
+export { default as Switch, type SwitchProps } from './components/ui/Switch';
+export { default as Tabs, type TabsProps } from './components/ui/Tabs';
+export { default as Text } from './components/ui/Text';
+export {
+    default as TextArea,
+    type TextAreaProps
+} from './components/ui/TextArea';
+export {
+    default as TextInput,
+    type TextInputProps
+} from './components/ui/TextInput';
+export { default as Tooltip, type TooltipProps } from './components/ui/Tooltip';
+
 /** Constants */
 export * from './constants/theme';
 
-export { useConfirmationModal, type ConfirmationModalProps } from './hooks';
+export { type ConfirmationModalProps, useConfirmationModal } from './hooks';
 
 export const CustomMantineProvider = ({
     children

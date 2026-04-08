@@ -1,18 +1,18 @@
 import { Group, Stack } from '@mantine/core';
-import TextArea, { TextAreaProps } from '../ui/TextArea';
-import ActionIcon from '../ui/ActionIcon';
 
+import ActionIcon from '../ui/ActionIcon';
+import TextArea, { TextAreaProps } from '../ui/TextArea';
 import classes from './ChatInput.module.css';
 
 export interface ChatInputProps extends TextAreaProps {
-    handleSend: () => void;
     disabled?: boolean;
+    handleSend: () => void;
 }
 
 const ChatInput = ({
+    disabled,
     handleSend,
     placeholder,
-    disabled,
     ...props
 }: ChatInputProps) => {
     return (
@@ -21,20 +21,20 @@ const ChatInput = ({
             spacing={0}
         >
             <TextArea
-                variant="unstyled"
-                placeholder={placeholder}
                 disabled={disabled}
+                placeholder={placeholder}
+                variant="unstyled"
                 {...props}
             />
             <Group position="apart">
                 <Group spacing={0}>{/* future icons here? */}</Group>
                 <Group position="right" spacing={0}>
                     <ActionIcon
-                        icon="IconSend"
-                        variant="subtle"
                         color="blue"
-                        onClick={handleSend}
                         disabled={disabled}
+                        icon="IconSend"
+                        onClick={handleSend}
+                        variant="subtle"
                     />
                 </Group>
             </Group>

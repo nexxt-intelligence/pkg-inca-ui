@@ -2,29 +2,30 @@ import {
     ActionIcon as MantineActionIcon,
     ActionIconProps as MantineActionIconProps
 } from '@mantine/core';
+
 import Icon, { TablerIconKeys } from '../Icon';
 
 export interface ActionIconProps extends MantineActionIconProps {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     icon: TablerIconKeys;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const ActionIcon = ({
-    icon,
-    variant = 'filled',
     color = 'primary',
+    icon,
     size = 'sm',
+    variant = 'filled',
     ...props
 }: ActionIconProps) => {
     return (
         <MantineActionIcon
-            data-variant={variant}
-            variant={variant}
             color={color}
+            data-variant={variant}
             size={size}
+            variant={variant}
             {...props}
         >
-            <Icon type={icon} size={size} />
+            <Icon size={size} type={icon} />
         </MantineActionIcon>
     );
 };

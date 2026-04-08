@@ -1,28 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Input from './index';
 
 export default {
-    title: 'Components/Input',
-    component: Input,
     argTypes: {
-        label: { control: 'text' },
-        placeholder: { control: 'text' },
-        tooltip: { control: 'text' },
-        multilineTooltip: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
-        },
-        type: {
-            control: 'radio',
-            options: ['text', 'number', 'password'],
-            table: { defaultValue: { summary: 'text' } }
-        },
         disabled: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        error: { control: 'text' }
-    }
+        error: { control: 'text' },
+        label: { control: 'text' },
+        multilineTooltip: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        placeholder: { control: 'text' },
+        tooltip: { control: 'text' },
+        type: {
+            control: 'radio',
+            options: ['text', 'number', 'password'],
+            table: { defaultValue: { summary: 'text' } }
+        }
+    },
+    component: Input,
+    title: 'Components/Input'
 } as Meta<typeof Input>;
 
 export const Primary: StoryObj<typeof Input> = {
@@ -38,18 +39,18 @@ export const Types: StoryObj<typeof Input> = {
             {(['text', 'number', 'password'] as const).map((type) => (
                 <div
                     key={type}
-                    style={{ display: 'flex', alignItems: 'flex-end', gap: 12 }}
+                    style={{ alignItems: 'flex-end', display: 'flex', gap: 12 }}
                 >
                     <Input
                         label={type.charAt(0).toUpperCase() + type.slice(1)}
-                        type={type}
                         placeholder={`Enter ${type}`}
                         style={{ flex: 1 }}
+                        type={type}
                     />
                     <span
                         style={{
-                            fontSize: 11,
                             color: '#868e96',
+                            fontSize: 11,
                             paddingBottom: 8,
                             width: 48
                         }}

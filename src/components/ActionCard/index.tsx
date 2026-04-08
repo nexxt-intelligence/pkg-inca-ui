@@ -1,34 +1,35 @@
-import { Center, Stack, Button } from '@mantine/core';
+import { Button, Center, Stack } from '@mantine/core';
+
 import Icon, { TablerIconKeys } from '../ui/Icon';
 import Text from '../ui/Text';
 import classes from './ActionCard.module.css';
 
 export interface ActionCardProps {
-    title: string;
     description: string;
+    disabled?: boolean;
     icon: TablerIconKeys;
     onClick: () => void;
-    disabled?: boolean;
+    title: string;
 }
 
 const ActionCard = ({
-    title,
     description,
+    disabled,
     icon,
     onClick,
-    disabled
+    title
 }: ActionCardProps) => {
     return (
         <Button
             className={classes.root}
-            onClick={onClick}
-            disabled={disabled}
             classNames={{
                 label: classes.label
             }}
+            disabled={disabled}
+            onClick={onClick}
         >
             <Center h={340}>
-                <Stack spacing="xs" align="center">
+                <Stack align="center" spacing="xs">
                     <Icon size="36px" type={icon} />
                     <Text size="xl">{title}</Text>
                     <Text align="center" size="xs">

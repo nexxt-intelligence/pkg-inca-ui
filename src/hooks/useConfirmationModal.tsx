@@ -1,58 +1,59 @@
-import * as React from 'react';
 import { modals } from '@mantine/modals';
-import Text from '../components/ui/Text';
 import { OpenConfirmModal } from '@mantine/modals/lib/context';
+import * as React from 'react';
+
+import Text from '../components/ui/Text';
 
 export type ConfirmationModalProps = {
-    title: string;
-    confirmLabel?: string;
     cancelLabel?: string;
-    message?: string;
     children?: React.ReactNode;
+    confirmLabel?: string;
+    message?: string;
+    title: string;
 } & OpenConfirmModal;
 
 export const useConfirmationModal = () => {
     const showConfirmationModal = ({
-        title,
-        confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        children = <></>,
         centered = true,
+        children = <></>,
+        confirmLabel = 'Confirm',
+        title,
         ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
-                title,
+                centered,
                 children,
-                labels: { confirm: confirmLabel, cancel: cancelLabel },
+                groupProps: { mt: 'md', position: 'apart' },
+                labels: { cancel: cancelLabel, confirm: confirmLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
-                groupProps: { position: 'apart', mt: 'md' },
                 styles: { title: { fontWeight: 500 } },
-                centered,
+                title,
                 ...props
             });
         });
     };
 
     const showSimpleConfirmationModal = ({
-        title,
-        confirmLabel = 'Confirm',
         cancelLabel = 'Cancel',
-        message = '',
         centered = true,
+        confirmLabel = 'Confirm',
+        message = '',
+        title,
         ...props
     }: ConfirmationModalProps): Promise<boolean> => {
         return new Promise((resolve) => {
             modals.openConfirmModal({
-                title,
+                centered,
                 children: <Text>{message}</Text>,
-                labels: { confirm: confirmLabel, cancel: cancelLabel },
+                groupProps: { mt: 'md', position: 'apart' },
+                labels: { cancel: cancelLabel, confirm: confirmLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
-                groupProps: { position: 'apart', mt: 'md' },
                 styles: { title: { fontWeight: 500 } },
-                centered,
+                title,
                 ...props
             });
         });

@@ -3,18 +3,19 @@ import {
     MultiSelect as MantineMultiSelect,
     MultiSelectProps as MantineMultiSelectProps
 } from '@mantine/core';
+
 import Label from '../Label';
 import classes from './MultiSelect.module.css';
 
 export interface MultiSelectProps extends MantineMultiSelectProps {
-    tooltip?: string;
     loading?: boolean;
+    tooltip?: string;
 }
 
 const MultiSelect = ({
-    tooltip,
     label,
     loading,
+    tooltip,
     variant = 'default',
     withinPortal = true,
     ...props
@@ -22,12 +23,12 @@ const MultiSelect = ({
     return (
         <MantineMultiSelect
             classNames={{
-                values: classes.multiSelectValues,
-                input: classes.multiSelectInput
+                input: classes.multiSelectInput,
+                values: classes.multiSelectValues
             }}
+            data-variant={variant}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             variant={variant}
-            data-variant={variant}
             withinPortal={withinPortal}
             {...props}
             {...(loading

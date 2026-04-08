@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Button from '../components/ui/Button';
 import Text from '../components/ui/Text';
 import { useConfirmationModal } from './useConfirmationModal';
@@ -10,17 +11,17 @@ const ConfirmationModalDemo = () => {
     return (
         <div
             style={{
+                alignItems: 'flex-start',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 12,
-                alignItems: 'flex-start'
+                gap: 12
             }}
         >
             <Button
                 onClick={() =>
                     showSimpleConfirmationModal({
-                        title: 'Simple Confirmation',
-                        message: 'Are you sure?'
+                        message: 'Are you sure?',
+                        title: 'Simple Confirmation'
                     })
                 }
             >
@@ -29,8 +30,6 @@ const ConfirmationModalDemo = () => {
             <Button
                 onClick={() =>
                     showConfirmationModal({
-                        title: 'Complex Confirmation',
-                        confirmLabel: 'Submit',
                         cancelLabel: 'Go back',
                         children: (
                             <Text size="sm">
@@ -38,7 +37,9 @@ const ConfirmationModalDemo = () => {
                                 confirmation modal. You can put forms, selects,
                                 or any content here.
                             </Text>
-                        )
+                        ),
+                        confirmLabel: 'Submit',
+                        title: 'Complex Confirmation'
                     })
                 }
             >
@@ -49,8 +50,8 @@ const ConfirmationModalDemo = () => {
 };
 
 export default {
-    title: 'UI/Other Packages/useConfirmationModal',
-    component: ConfirmationModalDemo
+    component: ConfirmationModalDemo,
+    title: 'UI/Other Packages/useConfirmationModal'
 } as Meta<typeof ConfirmationModalDemo>;
 
 export const Primary: StoryObj<typeof ConfirmationModalDemo> = {

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Icon from '../ui/Icon';
 // TODO: temp component needs refactor
 import classes from './MiniModal.module.css';
-import Icon from '../ui/Icon';
 
 export function MiniModal({
-    isOpen,
+    children,
     isClosable = true,
-    onClose,
-    children
+    isOpen,
+    onClose
 }: any) {
     return isOpen ? (
         <div className={classes.miniModalOverlay}>
@@ -18,7 +18,7 @@ export function MiniModal({
                             className={classes.unstyledButton}
                             onClick={onClose}
                         >
-                            <Icon type="IconX" size="sm" />
+                            <Icon size="sm" type="IconX" />
                         </button>
                     ) : (
                         <span>&nbsp;</span>
@@ -30,7 +30,11 @@ export function MiniModal({
     ) : null;
 }
 
-export function MiniModalContent({ header, body, children }: any) {
+export function MiniModalActions({ children }: any) {
+    return <div className={classes.miniModalActions}>{children}</div>;
+}
+
+export function MiniModalContent({ body, children, header }: any) {
     return (
         <div className={classes.miniModalContent}>
             <div>
@@ -42,8 +46,4 @@ export function MiniModalContent({ header, body, children }: any) {
             </div>
         </div>
     );
-}
-
-export function MiniModalActions({ children }: any) {
-    return <div className={classes.miniModalActions}>{children}</div>;
 }

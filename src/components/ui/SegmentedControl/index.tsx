@@ -2,6 +2,7 @@ import {
     SegmentedControl as MantineSegmentedControl,
     SegmentedControlProps as MantineSegmentedControlProps
 } from '@mantine/core';
+
 import classes from './SegmentedControl.module.css';
 
 export type SegmentedControlProps = MantineSegmentedControlProps;

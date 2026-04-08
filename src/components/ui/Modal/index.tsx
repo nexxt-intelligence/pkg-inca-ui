@@ -1,10 +1,11 @@
-import React from 'react';
 import {
     Divider,
     Group,
     Modal as MantineModal,
     ModalProps as MantineModalProps
 } from '@mantine/core';
+import React from 'react';
+
 import Button from '../Button';
 import classes from './Modal.module.css';
 
@@ -16,20 +17,20 @@ export interface ModalProps extends MantineModalProps {
 }
 
 const Modal = ({
+    cancelLabel = 'Cancel',
     centered = true,
-    withCloseButton = true,
+    children,
     closeOnClickOutside = true,
     closeOnEscape = true,
-    cancelLabel = 'Cancel',
     confirmLabel = 'Done',
     footer,
     onClose,
-    children,
+    withCloseButton = true,
     ...props
 }: ModalProps) => {
     const defaultFooter = (
         <>
-            <Button variant="default" onClick={onClose}>
+            <Button onClick={onClose} variant="default">
                 {cancelLabel}
             </Button>
             <Button onClick={onClose}>{confirmLabel}</Button>
@@ -38,16 +39,16 @@ const Modal = ({
 
     return (
         <MantineModal
-            classNames={{ title: classes.title }}
             centered={centered}
-            withCloseButton={withCloseButton}
+            classNames={{ title: classes.title }}
             closeOnClickOutside={closeOnClickOutside}
             closeOnEscape={closeOnEscape}
             onClose={onClose}
+            withCloseButton={withCloseButton}
             {...props}
         >
             {children}
-            <Divider mt="md" mb="md" />
+            <Divider mb="md" mt="md" />
             <Group position="apart">{footer ?? defaultFooter}</Group>
         </MantineModal>
     );

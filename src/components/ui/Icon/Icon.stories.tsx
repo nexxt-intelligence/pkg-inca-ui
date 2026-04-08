@@ -1,10 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import Icon, { TablerIconKeys } from './index';
 
 export default {
-    title: 'UI/Data Display/Icon',
-    component: Icon,
     argTypes: {
+        color: {
+            control: 'select',
+            options: ['blue', 'red', 'green', 'gray', 'yellow', 'orange']
+        },
+        size: {
+            control: 'radio',
+            options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'sm' } }
+        },
         type: {
             control: 'select',
             options: [
@@ -18,42 +26,35 @@ export default {
                 'IconCheck',
                 'IconX'
             ]
-        },
-        size: {
-            control: 'radio',
-            options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
-            table: { defaultValue: { summary: 'sm' } }
-        },
-        color: {
-            control: 'select',
-            options: ['blue', 'red', 'green', 'gray', 'yellow', 'orange']
         }
-    }
+    },
+    component: Icon,
+    title: 'UI/Data Display/Icon'
 } as Meta<typeof Icon>;
 
 export const Primary: StoryObj<typeof Icon> = {
     args: {
-        type: 'IconHeart' as TablerIconKeys,
+        color: 'red',
         size: 'md',
-        color: 'red'
+        type: 'IconHeart' as TablerIconKeys
     }
 };
 
 export const AllSizes: StoryObj<typeof Icon> = {
     render: () => (
-        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
             {(['2xs', 'xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
                 <div
                     key={size}
                     style={{
+                        alignItems: 'center',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center',
                         gap: 6
                     }}
                 >
-                    <Icon type="IconHeart" size={size} color="red" />
-                    <span style={{ fontSize: 11, color: '#868e96' }}>
+                    <Icon color="red" size={size} type="IconHeart" />
+                    <span style={{ color: '#868e96', fontSize: 11 }}>
                         {size}
                     </span>
                 </div>

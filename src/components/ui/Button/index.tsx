@@ -2,28 +2,29 @@ import {
     Button as MantineButton,
     ButtonProps as MantineButtonProps
 } from '@mantine/core';
-import Icon, { TablerIconKeys } from '../Icon';
-import classes from './Button.module.css';
 import { clsx } from '@mantine/core';
 
+import Icon, { TablerIconKeys } from '../Icon';
+import classes from './Button.module.css';
+
 export interface ButtonProps extends MantineButtonProps {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     // TODO: remove react.element later so only string can be accepted
-    leftIcon?: TablerIconKeys | React.ReactElement;
-    rightIcon?: TablerIconKeys | React.ReactElement;
+    leftIcon?: React.ReactElement | TablerIconKeys;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    rightIcon?: React.ReactElement | TablerIconKeys;
 }
 
 const Button = ({
+    children,
+    className,
     color = 'primary',
     compact = false,
+    leftIcon,
     radius = 'sm',
+    rightIcon,
     size = 'sm',
     type = 'button',
     variant = 'filled',
-    leftIcon,
-    rightIcon,
-    children,
-    className,
     ...props
 }: ButtonProps) => {
     return (
@@ -39,24 +40,24 @@ const Button = ({
             data-compact={compact}
             data-size={size}
             data-variant={variant}
-            radius={radius}
-            size={size}
-            type={type}
-            variant={variant}
             leftIcon={
                 typeof leftIcon === 'string' ? (
-                    <Icon type={leftIcon} size={size} />
+                    <Icon size={size} type={leftIcon} />
                 ) : (
                     leftIcon
                 )
             }
+            radius={radius}
             rightIcon={
                 typeof rightIcon === 'string' ? (
-                    <Icon type={rightIcon} size={size} />
+                    <Icon size={size} type={rightIcon} />
                 ) : (
                     rightIcon
                 )
             }
+            size={size}
+            type={type}
+            variant={variant}
             {...props}
         >
             {children}

@@ -1,55 +1,56 @@
-import AppShell from './index';
 import { Meta, StoryObj } from '@storybook/react';
+
 import Icon from '../Icon';
+import AppShell from './index';
 
 export default {
-    title: 'UI/Layout/AppShell',
+    argTypes: {
+        activeLink: { control: 'text' },
+        headerSubtitle: { control: 'text' },
+        headerTitle: { control: 'text' },
+        isFixedHeader: { control: 'boolean' },
+        isMobile: { control: 'boolean' },
+        isNavbarOpen: { control: 'boolean' },
+        userFirstName: { control: 'text' },
+        userProfilePicture: { control: 'text' }
+    },
     component: AppShell,
     parameters: {
         layout: 'fullscreen'
     },
-    argTypes: {
-        activeLink: { control: 'text' },
-        isMobile: { control: 'boolean' },
-        isNavbarOpen: { control: 'boolean' },
-        userFirstName: { control: 'text' },
-        userProfilePicture: { control: 'text' },
-        headerTitle: { control: 'text' },
-        headerSubtitle: { control: 'text' },
-        isFixedHeader: { control: 'boolean' }
-    }
+    title: 'UI/Layout/AppShell'
 } as Meta<typeof AppShell>;
 
 const mockNavLinkItems = [
     {
+        icon: <Icon size="md" type="IconDashboard" />,
         label: 'Dashboard',
-        icon: <Icon type="IconDashboard" size="md" />,
         url: '/dashboard'
     },
     {
+        icon: <Icon size="md" type="IconFolder" />,
         label: 'Projects',
-        icon: <Icon type="IconFolder" size="md" />,
         url: '/projects'
     },
     {
+        icon: <Icon size="md" type="IconSettings" />,
         label: 'Settings',
-        icon: <Icon type="IconSettings" size="md" />,
         url: '/settings'
     }
 ];
 
 export const Primary: StoryObj<typeof AppShell> = {
     args: {
-        navLinkItems: mockNavLinkItems,
         activeLink: '/dashboard',
-        setActiveLink: (url: string) => console.log('Navigate to:', url),
+        children: <div style={{ padding: '20px' }}>Main content area</div>,
+        headerSubtitle: 'Hello, John!',
+        headerTitle: 'Dashboard',
         isMobile: false,
         isNavbarOpen: true,
-        toggleNavbar: () => console.log('Toggle navbar'),
+        navLinkItems: mockNavLinkItems,
+        setActiveLink: (url: string) => console.log('Navigate to:', url),
         signOut: () => console.log('Sign out'),
-        userFirstName: 'John',
-        headerTitle: 'Dashboard',
-        headerSubtitle: 'Hello, John!',
-        children: <div style={{ padding: '20px' }}>Main content area</div>
+        toggleNavbar: () => console.log('Toggle navbar'),
+        userFirstName: 'John'
     }
 };

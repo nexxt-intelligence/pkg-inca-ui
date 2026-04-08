@@ -2,25 +2,26 @@ import {
     Alert as MantineAlert,
     AlertProps as MantineAlertProps
 } from '@mantine/core';
-import Icon from '../Icon';
-import classes from './Alert.module.css';
 import { useState } from 'react';
 
+import Icon from '../Icon';
+import classes from './Alert.module.css';
+
 export interface AlertProps extends MantineAlertProps {
-    type?: 'warning' | 'info' | 'success' | 'danger' | 'ai';
-    hideIcon?: boolean;
-    open?: boolean;
     defaultOpen?: boolean;
+    hideIcon?: boolean;
     onClose?: () => void;
+    open?: boolean;
+    type?: 'ai' | 'danger' | 'info' | 'success' | 'warning';
 }
 
 const alertTypes = {
+    ai: {
+        color: 'violet',
+        icon: <Icon type="IconSparkles" />
+    },
     danger: {
         color: 'red',
-        icon: <Icon type="IconAlertTriangle" />
-    },
-    warning: {
-        color: 'yellow',
         icon: <Icon type="IconAlertTriangle" />
     },
     info: {
@@ -31,19 +32,19 @@ const alertTypes = {
         color: 'green',
         icon: <Icon type="IconCircleCheck" />
     },
-    ai: {
-        color: 'violet',
-        icon: <Icon type="IconSparkles" />
+    warning: {
+        color: 'yellow',
+        icon: <Icon type="IconAlertTriangle" />
     }
 };
 
 const Alert = ({
-    type = 'info',
     children,
-    hideIcon,
-    open: controlledOpen,
     defaultOpen = true,
+    hideIcon,
     onClose,
+    open: controlledOpen,
+    type = 'info',
     ...props
 }: AlertProps) => {
     const [internalOpen, setInternalOpen] = useState(defaultOpen);
@@ -64,14 +65,14 @@ const Alert = ({
 
     return (
         <MantineAlert
-            onClose={handleClose}
             classNames={{
-                root: hideIcon ? classes.alertRootHide : classes.alertRoot,
+                closeButton: classes.alertCloseButton,
                 icon: hideIcon ? classes.alertIconHide : classes.alertIcon,
-                title: classes.alertTitle,
                 message: classes.alertMessage,
-                closeButton: classes.alertCloseButton
+                root: hideIcon ? classes.alertRootHide : classes.alertRoot,
+                title: classes.alertTitle
             }}
+            onClose={handleClose}
             {...alertType}
             {...props}
         >

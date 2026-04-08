@@ -1,35 +1,36 @@
-import * as React from 'react';
 import {
     Tabs as MantineTabs,
     TabsProps as MantineTabsProps
 } from '@mantine/core';
+import * as React from 'react';
+
 import classes from './Tabs.module.css';
 
 export interface TabsProps extends MantineTabsProps {
+    children: React.ReactNode;
+    defaultValue?: string;
+    fullWidth?: boolean;
+    onTabChange?: (value: null | string) => void;
     tabs: {
+        disabled?: boolean;
         label: string;
         value: string;
-        disabled?: boolean;
     }[];
-    defaultValue?: string;
-    value?: string | null;
-    onTabChange?: (value: string | null) => void;
-    children: React.ReactNode;
-    fullWidth?: boolean;
-    variant?: 'default' | 'outline' | 'pills' | 'contained';
+    value?: null | string;
+    variant?: 'contained' | 'default' | 'outline' | 'pills';
 }
 
 const Tabs = ({
+    children,
     tabs,
     defaultValue = tabs[0].value,
-    value: controlledValue,
+    fullWidth,
     onTabChange: controlledOnTabChange,
-    children,
-    variant = 'default',
-    fullWidth
+    value: controlledValue,
+    variant = 'default'
 }: TabsProps) => {
     /** Had to go with controlled tabs because of interference with React-tab in portal-client */
-    const [activeTab, setActiveTab] = React.useState<string | null>(
+    const [activeTab, setActiveTab] = React.useState<null | string>(
         defaultValue
     );
 
@@ -37,7 +38,7 @@ const Tabs = ({
     const currentValue =
         controlledValue !== undefined ? controlledValue : activeTab;
 
-    const handleTabChange = (value: string | null) => {
+    const handleTabChange = (value: null | string) => {
         // If controlled, call the parent's handler
         if (controlledOnTabChange) controlledOnTabChange(value);
 
@@ -48,22 +49,22 @@ const Tabs = ({
     return (
         <div onClick={(e) => e.stopPropagation()}>
             <MantineTabs
-                value={currentValue}
-                onTabChange={handleTabChange}
                 classNames={{
+                    panel: classes.panel,
                     tab: classes.tab,
-                    tabsList: classes.tabsList,
-                    panel: classes.panel
+                    tabsList: classes.tabsList
                 }}
-                variant={variant}
                 data-variant={variant}
+                onTabChange={handleTabChange}
+                value={currentValue}
+                variant={variant}
             >
                 <MantineTabs.List grow={fullWidth}>
                     {tabs.map((tab) => (
                         <MantineTabs.Tab
+                            disabled={tab.disabled}
                             key={tab.value}
                             value={tab.value}
-                            disabled={tab.disabled}
                         >
                             {tab.label}
                         </MantineTabs.Tab>

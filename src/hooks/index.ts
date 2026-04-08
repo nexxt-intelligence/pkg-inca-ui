@@ -1,4 +1,4 @@
 export {
-    useConfirmationModal,
-    type ConfirmationModalProps
+    type ConfirmationModalProps,
+    useConfirmationModal
 } from './useConfirmationModal';

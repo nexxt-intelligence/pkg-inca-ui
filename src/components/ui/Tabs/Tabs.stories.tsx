@@ -1,20 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Tabs from './index';
 
 export default {
-    title: 'UI/Navigation/Tabs',
-    component: Tabs,
     argTypes: {
+        fullWidth: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         variant: {
             control: 'radio',
             options: ['default', 'outline', 'pills', 'contained'],
             table: { defaultValue: { summary: 'default' } }
-        },
-        fullWidth: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
         }
-    }
+    },
+    component: Tabs,
+    title: 'UI/Navigation/Tabs'
 } as Meta<typeof Tabs>;
 
 const tabs = [
@@ -25,13 +26,13 @@ const tabs = [
 
 const panels = (
     <>
-        <Tabs.Panel value="first" pt="xs">
+        <Tabs.Panel pt="xs" value="first">
             First tab content
         </Tabs.Panel>
-        <Tabs.Panel value="second" pt="xs">
+        <Tabs.Panel pt="xs" value="second">
             Second tab content
         </Tabs.Panel>
-        <Tabs.Panel value="third" pt="xs">
+        <Tabs.Panel pt="xs" value="third">
             Third tab content
         </Tabs.Panel>
     </>
@@ -39,9 +40,9 @@ const panels = (
 
 export const Default: StoryObj<typeof Tabs> = {
     args: {
-        tabs,
+        children: panels,
         defaultValue: 'first',
-        children: panels
+        tabs
     }
 };
 
@@ -53,16 +54,16 @@ export const Variants: StoryObj<typeof Tabs> = {
                     <div key={variant}>
                         <p
                             style={{
-                                fontSize: 11,
                                 color: '#868e96',
+                                fontSize: 11,
                                 marginBottom: 8
                             }}
                         >
                             {variant}
                         </p>
                         <Tabs
-                            tabs={tabs}
                             defaultValue="first"
+                            tabs={tabs}
                             variant={variant}
                         >
                             {panels}

@@ -1,44 +1,45 @@
-import * as React from 'react';
 import { Accordion, AccordionProps, Stack } from '@mantine/core';
-import Tooltip from '../ui/Tooltip';
+import * as React from 'react';
+
 import Icon from '../ui/Icon';
-import classes from './CollapsibleContainer.module.css';
 import Text from '../ui/Text';
+import Tooltip from '../ui/Tooltip';
+import classes from './CollapsibleContainer.module.css';
 
 export interface CollapsibleContainerProps extends AccordionProps {
-    title: string;
     children: React.ReactNode;
     defaultOpen?: boolean;
+    description?: string;
+    title: string;
     tooltip?: string;
     tooltipType?: 'info' | 'warning';
-    description?: string;
 }
 
 const CollapsibleContainer = ({
-    title,
     children,
     defaultOpen = true,
+    description,
+    title,
     tooltip,
-    tooltipType = 'info',
-    description
+    tooltipType = 'info'
 }: CollapsibleContainerProps) => {
     const defaultValue = defaultOpen ? title : null;
 
     return (
         <Accordion
-            defaultValue={defaultValue}
-            variant="contained"
             classNames={{
-                item: classes.item,
                 content: classes.content,
-                panel: classes.panel,
                 control: classes.control,
-                label: classes.label
+                item: classes.item,
+                label: classes.label,
+                panel: classes.panel
             }}
+            defaultValue={defaultValue}
             multiple={false}
+            variant="contained"
             w={'100%'}
         >
-            <Accordion.Item value={title} data-tooltiptype={tooltipType}>
+            <Accordion.Item data-tooltiptype={tooltipType} value={title}>
                 <Accordion.Control>
                     <Stack spacing={0}>
                         <span className={classes.title}>
@@ -47,16 +48,16 @@ const CollapsibleContainer = ({
                                 <Tooltip label={tooltip}>
                                     {tooltipType === 'info' && (
                                         <Icon
-                                            type="IconHelp"
-                                            size="sm"
                                             color="gray"
+                                            size="sm"
+                                            type="IconHelp"
                                         />
                                     )}
                                     {tooltipType === 'warning' && (
                                         <Icon
-                                            type="IconAlertTriangle"
-                                            size="sm"
                                             color="var(--mantine-color-yellow-6)"
+                                            size="sm"
+                                            type="IconAlertTriangle"
                                         />
                                     )}
                                 </Tooltip>

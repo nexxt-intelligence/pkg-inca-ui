@@ -1,16 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Select from './index';
-import QuestionSelectItem from './SelectItem/QuestionSelectItem';
 import FontSelectItem from './SelectItem/FontSelectItem';
+import QuestionSelectItem from './SelectItem/QuestionSelectItem';
 
 export default {
-    title: 'UI/Inputs/Select',
-    component: Select,
     argTypes: {
-        label: { control: 'text' },
-        placeholder: { control: 'text' },
-        tooltip: { control: 'text' },
-        loading: {
+        clearable: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
@@ -18,80 +14,81 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
+        error: { control: 'text' },
+        label: { control: 'text' },
+        loading: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        placeholder: { control: 'text' },
+
         required: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        error: { control: 'text' },
         searchable: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        clearable: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
-        },
-        size: {
-            control: 'radio',
-            options: ['xs', 'sm', 'md', 'lg', 'xl'],
-            table: { defaultValue: { summary: 'sm' } }
-        }
-    }
+        tooltip: { control: 'text' }
+    },
+    component: Select,
+    title: 'UI/Inputs/Select'
 } as Meta<typeof Select>;
 
 export const Primary: StoryObj<typeof Select> = {
     args: {
-        label: 'Select an option',
-        placeholder: 'Pick a value',
         data: [
-            { value: 'react', label: 'React' },
-            { value: 'vue', label: 'Vue' },
-            { value: 'angular', label: 'Angular' },
-            { value: 'svelte', label: 'Svelte' }
-        ]
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            { label: 'Svelte', value: 'svelte' }
+        ],
+        label: 'Select an option',
+        placeholder: 'Pick a value'
     }
 };
 
 export const WithQuestionSelectItem: StoryObj<typeof Select> = {
-    name: 'Custom Item — QuestionSelectItem',
     args: {
-        label: 'Select a question',
-        placeholder: 'Pick a question',
-        itemComponent: QuestionSelectItem,
         data: [
             {
-                value: 'q1',
+                imageUrl: 'https://i.pravatar.cc/24?img=1',
                 label: 'What is your age?',
                 title: 'Age',
-                imageUrl: 'https://i.pravatar.cc/24?img=1'
+                value: 'q1'
             },
             {
-                value: 'q2',
+                imageUrl: 'https://i.pravatar.cc/24?img=2',
                 label: 'What is your occupation?',
                 title: 'Occupation',
-                imageUrl: 'https://i.pravatar.cc/24?img=2'
+                value: 'q2'
             },
             {
-                value: 'q3',
+                imageUrl: 'https://i.pravatar.cc/24?img=3',
                 label: 'What is your income?',
                 title: 'Income',
-                imageUrl: 'https://i.pravatar.cc/24?img=3'
+                value: 'q3'
             }
-        ] as any
-    }
+        ] as any,
+        itemComponent: QuestionSelectItem,
+        label: 'Select a question',
+        placeholder: 'Pick a question'
+    },
+    name: 'Custom Item — QuestionSelectItem'
 };
 
 export const WithFontSelectItem: StoryObj<typeof Select> = {
-    name: 'Custom Item — FontSelectItem',
     args: {
-        label: 'Select a font',
-        placeholder: 'Pick a font',
-        itemComponent: FontSelectItem,
         data: [
-            { value: 'Inter, sans-serif', label: 'Inter' },
-            { value: 'Georgia, serif', label: 'Georgia' },
-            { value: "'Courier New', monospace", label: 'Courier New' },
-            { value: 'Arial, sans-serif', label: 'Arial' }
-        ]
-    }
+            { label: 'Inter', value: 'Inter, sans-serif' },
+            { label: 'Georgia', value: 'Georgia, serif' },
+            { label: 'Courier New', value: "'Courier New', monospace" },
+            { label: 'Arial', value: 'Arial, sans-serif' }
+        ],
+        itemComponent: FontSelectItem,
+        label: 'Select a font',
+        placeholder: 'Pick a font'
+    },
+    name: 'Custom Item — FontSelectItem'
 };

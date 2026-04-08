@@ -1,31 +1,28 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import * as React from 'react';
+
 import Badge from './index';
 
 const columnStyle: React.CSSProperties = {
+    alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     gap: 6
 };
 
-const labelStyle: React.CSSProperties = { fontSize: 11, color: '#868e96' };
+const labelStyle: React.CSSProperties = { color: '#868e96', fontSize: 11 };
 
 export default {
-    title: 'UI/Data Display/Badge',
-    component: Badge,
+    args: {
+        children: 'Badge',
+        color: 'blue',
+        fullWidth: false,
+        size: 'md',
+        variant: 'filled'
+    },
     argTypes: {
         children: { control: 'text' },
-        variant: {
-            control: 'radio',
-            options: ['filled', 'light', 'outline', 'dot'],
-            table: { defaultValue: { summary: 'filled' } }
-        },
-        size: {
-            control: 'radio',
-            options: ['sm', 'md'],
-            table: { defaultValue: { summary: 'md' } }
-        },
         color: {
             control: 'select',
             options: ['blue', 'green', 'yellow', 'red', 'dark', 'violet'],
@@ -34,15 +31,20 @@ export default {
         fullWidth: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
+        },
+        size: {
+            control: 'radio',
+            options: ['sm', 'md'],
+            table: { defaultValue: { summary: 'md' } }
+        },
+        variant: {
+            control: 'radio',
+            options: ['filled', 'light', 'outline', 'dot'],
+            table: { defaultValue: { summary: 'filled' } }
         }
     },
-    args: {
-        children: 'Badge',
-        variant: 'filled',
-        color: 'blue',
-        size: 'md',
-        fullWidth: false
-    }
+    component: Badge,
+    title: 'UI/Data Display/Badge'
 } as Meta<typeof Badge>;
 
 export const Primary: StoryObj<typeof Badge> = {};
@@ -50,7 +52,7 @@ export const Primary: StoryObj<typeof Badge> = {};
 export const Variants: StoryObj<typeof Badge> = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
             {(['filled', 'light', 'outline', 'dot'] as const).map((variant) => (
                 <div key={variant} style={columnStyle}>
                     <Badge {...args} variant={variant}>
@@ -66,7 +68,7 @@ export const Variants: StoryObj<typeof Badge> = {
 export const Sizes: StoryObj<typeof Badge> = {
     argTypes: { size: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
             {(['sm', 'md'] as const).map((size) => (
                 <div key={size} style={columnStyle}>
                     <Badge {...args} size={size}>
@@ -82,7 +84,7 @@ export const Sizes: StoryObj<typeof Badge> = {
 export const Colors: StoryObj<typeof Badge> = {
     argTypes: { color: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
             {(
                 ['blue', 'green', 'yellow', 'red', 'dark', 'violet'] as const
             ).map((color) => (

@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Icon from '../ui/Icon';
 // TODO: temp component needs refactor
 import classes from './SplitPaneModal.module.css';
-import Icon from '../ui/Icon';
 
 export function SplitPaneModal({
-    isOpen,
-    isClosable = true,
-    icon,
-    header,
     body,
+    children,
+    header,
+    icon,
     isBlurred = true,
-    onClose,
-    children
+    isClosable = true,
+    isOpen,
+    onClose
 }: any) {
     return isOpen ? (
         <div
@@ -35,7 +35,7 @@ export function SplitPaneModal({
                                 className={classes.closeButton}
                                 onClick={onClose}
                             >
-                                <Icon type="IconX" size="sm" />
+                                <Icon size="sm" type="IconX" />
                             </button>
                         )}
                     </div>
@@ -46,7 +46,11 @@ export function SplitPaneModal({
     ) : null;
 }
 
-export function SplitPaneModalContent({ header, body, children }: any) {
+export function SplitPaneModalActions({ children }: any) {
+    return <div className={classes.actionsContainer}>{children}</div>;
+}
+
+export function SplitPaneModalContent({ body, children, header }: any) {
     return (
         <div className={classes.modalContentWrapper}>
             <div>
@@ -58,10 +62,6 @@ export function SplitPaneModalContent({ header, body, children }: any) {
             </div>
         </div>
     );
-}
-
-export function SplitPaneModalActions({ children }: any) {
-    return <div className={classes.actionsContainer}>{children}</div>;
 }
 
 export default SplitPaneModal;

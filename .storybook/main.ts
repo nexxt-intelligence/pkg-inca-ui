@@ -1,18 +1,31 @@
 import { dirname, join } from 'path';
 export default {
+    addons: [
+        getAbsolutePath('@storybook/addon-essentials'),
+        getAbsolutePath('@storybook/addon-links')
+    ],
+
+    core: {
+        builder: '@storybook/builder-vite'
+    },
+    docs: {
+        autodocs: true
+    },
+    framework: {
+        name: getAbsolutePath('@storybook/react-vite'),
+        options: {}
+    },
+
     stories: [
         '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'
         // '../src/**/*.mdx',
         // '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
     ],
 
-    addons: [
-        getAbsolutePath('@storybook/addon-essentials'),
-        getAbsolutePath('@storybook/addon-links')
-    ],
-    core: {
-        builder: '@storybook/builder-vite'
+    typescript: {
+        reactDocgen: 'react-docgen-typescript'
     },
+
     async viteFinal(config) {
         // Merge custom configuration into the default config
         const { mergeConfig } = await import('vite');
@@ -23,19 +36,6 @@ export default {
                 include: ['storybook-dark-mode']
             }
         });
-    },
-
-    framework: {
-        name: getAbsolutePath('@storybook/react-vite'),
-        options: {}
-    },
-
-    docs: {
-        autodocs: true
-    },
-
-    typescript: {
-        reactDocgen: 'react-docgen-typescript'
     }
 };
 

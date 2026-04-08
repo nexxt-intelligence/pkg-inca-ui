@@ -1,8 +1,8 @@
-import React from 'react';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
-import '../src/assets/global.css';
+import React from 'react';
 
+import '../src/assets/global.css';
 // import theme object you've exported in previous step
 import { theme } from '../src/constants/theme';
 
@@ -13,9 +13,9 @@ function ThemeWrapper(props: { children: React.ReactNode }) {
     return (
         <MantineProvider
             theme={theme}
+            withCSSVariables
             withGlobalStyles
             withNormalizeCSS
-            withCSSVariables
         >
             <ModalsProvider>{props.children}</ModalsProvider>
         </MantineProvider>
