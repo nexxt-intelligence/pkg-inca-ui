@@ -21,7 +21,10 @@ export default {
             table: { defaultValue: { summary: 'false' } }
         },
         placeholder: { control: 'text' },
-
+        readOnly: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         required: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }

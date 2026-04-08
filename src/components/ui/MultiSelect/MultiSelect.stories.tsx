@@ -20,6 +20,10 @@ export default {
         },
         maxSelectedValues: { control: 'number' },
         placeholder: { control: 'text' },
+        readOnly: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         required: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }

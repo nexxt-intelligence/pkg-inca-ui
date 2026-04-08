@@ -34,7 +34,7 @@ const NumberInput = ({
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             readOnly={readOnly}
-            variant={variant}
+            variant={readOnly ? 'unstyled' : variant}
             {...props}
         />
     );

@@ -6,7 +6,7 @@ import {
 
 import Icon, { TablerIconKeys } from '../Icon';
 import Label from '../Label';
-// import classes from './Select.module.css';
+import classes from './Select.module.css';
 
 export interface SelectProps extends MantineSelectProps {
     icon?: TablerIconKeys;
@@ -18,6 +18,7 @@ const Select = ({
     icon,
     label,
     loading,
+    readOnly,
     tooltip,
     variant = 'default',
     withinPortal = true,
@@ -25,10 +26,14 @@ const Select = ({
 }: SelectProps) => {
     return (
         <MantineSelect
-            data-variant={variant}
+            classNames={{
+                input: classes.selectInput
+            }}
+            data-readonly={readOnly}
             icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
-            variant={variant}
+            readOnly={readOnly}
+            variant={readOnly ? 'unstyled' : variant}
             withinPortal={withinPortal}
             {...props}
             {...(loading

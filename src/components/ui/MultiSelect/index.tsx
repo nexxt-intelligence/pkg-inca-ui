@@ -15,6 +15,7 @@ export interface MultiSelectProps extends MantineMultiSelectProps {
 const MultiSelect = ({
     label,
     loading,
+    readOnly,
     tooltip,
     variant = 'default',
     withinPortal = true,
@@ -24,11 +25,13 @@ const MultiSelect = ({
         <MantineMultiSelect
             classNames={{
                 input: classes.multiSelectInput,
+                searchInput: classes.multiSelectSearchInput,
                 values: classes.multiSelectValues
             }}
-            data-variant={variant}
+            data-readonly={readOnly}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
-            variant={variant}
+            readOnly={readOnly}
+            variant={readOnly ? 'unstyled' : variant}
             withinPortal={withinPortal}
             {...props}
             {...(loading

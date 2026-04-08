@@ -39,7 +39,7 @@ const TextInput = ({
             }
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             readOnly={readOnly}
-            variant={variant}
+            variant={readOnly ? 'unstyled' : variant}
             {...props}
         />
     );

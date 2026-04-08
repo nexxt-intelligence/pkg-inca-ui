@@ -48,7 +48,7 @@ const TextArea = ({
                       }
                     : undefined
             }
-            variant={variant}
+            variant={readOnly ? 'unstyled' : variant}
             {...props}
         />
     );

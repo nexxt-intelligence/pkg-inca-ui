@@ -11,6 +11,6 @@
     order: -1;
 }
 .textAreaInput[data-readonly='true'] {
+    padding-left: var(--mantine-spacing-2xs);
     cursor: default;
-    pointer-events: none;
 }
