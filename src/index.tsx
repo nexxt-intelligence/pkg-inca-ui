@@ -26,11 +26,15 @@ export {
     MiniModalContent
 } from './components/MiniModal';
 export {
+    default as RichTextEditor,
+    type RichTextEditorHandle,
+    type RichTextEditorProps
+} from './components/RichTextEditor';
+export {
     SplitPaneModal,
     SplitPaneModalActions,
     SplitPaneModalContent
 } from './components/SplitPaneModal';
-
 /** Extended Mantine UI Components */
 export {
     default as ActionIcon,

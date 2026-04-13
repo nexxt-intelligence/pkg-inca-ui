@@ -1,0 +1,54 @@
+.root {
+    border-color: var(--mantine-color-gray-2);
+
+    &[data-answerref='true'] .content :global(.ProseMirror) {
+        min-height: 40px;
+        box-sizing: border-box;
+        padding: var(--mantine-spacing-xs);
+        padding-right: 140px;
+        p {
+            margin-top: 2px;
+            overflow: hidden;
+        }
+    }
+}
+.typographyStylesProvider {
+    font-size: var(--mantine-font-size-sm);
+}
+.answerRefBadge {
+    display: inline-block;
+    background-color: var(--mantine-color-blue-6);
+    color: var(--mantine-color-white);
+    border-radius: var(--mantine-radius-sm);
+    padding: 2px var(--mantine-spacing-2xs);
+    font-size: var(--mantine-font-size-xs);
+    font-weight: 500;
+    white-space: nowrap;
+}
+.answerRefActionsWrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 14px;
+    margin-top: -14px;
+    cursor: default;
+}
+.answerRefActionsWrapper:hover .answerRefActions {
+    display: flex;
+}
+.answerRefActions {
+    position: absolute;
+    top: 0;
+    right: -12px;
+    display: none;
+    align-items: center;
+    background: var(--mantine-color-gray-7);
+    border-radius: var(--mantine-radius-sm);
+    padding: 1px 2px;
+    z-index: 10;
+}
+.insertButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 99;
+}
