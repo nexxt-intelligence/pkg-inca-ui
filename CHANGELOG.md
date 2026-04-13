@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.1.1
+
+### Patch Changes
+
+-   8941760: fix: overflow bug RTE
+
 ## 7.1.0
 
 ### Minor Changes
