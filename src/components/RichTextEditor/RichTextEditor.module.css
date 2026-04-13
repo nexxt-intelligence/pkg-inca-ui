@@ -8,6 +8,8 @@
         padding-right: 140px;
         p {
             margin-top: 2px;
+        }
+        :global(p.is-editor-empty) {
             overflow: hidden;
         }
     }
