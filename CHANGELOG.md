@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.1.0
+
+### Minor Changes
+
+-   bd909bd: add eslint plugin and format all files; update input styling when its read only; add RichTextEditor component with answer referencing handling
+
 ## 7.0.0
 
 ### Major Changes
