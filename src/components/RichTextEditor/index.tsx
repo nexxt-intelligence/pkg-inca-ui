@@ -127,6 +127,7 @@ export interface RichTextEditorProps
     children?: React.ReactNode;
     defaultValue?: string;
     description?: InputWrapperProps['description'];
+    disabled?: boolean;
     error?: InputWrapperProps['error'];
     extensions?: Extension[];
     hideToolbar?: boolean;
@@ -150,6 +151,7 @@ const RichTextEditor = React.forwardRef<
         {
             defaultValue = '',
             description,
+            disabled = false,
             error,
             extensions = [],
             hideToolbar = false,
@@ -228,7 +230,8 @@ const RichTextEditor = React.forwardRef<
                             typographyStylesProvider:
                                 classes.typographyStylesProvider
                         }}
-                        data-answerref={onAnswerRefClick ? true : false}
+                        data-answerref={onAnswerRefClick ? true : undefined}
+                        data-disabled={disabled || undefined}
                         editor={editor}
                         {...props}
                     >
@@ -258,6 +261,7 @@ const RichTextEditor = React.forwardRef<
                         {onAnswerRefClick && (
                             <Button
                                 className={classes.insertButton}
+                                disabled={disabled}
                                 leftIcon="IconStar"
                                 onClick={() =>
                                     onAnswerRefClick((attrs) => {
