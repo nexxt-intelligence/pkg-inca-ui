@@ -1,29 +1,29 @@
 name: Release
 on:
-  push:
-    branches:
-      - main # or main
+    push:
+        branches:
+            - main # or main
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          # This makes action fetch all Git history so that Changesets can generate changelogs with the correct commits
-          fetch-depth: 0
-      - name: Use Node.js v20
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.9.0
-          cache: 'yarn'
-      - name: Install Dependencies
-        run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Ensure to have this set up under GitHub secrets
-      - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1
-        with:
-          publish: yarn release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure to have this set up under GitHub secrets
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Ensure to have this set up under GitHub secrets
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  # This makes action fetch all Git history so that Changesets can generate changelogs with the correct commits
+                  fetch-depth: 0
+            - name: Use Node.js v20
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.19.0
+                  cache: 'yarn'
+            - name: Install Dependencies
+              run: yarn
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Ensure to have this set up under GitHub secrets
+            - name: Create Release Pull Request or Publish to npm
+              uses: changesets/action@v1
+              with:
+                  publish: yarn release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure to have this set up under GitHub secrets
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Ensure to have this set up under GitHub secrets
