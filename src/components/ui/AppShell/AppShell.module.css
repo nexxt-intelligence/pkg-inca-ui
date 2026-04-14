@@ -126,6 +126,10 @@
     background-color: transparent;
     padding: 0.5rem 1rem;
 }
+.byLogo {
+    display: flex;
+    align-items: center;
+}
 
 .hidden {
     display: none;

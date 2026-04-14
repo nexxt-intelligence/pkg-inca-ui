@@ -146,7 +146,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     zIndex={1}
                 >
                     <a
-                        className="by-logo"
+                        className={classes.byLogo}
                         href="https://nexxt.in"
                         rel="noreferrer"
                         target="_blank"

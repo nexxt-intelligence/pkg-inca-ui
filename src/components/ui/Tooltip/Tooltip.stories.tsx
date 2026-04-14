@@ -1,3 +1,4 @@
+import { Center } from '@mantine/core';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Button from '../Button';
@@ -31,11 +32,27 @@ export default {
 
 export const Primary: StoryObj<typeof Tooltip> = {
     args: {
-        label: 'This is a tooltip'
+        label: 'This is a tooltip',
+        position: 'top'
     },
     render: (args) => (
-        <Tooltip {...args}>
-            <Button>Hover me</Button>
-        </Tooltip>
+        <Center style={{ height: '10vh' }}>
+            <Tooltip {...args}>
+                <Button>Hover me</Button>
+            </Tooltip>
+        </Center>
+    )
+};
+
+export const Floating: StoryObj<typeof Tooltip.Floating> = {
+    args: {
+        label: 'This is a floating tooltip'
+    },
+    render: (args) => (
+        <Center style={{ height: '10vh' }}>
+            <Tooltip.Floating {...args}>
+                <Button>Hover me</Button>
+            </Tooltip.Floating>
+        </Center>
     )
 };
