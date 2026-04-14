@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.2.0
+
+### Minor Changes
+
+-   18cd7b1: feat: add custom disabled css for RichTextEditor and add floating tooltip and small style fix for AppShell footer
+
 ## 7.1.1
 
 ### Patch Changes
