@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.2.1
+
+### Patch Changes
+
+-   93e6b9a: fix: update RichTextEditor and Button styles
+
 ## 7.2.0
 
 ### Minor Changes
