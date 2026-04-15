@@ -27,7 +27,7 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'radio',
-            options: ['primary', 'green', 'yellow', 'red'],
+            options: ['primary', 'green', 'yellow', 'red', 'dark'],
             table: { defaultValue: { summary: 'primary' } }
         },
         compact: {
@@ -71,7 +71,7 @@ export default {
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'subtle', 'outline', 'default'],
+            options: ['filled', 'subtle', 'outline'],
             table: { defaultValue: { summary: 'filled' } }
         }
     },
@@ -85,16 +85,14 @@ export const Variants: StoryObj<typeof Button> = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
         <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['filled', 'subtle', 'outline', 'default'] as const).map(
-                (variant) => (
-                    <div key={variant} style={columnStyle}>
-                        <Button {...args} variant={variant}>
-                            {variant.charAt(0).toUpperCase() + variant.slice(1)}
-                        </Button>
-                        <span style={labelStyle}>{variant}</span>
-                    </div>
-                )
-            )}
+            {(['filled', 'subtle', 'outline'] as const).map((variant) => (
+                <div key={variant} style={columnStyle}>
+                    <Button {...args} variant={variant}>
+                        {variant.charAt(0).toUpperCase() + variant.slice(1)}
+                    </Button>
+                    <span style={labelStyle}>{variant}</span>
+                </div>
+            ))}
         </div>
     )
 };
@@ -125,25 +123,33 @@ export const Colors: StoryObj<typeof Button> = {
             {(['filled', 'subtle', 'outline'] as const).map((variant) => (
                 <div
                     key={variant}
-                    style={{ alignItems: 'center', display: 'flex', gap: 12 }}
+                    style={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        gap: 12
+                    }}
                 >
                     <span
-                        style={{ ...labelStyle, textAlign: 'right', width: 48 }}
+                        style={{
+                            ...labelStyle,
+                            textAlign: 'right',
+                            width: 48
+                        }}
                     >
                         {variant}
                     </span>
-                    {(['primary', 'green', 'yellow', 'red'] as const).map(
-                        (color) => (
-                            <Button
-                                {...args}
-                                color={color}
-                                key={color}
-                                variant={variant}
-                            >
-                                {color.charAt(0).toUpperCase() + color.slice(1)}
-                            </Button>
-                        )
-                    )}
+                    {(
+                        ['primary', 'green', 'yellow', 'red', 'dark'] as const
+                    ).map((color) => (
+                        <Button
+                            {...args}
+                            color={color}
+                            key={color}
+                            variant={variant}
+                        >
+                            {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </Button>
+                    ))}
                 </div>
             ))}
         </div>
@@ -179,41 +185,39 @@ export const WithIcons: StoryObj<typeof Button> = {
         ] as const;
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {(['filled', 'subtle', 'outline', 'default'] as const).map(
-                    (variant) => (
-                        <div
-                            key={variant}
+                {(['filled', 'subtle', 'outline'] as const).map((variant) => (
+                    <div
+                        key={variant}
+                        style={{
+                            alignItems: 'center',
+                            display: 'flex',
+                            gap: 12
+                        }}
+                    >
+                        <span
                             style={{
-                                alignItems: 'center',
-                                display: 'flex',
-                                gap: 12
+                                ...labelStyle,
+                                textAlign: 'right',
+                                width: 48
                             }}
                         >
-                            <span
-                                style={{
-                                    ...labelStyle,
-                                    textAlign: 'right',
-                                    width: 48
-                                }}
-                            >
-                                {variant}
-                            </span>
-                            {iconCombos.map(
-                                ({ children, label, leftIcon, rightIcon }) => (
-                                    <Button
-                                        {...args}
-                                        key={label}
-                                        leftIcon={leftIcon}
-                                        rightIcon={rightIcon}
-                                        variant={variant}
-                                    >
-                                        {children}
-                                    </Button>
-                                )
-                            )}
-                        </div>
-                    )
-                )}
+                            {variant}
+                        </span>
+                        {iconCombos.map(
+                            ({ children, label, leftIcon, rightIcon }) => (
+                                <Button
+                                    {...args}
+                                    key={label}
+                                    leftIcon={leftIcon}
+                                    rightIcon={rightIcon}
+                                    variant={variant}
+                                >
+                                    {children}
+                                </Button>
+                            )
+                        )}
+                    </div>
+                ))}
             </div>
         );
     }

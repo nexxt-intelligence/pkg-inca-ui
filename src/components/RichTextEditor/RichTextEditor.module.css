@@ -35,16 +35,16 @@
     background-color: var(--mantine-color-blue-6);
     color: var(--mantine-color-white);
     border-radius: var(--mantine-radius-sm);
-    padding: 2px var(--mantine-spacing-2xs);
-    font-size: var(--mantine-font-size-xs);
-    font-weight: 500;
+    padding: var(--mantine-spacing-2xs) var(--mantine-spacing-2xs) 2px
+        var(--mantine-spacing-2xs);
+    font-size: var(--mantine-font-size-sm);
     white-space: nowrap;
 }
 .answerRefActionsWrapper {
     position: relative;
     display: inline-block;
-    padding-top: 14px;
-    margin-top: -14px;
+    padding-top: 13px;
+    margin-top: -18px;
     cursor: default;
 }
 .answerRefActionsWrapper:hover .answerRefActions {
