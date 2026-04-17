@@ -8,6 +8,7 @@
         padding-right: 140px;
         p {
             margin-top: 2px;
+            line-height: 2;
         }
         :global(p.is-editor-empty) {
             overflow: hidden;
@@ -31,12 +32,10 @@
     font-size: var(--mantine-font-size-sm);
 }
 .answerRefBadge {
-    display: inline-block;
     background-color: var(--mantine-color-blue-6);
     color: var(--mantine-color-white);
     border-radius: var(--mantine-radius-sm);
-    padding: var(--mantine-spacing-2xs) var(--mantine-spacing-2xs) 2px
-        var(--mantine-spacing-2xs);
+    padding: 3px var(--mantine-spacing-2xs);
     font-size: var(--mantine-font-size-sm);
     white-space: nowrap;
 }

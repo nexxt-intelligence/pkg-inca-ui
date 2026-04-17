@@ -306,6 +306,9 @@ export const theme: MantineThemeOverride = {
                 inputWrapperOrder: ['label', 'input', 'error', 'description']
             },
             styles: {
+                description: {
+                    marginTop: 'var(--mantine-spacing-2xs)'
+                },
                 error: {
                     whiteSpace: 'normal'
                 },
