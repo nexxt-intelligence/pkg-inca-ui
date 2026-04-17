@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.2.2
+
+### Patch Changes
+
+-   ac324a3: fix: update styles for input descriptions and rich text editor answer refs
+
 ## 7.2.1
 
 ### Patch Changes
