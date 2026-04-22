@@ -1,0 +1,5 @@
+.actionIcon[data-disabled] {
+    background-color: var(--mantine-color-gray-2);
+    border-color: var(--mantine-color-gray-2);
+    color: var(--mantine-color-gray-5);
+}

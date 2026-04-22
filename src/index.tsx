@@ -31,6 +31,10 @@ export {
     type RichTextEditorProps
 } from './components/RichTextEditor';
 export {
+    default as SplitButton,
+    type SplitButtonProps
+} from './components/SplitButton';
+export {
     SplitPaneModal,
     SplitPaneModalActions,
     SplitPaneModalContent
