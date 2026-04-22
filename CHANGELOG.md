@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.3.0
+
+### Minor Changes
+
+-   b481e09: feat: add SplitButton component
+
 ## 7.2.2
 
 ### Patch Changes
