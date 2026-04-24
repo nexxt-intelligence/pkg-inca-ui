@@ -57,6 +57,8 @@
     },
     "peerDependencies": {
         "@emotion/react": "^11.14.0",
+        "@mantine/core": "6.0.21",
+        "@mantine/modals": "6.0.21",
         "react": "16.14.0",
         "react-dom": "16.14.0"
     },

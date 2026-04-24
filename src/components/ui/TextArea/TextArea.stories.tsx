@@ -8,6 +8,7 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
         },
+        description: { control: 'text' },
         disabled: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }

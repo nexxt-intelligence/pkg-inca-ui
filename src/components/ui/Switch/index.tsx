@@ -23,6 +23,8 @@ const Switch = ({
         <MantineSwitch
             classNames={{
                 body: fullWidth ? classes.fullWidthBody : '',
+                description: classes.switchDescription,
+                error: classes.switchError,
                 label: classes.switchLabel,
                 track: classes.switchTrack
             }}

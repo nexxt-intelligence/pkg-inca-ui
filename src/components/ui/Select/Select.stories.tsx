@@ -10,6 +10,7 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
+        description: { control: 'text' },
         disabled: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }

@@ -302,13 +302,7 @@ export const theme: MantineThemeOverride = {
             }
         },
         InputWrapper: {
-            defaultProps: {
-                inputWrapperOrder: ['label', 'input', 'error', 'description']
-            },
             styles: {
-                description: {
-                    marginTop: 'var(--mantine-spacing-2xs)'
-                },
                 error: {
                     whiteSpace: 'normal'
                 },

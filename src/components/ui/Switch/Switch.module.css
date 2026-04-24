@@ -1,7 +1,9 @@
 .switchTrack {
     cursor: pointer;
 }
-.switchLabel {
+.switchLabel,
+.switchDescription,
+.switchError {
     padding-left: var(--mantine-spacing-xs);
 }
 .fullWidthBody {

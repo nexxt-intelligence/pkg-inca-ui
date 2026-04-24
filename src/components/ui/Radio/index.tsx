@@ -56,7 +56,6 @@ const RadioGroup = ({
     ));
     return (
         <MantineRadio.Group
-            inputWrapperOrder={['label', 'input', 'description', 'error']}
             label={label ? <Label label={label} tooltip={tooltip} /> : null}
             {...props}
         >
