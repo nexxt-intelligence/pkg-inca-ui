@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.3.2
+
+### Patch Changes
+
+-   6e1ebf6: fix: add missing type exports for Mantine components
+
 ## 7.3.1
 
 ### Patch Changes
