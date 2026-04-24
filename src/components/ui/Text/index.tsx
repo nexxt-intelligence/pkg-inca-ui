@@ -7,4 +7,5 @@ const Text = ({ fw = 400, ...props }: MantineTextProps) => {
     return <MantineText fw={fw} {...props} />;
 };
 
+export type TextProps = MantineTextProps;
 export default Text;

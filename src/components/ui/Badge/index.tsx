@@ -27,3 +27,5 @@ export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
         </MantineBadge>
     );
 }
+
+export type { BadgeProps };
