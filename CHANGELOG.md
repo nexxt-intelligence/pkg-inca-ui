@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.3.1
+
+### Patch Changes
+
+-   db2b8b7: fix: input description position
+
 ## 7.3.0
 
 ### Minor Changes
