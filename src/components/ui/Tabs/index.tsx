@@ -59,17 +59,19 @@ const Tabs = ({
                 value={currentValue}
                 variant={variant}
             >
-                <MantineTabs.List grow={fullWidth}>
-                    {tabs.map((tab) => (
-                        <MantineTabs.Tab
-                            disabled={tab.disabled}
-                            key={tab.value}
-                            value={tab.value}
-                        >
-                            {tab.label}
-                        </MantineTabs.Tab>
-                    ))}
-                </MantineTabs.List>
+                {tabs.length > 0 && (
+                    <MantineTabs.List grow={fullWidth}>
+                        {tabs.map((tab) => (
+                            <MantineTabs.Tab
+                                disabled={tab.disabled}
+                                key={tab.value}
+                                value={tab.value}
+                            >
+                                {tab.label}
+                            </MantineTabs.Tab>
+                        ))}
+                    </MantineTabs.List>
+                )}
                 {children}
             </MantineTabs>
         </div>

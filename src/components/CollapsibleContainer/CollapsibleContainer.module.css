@@ -10,10 +10,7 @@
         border: 1px solid var(--mantine-color-yellow-6);
     }
 }
-.content {
-    padding: 0px var(--mantine-spacing-md) var(--mantine-spacing-sm)
-        var(--mantine-spacing-md);
-}
+
 .control {
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
     &:hover {

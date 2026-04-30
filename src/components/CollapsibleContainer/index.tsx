@@ -28,7 +28,6 @@ const CollapsibleContainer = ({
     return (
         <Accordion
             classNames={{
-                content: classes.content,
                 control: classes.control,
                 item: classes.item,
                 label: classes.label,
