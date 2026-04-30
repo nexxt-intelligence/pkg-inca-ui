@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.3.3
+
+### Patch Changes
+
+-   04812d5: fix: update CollapsibleContainer padding and add conditional rendering for Tabs list
+
 ## 7.3.2
 
 ### Patch Changes
