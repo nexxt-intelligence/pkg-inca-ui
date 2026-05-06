@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.4.0
+
+### Minor Changes
+
+-   8e55181: Add optional tooltips to menu items
+
 ## 7.3.3
 
 ### Patch Changes
