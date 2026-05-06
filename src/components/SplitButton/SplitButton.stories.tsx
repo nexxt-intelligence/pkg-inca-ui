@@ -47,3 +47,29 @@ export default {
 } as Meta<typeof SplitButton>;
 
 export const Primary: StoryObj<typeof SplitButton> = {};
+
+export const WithItemTooltips: StoryObj<typeof SplitButton> = {
+    args: {
+        items: [
+            {
+                label: 'Schedule for later',
+                onClick: () => {},
+                tooltip:
+                    'Queues this action so it can be sent at a scheduled time.',
+                tooltipPosition: 'top'
+            },
+            {
+                label: 'Save draft',
+                onClick: () => {},
+                tooltip: 'Keeps the current content without sending it.',
+                tooltipPosition: 'right'
+            },
+            {
+                label: 'Delete',
+                onClick: () => {},
+                tooltip: 'Removes this item permanently.',
+                tooltipPosition: 'bottom'
+            }
+        ]
+    }
+};

@@ -1,17 +1,22 @@
 import {
     Menu as MantineMenu,
     MenuItemProps as MantineMenuItemProps,
-    MenuProps as MantineMenuProps
+    MenuProps as MantineMenuProps,
+    Tooltip as MantineTooltip,
+    TooltipProps as MantineTooltipProps
 } from '@mantine/core';
 import * as React from 'react';
 
 import Text from '../Text';
 import classes from './Menu.module.css';
+import tooltipClasses from '../Tooltip/Tooltip.module.css';
 
 export type MenuItem = {
     disabled?: boolean;
     label: string;
     onClick?: () => void;
+    tooltip?: React.ReactElement | string;
+    tooltipPosition?: MantineTooltipProps['position'];
 } & MantineMenuItemProps;
 
 export type MenuProps = {
@@ -41,15 +46,50 @@ function Menu({ children, items, menuContent, ...props }: MenuProps) {
             <MantineMenu.Dropdown>
                 {menuContent
                     ? menuContent
-                    : items?.map((item) => (
-                          <MantineMenu.Item
-                              key={item.label}
-                              onClick={item.onClick}
-                              {...item}
-                          >
-                              <Text>{item.label}</Text>
-                          </MantineMenu.Item>
-                      ))}
+                    : items?.map((item) => {
+                          const {
+                              label,
+                              onClick,
+                              tooltip,
+                              tooltipPosition,
+                              ...menuItemProps
+                          } = item;
+
+                          if (tooltip) {
+                              return (
+                                  <MantineTooltip
+                                      key={label}
+                                      classNames={{
+                                          tooltip: tooltipClasses.tooltip
+                                      }}
+                                      label={tooltip}
+                                      maw={320}
+                                      multiline
+                                      position={tooltipPosition}
+                                      withArrow
+                                      withinPortal
+                                      zIndex={9999} // sorry
+                                  >
+                                      <MantineMenu.Item
+                                          onClick={onClick}
+                                          {...menuItemProps}
+                                      >
+                                          <Text>{label}</Text>
+                                      </MantineMenu.Item>
+                                  </MantineTooltip>
+                              );
+                          }
+
+                          return (
+                              <MantineMenu.Item
+                                  key={label}
+                                  onClick={onClick}
+                                  {...menuItemProps}
+                              >
+                                  <Text>{label}</Text>
+                              </MantineMenu.Item>
+                          );
+                      })}
             </MantineMenu.Dropdown>
         </MantineMenu>
     );
