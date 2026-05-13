@@ -1,4 +1,5 @@
 import {
+    Box,
     Burger,
     Footer,
     Group,
@@ -215,7 +216,13 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </span>
                         </div>
                     )}
-                    <Stack className={classes.headerContent} spacing={0}>
+                    <Stack
+                        className={classes.headerContent}
+                        maw="100rem"
+                        mx="auto"
+                        spacing={0}
+                        w="100%"
+                    >
                         <Group spacing="sm">
                             <Text
                                 className={classes.subtitle}
@@ -227,7 +234,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </Text>
                             {headerBadge}
                         </Group>
-                        <Group position="apart">
+                        <Group position="apart" w="100%">
                             <Title className={classes.title} size="h2">
                                 {headerTitle}
                             </Title>
@@ -237,7 +244,9 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     </Stack>
                 </Stack>
             </header>
-            {children}
+            <Box maw="100rem" mx="auto" w="100%">
+                {children}
+            </Box>
         </MantineAppShell>
     );
 };
