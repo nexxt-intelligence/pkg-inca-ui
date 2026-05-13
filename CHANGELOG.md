@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.4.1
+
+### Patch Changes
+
+-   181b52c: clamp AppShell content max width to 100rem
+
 ## 7.4.0
 
 ### Minor Changes
