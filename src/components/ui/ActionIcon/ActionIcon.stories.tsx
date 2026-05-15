@@ -54,7 +54,7 @@ export default {
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'subtle'],
+            options: ['filled', 'subtle', 'muted'],
             table: { defaultValue: { summary: 'filled' } }
         }
     },
@@ -68,7 +68,7 @@ export const Variants: StoryObj<typeof ActionIcon> = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
         <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['filled', 'subtle'] as const).map((variant) => (
+            {(['filled', 'subtle', 'muted'] as const).map((variant) => (
                 <div key={variant} style={columnStyle}>
                     <ActionIcon {...args} variant={variant} />
                     <span style={labelStyle}>{variant}</span>

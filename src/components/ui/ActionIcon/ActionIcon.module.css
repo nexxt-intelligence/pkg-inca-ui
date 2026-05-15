@@ -3,3 +3,20 @@
     border-color: var(--mantine-color-gray-2);
     color: var(--mantine-color-gray-5);
 }
+
+.actionIcon[data-variant='muted'] {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--mantine-color-gray-7);
+}
+
+.actionIcon[data-variant='muted']:hover {
+    background-color: var(--mantine-color-gray-0);
+    color: var(--mantine-color-gray-6);
+}
+
+.actionIcon[data-variant='muted'][data-disabled] {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--mantine-color-gray-5);
+}
