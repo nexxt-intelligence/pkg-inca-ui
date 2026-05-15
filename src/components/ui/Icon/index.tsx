@@ -13,6 +13,7 @@ interface IconProps {
      * A Mantine theme color token (e.g. `"blue"`, `"red.6"`).
      */
     color?: MantineColor;
+    iconRotate?: number;
     size?: '2xs' | MantineNumberSize;
     /**
      * Name of the Tabler icon to render (e.g. `"IconHome"`, `"IconUser"`).
@@ -21,7 +22,7 @@ interface IconProps {
     type: TablerIconKeys;
 }
 
-const Icon = ({ color, size = 'sm', type }: IconProps) => {
+const Icon = ({ color, iconRotate = 0, size = 'sm', type }: IconProps) => {
     const theme = useMantineTheme();
 
     const resolvedColor = React.useMemo(() => {
@@ -64,7 +65,10 @@ const Icon = ({ color, size = 'sm', type }: IconProps) => {
             color={resolvedColor}
             size={iconSize}
             stroke={1.5}
-            style={{ color: resolvedColor }}
+            style={{
+                color: resolvedColor,
+                transform: `rotate(${iconRotate}deg)`
+            }}
         />
     );
 };

@@ -32,10 +32,9 @@ const ActionIcon = ({
             data-variant={variant}
             size={size}
             variant={variant}
-            style={{ transform: `rotate(${iconRotate}deg)` }}
             {...props}
         >
-            <Icon size={iconSize ?? size} type={icon} />
+            <Icon size={iconSize ?? size} type={icon} iconRotate={iconRotate} />
         </MantineActionIcon>
     );
 };
