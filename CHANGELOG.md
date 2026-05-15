@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.5.1
+
+### Patch Changes
+
+-   a13e336: fix icon rotation
+
 ## 7.5.0
 
 ### Minor Changes
