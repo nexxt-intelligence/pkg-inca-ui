@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.6.0
+
+### Minor Changes
+
+-   9ec7f8e: add `muted` variant to `ActionIcon`
+
 ## 7.5.1
 
 ### Patch Changes
