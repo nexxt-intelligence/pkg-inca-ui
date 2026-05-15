@@ -10,6 +10,7 @@ import classes from './ActionIcon.module.css';
 
 export interface ActionIconProps extends MantineActionIconProps {
     icon: TablerIconKeys;
+    iconRotate?: number;
     iconSize?: '2xs' | MantineNumberSize;
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
@@ -18,6 +19,7 @@ const ActionIcon = ({
     className,
     color = 'primary',
     icon,
+    iconRotate = 0,
     iconSize,
     size = 'sm',
     variant = 'filled',
@@ -30,6 +32,7 @@ const ActionIcon = ({
             data-variant={variant}
             size={size}
             variant={variant}
+            style={{ transform: `rotate(${iconRotate}deg)` }}
             {...props}
         >
             <Icon size={iconSize ?? size} type={icon} />
