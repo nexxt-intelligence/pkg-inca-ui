@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.5.0
+
+### Minor Changes
+
+-   1032a0d: support icon rotation in ActionIcon
+
 ## 7.4.1
 
 ### Patch Changes
