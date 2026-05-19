@@ -1,7 +1,7 @@
 /* TODO: UPDATE TO USE PROPER VARIABLES */
 
 .appShellRoot {
-    background-color: #f5f5f5;
+    background-color: var(--mantine-color-gray-0);
 }
 .appShellMain {
     padding-bottom: 1.25rem;
@@ -10,7 +10,7 @@
 .header {
     border-bottom: none;
     /* temp bg color */
-    background-color: #f5f5f5;
+    background-color: var(--mantine-color-gray-0);
     padding-bottom: 1rem;
 }
 .headerContent {
