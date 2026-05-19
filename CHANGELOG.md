@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.6.1
+
+### Patch Changes
+
+-   a056f77: change bg colour in AppShell
+
 ## 7.6.0
 
 ### Minor Changes
