@@ -10,15 +10,15 @@ import classes from './SplitButton.module.css';
 export type SplitButtonSize = 'md' | 'sm' | 'xs';
 
 const actionIconSizeMap: Record<SplitButtonSize, string> = {
-    md: 'xl',
+    xs: 'md',
     sm: 'lg',
-    xs: 'md'
+    md: 'xl'
 };
 
 const menuIconSizeMap: Record<SplitButtonSize, string> = {
-    md: 'sm',
+    xs: 'xs',
     sm: 'sm',
-    xs: 'xs'
+    md: 'sm'
 };
 
 export interface SplitButtonProps {

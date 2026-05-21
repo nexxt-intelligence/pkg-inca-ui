@@ -8,8 +8,8 @@ import {
 import * as React from 'react';
 
 import Text from '../Text';
-import classes from './Menu.module.css';
 import tooltipClasses from '../Tooltip/Tooltip.module.css';
+import classes from './Menu.module.css';
 
 export type MenuItem = {
     disabled?: boolean;
@@ -58,10 +58,10 @@ function Menu({ children, items, menuContent, ...props }: MenuProps) {
                           if (tooltip) {
                               return (
                                   <MantineTooltip
-                                      key={label}
                                       classNames={{
                                           tooltip: tooltipClasses.tooltip
                                       }}
+                                      key={label}
                                       label={tooltip}
                                       maw={320}
                                       multiline

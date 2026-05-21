@@ -92,20 +92,12 @@ export const theme: MantineThemeOverride = {
     components: {
         ActionIcon: {
             sizes: {
-                lg: () => ({
+                xs: () => ({
                     root: {
-                        height: '32px',
-                        minHeight: '32px',
-                        minWidth: '32px',
-                        width: '32px'
-                    }
-                }),
-                md: () => ({
-                    root: {
-                        height: '24px',
-                        minHeight: '24px',
-                        minWidth: '24px',
-                        width: '24px'
+                        height: '16px',
+                        minHeight: '16px',
+                        minWidth: '16px',
+                        width: '16px'
                     }
                 }),
                 sm: () => ({
@@ -116,6 +108,22 @@ export const theme: MantineThemeOverride = {
                         width: '20px'
                     }
                 }),
+                md: () => ({
+                    root: {
+                        height: '24px',
+                        minHeight: '24px',
+                        minWidth: '24px',
+                        width: '24px'
+                    }
+                }),
+                lg: () => ({
+                    root: {
+                        height: '32px',
+                        minHeight: '32px',
+                        minWidth: '32px',
+                        width: '32px'
+                    }
+                }),
                 xl: () => ({
                     root: {
                         height: '40px',
@@ -123,31 +131,23 @@ export const theme: MantineThemeOverride = {
                         minWidth: '40px',
                         width: '40px'
                     }
-                }),
-                xs: () => ({
-                    root: {
-                        height: '16px',
-                        minHeight: '16px',
-                        minWidth: '16px',
-                        width: '16px'
-                    }
                 })
             }
         },
         Badge: {
             sizes: {
-                md: (theme) => ({
-                    root: {
-                        fontSize: '0.75rem',
-                        height: '20px',
-                        lineHeight: 'normal',
-                        padding: `0 ${theme.spacing.xs}`
-                    }
-                }),
                 sm: (theme) => ({
                     root: {
                         fontSize: '0.625rem',
                         height: '16px',
+                        lineHeight: 'normal',
+                        padding: `0 ${theme.spacing.xs}`
+                    }
+                }),
+                md: (theme) => ({
+                    root: {
+                        fontSize: '0.75rem',
+                        height: '20px',
                         lineHeight: 'normal',
                         padding: `0 ${theme.spacing.xs}`
                     }
@@ -224,13 +224,13 @@ export const theme: MantineThemeOverride = {
         },
         Button: {
             sizes: {
-                md: (theme) => ({
+                xs: (theme) => ({
                     root: {
                         '&[data-compact="true"]': {
-                            height: '1.75rem',
+                            height: '1.25rem',
                             padding: `0 ${theme.spacing.xs}`
                         },
-                        height: '2.5rem',
+                        height: '1.5rem',
                         padding: `0 ${theme.spacing.sm}`
                     }
                 }),
@@ -244,13 +244,13 @@ export const theme: MantineThemeOverride = {
                         padding: `0 ${theme.spacing.sm}`
                     }
                 }),
-                xs: (theme) => ({
+                md: (theme) => ({
                     root: {
                         '&[data-compact="true"]': {
-                            height: '1.25rem',
+                            height: '1.75rem',
                             padding: `0 ${theme.spacing.xs}`
                         },
-                        height: '1.5rem',
+                        height: '2.5rem',
                         padding: `0 ${theme.spacing.sm}`
                     }
                 })
@@ -336,11 +336,11 @@ export const theme: MantineThemeOverride = {
     fontFamilyMonospace: '"Source Code Pro", monospace',
     fontSizes: {
         '2xs': '0.625rem', // 10px
-        lg: '1.125rem', // 18px
-        md: '1rem', // 16px
+        xs: '0.75rem', // 12px
         sm: '0.875rem', // 14px
-        xl: '1.25rem', // 20px
-        xs: '0.75rem' // 12px
+        md: '1rem', // 16px
+        lg: '1.125rem', // 18px
+        xl: '1.25rem' // 20px
     },
     headings: {
         fontWeight: 600,
@@ -358,27 +358,27 @@ export const theme: MantineThemeOverride = {
     primaryShade: 6,
 
     radius: {
-        '2xl': '32px',
-        lg: '16px',
-        md: '8px',
         none: '0px',
+        xs: '2px',
         sm: '4px',
+        md: '8px',
+        lg: '16px',
         xl: '24px',
-        xs: '2px'
+        '2xl': '32px'
     },
     shadows: {
-        md: '0px 0px 25px -5px rgba(230, 230, 230, 0.1)' /* Level 2 — modals, panels */,
-        sm: '0 3px 3px rgba(230, 230, 230, 0.3)' /* Level 1 — cards, inputs  */
+        sm: '0 3px 3px rgba(230, 230, 230, 0.3)' /* Level 1 — cards, inputs  */,
+        md: '0px 0px 25px -5px rgba(230, 230, 230, 0.1)' /* Level 2 — modals, panels */
     },
     spacing: {
-        '2xl': '32px',
-        '2xs': '4px',
-        '3xl': '40px',
         '3xs': '2px',
-        lg: '20px',
-        md: '16px',
+        '2xs': '4px',
+        xs: '8px',
         sm: '12px',
+        md: '16px',
+        lg: '20px',
         xl: '24px',
-        xs: '8px'
+        '2xl': '32px',
+        '3xl': '40px'
     }
 };
