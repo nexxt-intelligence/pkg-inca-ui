@@ -3,6 +3,7 @@ import { ModalsProvider } from '@mantine/modals';
 
 import { theme } from './constants/theme';
 import './assets/global.css';
+import './tokens.css';
 
 export {
     default as ActionCard,

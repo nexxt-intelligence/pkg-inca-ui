@@ -4,7 +4,6 @@ import type { MantineThemeOverride } from '@mantine/core';
 export const theme: MantineThemeOverride = {
     black: '#212529', // Text/default → gray/9
     colors: {
-        // TODO: update colors
         blue: [
             '#E9F4FF',
             '#D6E3FA',
@@ -68,7 +67,7 @@ export const theme: MantineThemeOverride = {
         violet: [
             '#F3F0FF',
             '#E5DBFF',
-            '#D0B5FF',
+            '#D0BFFF',
             '#B197FC',
             '#9775FA',
             '#845EF7',
@@ -334,6 +333,7 @@ export const theme: MantineThemeOverride = {
     cursorType: 'pointer',
     defaultRadius: 'sm',
     fontFamily: '"Source Sans 3", sans-serif',
+    fontFamilyMonospace: '"Source Code Pro", monospace',
     fontSizes: {
         '2xs': '0.625rem', // 10px
         lg: '1.125rem', // 18px
@@ -361,9 +361,14 @@ export const theme: MantineThemeOverride = {
         '2xl': '32px',
         lg: '16px',
         md: '8px',
+        none: '0px',
         sm: '4px',
         xl: '24px',
         xs: '2px'
+    },
+    shadows: {
+        md: '0px 0px 25px -5px rgba(230, 230, 230, 0.1)' /* Level 2 — modals, panels */,
+        sm: '0 3px 3px rgba(230, 230, 230, 0.3)' /* Level 1 — cards, inputs  */
     },
     spacing: {
         '2xl': '32px',
