@@ -171,6 +171,7 @@ const RichTextEditor = React.forwardRef<
 
         const editor = useEditor({
             content: defaultValue,
+            editable: !disabled,
             extensions: [
                 StarterKit,
                 Placeholder.configure({ placeholder }),
@@ -184,6 +185,9 @@ const RichTextEditor = React.forwardRef<
                 onChange?.(editor.getHTML());
             }
         });
+        React.useEffect(() => {
+            editor?.setEditable(!disabled);
+        }, [editor, disabled]);
         const insertAnswerRef = React.useCallback(
             (attrs: Record<string, unknown>) => {
                 const { label = '', ...rest } = attrs;
