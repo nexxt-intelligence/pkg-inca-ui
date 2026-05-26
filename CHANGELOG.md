@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.6.2
+
+### Patch Changes
+
+-   311cfa8: feat: add design tokens and update theme configuration; chore: lint reorder sizes in semantic order; fix: disabled state for RichTextEditor
+
 ## 7.6.1
 
 ### Patch Changes
