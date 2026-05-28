@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.7.1
+
+### Patch Changes
+
+-   4d2f41d: fix: omit prefix from MantineTextInputProps to resolve type conflict and capitalize labels
+
 ## 7.7.0
 
 ### Minor Changes
