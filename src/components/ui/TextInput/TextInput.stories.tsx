@@ -22,6 +22,7 @@ export default {
         },
         label: { control: 'text' },
         placeholder: { control: 'text' },
+        prefix: { control: 'text' },
         readOnly: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }

@@ -3,6 +3,7 @@ import { ModalsProvider } from '@mantine/modals';
 import React from 'react';
 
 import '../src/assets/global.css';
+import '../src/tokens.css';
 // import theme object you've exported in previous step
 import { theme } from '../src/constants/theme';
 

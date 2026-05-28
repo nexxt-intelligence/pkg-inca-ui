@@ -7,3 +7,15 @@
 .textInput[data-readonly='true'] {
     cursor: default;
 }
+.textInputWrapper {
+    width: 100%;
+}
+.textInputPrefix {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-xs);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-base);
+    white-space: nowrap;
+}
