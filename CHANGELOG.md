@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.7.0
+
+### Minor Changes
+
+-   248a0b8: feat: add prefix ui to TextInput; refactor: update CSS variables and styles for consistency across components
+
 ## 7.6.2
 
 ### Patch Changes
