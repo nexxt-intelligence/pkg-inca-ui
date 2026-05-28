@@ -2,4 +2,5 @@
     order: -2;
     align-items: center;
     display: inline-flex;
+    text-transform: capitalize;
 }

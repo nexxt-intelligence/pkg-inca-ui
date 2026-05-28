@@ -10,7 +10,7 @@ import Label from '../Label';
 import Text from '../Text';
 import classes from './TextInput.module.css';
 
-export interface TextInputProps extends MantineTextInputProps {
+export interface TextInputProps extends Omit<MantineTextInputProps, 'prefix'> {
     icon?: ReactNode | TablerIconKeys;
     prefix?: ReactNode;
     readOnly?: boolean;
