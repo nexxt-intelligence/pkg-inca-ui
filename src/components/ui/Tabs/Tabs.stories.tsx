@@ -54,7 +54,7 @@ export const Variants: StoryObj<typeof Tabs> = {
                     <div key={variant}>
                         <p
                             style={{
-                                color: '#868e96',
+                                color: 'var(--text-subtle)',
                                 fontSize: 11,
                                 marginBottom: 8
                             }}

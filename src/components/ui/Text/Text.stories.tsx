@@ -71,7 +71,7 @@ export const Sizes: StoryObj<typeof Text> = {
                     </Text>
                     <span
                         style={{
-                            color: '#868e96',
+                            color: 'var(--text-subtle)',
                             flexShrink: 0,
                             fontSize: 11
                         }}
@@ -97,7 +97,7 @@ export const Weights: StoryObj<typeof Text> = {
                     </Text>
                     <span
                         style={{
-                            color: '#868e96',
+                            color: 'var(--text-subtle)',
                             flexShrink: 0,
                             fontSize: 11
                         }}

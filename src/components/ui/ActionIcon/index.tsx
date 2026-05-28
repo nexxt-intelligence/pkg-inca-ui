@@ -34,7 +34,7 @@ const ActionIcon = ({
             variant={variant}
             {...props}
         >
-            <Icon size={iconSize ?? size} type={icon} iconRotate={iconRotate} />
+            <Icon iconRotate={iconRotate} size={iconSize ?? size} type={icon} />
         </MantineActionIcon>
     );
 };

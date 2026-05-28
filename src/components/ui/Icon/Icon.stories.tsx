@@ -54,7 +54,12 @@ export const AllSizes: StoryObj<typeof Icon> = {
                     }}
                 >
                     <Icon color="red" size={size} type="IconHeart" />
-                    <span style={{ color: '#868e96', fontSize: 11 }}>
+                    <span
+                        style={{
+                            color: 'var(--text-subtle)',
+                            fontSize: 11
+                        }}
+                    >
                         {size}
                     </span>
                 </div>

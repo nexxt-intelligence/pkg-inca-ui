@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--bg-overlay-black);
     width: 100vw;
     height: 100vh;
     z-index: 100;
@@ -20,14 +20,14 @@
 .modalContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: white;
+    background-color: var(--bg-surface);
     max-width: 900px;
 }
 
 .modalHeader {
-    padding: 20px;
-    background-color: var(--mantine-color-blue-6);
-    color: white;
+    padding: var(--spacing-lg);
+    background-color: var(--bg-accent);
+    color: var(--text-inverse);
     display: flex;
     align-items: center;
 }
@@ -70,7 +70,7 @@
 }
 
 .closeIcon {
-    color: #000;
+    color: var(--icon-default);
     font-size: 24px;
 }
 

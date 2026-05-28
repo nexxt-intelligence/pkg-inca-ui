@@ -1,10 +1,10 @@
 .leftIcon {
-    margin-right: var(--mantine-spacing-2xs);
-    margin-left: calc(-1 * var(--mantine-spacing-2xs));
+    margin-right: var(--spacing-2xs);
+    margin-left: calc(-1 * var(--spacing-2xs));
 }
 .rightIcon {
-    margin-left: var(--mantine-spacing-2xs);
-    margin-right: calc(-1 * var(--mantine-spacing-2xs));
+    margin-left: var(--spacing-2xs);
+    margin-right: calc(-1 * var(--spacing-2xs));
 }
 
 &:focus {
@@ -18,12 +18,12 @@
 }
 
 [data-color='yellow'][data-variant='filled'] {
-    color: var(--mantine-color-gray-9);
+    color: var(--text-default);
 }
 
 [data-variant='outline'] {
-    border-color: var(--mantine-color-gray-2);
+    border-color: var(--border-default);
     &:hover {
-        background-color: var(--mantine-color-gray-0);
+        background-color: var(--bg-base);
     }
 }

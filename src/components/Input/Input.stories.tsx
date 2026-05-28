@@ -49,7 +49,7 @@ export const Types: StoryObj<typeof Input> = {
                     />
                     <span
                         style={{
-                            color: '#868e96',
+                            color: 'var(--text-subtle)',
                             fontSize: 11,
                             paddingBottom: 8,
                             width: 48

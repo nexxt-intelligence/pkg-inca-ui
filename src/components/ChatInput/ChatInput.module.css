@@ -1,11 +1,10 @@
 .chatInput {
-    border: 1px solid var(--mantine-color-gray-2);
-    border-radius: var(--mantine-radius-sm);
-    padding: var(--mantine-spacing-2xs) var(--mantine-spacing-2xs)
-        var(--mantine-spacing-2xs);
-    background-color: var(--mantine-color-white);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-2xs) var(--spacing-2xs) var(--spacing-2xs);
+    background-color: var(--bg-surface);
 }
 .chatInput.disabled {
-    background-color: var(--mantine-color-gray-1);
+    background-color: var(--bg-hover);
     opacity: 0.6;
 }

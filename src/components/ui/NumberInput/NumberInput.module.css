@@ -1,5 +1,5 @@
 .numberInput[data-variant='filled'] {
-    background-color: var(--mantine-color-blue-0);
+    background-color: var(--bg-accent-light);
 }
 .numberInputRequired {
     order: -1;
@@ -9,10 +9,10 @@
     pointer-events: none;
 }
 .numberInputControlUp {
-    border-bottom-color: var(--mantine-color-gray-2);
+    border-bottom-color: var(--border-default);
 }
 .numberInputControl {
-    border-left-color: var(--mantine-color-gray-2);
+    border-left-color: var(--border-default);
     cursor: pointer;
     &:disabled {
         cursor: default;

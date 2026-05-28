@@ -1,7 +1,5 @@
-/* TODO: UPDATE TO USE PROPER VARIABLES */
-
 .appShellRoot {
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--bg-base);
 }
 .appShellMain {
     padding-bottom: 1.25rem;
@@ -9,18 +7,17 @@
 
 .header {
     border-bottom: none;
-    /* temp bg color */
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--bg-base);
     padding-bottom: 1rem;
 }
 .headerContent {
     position: static;
 }
 .subtitle {
-    color: var(--mantine-color-gray-7);
+    color: var(--text-medium);
 }
 .title {
-    color: var(--mantine-color-gray-7);
+    color: var(--text-medium);
 }
 
 /* Mobile header styles */
@@ -37,8 +34,8 @@
     top: 0;
     right: 0;
     left: 0;
-    background-color: var(--mantine-color-white);
-    border-bottom: 1px solid var(--mantine-color-gray-2);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
     padding: 1rem;
     z-index: 999;
 }
@@ -84,10 +81,10 @@
     flex-direction: column;
     text-align: center;
     &[data-active] {
-        border-right: 3px solid var(--mantine-color-blue-6);
+        border-right: 3px solid var(--border-accent);
     }
     &:hover {
-        color: var(--mantine-color-blue-6);
+        color: var(--text-accent);
     }
 }
 .navLinkBody {
@@ -109,7 +106,7 @@
 .userProfilePictureContainer {
     display: flex;
     border-radius: 50%;
-    border: 1px solid #e6e6e6;
+    border: 1px solid var(--border-default);
     overflow: hidden;
     width: 22px;
     height: 22px;

@@ -1,9 +1,9 @@
 .root {
     flex: 1;
     height: 230px;
-    padding: var(--mantine-spacing-md);
+    padding: var(--spacing-md);
     max-width: 350px;
-    border-radius: var(--mantine-radius-sm);
+    border-radius: var(--radius-sm);
 }
 
 .label {

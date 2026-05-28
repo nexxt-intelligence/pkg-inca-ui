@@ -12,7 +12,10 @@ const columnStyle: React.CSSProperties = {
     gap: 6
 };
 
-const labelStyle: React.CSSProperties = { color: '#868e96', fontSize: 11 };
+const labelStyle: React.CSSProperties = {
+    color: 'var(--text-subtle)',
+    fontSize: 11
+};
 
 export default {
     args: {

@@ -1,6 +1,6 @@
 .tooltip {
     font-size: 12px;
-    padding: var(--mantine-spacing-xs);
+    padding: var(--spacing-xs);
 }
 
 .tooltipChildren {

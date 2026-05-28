@@ -3,47 +3,47 @@
 }
 
 [data-variant='default'] .tabsList {
-    border-bottom: 1px solid var(--mantine-color-gray-2);
-    gap: var(--mantine-spacing-md);
+    border-bottom: 1px solid var(--border-default);
+    gap: var(--spacing-md);
 
     .tab {
         margin-bottom: -1px;
-        padding: var(--mantine-spacing-sm) 0;
+        padding: var(--spacing-sm) 0;
         &:hover {
             background-color: transparent;
         }
     }
 
     .tab[data-active] {
-        color: var(--mantine-color-blue-6);
-        border-bottom: 2px solid var(--mantine-color-blue-6);
+        color: var(--text-accent);
+        border-bottom: 2px solid var(--border-accent);
         &:focus {
-            color: var(--mantine-color-blue-6);
+            color: var(--text-accent);
         }
     }
 }
 
 [data-variant='outline'] .tab,
 [data-variant='pills'] .tab {
-    padding: var(--mantine-spacing-sm);
+    padding: var(--spacing-sm);
 }
 
 [data-variant='contained'] .tabsList {
     height: 46px;
     .tab {
-        padding: var(--mantine-spacing-sm) 0;
+        padding: var(--spacing-sm) 0;
         width: 240px;
-        background-color: var(--mantine-color-gray-2);
-        border-top-left-radius: var(--mantine-radius-lg);
-        border-top-right-radius: var(--mantine-radius-lg);
-        font-size: medium;
+        background-color: var(--bg-disabled);
+        border-top-left-radius: var(--radius-lg);
+        border-top-right-radius: var(--radius-lg);
+        font-size: var(--font-size-md);
         &[data-active] {
             font-weight: 600;
-            background-color: var(--mantine-white);
-            color: var(--mantine-color-blue-6);
+            background-color: var(--bg-surface);
+            color: var(--text-accent);
         }
         &:hover {
-            background-color: var(--mantine-color-blue-0);
+            background-color: var(--bg-accent-light);
         }
         &:disabled {
             pointer-events: none;

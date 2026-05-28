@@ -4,7 +4,7 @@
 .switchLabel,
 .switchDescription,
 .switchError {
-    padding-left: var(--mantine-spacing-xs);
+    padding-left: var(--spacing-xs);
 }
 .fullWidthBody {
     justify-content: space-between;

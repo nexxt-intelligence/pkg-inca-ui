@@ -54,7 +54,7 @@ const CollapsibleContainer = ({
                                     )}
                                     {tooltipType === 'warning' && (
                                         <Icon
-                                            color="var(--mantine-color-yellow-6)"
+                                            color="var(--icon-warning)"
                                             size="sm"
                                             type="IconAlertTriangle"
                                         />

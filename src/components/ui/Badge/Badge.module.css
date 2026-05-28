@@ -4,5 +4,5 @@
 }
 
 .root::before {
-    margin-right: var(--mantine-spacing-2xs);
+    margin-right: var(--spacing-2xs);
 }
