@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.8.0
+
+### Minor Changes
+
+-   cb015eb: feat: add tooltipProps to Label, Modal onConfirm, Button width updates; feat: add custom create action to Select and MultiSelect and non-removable values to MultiSelect
+
 ## 7.7.1
 
 ### Patch Changes
