@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { type ChangeEvent, useState } from 'react';
+
+import Modal from '../Modal';
+import TextInput from '../TextInput';
 import Select from './index';
 import FontSelectItem from './SelectItem/FontSelectItem';
 import QuestionSelectItem from './SelectItem/QuestionSelectItem';
@@ -7,6 +11,10 @@ import QuestionSelectItem from './SelectItem/QuestionSelectItem';
 export default {
     argTypes: {
         clearable: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        creatable: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
@@ -42,6 +50,8 @@ export default {
 
 export const Primary: StoryObj<typeof Select> = {
     args: {
+        clearable: false,
+        creatable: false,
         data: [
             { label: 'React', value: 'react' },
             { label: 'Vue', value: 'vue' },
@@ -49,8 +59,83 @@ export const Primary: StoryObj<typeof Select> = {
             { label: 'Svelte', value: 'svelte' }
         ],
         label: 'Select an option',
-        placeholder: 'Pick a value'
+        nothingFound: 'No options available',
+        placeholder: 'Pick a value',
+        searchable: true
     }
+};
+
+const createValue = (label: string) => label.toLowerCase().replace(/\s+/g, '-');
+
+const WithCreateActionStory = () => {
+    const [data, setData] = useState([
+        { label: 'React', value: 'react' },
+        { label: 'Vue', value: 'vue' }
+    ]);
+    const [inputValue, setInputValue] = useState('');
+    const [opened, setOpened] = useState(false);
+    const [value, setValue] = useState<null | string>(null);
+
+    const closeModal = () => {
+        setOpened(false);
+        setInputValue('');
+    };
+
+    const confirmCreate = () => {
+        const label = inputValue.trim();
+
+        if (!label) return;
+
+        const nextValue = createValue(label);
+
+        setData((items) =>
+            items.some((item) => item.value === nextValue)
+                ? items
+                : [...items, { label, value: nextValue }]
+        );
+        setValue(nextValue);
+        closeModal();
+    };
+
+    return (
+        <>
+            <Select
+                data={data}
+                getCreateLabel={() => '+ Add framework'}
+                label="Select an option"
+                onChange={setValue}
+                onCreateAction={() => setOpened(true)}
+                placeholder="Pick or add a value"
+                searchable
+                value={value}
+            />
+            <Modal
+                onClose={closeModal}
+                onConfirm={confirmCreate}
+                opened={opened}
+                title="Add framework"
+            >
+                <TextInput
+                    autoFocus
+                    label="Framework name"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                        setInputValue(event.currentTarget.value)
+                    }
+                    placeholder="e.g. Solid"
+                    value={inputValue}
+                />
+            </Modal>
+        </>
+    );
+};
+
+export const WithCreateAction: StoryObj<typeof Select> = {
+    argTypes: {
+        creatable: { table: { disable: true } },
+        getCreateLabel: { table: { disable: true } },
+        onCreateAction: { table: { disable: true } }
+    },
+    render: () => <WithCreateActionStory />
 };
 
 export const WithQuestionSelectItem: StoryObj<typeof Select> = {
@@ -74,12 +159,12 @@ export const WithQuestionSelectItem: StoryObj<typeof Select> = {
                 title: 'Income',
                 value: 'q3'
             }
-        ] as any,
+        ],
         itemComponent: QuestionSelectItem,
         label: 'Select a question',
         placeholder: 'Pick a question'
     },
-    name: 'Custom Item — QuestionSelectItem'
+    name: 'Custom Item - QuestionSelectItem'
 };
 
 export const WithFontSelectItem: StoryObj<typeof Select> = {
@@ -94,5 +179,5 @@ export const WithFontSelectItem: StoryObj<typeof Select> = {
         label: 'Select a font',
         placeholder: 'Pick a font'
     },
-    name: 'Custom Item — FontSelectItem'
+    name: 'Custom Item - FontSelectItem'
 };
