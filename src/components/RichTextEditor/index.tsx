@@ -14,7 +14,7 @@ import {
 import StarterKit from '@tiptap/starter-kit';
 import * as React from 'react';
 
-import { ActionIcon, Button, Label } from '../../index';
+import { ActionIcon, Button, Label, type LabelProps } from '../../index';
 import classes from './RichTextEditor.module.css';
 
 type OnAnswerRefClick = (
@@ -140,6 +140,7 @@ export interface RichTextEditorProps
     placeholder?: string;
     required?: boolean;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
     withAsterisk?: boolean;
 }
 
@@ -161,6 +162,7 @@ const RichTextEditor = React.forwardRef<
             placeholder,
             required,
             tooltip,
+            tooltipProps,
             withAsterisk,
             ...props
         },
@@ -222,7 +224,13 @@ const RichTextEditor = React.forwardRef<
                     description={description}
                     error={error}
                     label={
-                        label ? <Label label={label} tooltip={tooltip} /> : null
+                        label ? (
+                            <Label
+                                label={label}
+                                tooltip={tooltip}
+                                tooltipProps={tooltipProps}
+                            />
+                        ) : null
                     }
                     required={required}
                     withAsterisk={withAsterisk}

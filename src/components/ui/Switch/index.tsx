@@ -3,7 +3,7 @@ import {
     SwitchProps as MantineSwitchProps
 } from '@mantine/core';
 
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import classes from './Switch.module.css';
 
 export interface SwitchProps extends MantineSwitchProps {
@@ -11,12 +11,14 @@ export interface SwitchProps extends MantineSwitchProps {
     fullWidth?: boolean;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 const Switch = ({
     fullWidth = false,
     label,
     tooltip,
+    tooltipProps,
     ...props
 }: SwitchProps) => {
     return (
@@ -28,7 +30,15 @@ const Switch = ({
                 label: classes.switchLabel,
                 track: classes.switchTrack
             }}
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             {...props}
         />
     );

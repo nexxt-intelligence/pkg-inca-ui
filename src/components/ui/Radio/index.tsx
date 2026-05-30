@@ -5,7 +5,7 @@ import {
     RadioProps as MantineRadioProps
 } from '@mantine/core';
 
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import classes from './Radio.module.css';
 
 export interface RadioGroupProps
@@ -15,6 +15,7 @@ export interface RadioGroupProps
     options?: RadioProps[];
     row?: boolean;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 export interface RadioProps extends MantineRadioProps {
@@ -44,6 +45,7 @@ const RadioGroup = ({
     options,
     row = false,
     tooltip,
+    tooltipProps,
     ...props
 }: RadioGroupProps) => {
     const radioOptions = options?.map(({ value, ...rest }) => (
@@ -56,7 +58,15 @@ const RadioGroup = ({
     ));
     return (
         <MantineRadio.Group
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             {...props}
         >
             <Flex

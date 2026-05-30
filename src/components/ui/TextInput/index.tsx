@@ -6,7 +6,7 @@ import {
 import { ReactNode } from 'react';
 
 import Icon, { TablerIconKeys } from '../Icon';
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import Text from '../Text';
 import classes from './TextInput.module.css';
 
@@ -15,6 +15,7 @@ export interface TextInputProps extends Omit<MantineTextInputProps, 'prefix'> {
     prefix?: ReactNode;
     readOnly?: boolean;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 const TextInput = ({
@@ -23,6 +24,7 @@ const TextInput = ({
     prefix,
     readOnly,
     tooltip,
+    tooltipProps,
     variant = 'default',
     ...props
 }: TextInputProps) => {
@@ -57,7 +59,15 @@ const TextInput = ({
                       )
                     : undefined
             }
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             readOnly={readOnly}
             variant={readOnly ? 'unstyled' : variant}
             {...props}

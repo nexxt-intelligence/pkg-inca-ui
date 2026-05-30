@@ -1,3 +1,6 @@
+.root {
+    width: fit-content;
+}
 .leftIcon {
     margin-right: var(--spacing-2xs);
     margin-left: calc(-1 * var(--spacing-2xs));

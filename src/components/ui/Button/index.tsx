@@ -19,6 +19,7 @@ const Button = ({
     className,
     color = 'primary',
     compact = false,
+    fullWidth = false,
     leftIcon,
     radius = 'sm',
     rightIcon,
@@ -32,7 +33,8 @@ const Button = ({
             className={clsx(className, classes.transition)}
             classNames={{
                 leftIcon: classes.leftIcon,
-                rightIcon: classes.rightIcon
+                rightIcon: classes.rightIcon,
+                root: fullWidth ? undefined : classes.root
             }}
             color={color}
             compact={compact}

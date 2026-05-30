@@ -3,13 +3,14 @@ import {
     TextareaProps as MantineTextareaProps
 } from '@mantine/core';
 
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import classes from './TextArea.module.css';
 
 export interface TextAreaProps extends MantineTextareaProps {
     placeholder?: string;
     readOnly?: boolean;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 const TextArea = ({
@@ -20,6 +21,7 @@ const TextArea = ({
     rightSection,
     rightSectionWidth,
     tooltip,
+    tooltipProps,
     variant = 'default',
     ...props
 }: TextAreaProps) => {
@@ -32,7 +34,15 @@ const TextArea = ({
             }}
             data-readonly={readOnly}
             data-variant={variant}
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             minRows={minRows}
             readOnly={readOnly}
             rightSection={rightSection}

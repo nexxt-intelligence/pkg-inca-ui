@@ -2,7 +2,7 @@ import { Input } from '@mantine/core';
 import * as React from 'react';
 
 import Icon from '../Icon';
-import Tooltip from '../Tooltip';
+import Tooltip, { type TooltipProps } from '../Tooltip';
 import classes from './Label.module.css';
 
 export interface LabelProps {
@@ -11,11 +11,19 @@ export interface LabelProps {
     label: React.ReactNode;
     required?: boolean;
     tooltip?: string;
+    tooltipProps?: Omit<TooltipProps, 'children' | 'label'>;
 }
 
-const Label = ({ htmlFor, id, label, required, tooltip }: LabelProps) => {
+const Label = ({
+    htmlFor,
+    id,
+    label,
+    required,
+    tooltip,
+    tooltipProps
+}: LabelProps) => {
     const tooltipIcon = tooltip && (
-        <Tooltip label={tooltip}>
+        <Tooltip label={tooltip} {...tooltipProps}>
             <Icon color="gray" size="xs" type="IconHelp" />
         </Tooltip>
     );

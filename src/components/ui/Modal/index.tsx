@@ -4,7 +4,7 @@ import {
     Modal as MantineModal,
     ModalProps as MantineModalProps
 } from '@mantine/core';
-import React from 'react';
+import { type ReactNode } from 'react';
 
 import Button from '../Button';
 import classes from './Modal.module.css';
@@ -13,7 +13,8 @@ export interface ModalProps extends MantineModalProps {
     cancelLabel?: string;
     confirmLabel?: string;
     /** Custom footer content. Defaults to Cancel + Done buttons. */
-    footer?: React.ReactNode;
+    footer?: ReactNode;
+    onConfirm?: () => void;
 }
 
 const Modal = ({
@@ -25,15 +26,21 @@ const Modal = ({
     confirmLabel = 'Done',
     footer,
     onClose,
+    onConfirm,
     withCloseButton = true,
     ...props
 }: ModalProps) => {
+    const handleConfirm = () => {
+        onConfirm?.();
+        onClose();
+    };
+
     const defaultFooter = (
         <>
             <Button onClick={onClose} variant="default">
                 {cancelLabel}
             </Button>
-            <Button onClick={onClose}>{confirmLabel}</Button>
+            <Button onClick={handleConfirm}>{confirmLabel}</Button>
         </>
     );
 

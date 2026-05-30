@@ -5,7 +5,7 @@ import {
     CheckboxProps as MantineCheckboxProps
 } from '@mantine/core';
 
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import classes from './Checkbox.module.css';
 
 export interface CheckboxGroupProps
@@ -15,6 +15,7 @@ export interface CheckboxGroupProps
     options?: CheckboxProps[];
     row?: boolean;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 export interface CheckboxProps extends MantineCheckboxProps {
@@ -43,6 +44,7 @@ const CheckboxGroup = ({
     options,
     row = false,
     tooltip,
+    tooltipProps,
     ...props
 }: CheckboxGroupProps) => {
     const checkboxOptions = options?.map(({ value, ...rest }) => (
@@ -50,7 +52,15 @@ const CheckboxGroup = ({
     ));
     return (
         <MantineCheckbox.Group
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             {...props}
         >
             <Flex

@@ -3,18 +3,20 @@ import {
     ColorInputProps as MantineColorInputProps
 } from '@mantine/core';
 
-import Label from '../Label';
+import Label, { type LabelProps } from '../Label';
 import classes from './ColorInput.module.css';
 
 export interface ColorInputProps extends MantineColorInputProps {
     leftFilledSection?: React.ReactNode;
     rightFilledSection?: React.ReactNode;
     tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
 }
 
 const ColorInput = ({
     label,
     tooltip,
+    tooltipProps,
     variant = 'default',
     ...props
 }: ColorInputProps) => {
@@ -24,7 +26,15 @@ const ColorInput = ({
                 rightSection: classes.rightSection
             }}
             data-variant={variant}
-            label={label ? <Label label={label} tooltip={tooltip} /> : null}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             variant={variant}
             {...props}
         />
