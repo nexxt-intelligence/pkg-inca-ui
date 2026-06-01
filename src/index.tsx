@@ -65,6 +65,10 @@ export {
     default as ColorInput,
     type ColorInputProps
 } from './components/ui/ColorInput';
+export {
+    default as Dropzone,
+    type DropzoneProps
+} from './components/ui/Dropzone';
 export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
 export { default as Label, type LabelProps } from './components/ui/Label';
 export { default as List, type ListProps } from './components/ui/List';
