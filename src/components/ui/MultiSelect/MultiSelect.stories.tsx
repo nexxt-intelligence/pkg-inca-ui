@@ -97,20 +97,19 @@ const WithCreateActionStory = () => {
     const confirmCreate = () => {
         const label = inputValue.trim();
 
-        if (!label) return;
+        if (!label) return false;
 
         const nextValue = createValue(label);
         const exists = data.some((item) => item.value === nextValue);
 
         if (exists) {
             setError('Cannot add duplicate items');
-            return;
+            return false;
         }
 
         setError(null);
         setData((items) => [...items, { label, value: nextValue }]);
         setValue((items) => [...items, nextValue]);
-        closeModal();
     };
 
     return (

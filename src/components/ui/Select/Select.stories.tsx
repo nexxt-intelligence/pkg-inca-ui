@@ -84,7 +84,7 @@ const WithCreateActionStory = () => {
     const confirmCreate = () => {
         const label = inputValue.trim();
 
-        if (!label) return;
+        if (!label) return false;
 
         const nextValue = createValue(label);
 
@@ -94,7 +94,6 @@ const WithCreateActionStory = () => {
                 : [...items, { label, value: nextValue }]
         );
         setValue(nextValue);
-        closeModal();
     };
 
     return (
