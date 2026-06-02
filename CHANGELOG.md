@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.9.1
+
+### Patch Changes
+
+-   460f45a: fix: handle modal confirm close behavior
+
 ## 7.9.0
 
 ### Minor Changes
