@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.9.0
+
+### Minor Changes
+
+-   888515b: feat: add Dropzone component
+
 ## 7.8.0
 
 ### Minor Changes
