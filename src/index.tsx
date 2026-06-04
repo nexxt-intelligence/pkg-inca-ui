@@ -17,9 +17,13 @@ export {
     default as CollapsibleContainer,
     type CollapsibleContainerProps
 } from './components/CollapsibleContainer';
-
 // TODO: Remove these
 export { default as Input, type InputProps } from './components/Input';
+
+export {
+    default as LinkCopyInput,
+    type LinkCopyInputProps
+} from './components/LinkCopyInput';
 /** UI Components from OLD inca ui */
 export {
     MiniModal,
