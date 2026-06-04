@@ -3,8 +3,15 @@
 }
 .appShellMain {
     padding-bottom: 1.25rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-
+.mainContent {
+    width: 100%;
+    max-width: 100rem;
+    margin: 0 auto;
+}
 .header {
     border-bottom: none;
     background-color: var(--bg-base);

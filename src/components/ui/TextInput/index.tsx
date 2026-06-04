@@ -69,7 +69,7 @@ const TextInput = ({
                 ) : null
             }
             readOnly={readOnly}
-            variant={readOnly ? 'unstyled' : variant}
+            variant={variant}
             {...props}
         />
     );

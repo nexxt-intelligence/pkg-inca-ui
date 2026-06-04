@@ -160,7 +160,7 @@ const MultiSelect = ({
             valueComponent={
                 hasNonRemovableValues ? ValueComponent : valueComponent
             }
-            variant={readOnly ? 'unstyled' : variant}
+            variant={variant}
             withinPortal={withinPortal}
             {...props}
             {...(loading

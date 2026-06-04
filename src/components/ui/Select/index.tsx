@@ -71,7 +71,7 @@ const Select = ({
             onCreate={hasCreatable ? handleCreate : onCreate}
             readOnly={readOnly}
             shouldCreate={isCreateAction ? () => true : shouldCreate}
-            variant={readOnly ? 'unstyled' : variant}
+            variant={variant}
             withinPortal={withinPortal}
             {...props}
             {...(loading

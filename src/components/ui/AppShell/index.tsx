@@ -216,13 +216,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </span>
                         </div>
                     )}
-                    <Stack
-                        className={classes.headerContent}
-                        maw="100rem"
-                        mx="auto"
-                        spacing={0}
-                        w="100%"
-                    >
+                    <Stack className={classes.headerContent} spacing={0}>
                         <Group spacing="sm">
                             <Text
                                 className={classes.subtitle}
@@ -234,7 +228,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </Text>
                             {headerBadge}
                         </Group>
-                        <Group position="apart" w="100%">
+                        <Group position="apart">
                             <Title className={classes.title} size="h2">
                                 {headerTitle}
                             </Title>
@@ -244,9 +238,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     </Stack>
                 </Stack>
             </header>
-            <Box maw="100rem" mx="auto" w="100%">
-                {children}
-            </Box>
+            <Box className={classes.mainContent}>{children}</Box>
         </MantineAppShell>
     );
 };
