@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.10.0
+
+### Minor Changes
+
+-   d26004b: fix: AppShell styling and all input readOnly handling; feat: add LinkCopyInput component
+
 ## 7.9.1
 
 ### Patch Changes
