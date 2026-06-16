@@ -9,7 +9,7 @@ export interface LinkCopyInputProps extends TextInputProps {
 
 const LinkCopyInput = ({ label, value, ...props }: LinkCopyInputProps) => {
     return (
-        <Flex align="flex-end" gap="xs" wrap="nowrap">
+        <Flex align="flex-end" gap="xs" w="100%" wrap="nowrap">
             <TextInput
                 label={label}
                 readOnly
