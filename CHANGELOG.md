@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.10.1
+
+### Patch Changes
+
+-   03b69fd: fix: ensure LinkCopyInput component has full width and AppShell main content height
+
 ## 7.10.0
 
 ### Minor Changes
