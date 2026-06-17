@@ -51,6 +51,7 @@ const Tabs = ({
             <MantineTabs
                 classNames={{
                     panel: classes.panel,
+                    root: classes.root,
                     tab: classes.tab,
                     tabsList: classes.tabsList
                 }}

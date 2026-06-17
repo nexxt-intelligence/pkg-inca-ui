@@ -2,7 +2,7 @@
     height: 40px;
 }
 
-[data-variant='default'] .tabsList {
+.root[data-variant='default'] > .tabsList {
     border-bottom: 1px solid var(--border-default);
     gap: var(--spacing-md);
 
@@ -23,12 +23,12 @@
     }
 }
 
-[data-variant='outline'] .tab,
-[data-variant='pills'] .tab {
+.root[data-variant='outline'] > .tabsList .tab,
+.root[data-variant='pills'] > .tabsList .tab {
     padding: var(--spacing-sm);
 }
 
-[data-variant='contained'] .tabsList {
+.root[data-variant='contained'] > .tabsList {
     height: 46px;
     .tab {
         padding: var(--spacing-sm) 0;
