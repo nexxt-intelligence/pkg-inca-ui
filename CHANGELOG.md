@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.11.0
+
+### Minor Changes
+
+-   6660b04: refactor: implement StrictProps type for improved prop handling across components
+
 ## 7.10.2
 
 ### Patch Changes
