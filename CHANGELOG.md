@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.10.2
+
+### Patch Changes
+
+-   84fffdf: fix: update CSS selectors for Tabs component to ensure proper styling
+
 ## 7.10.1
 
 ### Patch Changes
