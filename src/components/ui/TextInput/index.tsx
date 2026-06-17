@@ -5,12 +5,14 @@ import {
 } from '@mantine/core';
 import { ReactNode } from 'react';
 
+import { type StrictInputProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
 import Label, { type LabelProps } from '../Label';
 import Text from '../Text';
 import classes from './TextInput.module.css';
 
-export interface TextInputProps extends Omit<MantineTextInputProps, 'prefix'> {
+export interface TextInputProps
+    extends Omit<StrictInputProps<MantineTextInputProps, 'size'>, 'prefix'> {
     icon?: ReactNode | TablerIconKeys;
     prefix?: ReactNode;
     readOnly?: boolean;

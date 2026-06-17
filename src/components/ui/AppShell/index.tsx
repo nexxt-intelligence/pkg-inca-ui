@@ -12,11 +12,12 @@ import {
     Title
 } from '@mantine/core';
 
+import { type StrictProps } from '../../../types/props';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './AppShell.module.css';
 
-export interface AppShellProps extends MantineAppShellProps {
+export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     activeLink: string;
     headerBadge?: React.ReactNode;
     headerBottomContent?: React.ReactNode;
@@ -37,7 +38,7 @@ export interface AppShellProps extends MantineAppShellProps {
     userProfilePicture?: string;
 }
 
-export interface NavLinkItem extends MantineNavLinkProps {
+export interface NavLinkItem extends StrictProps<MantineNavLinkProps> {
     healthIcon?: React.ReactNode;
     onClick?: () => void;
     url?: string;

@@ -15,6 +15,7 @@ import StarterKit from '@tiptap/starter-kit';
 import * as React from 'react';
 
 import { ActionIcon, Button, Label, type LabelProps } from '../../index';
+import { type StrictProps } from '../../types/props';
 import classes from './RichTextEditor.module.css';
 
 type OnAnswerRefClick = (
@@ -123,7 +124,10 @@ export interface RichTextEditorHandle {
 }
 
 export interface RichTextEditorProps
-    extends Omit<MantineRTEProps, 'children' | 'editor' | 'onChange'> {
+    extends Omit<
+        StrictProps<MantineRTEProps>,
+        'children' | 'editor' | 'onChange'
+    > {
     children?: React.ReactNode;
     defaultValue?: string;
     description?: InputWrapperProps['description'];

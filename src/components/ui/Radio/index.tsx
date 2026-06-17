@@ -5,11 +5,12 @@ import {
     RadioProps as MantineRadioProps
 } from '@mantine/core';
 
+import { type StrictInputProps, type StrictProps } from '../../../types/props';
 import Label, { type LabelProps } from '../Label';
 import classes from './Radio.module.css';
 
 export interface RadioGroupProps
-    extends Omit<MantineRadioGroupProps, 'children'> {
+    extends Omit<StrictProps<MantineRadioGroupProps>, 'children'> {
     children?: React.ReactNode;
     disabled?: boolean;
     options?: RadioProps[];
@@ -18,7 +19,8 @@ export interface RadioGroupProps
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
-export interface RadioProps extends MantineRadioProps {
+export interface RadioProps
+    extends Omit<StrictInputProps<MantineRadioProps, 'size'>, 'value'> {
     disabled?: boolean;
     value: number | string;
 }

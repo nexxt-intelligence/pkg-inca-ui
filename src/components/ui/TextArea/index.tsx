@@ -3,10 +3,12 @@ import {
     TextareaProps as MantineTextareaProps
 } from '@mantine/core';
 
+import { type StrictTextareaProps } from '../../../types/props';
 import Label, { type LabelProps } from '../Label';
 import classes from './TextArea.module.css';
 
-export interface TextAreaProps extends MantineTextareaProps {
+export interface TextAreaProps
+    extends StrictTextareaProps<MantineTextareaProps> {
     placeholder?: string;
     readOnly?: boolean;
     tooltip?: string;

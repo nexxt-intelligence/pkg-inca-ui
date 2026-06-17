@@ -7,6 +7,7 @@ import {
 } from '@mantine/core';
 import * as React from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import Text from '../Text';
 import tooltipClasses from '../Tooltip/Tooltip.module.css';
 import classes from './Menu.module.css';
@@ -17,12 +18,12 @@ export type MenuItem = {
     onClick?: () => void;
     tooltip?: React.ReactElement | string;
     tooltipPosition?: MantineTooltipProps['position'];
-} & MantineMenuItemProps;
+} & StrictProps<MantineMenuItemProps>;
 
 export type MenuProps = {
     items?: MenuItem[];
     menuContent?: React.ReactNode;
-} & MantineMenuProps;
+} & StrictProps<MantineMenuProps>;
 
 function Menu({ children, items, menuContent, ...props }: MenuProps) {
     return (

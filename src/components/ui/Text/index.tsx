@@ -3,9 +3,12 @@ import {
     TextProps as MantineTextProps
 } from '@mantine/core';
 
-const Text = ({ fw = 400, ...props }: MantineTextProps) => {
+import { type StrictProps } from '../../../types/props';
+
+export type TextProps = StrictProps<MantineTextProps>;
+
+const Text = ({ fw = 400, ...props }: TextProps) => {
     return <MantineText fw={fw} {...props} />;
 };
 
-export type TextProps = MantineTextProps;
 export default Text;

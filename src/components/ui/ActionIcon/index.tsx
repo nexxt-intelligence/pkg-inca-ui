@@ -5,10 +5,12 @@ import {
 } from '@mantine/core';
 import { clsx } from '@mantine/core';
 
+import { type StrictButtonProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './ActionIcon.module.css';
 
-export interface ActionIconProps extends MantineActionIconProps {
+export interface ActionIconProps
+    extends Omit<StrictButtonProps<MantineActionIconProps>, 'onClick'> {
     icon: TablerIconKeys;
     iconRotate?: number;
     iconSize?: '2xs' | MantineNumberSize;

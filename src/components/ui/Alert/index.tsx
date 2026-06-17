@@ -4,10 +4,11 @@ import {
 } from '@mantine/core';
 import { useState } from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import Icon from '../Icon';
 import classes from './Alert.module.css';
 
-export interface AlertProps extends MantineAlertProps {
+export interface AlertProps extends StrictProps<MantineAlertProps> {
     defaultOpen?: boolean;
     hideIcon?: boolean;
     onClose?: () => void;

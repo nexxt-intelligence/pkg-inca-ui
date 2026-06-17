@@ -3,11 +3,16 @@ import {
     NumberInputProps as MantineNumberInputProps
 } from '@mantine/core';
 
+import { type StrictInputProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
 import Label, { type LabelProps } from '../Label';
 import classes from './NumberInput.module.css';
 
-export interface NumberInputProps extends MantineNumberInputProps {
+export interface NumberInputProps
+    extends StrictInputProps<
+        MantineNumberInputProps,
+        'classNames' | 'onChange' | 'size' | 'styles' | 'type' | 'value'
+    > {
     icon?: TablerIconKeys;
     readOnly?: boolean;
     tooltip?: string;

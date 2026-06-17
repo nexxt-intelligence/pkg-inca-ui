@@ -3,10 +3,12 @@ import {
     PrismProps as MantinePrismProps
 } from '@mantine/prism';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './Prism.module.css';
 
-const Prism = ({ ...props }: MantinePrismProps) => {
+export type PrismProps = StrictProps<MantinePrismProps>;
+
+const Prism = ({ ...props }: PrismProps) => {
     return <MantinePrism classNames={{ code: classes.code }} {...props} />;
 };
-export type PrismProps = MantinePrismProps;
 export default Prism;

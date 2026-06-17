@@ -4,11 +4,12 @@ import {
 } from '@mantine/core';
 import * as React from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './Badge.module.css';
 
 type BadgeProps = {
     children: React.ReactNode;
-} & MantineBadgeProps;
+} & StrictProps<MantineBadgeProps>;
 
 export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
     return (

@@ -3,7 +3,12 @@ import {
     CloseButtonProps as MantineCloseButtonProps
 } from '@mantine/core';
 
-export type CloseButtonProps = MantineCloseButtonProps;
+import { type StrictButtonProps } from '../../../types/props';
+
+export type CloseButtonProps = StrictButtonProps<
+    MantineCloseButtonProps,
+    'color'
+>;
 
 const CloseButton = (props: CloseButtonProps) => {
     return <MantineCloseButton variant="subtle" {...props} />;

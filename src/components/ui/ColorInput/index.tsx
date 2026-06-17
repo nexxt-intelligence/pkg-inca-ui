@@ -3,10 +3,15 @@ import {
     ColorInputProps as MantineColorInputProps
 } from '@mantine/core';
 
+import { type StrictInputProps } from '../../../types/props';
 import Label, { type LabelProps } from '../Label';
 import classes from './ColorInput.module.css';
 
-export interface ColorInputProps extends MantineColorInputProps {
+export interface ColorInputProps
+    extends StrictInputProps<
+        MantineColorInputProps,
+        'defaultValue' | 'onChange' | 'size' | 'value'
+    > {
     leftFilledSection?: React.ReactNode;
     rightFilledSection?: React.ReactNode;
     tooltip?: string;

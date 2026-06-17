@@ -6,10 +6,11 @@ import {
 } from '@mantine/core';
 import { type ReactNode, useState } from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import Button from '../Button';
 import classes from './Modal.module.css';
 
-export interface ModalProps extends MantineModalProps {
+export interface ModalProps extends StrictProps<MantineModalProps> {
     cancelLabel?: string;
     /** Close the modal after confirm succeeds. Return false from onConfirm to keep it open. */
     closeOnConfirm?: boolean;

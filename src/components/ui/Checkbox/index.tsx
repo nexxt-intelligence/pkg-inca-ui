@@ -5,11 +5,12 @@ import {
     CheckboxProps as MantineCheckboxProps
 } from '@mantine/core';
 
+import { type StrictInputProps, type StrictProps } from '../../../types/props';
 import Label, { type LabelProps } from '../Label';
 import classes from './Checkbox.module.css';
 
 export interface CheckboxGroupProps
-    extends Omit<MantineCheckboxGroupProps, 'children'> {
+    extends Omit<StrictProps<MantineCheckboxGroupProps>, 'children'> {
     children?: React.ReactNode;
     disabled?: boolean;
     options?: CheckboxProps[];
@@ -18,7 +19,11 @@ export interface CheckboxGroupProps
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
-export interface CheckboxProps extends MantineCheckboxProps {
+export interface CheckboxProps
+    extends Omit<
+        StrictInputProps<MantineCheckboxProps, 'size' | 'type'>,
+        'value'
+    > {
     value: number | string;
 }
 

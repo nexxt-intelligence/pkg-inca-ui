@@ -4,10 +4,15 @@ import {
 } from '@mantine/core';
 import { clsx } from '@mantine/core';
 
+import { type StrictButtonProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Button.module.css';
 
-export interface ButtonProps extends MantineButtonProps {
+export interface ButtonProps
+    extends Omit<
+        StrictButtonProps<MantineButtonProps>,
+        'leftIcon' | 'rightIcon'
+    > {
     // TODO: remove react.element later so only string can be accepted
     leftIcon?: React.ReactElement | TablerIconKeys;
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

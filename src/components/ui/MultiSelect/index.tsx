@@ -7,11 +7,13 @@ import {
 } from '@mantine/core';
 import { useState } from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import CloseButton from '../CloseButton';
 import Label, { type LabelProps } from '../Label';
 import classes from './MultiSelect.module.css';
 
-export interface MultiSelectProps extends MantineMultiSelectProps {
+export interface MultiSelectProps
+    extends StrictProps<MantineMultiSelectProps> {
     loading?: boolean;
     nonRemovableValues?: string[];
     onCreateAction?: () => void;

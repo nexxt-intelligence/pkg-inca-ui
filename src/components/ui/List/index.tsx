@@ -3,8 +3,10 @@ import {
     ListProps as MantineListProps
 } from '@mantine/core';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './List.module.css';
-export interface ListProps extends Omit<MantineListProps, 'children'> {
+export interface ListProps
+    extends Omit<StrictProps<MantineListProps>, 'children'> {
     children?: React.ReactNode;
     items?: string[];
 }

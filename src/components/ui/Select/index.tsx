@@ -4,11 +4,12 @@ import {
     SelectProps as MantineSelectProps
 } from '@mantine/core';
 
+import { type StrictProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
 import Label, { type LabelProps } from '../Label';
 import classes from './Select.module.css';
 
-export interface SelectProps extends MantineSelectProps {
+export interface SelectProps extends StrictProps<MantineSelectProps> {
     icon?: TablerIconKeys;
     loading?: boolean;
     onCreateAction?: () => void;

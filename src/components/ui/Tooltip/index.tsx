@@ -4,13 +4,15 @@ import {
     TooltipProps as MantineTooltipProps
 } from '@mantine/core';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './Tooltip.module.css';
 
-export interface FloatingTooltipProps extends MantineTooltipFloatingProps {
+export interface FloatingTooltipProps
+    extends StrictProps<MantineTooltipFloatingProps> {
     label: React.ReactElement | string;
 }
 
-export interface TooltipProps extends MantineTooltipProps {
+export interface TooltipProps extends StrictProps<MantineTooltipProps> {
     label: React.ReactElement | string;
 }
 

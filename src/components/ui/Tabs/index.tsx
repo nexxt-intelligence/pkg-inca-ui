@@ -4,9 +4,14 @@ import {
 } from '@mantine/core';
 import * as React from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './Tabs.module.css';
 
-export interface TabsProps extends MantineTabsProps {
+export interface TabsProps
+    extends Omit<
+        StrictProps<MantineTabsProps>,
+        'children' | 'defaultValue' | 'onTabChange' | 'value' | 'variant'
+    > {
     children: React.ReactNode;
     defaultValue?: string;
     fullWidth?: boolean;

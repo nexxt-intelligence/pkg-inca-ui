@@ -3,10 +3,15 @@ import {
     SwitchProps as MantineSwitchProps
 } from '@mantine/core';
 
+import { type StrictInputProps } from '../../../types/props';
 import Label, { type LabelProps } from '../Label';
 import classes from './Switch.module.css';
 
-export interface SwitchProps extends MantineSwitchProps {
+export interface SwitchProps
+    extends Omit<
+        StrictInputProps<MantineSwitchProps, 'size' | 'type'>,
+        'checked' | 'onChange'
+    > {
     checked: boolean;
     fullWidth?: boolean;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

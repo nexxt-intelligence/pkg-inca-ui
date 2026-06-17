@@ -6,11 +6,13 @@ import {
 } from '@mantine/dropzone';
 import { useEffect, useState } from 'react';
 
+import { type StrictProps } from '../../../types/props';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './Dropzone.module.css';
 
-export interface DropzoneProps extends Omit<MantineDropzoneProps, 'children'> {
+export interface DropzoneProps
+    extends Omit<StrictProps<MantineDropzoneProps>, 'children'> {
     showImagePreview?: boolean;
     showMetadataHelpers?: boolean;
     size?: 'md' | 'sm';

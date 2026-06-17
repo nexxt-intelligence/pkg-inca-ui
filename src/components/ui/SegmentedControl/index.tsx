@@ -3,9 +3,10 @@ import {
     SegmentedControlProps as MantineSegmentedControlProps
 } from '@mantine/core';
 
+import { type StrictProps } from '../../../types/props';
 import classes from './SegmentedControl.module.css';
 
-export type SegmentedControlProps = MantineSegmentedControlProps;
+export type SegmentedControlProps = StrictProps<MantineSegmentedControlProps>;
 
 const SegmentedControl = ({ ...props }: SegmentedControlProps) => {
     return (
