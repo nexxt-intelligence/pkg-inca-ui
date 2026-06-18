@@ -13,6 +13,7 @@ import classes from './Dropzone.module.css';
 
 export interface DropzoneProps
     extends Omit<StrictProps<MantineDropzoneProps>, 'children'> {
+    maxSizeLabel?: string;
     showImagePreview?: boolean;
     showMetadataHelpers?: boolean;
     size?: 'md' | 'sm';
@@ -27,21 +28,20 @@ type DropzoneComponent = ((props: DropzoneProps) => JSX.Element) & {
 };
 
 const formatBytes = (bytes: number) => {
-    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1000) return `${bytes} B`;
 
     const units = ['KB', 'MB', 'GB', 'TB'];
-    let value = bytes / 1024;
+    let value = bytes / 1000;
     let unitIndex = 0;
 
-    while (value >= 1024 && unitIndex < units.length - 1) {
-        value /= 1024;
+    while (value >= 1000 && unitIndex < units.length - 1) {
+        value /= 1000;
         unitIndex += 1;
     }
 
     const formattedValue = Number.isInteger(value)
         ? value.toString()
         : value.toFixed(1);
-
     return `${formattedValue} ${units[unitIndex]}`;
 };
 
@@ -70,6 +70,7 @@ const Dropzone = (({
     accept,
     disabled,
     maxSize,
+    maxSizeLabel,
     onDrop,
     showImagePreview = true,
     showMetadataHelpers = false,
@@ -81,9 +82,8 @@ const Dropzone = (({
 
     const isFileVariant = variant === 'file';
     const isSmall = size === 'sm';
-    const resolvedMaxSizeDescription = maxSize
-        ? formatBytes(maxSize)
-        : undefined;
+    const resolvedMaxSizeDescription =
+        maxSizeLabel ?? (maxSize ? formatBytes(maxSize) : undefined);
     const resolvedSupportedFormatsDescription = formatAcceptedTypes(accept);
     const shouldShowMetadataHelpers =
         showMetadataHelpers &&
