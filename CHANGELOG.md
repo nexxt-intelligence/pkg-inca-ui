@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.11.1
+
+### Patch Changes
+
+-   5e6f366: fix: add maxSizeLabel prop to Dropzone, update formatBytes function, and update AppShell header width
+
 ## 7.11.0
 
 ### Minor Changes
