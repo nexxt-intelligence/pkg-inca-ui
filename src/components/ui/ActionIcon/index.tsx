@@ -4,6 +4,7 @@ import {
     MantineNumberSize
 } from '@mantine/core';
 import { clsx } from '@mantine/core';
+import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
 import Icon, { TablerIconKeys } from '../Icon';
@@ -17,28 +18,38 @@ export interface ActionIconProps
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const ActionIcon = ({
-    className,
-    color = 'primary',
-    icon,
-    iconRotate = 0,
-    iconSize,
-    size = 'sm',
-    variant = 'filled',
-    ...props
-}: ActionIconProps) => {
-    return (
-        <MantineActionIcon
-            className={clsx(classes.actionIcon, className)}
-            color={color}
-            data-variant={variant}
-            size={size}
-            variant={variant}
-            {...props}
-        >
-            <Icon iconRotate={iconRotate} size={iconSize ?? size} type={icon} />
-        </MantineActionIcon>
-    );
-};
+const ActionIcon = React.forwardRef<HTMLButtonElement, ActionIconProps>(
+    (
+        {
+            className,
+            color = 'primary',
+            icon,
+            iconRotate = 0,
+            iconSize,
+            size = 'sm',
+            variant = 'filled',
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <MantineActionIcon
+                className={clsx(classes.actionIcon, className)}
+                color={color}
+                data-variant={variant}
+                size={size}
+                variant={variant}
+                {...props}
+                ref={ref}
+            >
+                <Icon
+                    iconRotate={iconRotate}
+                    size={iconSize ?? size}
+                    type={icon}
+                />
+            </MantineActionIcon>
+        );
+    }
+);
 
 export default ActionIcon;
