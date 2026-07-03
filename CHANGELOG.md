@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.11.2
+
+### Patch Changes
+
+-   f1ec676: fix: add forwardRef support to Button and ActionIcon
+
 ## 7.11.1
 
 ### Patch Changes
