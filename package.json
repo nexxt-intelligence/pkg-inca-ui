@@ -15,7 +15,7 @@
         "preview": "vite preview",
         "storybook": "storybook dev -p 2356",
         "build-storybook": "storybook build",
-        "release": "yarn build && changeset publish"
+        "release": "yarn build && changeset publish --tag ${DIST_TAG:-latest}"
     },
     "dependencies": {
         "@mantine/dropzone": "6.0.21",

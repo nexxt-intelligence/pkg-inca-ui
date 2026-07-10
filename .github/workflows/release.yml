@@ -2,7 +2,8 @@ name: Release
 on:
     push:
         branches:
-            - main # or main
+            - main # React 19 / Mantine 6+ line -> npm dist-tag "latest"
+            - v7 # React 16 / Mantine 6 maintenance line -> npm dist-tag "legacy"
 jobs:
     release:
         runs-on: ubuntu-latest
@@ -27,3 +28,5 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure to have this set up under GitHub secrets
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Ensure to have this set up under GitHub secrets
+                  # main -> "latest", any maintenance branch (e.g. v7) -> "legacy"
+                  DIST_TAG: ${{ github.ref_name == 'main' && 'latest' || 'legacy' }}
