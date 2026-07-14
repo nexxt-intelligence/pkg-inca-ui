@@ -24,6 +24,7 @@ export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     headerRightContent?: React.ReactNode;
     headerSubtitle?: string;
     headerTitle?: string; // TODO: revert back to required
+    headerTitleAddon?: React.ReactNode;
     isFixedHeader?: boolean;
     isMobile: boolean;
     isNavbarOpen: boolean;
@@ -53,6 +54,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
         headerRightContent,
         headerSubtitle,
         headerTitle,
+        headerTitleAddon,
         isFixedHeader = false,
         isMobile,
         isNavbarOpen,
@@ -230,9 +232,12 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             {headerBadge}
                         </Group>
                         <Group position="apart">
-                            <Title className={classes.title} size="h2">
-                                {headerTitle}
-                            </Title>
+                            <Group spacing="xs">
+                                <Title className={classes.title} size="h2">
+                                    {headerTitle}
+                                </Title>
+                                {headerTitleAddon}
+                            </Group>
                             <Group spacing="sm">{headerRightContent}</Group>
                         </Group>
                         {headerBottomContent}
