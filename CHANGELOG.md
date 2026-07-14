@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.12.0
+
+### Minor Changes
+
+-   a5e606a: feat: add headerTitleAddon prop on AppShell
+
 ## 7.11.2
 
 ### Patch Changes
