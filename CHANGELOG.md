@@ -1,5 +1,11 @@
 # inca-ui
 
+## 8.0.0
+
+### Major Changes
+
+-   3273efe: feat: upgrade to React 19 and Mantine v9
+
 ## 7.11.2
 
 ### Patch Changes
