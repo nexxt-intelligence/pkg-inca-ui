@@ -55,13 +55,13 @@ const Tabs = ({
         <div onClick={(e) => e.stopPropagation()}>
             <MantineTabs
                 classNames={{
+                    list: classes.tabsList,
                     panel: classes.panel,
                     root: classes.root,
-                    tab: classes.tab,
-                    tabsList: classes.tabsList
+                    tab: classes.tab
                 }}
                 data-variant={variant}
-                onTabChange={handleTabChange}
+                onChange={handleTabChange}
                 value={currentValue}
                 variant={variant}
             >

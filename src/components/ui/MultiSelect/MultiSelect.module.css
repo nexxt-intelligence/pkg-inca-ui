@@ -1,5 +1,4 @@
 .multiSelectValues {
-    min-height: 31px;
     button {
         color: var(--text-subtle);
     }
@@ -8,12 +7,19 @@
 .multiSelectInput {
     height: auto;
     padding-right: 36px;
+
     input::-webkit-search-cancel-button {
         display: none;
     }
+
     &:has(.multiSelectSearchInput[data-readonly='true']) {
         cursor: default;
     }
+}
+
+.multiSelectOption:hover,
+.multiSelectOption[data-combobox-selected='true'] {
+    background-color: #e9f4ff;
 }
 
 .multiSelectValue {
@@ -27,9 +33,11 @@
     height: 1.375rem;
     padding-left: var(--spacing-xs);
     margin: 2px 4px;
+
     &:not(:has(.multiSelectValueRemove)) {
         padding-right: var(--spacing-xs);
     }
+
     &[data-disabled='true'] {
         background-color: var(--border-disabled);
         color: var(--text-medium);
@@ -45,6 +53,7 @@
 
 .multiSelectValueRemove {
     margin-left: var(--spacing-3xs);
+
     &:hover {
         background-color: transparent;
     }

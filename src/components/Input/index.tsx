@@ -7,11 +7,13 @@ import {
     TextInputProps
 } from '@mantine/core';
 
+import { cx } from '../../utils/cx';
 import Icon from '../ui/Icon';
 import Tooltip from '../ui/Tooltip';
 import classes from './Input.module.css';
 
 export interface InputProps {
+    icon?: React.ReactNode;
     leftFilledSection?: React.ReactNode;
     multilineTooltip?: boolean;
     rightFilledSection?: React.ReactNode;
@@ -35,15 +37,14 @@ const Input = ({
         classNames: {
             description: classes.description,
             error: classes.error,
-            icon: leftFilledSection ? classes.leftFilledSection : '',
-            input: classes.input,
+            input: cx(
+                classes.input,
+                leftFilledSection && classes.inputWithLeftSection,
+                rightFilledSection && classes.inputWithRightSection
+            ),
             label: classes.inputLabel,
-            rightSection: rightFilledSection ? classes.rightFilledSection : '',
             wrapper: classes.inputWrapper
         },
-        'data-left-section': Boolean(leftFilledSection),
-        'data-right-section': Boolean(rightFilledSection),
-        icon: leftFilledSection || icon,
         label: tooltip ? (
             <span className={classes.tooltipIcon}>
                 {label}
@@ -57,7 +58,16 @@ const Input = ({
         labelProps: {
             fw: 400
         },
+        leftSection: leftFilledSection || icon,
+        leftSectionProps: {
+            className: leftFilledSection ? classes.leftFilledSection : undefined
+        },
         rightSection: rightFilledSection || rightSection,
+        rightSectionProps: {
+            className: rightFilledSection
+                ? classes.rightFilledSection
+                : undefined
+        },
         ...props
     };
 

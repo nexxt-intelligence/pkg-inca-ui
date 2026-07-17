@@ -25,7 +25,7 @@ export const useConfirmationModal = () => {
             modals.openConfirmModal({
                 centered,
                 children,
-                groupProps: { mt: 'md', position: 'apart' },
+                groupProps: { justify: 'space-between', mt: 'md' },
                 labels: { cancel: cancelLabel, confirm: confirmLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),
@@ -48,7 +48,7 @@ export const useConfirmationModal = () => {
             modals.openConfirmModal({
                 centered,
                 children: <Text>{message}</Text>,
-                groupProps: { mt: 'md', position: 'apart' },
+                groupProps: { justify: 'space-between', mt: 'md' },
                 labels: { cancel: cancelLabel, confirm: confirmLabel },
                 onCancel: () => resolve(false),
                 onConfirm: () => resolve(true),

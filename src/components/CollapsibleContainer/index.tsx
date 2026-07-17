@@ -40,7 +40,7 @@ const CollapsibleContainer = ({
         >
             <Accordion.Item data-tooltiptype={tooltipType} value={title}>
                 <Accordion.Control>
-                    <Stack spacing={0}>
+                    <Stack gap={0}>
                         <span className={classes.title}>
                             {title}
                             {tooltip && (

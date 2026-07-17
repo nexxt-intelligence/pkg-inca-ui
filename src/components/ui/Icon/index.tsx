@@ -1,8 +1,4 @@
-import {
-    MantineColor,
-    MantineNumberSize,
-    useMantineTheme
-} from '@mantine/core';
+import { MantineColor, MantineSize, useMantineTheme } from '@mantine/core';
 import * as TablerIcons from '@tabler/icons-react';
 import * as React from 'react';
 
@@ -14,7 +10,7 @@ interface IconProps {
      */
     color?: MantineColor;
     iconRotate?: number;
-    size?: '2xs' | MantineNumberSize;
+    size?: '2xs' | ({} & string) | MantineSize | number;
     /**
      * Name of the Tabler icon to render (e.g. `"IconHome"`, `"IconUser"`).
      * Full list: https://tabler.io/icons

@@ -1,14 +1,24 @@
-import {
-    Prism as MantinePrism,
-    PrismProps as MantinePrismProps
-} from '@mantine/prism';
+import * as React from 'react';
 
-import { type StrictProps } from '../../../types/props';
 import classes from './Prism.module.css';
 
-export type PrismProps = StrictProps<MantinePrismProps>;
+export type PrismProps = {
+    children: React.ReactNode;
+    copiedLabel?: string;
+    copyLabel?: string;
+    language?: string;
+    noCopy?: boolean;
+    withLineNumbers?: boolean;
+} & Omit<React.ComponentPropsWithoutRef<'pre'>, 'children'>;
 
-const Prism = ({ ...props }: PrismProps) => {
-    return <MantinePrism classNames={{ code: classes.code }} {...props} />;
+const Prism = ({ children, language, ...props }: PrismProps) => {
+    return (
+        <pre {...props}>
+            <code className={classes.code} data-language={language}>
+                {children}
+            </code>
+        </pre>
+    );
 };
+
 export default Prism;

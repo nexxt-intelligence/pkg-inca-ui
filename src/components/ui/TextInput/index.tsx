@@ -12,7 +12,7 @@ import Text from '../Text';
 import classes from './TextInput.module.css';
 
 export interface TextInputProps
-    extends Omit<StrictInputProps<MantineTextInputProps, 'size'>, 'prefix'> {
+    extends Omit<StrictInputProps<MantineTextInputProps>, 'prefix'> {
     icon?: ReactNode | TablerIconKeys;
     prefix?: ReactNode;
     readOnly?: boolean;
@@ -39,13 +39,6 @@ const TextInput = ({
             }}
             data-readonly={readOnly}
             data-variant={variant}
-            icon={
-                typeof icon === 'string' ? (
-                    <Icon type={icon as TablerIconKeys} />
-                ) : (
-                    icon
-                )
-            }
             inputContainer={
                 prefix
                     ? (children: ReactNode) => (
@@ -69,6 +62,13 @@ const TextInput = ({
                         tooltipProps={tooltipProps}
                     />
                 ) : null
+            }
+            leftSection={
+                typeof icon === 'string' ? (
+                    <Icon type={icon as TablerIconKeys} />
+                ) : (
+                    icon
+                )
             }
             readOnly={readOnly}
             variant={variant}

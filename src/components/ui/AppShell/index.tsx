@@ -1,12 +1,10 @@
 import {
     Box,
     Burger,
-    Footer,
     Group,
     AppShell as MantineAppShell,
     AppShellProps as MantineAppShellProps,
     NavLinkProps as MantineNavLinkProps,
-    Navbar,
     NavLink,
     Stack,
     Title
@@ -40,6 +38,7 @@ export interface AppShellProps extends StrictProps<MantineAppShellProps> {
 
 export interface NavLinkItem extends StrictProps<MantineNavLinkProps> {
     healthIcon?: React.ReactNode;
+    icon?: React.ReactNode;
     onClick?: () => void;
     url?: string;
 }
@@ -103,12 +102,14 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     active={url ? activeLink === url.split('?')[0] : undefined}
                     classNames={{
                         body: classes.navLinkBody,
-                        icon: classes.navLinkIcon,
                         label: classes.navLinkLabel,
-                        root: classes.navLinkRoot
+                        root: classes.navLinkRoot,
+                        section: classes.navLinkIcon
                     }}
                     disabled={disabled}
-                    icon={
+                    key={String(label)}
+                    label={label}
+                    leftSection={
                         healthIcon ? (
                             <>
                                 {healthIcon}
@@ -118,8 +119,6 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             icon
                         )
                     }
-                    key={String(label)}
-                    label={label}
                     onClick={() => {
                         if (onClick) {
                             onClick();
@@ -140,61 +139,62 @@ const AppShell = ({ ...props }: AppShellProps) => {
             }}
             data-fixed={isFixedHeader}
             data-mobile={isMobile}
-            footer={
-                <Footer
-                    className={classes.footer}
-                    height={32}
-                    withBorder={false}
-                    zIndex={1}
-                >
-                    <a
-                        className={classes.byLogo}
-                        href="https://nexxt.in"
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        <img
-                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
-                            width={200}
-                        />
-                    </a>
-                </Footer>
-            }
+            footer={{ height: 32 }}
             layout={!isMobile ? 'alt' : 'default'}
-            navbar={
-                <Navbar
-                    className={`${classes.navbar} ${
-                        isNavbarOpen ? '' : classes.hidden
-                    } `}
-                    height={'auto'}
-                    width={{ base: 85 }}
-                >
-                    <Navbar.Section>
-                        <div
-                            className={`${classes.iconLogo} ${
-                                isMobile ? classes.hidden : ''
-                            }`}
-                        >
-                            <img
-                                height="30"
-                                src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
-                                width="30"
-                            />
-                        </div>
-                    </Navbar.Section>
-                    <Navbar.Section grow>
-                        {renderNavLinks(navLinkItems)}
-                    </Navbar.Section>
-                    <Navbar.Section>
-                        {renderNavLinks(navLinkBottomItems)}
-                    </Navbar.Section>
-                </Navbar>
-            }
-            navbarOffsetBreakpoint={isNavbarOpen ? '' : 'md'}
+            navbar={{
+                breakpoint: 'md',
+                collapsed: {
+                    desktop: !isNavbarOpen,
+                    mobile: !isNavbarOpen
+                },
+                width: { base: 85 }
+            }}
             {...mantineAppShellProps}
         >
+            <MantineAppShell.Navbar
+                className={`${classes.navbar} ${
+                    isNavbarOpen ? '' : classes.hidden
+                } `}
+            >
+                <MantineAppShell.Section>
+                    <div
+                        className={`${classes.iconLogo} ${
+                            isMobile ? classes.hidden : ''
+                        }`}
+                    >
+                        <img
+                            height="30"
+                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
+                            width="30"
+                        />
+                    </div>
+                </MantineAppShell.Section>
+                <MantineAppShell.Section grow>
+                    {renderNavLinks(navLinkItems)}
+                </MantineAppShell.Section>
+                <MantineAppShell.Section>
+                    {renderNavLinks(navLinkBottomItems)}
+                </MantineAppShell.Section>
+            </MantineAppShell.Navbar>
+            <MantineAppShell.Footer
+                className={classes.footer}
+                withBorder={false}
+                zIndex={1}
+            >
+                <a
+                    className={classes.byLogo}
+                    href="https://nexxt.in"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <img
+                        src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
+                        width={200}
+                    />
+                </a>
+            </MantineAppShell.Footer>
             <header className={headerTitle ? classes.header : ''}>
-                <Stack spacing={0}>
+                <Stack gap={0}>
                     {isMobile && (
                         <div className={classes.mobileHeader}>
                             <Burger
@@ -217,8 +217,8 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </span>
                         </div>
                     )}
-                    <Stack className={classes.headerContent} spacing={0}>
-                        <Group spacing="sm">
+                    <Stack className={classes.headerContent} gap={0}>
+                        <Group gap="sm">
                             <Text
                                 className={classes.subtitle}
                                 fw={600}
@@ -229,11 +229,11 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             </Text>
                             {headerBadge}
                         </Group>
-                        <Group position="apart">
+                        <Group justify="space-between">
                             <Title className={classes.title} size="h2">
                                 {headerTitle}
                             </Title>
-                            <Group spacing="sm">{headerRightContent}</Group>
+                            <Group gap="sm">{headerRightContent}</Group>
                         </Group>
                         {headerBottomContent}
                     </Stack>

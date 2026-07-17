@@ -20,10 +20,7 @@ export interface CheckboxGroupProps
 }
 
 export interface CheckboxProps
-    extends Omit<
-        StrictInputProps<MantineCheckboxProps, 'size' | 'type'>,
-        'value'
-    > {
+    extends Omit<StrictInputProps<MantineCheckboxProps, 'type'>, 'value'> {
     value: number | string;
 }
 

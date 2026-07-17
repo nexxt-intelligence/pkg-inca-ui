@@ -2,18 +2,22 @@ import {
     Button as MantineButton,
     ButtonProps as MantineButtonProps
 } from '@mantine/core';
-import { clsx } from '@mantine/core';
 import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Button.module.css';
+
+const getMantineColor = (color: ButtonProps['color']) =>
+    color === 'primary' ? 'blue' : color;
 
 export interface ButtonProps
     extends Omit<
         StrictButtonProps<MantineButtonProps>,
-        'leftIcon' | 'rightIcon'
+        'leftIcon' | 'leftSection' | 'rightIcon' | 'rightSection'
     > {
+    compact?: boolean;
     // TODO: remove react.element later so only string can be accepted
     leftIcon?: React.ReactElement | TablerIconKeys;
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -40,19 +44,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) => {
         return (
             <MantineButton
-                className={clsx(className, classes.transition)}
+                className={cx(
+                    !fullWidth && classes.root,
+                    classes.control,
+                    className
+                )}
                 classNames={{
-                    leftIcon: classes.leftIcon,
-                    rightIcon: classes.rightIcon,
-                    root: fullWidth ? undefined : classes.root
+                    section: classes.section
                 }}
-                color={color}
-                compact={compact}
+                color={getMantineColor(color)}
                 data-color={color}
                 data-compact={compact}
                 data-size={size}
                 data-variant={variant}
-                leftIcon={
+                leftSection={
                     typeof leftIcon === 'string' ? (
                         <Icon size={size} type={leftIcon} />
                     ) : (
@@ -60,7 +65,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     )
                 }
                 radius={radius}
-                rightIcon={
+                rightSection={
                     typeof rightIcon === 'string' ? (
                         <Icon size={size} type={rightIcon} />
                     ) : (

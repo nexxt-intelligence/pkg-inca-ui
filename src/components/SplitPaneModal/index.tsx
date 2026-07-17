@@ -1,7 +1,29 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { type ReactNode } from 'react';
+
 import Icon from '../ui/Icon';
 // TODO: temp component needs refactor
 import classes from './SplitPaneModal.module.css';
+
+export interface SplitPaneModalActionsProps {
+    children?: ReactNode;
+}
+
+export interface SplitPaneModalContentProps {
+    body?: ReactNode;
+    children?: ReactNode;
+    header?: ReactNode;
+}
+
+export interface SplitPaneModalProps {
+    body?: ReactNode;
+    children?: ReactNode;
+    header?: ReactNode;
+    icon?: ReactNode;
+    isBlurred?: boolean;
+    isClosable?: boolean;
+    isOpen?: boolean;
+    onClose?: () => void;
+}
 
 export function SplitPaneModal({
     body,
@@ -12,7 +34,7 @@ export function SplitPaneModal({
     isClosable = true,
     isOpen,
     onClose
-}: any) {
+}: SplitPaneModalProps) {
     return isOpen ? (
         <div
             className={`${classes.modalOverlay} ${
@@ -46,11 +68,17 @@ export function SplitPaneModal({
     ) : null;
 }
 
-export function SplitPaneModalActions({ children }: any) {
+export function SplitPaneModalActions({
+    children
+}: SplitPaneModalActionsProps) {
     return <div className={classes.actionsContainer}>{children}</div>;
 }
 
-export function SplitPaneModalContent({ body, children, header }: any) {
+export function SplitPaneModalContent({
+    body,
+    children,
+    header
+}: SplitPaneModalContentProps) {
     return (
         <div className={classes.modalContentWrapper}>
             <div>

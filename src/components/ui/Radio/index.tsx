@@ -20,7 +20,7 @@ export interface RadioGroupProps
 }
 
 export interface RadioProps
-    extends Omit<StrictInputProps<MantineRadioProps, 'size'>, 'value'> {
+    extends Omit<StrictInputProps<MantineRadioProps>, 'value'> {
     disabled?: boolean;
     value: number | string;
 }

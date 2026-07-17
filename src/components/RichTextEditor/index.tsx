@@ -243,8 +243,7 @@ const RichTextEditor = React.forwardRef<
                         classNames={{
                             content: classes.content,
                             root: classes.root,
-                            typographyStylesProvider:
-                                classes.typographyStylesProvider
+                            Typography: classes.typographyStylesProvider
                         }}
                         data-answerref={onAnswerRefClick ? true : undefined}
                         data-disabled={disabled || undefined}

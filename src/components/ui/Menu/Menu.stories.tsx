@@ -25,12 +25,18 @@ export const Primary: StoryObj<typeof Menu> = {
     args: {
         children: <Button>Open Menu</Button>,
         items: [
-            { icon: <Icon size="sm" type="IconUser" />, label: 'Profile' },
-            { icon: <Icon size="sm" type="IconSettings" />, label: 'Settings' },
+            {
+                label: 'Profile',
+                leftSection: <Icon size="sm" type="IconUser" />
+            },
+            {
+                label: 'Settings',
+                leftSection: <Icon size="sm" type="IconSettings" />
+            },
             {
                 color: 'red',
-                icon: <Icon size="sm" type="IconLogout" />,
-                label: 'Logout'
+                label: 'Logout',
+                leftSection: <Icon size="sm" type="IconLogout" />
             }
         ],
         position: 'bottom',

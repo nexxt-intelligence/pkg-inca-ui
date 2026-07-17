@@ -74,7 +74,7 @@ const CustomFooterStory = (args: Partial<ModalProps>) => {
                         >
                             Preview
                         </Button>
-                        <Group position="right" spacing="xs">
+                        <Group gap="xs" justify="right">
                             <Button
                                 onClick={() => setOpened(false)}
                                 variant="default"

@@ -39,10 +39,15 @@ const alertTypes = {
     }
 };
 
+const getMantineColor = (color: AlertProps['color']) =>
+    color === 'primary' ? 'blue' : color;
+
 const Alert = ({
     children,
+    color,
     defaultOpen = true,
     hideIcon,
+    icon,
     onClose,
     open: controlledOpen,
     type = 'info',
@@ -63,6 +68,7 @@ const Alert = ({
     if (!isOpen) return null;
 
     const alertType = alertTypes[type];
+    const displayColor = color ?? alertType.color;
 
     return (
         <MantineAlert
@@ -73,8 +79,10 @@ const Alert = ({
                 root: hideIcon ? classes.alertRootHide : classes.alertRoot,
                 title: classes.alertTitle
             }}
+            color={getMantineColor(displayColor)}
+            data-color={displayColor}
+            icon={icon ?? alertType.icon}
             onClose={handleClose}
-            {...alertType}
             {...props}
         >
             {children}

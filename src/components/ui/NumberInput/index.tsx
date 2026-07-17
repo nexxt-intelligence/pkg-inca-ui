@@ -9,10 +9,7 @@ import Label, { type LabelProps } from '../Label';
 import classes from './NumberInput.module.css';
 
 export interface NumberInputProps
-    extends StrictInputProps<
-        MantineNumberInputProps,
-        'classNames' | 'onChange' | 'size' | 'styles' | 'type' | 'value'
-    > {
+    extends StrictInputProps<MantineNumberInputProps> {
     icon?: TablerIconKeys;
     readOnly?: boolean;
     tooltip?: string;
@@ -32,13 +29,11 @@ const NumberInput = ({
         <MantineNumberInput
             classNames={{
                 control: classes.numberInputControl,
-                controlUp: classes.numberInputControlUp,
                 input: classes.numberInput,
                 required: classes.numberInputRequired
             }}
             data-readonly={readOnly}
             data-variant={variant}
-            icon={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             label={
                 label ? (
                     <Label
@@ -48,6 +43,7 @@ const NumberInput = ({
                     />
                 ) : null
             }
+            leftSection={typeof icon === 'string' ? <Icon type={icon} /> : icon}
             readOnly={readOnly}
             variant={variant}
             {...props}

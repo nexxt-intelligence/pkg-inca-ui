@@ -29,7 +29,7 @@ const ActionCard = ({
             onClick={onClick}
         >
             <Center h={340}>
-                <Stack align="center" spacing="xs">
+                <Stack align="center" gap="xs">
                     <Icon size="36px" type={icon} />
                     <Text size="xl">{title}</Text>
                     <Text align="center" size="xs">

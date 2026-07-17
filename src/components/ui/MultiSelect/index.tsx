@@ -1,150 +1,236 @@
 import {
+    ComboboxItem,
+    ComboboxParsedItem,
+    ComboboxRenderPillInput,
+    getParsedComboboxData,
     Loader,
     MultiSelect as MantineMultiSelect,
     MultiSelectProps as MantineMultiSelectProps,
-    MultiSelectValueProps as MantineMultiSelectValueProps,
-    SelectItem as MantineSelectItem
+    Pill
 } from '@mantine/core';
-import { useState } from 'react';
+import { type ReactNode, useMemo, useRef, useState } from 'react';
 
 import { type StrictProps } from '../../../types/props';
-import CloseButton from '../CloseButton';
 import Label, { type LabelProps } from '../Label';
 import classes from './MultiSelect.module.css';
 
 export interface MultiSelectProps
-    extends StrictProps<MantineMultiSelectProps> {
+    extends Omit<
+        StrictProps<MantineMultiSelectProps>,
+        'onOptionSubmit' | 'renderOption' | 'renderPill'
+    > {
+    creatable?: boolean;
+    getCreateLabel?: (query: string) => ReactNode;
     loading?: boolean;
     nonRemovableValues?: string[];
+    onCreate?: (query: string) => string;
     onCreateAction?: () => void;
+    onOptionSubmit?: MantineMultiSelectProps['onOptionSubmit'];
+    renderOption?: MantineMultiSelectProps['renderOption'];
+    renderPill?: MantineMultiSelectProps['renderPill'];
+    shouldCreate?: (query: string, items: ComboboxItem[]) => boolean;
     tooltip?: string;
     tooltipProps?: LabelProps['tooltipProps'];
+    withinPortal?: boolean;
 }
-
-const defaultShouldCreate = (query: string, items: MantineSelectItem[]) =>
-    !!query &&
-    !items.some((item) => item.value.toLowerCase() === query.toLowerCase());
-
-const lower = (value: string) => value.toLowerCase();
 
 const MultiSelect = ({
     clearable,
+    comboboxProps,
     creatable,
     data = [],
     defaultValue,
     getCreateLabel,
-    hoverOnSearchChange,
+    hidePickedOptions,
     label,
     loading,
     nonRemovableValues = [],
     onChange,
     onCreate,
     onCreateAction,
+    onOptionSubmit,
+    onSearchChange,
     readOnly,
+    renderOption,
+    renderPill,
+    searchValue,
     shouldCreate,
     tooltip,
     tooltipProps,
     value,
-    valueComponent,
     variant = 'default',
-    withinPortal = true,
+    withinPortal,
     ...props
 }: MultiSelectProps) => {
     const [uncontrolledValue, setUncontrolledValue] = useState<string[]>(
         defaultValue ?? []
     );
     const isCreateAction = !!onCreateAction && !creatable;
-    const hasCreatable = !!creatable || isCreateAction;
+    const hasCreateOption = !!creatable || isCreateAction;
     const hasNonRemovableValues = nonRemovableValues.length > 0;
+    const selectedValue = value ?? uncontrolledValue;
+    const [uncontrolledSearchValue, setUncontrolledSearchValue] = useState('');
+    const resolvedSearchValue = searchValue ?? uncontrolledSearchValue;
+    const pendingCreateValue = useRef<null | string>(null);
+    const pendingCreateActionValue = useRef<null | string>(null);
+    const parsedData = useMemo(
+        () => getParsedComboboxData<string>(data),
+        [data]
+    );
+
     const isNonRemovable = (item: string) => nonRemovableValues.includes(item);
     const orderValues = (items: string[]) => [
         ...nonRemovableValues.filter((item) => items.includes(item)),
         ...items.filter((item) => !isNonRemovable(item))
     ];
-    const selectedValue = hasNonRemovableValues
-        ? orderValues(value ?? uncontrolledValue)
-        : value ?? uncontrolledValue;
-    const hasRemovableValue = selectedValue.some(
-        (item) => !isNonRemovable(item)
-    );
-
-    const handleChange = (next: string[]) => {
-        // Keep locked values selected when Mantine tries to remove them.
-        const lockedValues = selectedValue.filter(
-            (item) => isNonRemovable(item) && !next.includes(item)
+    const getItems = (items: ComboboxParsedItem[]) =>
+        items.flatMap((item) => ('items' in item ? item.items : item));
+    const defaultShouldCreate = (query: string, items: ComboboxItem[]) =>
+        !!query &&
+        !selectedValue.some(
+            (item) => item.toLowerCase() === query.toLowerCase()
+        ) &&
+        !items.some(
+            (item) =>
+                item.value.toLowerCase() === query.toLowerCase() ||
+                item.label.toLowerCase() === query.toLowerCase()
         );
-        const nextValue = hasNonRemovableValues
-            ? orderValues([...next, ...lockedValues])
-            : next;
-        if (typeof value === 'undefined') {
-            setUncontrolledValue(nextValue);
+
+    const handleChange = (nextValue: string[]) => {
+        let resolvedNextValue = nextValue;
+
+        if (pendingCreateActionValue.current) {
+            resolvedNextValue = nextValue.filter(
+                (item) => item !== pendingCreateActionValue.current
+            );
+            pendingCreateActionValue.current = null;
         }
-        onChange?.(nextValue);
-    };
 
-    const handleCreate = (query: string) => {
-        // Custom create is an action item for opening a modal, not a new value.
-        if (isCreateAction) {
-            onCreateAction();
-            return null;
+        if (pendingCreateValue.current) {
+            resolvedNextValue = nextValue.map((item) =>
+                item === resolvedSearchValue
+                    ? pendingCreateValue.current!
+                    : item
+            );
+            pendingCreateValue.current = null;
         }
-        return onCreate?.(query) ?? query;
+
+        const lockedValues = selectedValue.filter(
+            (item) => isNonRemovable(item) && !resolvedNextValue.includes(item)
+        );
+        const resolvedValue = hasNonRemovableValues
+            ? orderValues([...resolvedNextValue, ...lockedValues])
+            : resolvedNextValue;
+
+        if (value === undefined) {
+            setUncontrolledValue(resolvedValue);
+        }
+
+        onChange?.(resolvedValue);
     };
 
-    const handleCreateLabel = (query: string) => (
-        <span className={classes.multiSelectCreateLabel}>
-            {getCreateLabel?.(query) ?? `+ Add ${query}`}
-        </span>
-    );
+    const handleSearchChange = (nextValue: string) => {
+        if (searchValue === undefined) {
+            setUncontrolledSearchValue(nextValue);
+        }
 
-    const handleShouldCreate = (query: string, items: MantineSelectItem[]) => {
-        if (isCreateAction) return true;
-        if (selectedValue.some((item) => lower(item) === lower(query)))
-            return false;
-        return shouldCreate
-            ? shouldCreate(query, items)
-            : defaultShouldCreate(query, items);
+        onSearchChange?.(nextValue);
     };
 
-    const ValueComponent = ({
-        disabled,
-        label,
-        onRemove,
-        readOnly,
-        value
-    }: { value: string } & MantineMultiSelectValueProps) => (
-        <div
-            className={classes.multiSelectValue}
-            data-disabled={disabled || undefined}
-        >
-            <span className={classes.multiSelectValueLabel}>{label}</span>
-            {!disabled && !readOnly && !isNonRemovable(value) && (
-                <CloseButton
-                    className={classes.multiSelectValueRemove}
-                    iconSize="70%"
-                    onMouseDown={onRemove}
-                    tabIndex={-1}
-                />
-            )}
-        </div>
-    );
+    const shouldRenderCreateOption =
+        hasCreateOption &&
+        !!resolvedSearchValue &&
+        (isCreateAction ||
+            (shouldCreate
+                ? shouldCreate(resolvedSearchValue, getItems(parsedData))
+                : defaultShouldCreate(
+                      resolvedSearchValue,
+                      getItems(parsedData)
+                  )));
+
+    const resolvedData =
+        shouldRenderCreateOption && resolvedSearchValue
+            ? [
+                  ...data,
+                  { label: resolvedSearchValue, value: resolvedSearchValue }
+              ]
+            : data;
+
+    const handleOptionSubmit: MantineMultiSelectProps['onOptionSubmit'] = (
+        nextValue
+    ) => {
+        if (shouldRenderCreateOption && nextValue === resolvedSearchValue) {
+            if (isCreateAction) {
+                pendingCreateActionValue.current = nextValue;
+                onCreateAction();
+                return;
+            }
+
+            pendingCreateValue.current = onCreate?.(nextValue) ?? nextValue;
+        }
+
+        onOptionSubmit?.(nextValue);
+    };
+
+    const handleRenderOption: MantineMultiSelectProps['renderOption'] = (
+        item
+    ) => {
+        if (
+            shouldRenderCreateOption &&
+            item.option.value === resolvedSearchValue
+        ) {
+            return (
+                getCreateLabel?.(item.option.value) ?? (
+                    <>+ Add {item.option.value}</>
+                )
+            );
+        }
+
+        return renderOption?.(item) ?? item.option.label;
+    };
+
+    const handleRenderPill = hasNonRemovableValues
+        ? ({
+              disabled,
+              onRemove,
+              option,
+              reorderProps,
+              value
+          }: ComboboxRenderPillInput<string>) => (
+              <Pill
+                  disabled={disabled}
+                  onRemove={onRemove}
+                  withRemoveButton={
+                      !disabled && !readOnly && !isNonRemovable(value ?? '')
+                  }
+                  {...reorderProps}
+              >
+                  {option.label}
+              </Pill>
+          )
+        : renderPill;
+    const resolvedComboboxProps =
+        withinPortal === undefined
+            ? comboboxProps
+            : { ...comboboxProps, withinPortal };
 
     return (
         <MantineMultiSelect
             classNames={{
                 input: classes.multiSelectInput,
-                searchInput: classes.multiSelectSearchInput,
-                values: classes.multiSelectValues
+                inputField: classes.multiSelectSearchInput,
+                option: classes.multiSelectOption,
+                pillsList: classes.multiSelectValues
             }}
             clearable={
-                clearable && (!hasNonRemovableValues || hasRemovableValue)
+                clearable &&
+                (!hasNonRemovableValues ||
+                    selectedValue.some((item) => !isNonRemovable(item)))
             }
-            creatable={hasCreatable}
-            data={data}
-            data-readonly={readOnly}
+            comboboxProps={resolvedComboboxProps}
+            data={resolvedData}
             defaultValue={defaultValue}
-            getCreateLabel={handleCreateLabel}
-            hoverOnSearchChange={creatable ? true : hoverOnSearchChange}
+            hidePickedOptions={hidePickedOptions}
             label={
                 label ? (
                     <Label
@@ -154,16 +240,19 @@ const MultiSelect = ({
                     />
                 ) : null
             }
-            onChange={handleChange}
-            onCreate={hasCreatable ? handleCreate : onCreate}
-            readOnly={readOnly}
-            shouldCreate={handleShouldCreate}
-            value={hasNonRemovableValues ? selectedValue : value}
-            valueComponent={
-                hasNonRemovableValues ? ValueComponent : valueComponent
+            onChange={hasNonRemovableValues ? handleChange : onChange}
+            onOptionSubmit={
+                hasCreateOption ? handleOptionSubmit : onOptionSubmit
             }
+            onSearchChange={
+                hasCreateOption ? handleSearchChange : onSearchChange
+            }
+            readOnly={readOnly}
+            renderOption={hasCreateOption ? handleRenderOption : renderOption}
+            renderPill={handleRenderPill}
+            searchValue={hasCreateOption ? resolvedSearchValue : searchValue}
+            value={hasNonRemovableValues ? orderValues(selectedValue) : value}
             variant={variant}
-            withinPortal={withinPortal}
             {...props}
             {...(loading
                 ? {

@@ -67,16 +67,16 @@
     color: var(--text-default);
 }
 
-.input[data-left-section='true'] {
+.inputWithLeftSection {
     border-radius: 0 0.25rem 0.25rem 0;
     padding: 0 0.75rem;
 }
 
-.input[data-right-section='true'] {
+.inputWithRightSection {
     border-radius: 0.25rem 0 0 0.25rem;
 }
 
-.input[data-left-section='true'][data-right-section='true'] {
+.inputWithLeftSection.inputWithRightSection {
     border-radius: 0;
 }
 

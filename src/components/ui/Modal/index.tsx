@@ -76,7 +76,7 @@ const Modal = ({
         >
             {children}
             <Divider mb="md" mt="md" />
-            <Group position="apart">{footer ?? defaultFooter}</Group>
+            <Group justify="space-between">{footer ?? defaultFooter}</Group>
         </MantineModal>
     );
 };

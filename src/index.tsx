@@ -2,6 +2,10 @@ import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 
 import { theme } from './constants/theme';
+import '@mantine/core/styles.css';
+import '@mantine/dropzone/styles.css';
+import '@mantine/tiptap/styles.css';
+
 import './assets/global.css';
 import './tokens.css';
 
@@ -28,7 +32,10 @@ export {
 export {
     MiniModal,
     MiniModalActions,
-    MiniModalContent
+    type MiniModalActionsProps,
+    MiniModalContent,
+    type MiniModalContentProps,
+    type MiniModalProps
 } from './components/MiniModal';
 export {
     default as RichTextEditor,
@@ -42,7 +49,10 @@ export {
 export {
     SplitPaneModal,
     SplitPaneModalActions,
-    SplitPaneModalContent
+    type SplitPaneModalActionsProps,
+    SplitPaneModalContent,
+    type SplitPaneModalContentProps,
+    type SplitPaneModalProps
 } from './components/SplitPaneModal';
 /** Extended Mantine UI Components */
 export {
@@ -123,7 +133,7 @@ export const CustomMantineProvider = ({
     children: React.ReactNode;
 }) => {
     return (
-        <MantineProvider theme={theme} withCSSVariables>
+        <MantineProvider theme={theme} withCssVariables>
             <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
     );
@@ -144,8 +154,6 @@ export {
     type GridProps,
     Group,
     type GroupProps,
-    MediaQuery,
-    type MediaQueryProps,
     SimpleGrid,
     type SimpleGridProps,
     Space,
@@ -181,9 +189,7 @@ export {
     Rating,
     type RatingProps,
     Slider,
-    type SliderProps,
-    TransferList,
-    type TransferListProps
+    type SliderProps
 } from '@mantine/core';
 
 // Navigation

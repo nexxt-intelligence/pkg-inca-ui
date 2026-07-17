@@ -4,7 +4,7 @@ import {
     Dropzone as MantineDropzone,
     DropzoneProps as MantineDropzoneProps
 } from '@mantine/dropzone';
-import { useEffect, useState } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 
 import { type StrictProps } from '../../../types/props';
 import Icon from '../Icon';
@@ -20,7 +20,7 @@ export interface DropzoneProps
     variant?: 'file' | 'media';
 }
 
-type DropzoneComponent = ((props: DropzoneProps) => JSX.Element) & {
+type DropzoneComponent = ((props: DropzoneProps) => ReactElement) & {
     Accept: typeof MantineDropzone.Accept;
     FullScreen: typeof MantineDropzone.FullScreen;
     Idle: typeof MantineDropzone.Idle;
@@ -136,7 +136,7 @@ const Dropzone = (({
     ) : null;
 
     return (
-        <Stack spacing="xs">
+        <Stack gap="xs">
             <MantineDropzone
                 accept={accept}
                 classNames={{
@@ -153,7 +153,7 @@ const Dropzone = (({
                 {previewContent ?? defaultContent}
             </MantineDropzone>
             {shouldShowMetadataHelpers && (
-                <Group position="apart">
+                <Group justify="space-between">
                     {resolvedSupportedFormatsDescription && (
                         <Text color="var(--text-medium)" size="xs">
                             Supported formats:{' '}

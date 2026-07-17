@@ -1,20 +1,23 @@
 import {
     ActionIcon as MantineActionIcon,
     ActionIconProps as MantineActionIconProps,
-    MantineNumberSize
+    MantineSize
 } from '@mantine/core';
-import { clsx } from '@mantine/core';
 import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './ActionIcon.module.css';
+
+const getMantineColor = (color: ActionIconProps['color']) =>
+    color === 'primary' ? 'blue' : color;
 
 export interface ActionIconProps
     extends Omit<StrictButtonProps<MantineActionIconProps>, 'onClick'> {
     icon: TablerIconKeys;
     iconRotate?: number;
-    iconSize?: '2xs' | MantineNumberSize;
+    iconSize?: '2xs' | ({} & string) | MantineSize | number;
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -34,8 +37,8 @@ const ActionIcon = React.forwardRef<HTMLButtonElement, ActionIconProps>(
     ) => {
         return (
             <MantineActionIcon
-                className={clsx(classes.actionIcon, className)}
-                color={color}
+                className={cx(classes.actionIcon, className)}
+                color={getMantineColor(color)}
                 data-variant={variant}
                 size={size}
                 variant={variant}

@@ -8,10 +8,7 @@ import Label, { type LabelProps } from '../Label';
 import classes from './ColorInput.module.css';
 
 export interface ColorInputProps
-    extends StrictInputProps<
-        MantineColorInputProps,
-        'defaultValue' | 'onChange' | 'size' | 'value'
-    > {
+    extends StrictInputProps<MantineColorInputProps> {
     leftFilledSection?: React.ReactNode;
     rightFilledSection?: React.ReactNode;
     tooltip?: string;
@@ -28,7 +25,7 @@ const ColorInput = ({
     return (
         <MantineColorInput
             classNames={{
-                rightSection: classes.rightSection
+                section: classes.rightSection
             }}
             data-variant={variant}
             label={

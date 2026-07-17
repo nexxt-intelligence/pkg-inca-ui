@@ -18,7 +18,7 @@ const ChatInput = ({
     return (
         <Stack
             className={`${classes.chatInput} ${disabled && classes.disabled}`}
-            spacing={0}
+            gap={0}
         >
             <TextArea
                 disabled={disabled}
@@ -26,9 +26,9 @@ const ChatInput = ({
                 variant="unstyled"
                 {...props}
             />
-            <Group position="apart">
-                <Group spacing={0}>{/* future icons here? */}</Group>
-                <Group position="right" spacing={0}>
+            <Group justify="space-between">
+                <Group gap={0}>{/* future icons here? */}</Group>
+                <Group gap={0} justify="flex-end">
                     <ActionIcon
                         color="blue"
                         disabled={disabled}

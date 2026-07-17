@@ -43,7 +43,7 @@ const SplitButton = ({
     size = 'sm'
 }: SplitButtonProps) => {
     return (
-        <Group noWrap spacing={2}>
+        <Group gap={2} wrap="nowrap">
             <Button
                 className={classes.button}
                 color={color}

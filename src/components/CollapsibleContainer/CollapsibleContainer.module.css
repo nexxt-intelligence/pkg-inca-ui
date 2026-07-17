@@ -17,9 +17,6 @@
         border-radius: 0 !important;
     }
 }
-/* .panel[aria-hidden='false'] {
-    border-top: 1px solid var(--border-disabled);
-} */
 .label {
     display: flex;
     padding: 0;

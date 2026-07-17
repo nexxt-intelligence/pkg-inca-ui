@@ -1,31 +1,46 @@
 .root {
     width: fit-content;
 }
-.leftIcon {
+
+.section[data-position='left'] {
     margin-right: var(--spacing-2xs);
     margin-left: calc(-1 * var(--spacing-2xs));
 }
-.rightIcon {
+
+.section[data-position='right'] {
     margin-left: var(--spacing-2xs);
     margin-right: calc(-1 * var(--spacing-2xs));
 }
 
-&:focus {
+.control:focus {
     border: 0.0625rem solid transparent;
 }
 
-.transition {
-    will-change: background-color, color, border-color;
-    transition: background-color 200ms ease, color 200ms ease,
-        border-color 200ms ease;
+.control[data-compact='true'][data-size='xs'] {
+    height: 1.25rem;
+    padding: 0 var(--spacing-xs);
 }
 
-[data-color='yellow'][data-variant='filled'] {
+.control[data-compact='true'][data-size='sm'] {
+    height: 1.5rem;
+    padding: 0 var(--spacing-xs);
+}
+
+.control[data-compact='true'][data-size='md'] {
+    height: 1.75rem;
+    padding: 0 var(--spacing-xs);
+}
+
+.control[data-color='yellow'][data-variant='filled'] {
     color: var(--text-default);
 }
 
-[data-variant='outline'] {
+.control[data-variant='default'],
+.control[data-variant='outline'] {
     border-color: var(--border-default);
+}
+
+.control[data-variant='outline'] {
     &:hover {
         background-color: var(--bg-base);
     }

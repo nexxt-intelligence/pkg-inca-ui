@@ -5,10 +5,13 @@ import {
 
 import { type StrictProps } from '../../../types/props';
 
-export type TextProps = StrictProps<MantineTextProps>;
+export type TextProps = {
+    align?: MantineTextProps['ta'];
+    color?: MantineTextProps['c'];
+} & Omit<StrictProps<MantineTextProps>, 'color'>;
 
-const Text = ({ fw = 400, ...props }: TextProps) => {
-    return <MantineText fw={fw} {...props} />;
+const Text = ({ align, color, fw = 400, ...props }: TextProps) => {
+    return <MantineText c={color} fw={fw} ta={align} {...props} />;
 };
 
 export default Text;

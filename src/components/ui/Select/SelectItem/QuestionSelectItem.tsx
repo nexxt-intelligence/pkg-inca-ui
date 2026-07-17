@@ -16,7 +16,7 @@ const QuestionSelectItem = React.forwardRef(
     ) => {
         return (
             <div ref={ref} {...others} style={{ padding: '10px' }}>
-                <Group noWrap spacing="xs">
+                <Group gap="xs" wrap="nowrap">
                     <Avatar size="xs" src={imageUrl} />
                     <Text size="sm">{label || title}</Text>
                 </Group>
