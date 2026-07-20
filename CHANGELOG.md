@@ -1,5 +1,11 @@
 # inca-ui
 
+## 9.0.0
+
+### Major Changes
+
+-   6ce28c5: feat: update more components for Mantine v9 and add Pill
+
 ## 8.0.0
 
 ### Major Changes
