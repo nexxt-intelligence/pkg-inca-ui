@@ -16,6 +16,7 @@ export interface SelectProps
         StrictProps<MantineSelectProps>,
         'comboboxProps' | 'leftSection' | 'onOptionSubmit' | 'renderOption'
     > {
+    comboboxProps?: MantineSelectProps['comboboxProps'];
     creatable?: boolean;
     getCreateLabel?: (query: string) => ReactNode;
     icon?: TablerIconKeys;
@@ -31,6 +32,7 @@ export interface SelectProps
 }
 
 const Select = ({
+    comboboxProps,
     creatable,
     data = [],
     getCreateLabel,
@@ -102,7 +104,7 @@ const Select = ({
             classNames={{
                 input: classes.selectInput
             }}
-            comboboxProps={{ withinPortal }}
+            comboboxProps={{ ...comboboxProps, withinPortal }}
             data={resolvedData}
             data-readonly={readOnly}
             label={

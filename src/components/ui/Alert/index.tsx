@@ -26,7 +26,7 @@ const alertTypes = {
         icon: <Icon type="IconAlertTriangle" />
     },
     info: {
-        color: 'primary',
+        color: 'blue',
         icon: <Icon type="IconInfoCircle" />
     },
     success: {
@@ -38,9 +38,6 @@ const alertTypes = {
         icon: <Icon type="IconAlertTriangle" />
     }
 };
-
-const getMantineColor = (color: AlertProps['color']) =>
-    color === 'primary' ? 'blue' : color;
 
 const Alert = ({
     children,
@@ -73,13 +70,13 @@ const Alert = ({
     return (
         <MantineAlert
             classNames={{
+                body: classes.alertBody,
                 closeButton: classes.alertCloseButton,
                 icon: hideIcon ? classes.alertIconHide : classes.alertIcon,
                 message: classes.alertMessage,
-                root: hideIcon ? classes.alertRootHide : classes.alertRoot,
-                title: classes.alertTitle
+                root: hideIcon ? classes.alertRootHide : classes.alertRoot
             }}
-            color={getMantineColor(displayColor)}
+            color={displayColor}
             data-color={displayColor}
             icon={icon ?? alertType.icon}
             onClose={handleClose}

@@ -10,14 +10,18 @@ import '@mantine/tiptap/styles.css';
 import '../src/assets/global.css';
 import '../src/tokens.css';
 // import theme object you've exported in previous step
-import { theme } from '../src/constants/theme';
+import { theme, v6CssVariablesResolver } from '../src/constants/theme';
 
 // Create a wrapper component that will contain all your providers.
 // Usually you should render all providers in this component:
 // MantineProvider, DatesProvider, Notifications, Spotlight, etc.
 function ThemeWrapper(props: { children: React.ReactNode }) {
     return (
-        <MantineProvider theme={theme} withCssVariables>
+        <MantineProvider
+            cssVariablesResolver={v6CssVariablesResolver}
+            theme={theme}
+            withCssVariables
+        >
             <ModalsProvider>{props.children}</ModalsProvider>
         </MantineProvider>
     );

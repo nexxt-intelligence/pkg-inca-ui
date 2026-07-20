@@ -17,6 +17,9 @@ export default {
             description: 'The variant of the alert',
             options: ['filled', 'outline', 'light'],
             table: { defaultValue: { summary: 'light' } }
+        },
+        withCloseButton: {
+            control: 'boolean'
         }
     },
     component: Alert,

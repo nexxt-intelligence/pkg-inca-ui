@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 
-import { theme } from './constants/theme';
+import { theme, v6CssVariablesResolver } from './constants/theme';
 import '@mantine/core/styles.css';
 import '@mantine/dropzone/styles.css';
 import '@mantine/tiptap/styles.css';
@@ -96,6 +96,12 @@ export {
     default as NumberInput,
     type NumberInputProps
 } from './components/ui/NumberInput';
+export {
+    default as Pill,
+    PillGroup,
+    type PillGroupProps,
+    type PillProps
+} from './components/ui/Pill';
 export { default as Prism, type PrismProps } from './components/ui/Prism';
 export {
     default as Radio,
@@ -133,7 +139,11 @@ export const CustomMantineProvider = ({
     children: React.ReactNode;
 }) => {
     return (
-        <MantineProvider theme={theme} withCssVariables>
+        <MantineProvider
+            cssVariablesResolver={v6CssVariablesResolver}
+            theme={theme}
+            withCssVariables
+        >
             <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
     );

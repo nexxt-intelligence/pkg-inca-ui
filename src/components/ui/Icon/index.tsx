@@ -1,4 +1,4 @@
-import { MantineColor, MantineSize, useMantineTheme } from '@mantine/core';
+import { MantineSize, useMantineTheme } from '@mantine/core';
 import * as TablerIcons from '@tabler/icons-react';
 import * as React from 'react';
 
@@ -6,9 +6,9 @@ export type TablerIconKeys = Extract<keyof typeof TablerIcons, `Icon${string}`>;
 
 interface IconProps {
     /**
-     * A Mantine theme color token (e.g. `"blue"`, `"red.6"`).
+     * A Mantine theme color token (e.g. `"blue"`, `"red.6"`) or any CSS color.
      */
-    color?: MantineColor;
+    color?: React.CSSProperties['color'];
     iconRotate?: number;
     size?: '2xs' | ({} & string) | MantineSize | number;
     /**

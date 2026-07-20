@@ -1,8 +1,0 @@
-.section {
-    display: flex;
-    align-items: center;
-}
-
-.root::before {
-    margin-right: var(--spacing-2xs);
-}

@@ -5,12 +5,14 @@ import {
 import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
-import { cx } from '../../../utils/cx';
 import Icon, { TablerIconKeys } from '../Icon';
-import classes from './Button.module.css';
 
-const getMantineColor = (color: ButtonProps['color']) =>
-    color === 'primary' ? 'blue' : color;
+const getIconSize = (size: ButtonProps['size']) =>
+    size === 'md'
+        ? 'sm'
+        : typeof size === 'string' && size.startsWith('compact-')
+        ? size.replace('compact-', '')
+        : size;
 
 export interface ButtonProps
     extends Omit<
@@ -20,7 +22,6 @@ export interface ButtonProps
     compact?: boolean;
     // TODO: remove react.element later so only string can be accepted
     leftIcon?: React.ReactElement | TablerIconKeys;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     rightIcon?: React.ReactElement | TablerIconKeys;
 }
 
@@ -28,55 +29,48 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     (
         {
             children,
-            className,
-            color = 'primary',
+            color,
             compact = false,
-            fullWidth = false,
             leftIcon,
-            radius = 'sm',
             rightIcon,
             size = 'sm',
-            type = 'button',
             variant = 'filled',
             ...props
         },
         ref
     ) => {
+        const resolvedSize =
+            compact && typeof size === 'string' && !size.startsWith('compact-')
+                ? (`compact-${size}` as MantineButtonProps['size'])
+                : size;
+
         return (
             <MantineButton
-                className={cx(
-                    !fullWidth && classes.root,
-                    classes.control,
-                    className
-                )}
-                classNames={{
-                    section: classes.section
-                }}
-                color={getMantineColor(color)}
-                data-color={color}
-                data-compact={compact}
-                data-size={size}
-                data-variant={variant}
+                color={color}
                 leftSection={
                     typeof leftIcon === 'string' ? (
-                        <Icon size={size} type={leftIcon} />
+                        <Icon
+                            size={getIconSize(resolvedSize)}
+                            type={leftIcon}
+                        />
                     ) : (
                         leftIcon
                     )
                 }
-                radius={radius}
+                ref={ref}
                 rightSection={
                     typeof rightIcon === 'string' ? (
-                        <Icon size={size} type={rightIcon} />
+                        <Icon
+                            size={getIconSize(resolvedSize)}
+                            type={rightIcon}
+                        />
                     ) : (
                         rightIcon
                     )
                 }
-                size={size}
-                type={type}
+                size={resolvedSize}
                 variant={variant}
                 {...props}
-                ref={ref}
             >
                 {children}
             </MantineButton>

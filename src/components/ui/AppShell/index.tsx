@@ -11,6 +11,7 @@ import {
 } from '@mantine/core';
 
 import { type StrictProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './AppShell.module.css';
@@ -139,6 +140,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             }}
             data-fixed={isFixedHeader}
             data-mobile={isMobile}
+            data-navbar-open={isNavbarOpen}
             footer={{ height: 32 }}
             layout={!isMobile ? 'alt' : 'default'}
             navbar={{
@@ -149,18 +151,16 @@ const AppShell = ({ ...props }: AppShellProps) => {
                 },
                 width: { base: 85 }
             }}
+            padding="md"
             {...mantineAppShellProps}
         >
-            <MantineAppShell.Navbar
-                className={`${classes.navbar} ${
-                    isNavbarOpen ? '' : classes.hidden
-                } `}
-            >
+            <MantineAppShell.Navbar className={classes.navbar}>
                 <MantineAppShell.Section>
                     <div
-                        className={`${classes.iconLogo} ${
-                            isMobile ? classes.hidden : ''
-                        }`}
+                        className={cx(
+                            classes.iconLogo,
+                            isMobile && classes.hidden
+                        )}
                     >
                         <img
                             height="30"
@@ -193,9 +193,9 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     />
                 </a>
             </MantineAppShell.Footer>
-            <header className={headerTitle ? classes.header : ''}>
-                <Stack gap={0}>
-                    {isMobile && (
+            <MantineAppShell.Main>
+                <header className={headerTitle ? classes.header : undefined}>
+                    <Stack gap={0}>
                         <div className={classes.mobileHeader}>
                             <Burger
                                 className={classes.burger}
@@ -216,30 +216,30 @@ const AppShell = ({ ...props }: AppShellProps) => {
                                 />
                             </span>
                         </div>
-                    )}
-                    <Stack className={classes.headerContent} gap={0}>
-                        <Group gap="sm">
-                            <Text
-                                className={classes.subtitle}
-                                fw={600}
-                                size="md"
-                                tt="uppercase"
-                            >
-                                {headerSubtitle}
-                            </Text>
-                            {headerBadge}
-                        </Group>
-                        <Group justify="space-between">
-                            <Title className={classes.title} size="h2">
-                                {headerTitle}
-                            </Title>
-                            <Group gap="sm">{headerRightContent}</Group>
-                        </Group>
-                        {headerBottomContent}
+                        <Stack className={classes.headerContent} gap={0}>
+                            <Group gap="sm">
+                                <Text
+                                    className={classes.subtitle}
+                                    fw={600}
+                                    size="md"
+                                    tt="uppercase"
+                                >
+                                    {headerSubtitle}
+                                </Text>
+                                {headerBadge}
+                            </Group>
+                            <Group justify="space-between">
+                                <Title className={classes.title} size="h2">
+                                    {headerTitle}
+                                </Title>
+                                <Group gap="sm">{headerRightContent}</Group>
+                            </Group>
+                            {headerBottomContent}
+                        </Stack>
                     </Stack>
-                </Stack>
-            </header>
-            <Box className={classes.mainContent}>{children}</Box>
+                </header>
+                <Box className={classes.mainContent}>{children}</Box>
+            </MantineAppShell.Main>
         </MantineAppShell>
     );
 };

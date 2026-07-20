@@ -2,17 +2,41 @@ import {
     ActionIcon,
     Badge,
     Button,
+    CloseButton,
+    type CSSVariablesResolver,
+    defaultCssVariablesResolver,
     defaultVariantColorsResolver,
     Input,
     InputWrapper,
     type MantineThemeOverride,
+    Pill,
+    PillGroup,
     Switch,
     Title,
     type VariantColorsResolver
 } from '@mantine/core';
 
-const v6VariantColorResolver: VariantColorsResolver = (input) => {
+export const v6VariantColorResolver: VariantColorsResolver = (input) => {
     const resolved = defaultVariantColorsResolver(input);
+
+    if (input.variant === 'muted') {
+        return {
+            ...resolved,
+            background: 'transparent',
+            border: '1px solid transparent',
+            color: 'var(--icon-medium)',
+            hover: 'var(--bg-base)',
+            hoverColor: 'var(--icon-subtle)'
+        };
+    }
+
+    if (input.variant === 'filled' && input.color === 'yellow') {
+        return {
+            ...resolved,
+            color: 'var(--mantine-color-black)',
+            hoverColor: 'var(--mantine-color-black)'
+        };
+    }
 
     if (input.variant !== 'light' && input.variant !== 'subtle') {
         return resolved;
@@ -26,8 +50,14 @@ const v6VariantColorResolver: VariantColorsResolver = (input) => {
     const lightHoverColor = shade
         ? undefined
         : input.theme.colors[colorName]?.[1];
+    const lightTextColor = shade
+        ? undefined
+        : input.theme.colors[colorName]?.[6];
+    const lightHoverTextColor = shade
+        ? undefined
+        : input.theme.colors[colorName]?.[7];
 
-    if (!lightBackgroundColor) {
+    if (!lightBackgroundColor || !lightTextColor || !lightHoverTextColor) {
         return resolved;
     }
 
@@ -35,12 +65,30 @@ const v6VariantColorResolver: VariantColorsResolver = (input) => {
         ? {
               ...resolved,
               background: lightBackgroundColor,
-              hover: lightHoverColor ?? lightBackgroundColor
+              color: lightTextColor,
+              hover: lightHoverColor ?? lightBackgroundColor,
+              hoverColor: lightHoverTextColor
           }
         : {
               ...resolved,
-              hover: lightBackgroundColor
+              color: lightTextColor,
+              hover: lightBackgroundColor,
+              hoverColor: lightHoverTextColor
           };
+};
+
+export const v6CssVariablesResolver: CSSVariablesResolver = (theme) => {
+    const resolved = defaultCssVariablesResolver(theme);
+
+    Object.keys(theme.colors).forEach((color) => {
+        if (!Array.isArray(theme.colors[color])) return;
+
+        resolved.light[
+            `--mantine-color-${color}-light-color`
+        ] = `var(--mantine-color-${color}-6)`;
+    });
+
+    return resolved;
 };
 
 // https://v6.mantine.dev/styles/global-styles/
@@ -134,123 +182,119 @@ export const theme: MantineThemeOverride = {
     },
     components: {
         ActionIcon: ActionIcon.extend({
-            styles: (_, props) => {
-                const sizeMap = {
-                    xs: '16px',
-                    sm: '20px',
-                    md: '24px',
-                    lg: '32px',
-                    xl: '40px'
+            vars: (_, props) => {
+                const sizes = {
+                    xs: { '--ai-size': '1rem' },
+                    sm: { '--ai-size': '1.25rem' },
+                    md: { '--ai-size': '1.5rem' },
+                    lg: { '--ai-size': '2rem' },
+                    xl: { '--ai-size': '2.5rem' }
                 } as const;
-                const size = sizeMap[props.size as keyof typeof sizeMap];
 
                 return {
-                    root: size
-                        ? {
-                              height: size,
-                              minHeight: size,
-                              minWidth: size,
-                              width: size
-                          }
-                        : undefined
+                    root: { ...sizes[props.size as keyof typeof sizes] }
                 };
             }
         }),
         Badge: Badge.extend({
-            styles: (theme, props) => {
-                const sizeStyles =
-                    props.size === 'sm'
-                        ? {
-                              fontSize: '0.625rem',
-                              height: '16px',
-                              lineHeight: 'normal',
-                              padding: `0 ${theme.spacing.xs}`
-                          }
-                        : props.size === 'md'
-                        ? {
-                              fontSize: '0.75rem',
-                              height: '20px',
-                              lineHeight: 'normal',
-                              padding: `0 ${theme.spacing.xs}`
-                          }
-                        : {};
-
-                if (props.variant === 'dot') {
-                    return {
-                        root: {
-                            ...sizeStyles,
-                            backgroundColor: theme.white,
-                            borderColor:
-                                props.color === 'dark'
-                                    ? theme.colors.gray[2]
-                                    : undefined,
-                            color: theme.black
-                        }
-                    };
+            defaultProps: {},
+            styles: {
+                root: {
+                    lineHeight: 'normal'
                 }
+            },
+            vars: (theme, props) => {
+                const size = props.size ?? 'md';
 
-                if (props.variant === 'filled') {
-                    return {
-                        root: {
-                            ...sizeStyles,
-                            backgroundColor:
-                                props.color === 'green'
-                                    ? theme.colors.green[7]
-                                    : props.color === 'dark'
-                                    ? theme.colors.gray[7]
-                                    : undefined,
-                            color:
-                                props.color === 'yellow'
-                                    ? theme.black
-                                    : undefined
-                        }
-                    };
-                }
-
-                if (
-                    (props.variant === 'light' ||
-                        props.variant === 'outline') &&
-                    props.color === 'dark'
-                ) {
-                    return {
-                        root: {
-                            ...sizeStyles,
-                            borderColor: theme.colors.gray[2],
-                            color: theme.colors.gray[7]
-                        }
-                    };
-                }
-
-                return { root: sizeStyles };
-            }
-        }),
-        Button: Button.extend({
-            styles: (theme, props) => {
-                const sizeMap = {
-                    xs: {
-                        compactHeight: '1.25rem',
-                        height: '1.5rem'
-                    },
+                const sizes = {
                     sm: {
-                        compactHeight: '1.5rem',
-                        height: '2rem'
+                        '--badge-fz': theme.fontSizes['2xs'],
+                        '--badge-height': '16px',
+                        '--badge-padding-x': theme.spacing.xs
                     },
                     md: {
-                        compactHeight: '1.75rem',
-                        height: '2.5rem'
+                        '--badge-fz': theme.fontSizes.xs,
+                        '--badge-padding-x': theme.spacing.xs
                     }
                 } as const;
-                const size = sizeMap[props.size as keyof typeof sizeMap];
 
                 return {
                     root: {
-                        borderColor:
-                            props.variant === 'default'
-                                ? theme.colors.gray[2]
+                        ...sizes[size as keyof typeof sizes]
+                    }
+                };
+            }
+        }),
+
+        Button: Button.extend({
+            styles: {
+                label: {
+                    lineHeight: 'normal'
+                }
+            },
+            vars: (theme, props) => {
+                const sizes = {
+                    xs: {
+                        '--button-height': '1.5rem',
+                        '--button-padding-x': theme.spacing.xs
+                    },
+                    sm: {
+                        '--button-height': '2rem',
+                        '--button-padding-x': theme.spacing.sm
+                    },
+                    md: {
+                        '--button-fz': '.875rem',
+                        '--button-height': '2.5rem',
+                        '--button-padding-x': theme.spacing.sm
+                    },
+                    'compact-sm': {
+                        '--button-height': '1.5rem'
+                    },
+                    'compact-xs': {
+                        '--button-height': '1.25rem',
+                        '--button-padding-x': theme.spacing.xs
+                    }
+                } as const;
+
+                return {
+                    root: {
+                        '--button-bd':
+                            props.variant === 'outline'
+                                ? `1px solid ${theme.colors.gray[2]}`
                                 : undefined,
-                        fontWeight: 500,
-                        height: size?.height,
-                        padding: size ? `0 ${theme.spacing.sm}` : undefined
+                        ...sizes[props.size as keyof typeof sizes]
+                    }
+                };
+            }
+        }),
+        CloseButton: CloseButton.extend({
+            styles: {
+                root: {
+                    color: 'var(--text-subtle)'
+                }
+            },
+            vars: (_, props) => {
+                const sizes = {
+                    xs: {
+                        '--cb-size': '16px'
+                    },
+                    sm: {
+                        '--cb-size': '20px'
+                    },
+                    md: {
+                        '--cb-size': '24px'
+                    },
+                    lg: {
+                        '--cb-size': '32px'
+                    },
+                    xl: {
+                        '--cb-size': '40px'
+                    }
+                } as const;
+
+                return {
+                    root: {
+                        ...sizes[props.size as keyof typeof sizes]
                     }
                 };
             }
@@ -288,6 +332,23 @@ export const theme: MantineThemeOverride = {
                 }
             }
         }),
+        Pill: Pill.extend({
+            styles: {
+                remove: {
+                    color: 'gray'
+                },
+                root: {
+                    borderRadius: 'sm'
+                }
+            }
+        }),
+        PillGroup: PillGroup.extend({
+            styles: {
+                group: {
+                    alignItems: 'center'
+                }
+            }
+        }),
         Switch: Switch.extend({
             styles: {
                 label: {
@@ -316,6 +377,11 @@ export const theme: MantineThemeOverride = {
         md: '1rem', // 16px
         lg: '1.125rem', // 18px
         xl: '1.25rem' // 20px
+    },
+    fontWeights: {
+        bold: '600',
+        medium: '500',
+        regular: '400'
     },
     headings: {
         fontWeight: '600',

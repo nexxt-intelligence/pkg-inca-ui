@@ -1,5 +1,6 @@
 import { Group, Stack } from '@mantine/core';
 
+import { cx } from '../../utils/cx';
 import ActionIcon from '../ui/ActionIcon';
 import TextArea, { TextAreaProps } from '../ui/TextArea';
 import classes from './ChatInput.module.css';
@@ -17,7 +18,7 @@ const ChatInput = ({
 }: ChatInputProps) => {
     return (
         <Stack
-            className={`${classes.chatInput} ${disabled && classes.disabled}`}
+            className={cx(classes.chatInput, disabled && classes.disabled)}
             gap={0}
         >
             <TextArea

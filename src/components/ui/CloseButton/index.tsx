@@ -5,13 +5,10 @@ import {
 
 import { type StrictButtonProps } from '../../../types/props';
 
-export type CloseButtonProps = StrictButtonProps<
-    MantineCloseButtonProps,
-    'color'
->;
+export type CloseButtonProps = StrictButtonProps<MantineCloseButtonProps>;
 
 const CloseButton = (props: CloseButtonProps) => {
-    return <MantineCloseButton variant="subtle" {...props} />;
+    return <MantineCloseButton {...props} />;
 };
 
 export default CloseButton;

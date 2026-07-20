@@ -35,7 +35,7 @@ export interface SplitButtonProps {
 const SplitButton = ({
     buttonIcon,
     children = 'Send',
-    color = 'primary',
+    color = 'blue',
     disabled = false,
     items = [],
     menuIcon = 'IconChevronDown',

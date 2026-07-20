@@ -16,10 +16,21 @@ const labelStyle: React.CSSProperties = {
     fontSize: 11
 };
 
+const buttonColors = [
+    'blue',
+    'green',
+    'yellow',
+    'red',
+    'dark',
+    'gray'
+] as const;
+const buttonSizes = ['xs', 'sm', 'md', 'compact-xs', 'compact-sm'] as const;
+const buttonVariants = ['filled', 'subtle', 'outline'] as const;
+
 export default {
     args: {
         children: 'Button',
-        color: 'primary',
+        color: 'blue',
         compact: false,
         disabled: false,
         loading: false,
@@ -30,14 +41,18 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'radio',
-            options: ['primary', 'green', 'yellow', 'red', 'dark'],
-            table: { defaultValue: { summary: 'primary' } }
+            options: ['blue', 'green', 'yellow', 'red', 'dark'],
+            table: { defaultValue: { summary: 'blue' } }
         },
         compact: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
         disabled: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        fullWidth: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
@@ -56,6 +71,11 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
+        radius: {
+            control: 'radio',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'sm' } }
+        },
         rightIcon: {
             control: 'select',
             options: [
@@ -69,12 +89,12 @@ export default {
         },
         size: {
             control: 'radio',
-            options: ['xs', 'sm', 'md'],
+            options: buttonSizes,
             table: { defaultValue: { summary: 'sm' } }
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'subtle', 'outline'],
+            options: buttonVariants,
             table: { defaultValue: { summary: 'filled' } }
         }
     },
@@ -85,45 +105,13 @@ export default {
 export const Primary: StoryObj<typeof Button> = {};
 
 export const Variants: StoryObj<typeof Button> = {
-    argTypes: { variant: { table: { disable: true } } },
-    render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['filled', 'subtle', 'outline'] as const).map((variant) => (
-                <div key={variant} style={columnStyle}>
-                    <Button {...args} variant={variant}>
-                        {variant.charAt(0).toUpperCase() + variant.slice(1)}
-                    </Button>
-                    <span style={labelStyle}>{variant}</span>
-                </div>
-            ))}
-        </div>
-    )
-};
-
-export const Sizes: StoryObj<typeof Button> = {
-    argTypes: { size: { table: { disable: true } } },
-    render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['xs', 'sm', 'md'] as const).map((size) => (
-                <div key={size} style={columnStyle}>
-                    <Button {...args} size={size}>
-                        {args.children as string}
-                    </Button>
-                    <span style={labelStyle}>{size}</span>
-                </div>
-            ))}
-        </div>
-    )
-};
-
-export const Colors: StoryObj<typeof Button> = {
     argTypes: {
         color: { table: { disable: true } },
         variant: { table: { disable: true } }
     },
     render: (args) => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {(['filled', 'subtle', 'outline'] as const).map((variant) => (
+            {buttonVariants.map((variant) => (
                 <div
                     key={variant}
                     style={{
@@ -141,9 +129,7 @@ export const Colors: StoryObj<typeof Button> = {
                     >
                         {variant}
                     </span>
-                    {(
-                        ['primary', 'green', 'yellow', 'red', 'dark'] as const
-                    ).map((color) => (
+                    {buttonColors.map((color) => (
                         <Button
                             {...args}
                             color={color}
@@ -159,11 +145,27 @@ export const Colors: StoryObj<typeof Button> = {
     )
 };
 
+export const Sizes: StoryObj<typeof Button> = {
+    argTypes: { size: { table: { disable: true } } },
+    render: (args) => (
+        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
+            {buttonSizes.map((size) => (
+                <div key={size} style={columnStyle}>
+                    <Button {...args} size={size}>
+                        Button
+                    </Button>
+                    <span style={labelStyle}>{size}</span>
+                </div>
+            ))}
+        </div>
+    )
+};
+
 export const WithIcons: StoryObj<typeof Button> = {
     argTypes: {
         leftIcon: { table: { disable: true } },
         rightIcon: { table: { disable: true } },
-        variant: { table: { disable: true } }
+        size: { table: { disable: true } }
     },
     render: (args) => {
         const iconCombos = [
@@ -188,9 +190,9 @@ export const WithIcons: StoryObj<typeof Button> = {
         ] as const;
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {(['filled', 'subtle', 'outline'] as const).map((variant) => (
+                {buttonSizes.map((size) => (
                     <div
-                        key={variant}
+                        key={size}
                         style={{
                             alignItems: 'center',
                             display: 'flex',
@@ -204,7 +206,7 @@ export const WithIcons: StoryObj<typeof Button> = {
                                 width: 48
                             }}
                         >
-                            {variant}
+                            {size}
                         </span>
                         {iconCombos.map(
                             ({ children, label, leftIcon, rightIcon }) => (
@@ -213,7 +215,7 @@ export const WithIcons: StoryObj<typeof Button> = {
                                     key={label}
                                     leftIcon={leftIcon}
                                     rightIcon={rightIcon}
-                                    variant={variant}
+                                    size={size}
                                 >
                                     {children}
                                 </Button>

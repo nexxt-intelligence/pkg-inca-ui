@@ -1,6 +1,5 @@
-.alertTitle {
-    margin-bottom: var(--spacing-2xs);
-    font-weight: 600;
+.alertBody {
+    gap: var(--spacing-2xs);
 }
 .alertRoot {
     padding: var(--spacing-xs);

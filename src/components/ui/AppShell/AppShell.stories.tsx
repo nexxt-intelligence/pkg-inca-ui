@@ -42,7 +42,7 @@ const mockNavLinkItems = [
 export const Primary: StoryObj<typeof AppShell> = {
     args: {
         activeLink: '/dashboard',
-        children: <div style={{ padding: '20px' }}>Main content area</div>,
+        children: <div>Main content area</div>,
         headerSubtitle: 'Hello, John!',
         headerTitle: 'Dashboard',
         isMobile: false,

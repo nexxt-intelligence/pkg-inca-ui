@@ -19,7 +19,7 @@ const labelStyle: React.CSSProperties = {
 
 export default {
     args: {
-        color: 'primary',
+        color: 'blue',
         disabled: false,
         icon: 'IconPlus' as TablerIconKeys,
         loading: false,
@@ -29,8 +29,8 @@ export default {
     argTypes: {
         color: {
             control: 'select',
-            options: ['primary', 'red', 'green', 'gray', 'yellow', 'violet'],
-            table: { defaultValue: { summary: 'primary' } }
+            options: ['blue', 'red', 'green', 'gray', 'yellow', 'violet'],
+            table: { defaultValue: { summary: 'blue' } }
         },
         disabled: {
             control: 'boolean',
@@ -100,7 +100,7 @@ export const Colors: StoryObj<typeof ActionIcon> = {
     render: (args) => (
         <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
             {(
-                ['primary', 'red', 'green', 'gray', 'yellow', 'violet'] as const
+                ['blue', 'red', 'green', 'gray', 'yellow', 'violet'] as const
             ).map((color) => (
                 <div key={color} style={columnStyle}>
                     <ActionIcon

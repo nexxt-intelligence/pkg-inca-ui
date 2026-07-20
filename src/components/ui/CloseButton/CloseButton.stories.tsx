@@ -12,6 +12,11 @@ export default {
             control: 'radio',
             options: ['xs', 'sm', 'md', 'lg', 'xl'],
             table: { defaultValue: { summary: 'md' } }
+        },
+        variant: {
+            control: 'radio',
+            options: ['subtle', 'transparent'],
+            table: { defaultValue: { summary: 'subtle' } }
         }
     },
     component: CloseButton,
@@ -20,6 +25,7 @@ export default {
 
 export const Primary: StoryObj<typeof CloseButton> = {
     args: {
-        size: 'md'
+        size: 'md',
+        variant: 'subtle'
     }
 };

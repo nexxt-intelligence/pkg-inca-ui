@@ -33,14 +33,26 @@
 
 /* Mobile header styles */
 .appShellRoot[data-mobile='true'] {
+    --app-shell-navbar-width: 85px;
+
     .appShellMain {
         padding-top: 80px;
     }
     .navbar {
+        bottom: 0;
+        height: auto;
         top: 64px;
+        width: var(--app-shell-navbar-width);
+    }
+    .mobileHeader {
+        display: block;
     }
 }
+.appShellRoot[data-mobile='true'][data-navbar-open='true'] {
+    --app-shell-navbar-offset: var(--app-shell-navbar-width);
+}
 .mobileHeader {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -49,6 +61,26 @@
     border-bottom: 1px solid var(--border-default);
     padding: 1rem;
     z-index: 999;
+}
+@media (max-width: 61.99em) {
+    .appShellRoot {
+        --app-shell-navbar-width: 85px;
+    }
+    .appShellMain {
+        padding-top: 80px;
+    }
+    .navbar {
+        bottom: 0;
+        height: auto;
+        top: 64px;
+        width: var(--app-shell-navbar-width);
+    }
+    .appShellRoot[data-navbar-open='true'] {
+        --app-shell-navbar-offset: var(--app-shell-navbar-width);
+    }
+    .mobileHeader {
+        display: block;
+    }
 }
 .burger {
     position: absolute;
@@ -68,9 +100,6 @@
     .header {
         position: sticky;
         top: 0;
-        padding: 1rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
         z-index: 999;
     }
 }

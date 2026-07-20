@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 
+import { cx } from '../../utils/cx';
 import Icon from '../ui/Icon';
 // TODO: temp component needs refactor
 import classes from './SplitPaneModal.module.css';
@@ -36,11 +37,7 @@ export function SplitPaneModal({
     onClose
 }: SplitPaneModalProps) {
     return isOpen ? (
-        <div
-            className={`${classes.modalOverlay} ${
-                isBlurred && classes.blurred
-            }`}
-        >
+        <div className={cx(classes.modalOverlay, isBlurred && classes.blurred)}>
             <div className={classes.modalContent}>
                 <div className={classes.modalHeader}>
                     <div className={classes.headerContent}>

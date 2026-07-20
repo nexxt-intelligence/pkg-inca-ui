@@ -69,7 +69,7 @@ function Menu({ children, items, menuContent, ...props }: MenuProps) {
                                       position={tooltipPosition}
                                       withArrow
                                       withinPortal
-                                      zIndex={9999} // sorry
+                                      zIndex={9999}
                                   >
                                       <MantineMenu.Item
                                           onClick={onClick}

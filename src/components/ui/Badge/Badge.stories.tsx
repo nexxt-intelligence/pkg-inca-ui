@@ -16,6 +16,9 @@ const labelStyle: React.CSSProperties = {
     fontSize: 11
 };
 
+const badgeColors = ['blue', 'green', 'yellow', 'red', 'dark', 'violet'] as const;
+const badgeVariants = ['filled', 'light', 'outline', 'dot'] as const;
+
 export default {
     args: {
         children: 'Badge',
@@ -53,15 +56,40 @@ export default {
 export const Primary: StoryObj<typeof Badge> = {};
 
 export const Variants: StoryObj<typeof Badge> = {
-    argTypes: { variant: { table: { disable: true } } },
+    argTypes: {
+        color: { table: { disable: true } },
+        variant: { table: { disable: true } }
+    },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
-            {(['filled', 'light', 'outline', 'dot'] as const).map((variant) => (
-                <div key={variant} style={columnStyle}>
-                    <Badge {...args} variant={variant}>
-                        {args.children}
-                    </Badge>
-                    <span style={labelStyle}>{variant}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {badgeVariants.map((variant) => (
+                <div
+                    key={variant}
+                    style={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        gap: 12
+                    }}
+                >
+                    <span
+                        style={{
+                            ...labelStyle,
+                            textAlign: 'right',
+                            width: 48
+                        }}
+                    >
+                        {variant}
+                    </span>
+                    {badgeColors.map((color) => (
+                        <Badge
+                            {...args}
+                            color={color}
+                            key={color}
+                            variant={variant}
+                        >
+                            {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </Badge>
+                    ))}
                 </div>
             ))}
         </div>
@@ -88,9 +116,7 @@ export const Colors: StoryObj<typeof Badge> = {
     argTypes: { color: { table: { disable: true } } },
     render: (args) => (
         <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
-            {(
-                ['blue', 'green', 'yellow', 'red', 'dark', 'violet'] as const
-            ).map((color) => (
+            {badgeColors.map((color) => (
                 <div key={color} style={columnStyle}>
                     <Badge {...args} color={color}>
                         {args.children}
