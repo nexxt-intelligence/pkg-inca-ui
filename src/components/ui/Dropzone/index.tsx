@@ -7,6 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 
 import { type StrictProps } from '../../../types/props';
+import CloseButton from '../CloseButton';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './Dropzone.module.css';
@@ -14,6 +15,8 @@ import classes from './Dropzone.module.css';
 export interface DropzoneProps
     extends Omit<StrictProps<MantineDropzoneProps>, 'children'> {
     maxSizeLabel?: string;
+    onRemove?: () => void;
+    showFilePreview?: boolean;
     showImagePreview?: boolean;
     showMetadataHelpers?: boolean;
     size?: 'md' | 'sm';
@@ -71,7 +74,10 @@ const Dropzone = (({
     disabled,
     maxSize,
     maxSizeLabel,
+    multiple,
     onDrop,
+    onRemove,
+    showFilePreview = false,
     showImagePreview = true,
     showMetadataHelpers = false,
     size = 'sm',
@@ -79,9 +85,11 @@ const Dropzone = (({
     ...props
 }: DropzoneProps) => {
     const [previewUrl, setPreviewUrl] = useState<string>();
+    const [uploadedFile, setUploadedFile] = useState<FileWithPath>();
 
     const isFileVariant = variant === 'file';
     const isSmall = size === 'sm';
+    const shouldShowFilePreview = showFilePreview && isFileVariant && !multiple;
     const resolvedMaxSizeDescription =
         maxSizeLabel ?? (maxSize ? formatBytes(maxSize) : undefined);
     const resolvedSupportedFormatsDescription = formatAcceptedTypes(accept);
@@ -110,7 +118,18 @@ const Dropzone = (({
                 ? URL.createObjectURL(imageFile)
                 : undefined
         );
+
+        if (shouldShowFilePreview) {
+            setUploadedFile(files[0]);
+        }
+
         onDrop(files);
+    };
+
+    const handleRemove = () => {
+        setUploadedFile(undefined);
+        setPreviewUrl(undefined);
+        onRemove?.();
     };
 
     const defaultContent = (
@@ -137,21 +156,40 @@ const Dropzone = (({
 
     return (
         <Stack spacing="xs">
-            <MantineDropzone
-                accept={accept}
-                classNames={{
-                    inner: classes.inner,
-                    root: classes.root
-                }}
-                data-disabled={disabled || undefined}
-                data-size={size}
-                disabled={disabled}
-                maxSize={maxSize}
-                onDrop={handleDrop}
-                {...props}
-            >
-                {previewContent ?? defaultContent}
-            </MantineDropzone>
+            {shouldShowFilePreview && uploadedFile ? (
+                <Group className={classes.filePreview} noWrap position="apart">
+                    <Stack className={classes.filePreviewText} spacing={0}>
+                        <Text className={classes.fileName} size="sm">
+                            {uploadedFile.name}
+                        </Text>
+                        <Text color="var(--text-success)" size="sm">
+                            Success
+                        </Text>
+                    </Stack>
+                    <CloseButton
+                        aria-label="Remove file"
+                        onClick={handleRemove}
+                        size="md"
+                    />
+                </Group>
+            ) : (
+                <MantineDropzone
+                    accept={accept}
+                    classNames={{
+                        inner: classes.inner,
+                        root: classes.root
+                    }}
+                    data-disabled={disabled || undefined}
+                    data-size={size}
+                    disabled={disabled}
+                    maxSize={maxSize}
+                    multiple={multiple}
+                    onDrop={handleDrop}
+                    {...props}
+                >
+                    {previewContent ?? defaultContent}
+                </MantineDropzone>
+            )}
             {shouldShowMetadataHelpers && (
                 <Group position="apart">
                     {resolvedSupportedFormatsDescription && (

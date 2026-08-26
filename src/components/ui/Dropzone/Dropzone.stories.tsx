@@ -19,6 +19,10 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
         },
+        showFilePreview: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
         showImagePreview: {
             control: 'boolean',
             table: { defaultValue: { summary: 'true' } }
@@ -49,5 +53,17 @@ export const Primary: StoryObj<typeof Dropzone> = {
         onDrop: console.log,
         showImagePreview: true,
         size: 'sm'
+    }
+};
+
+export const WithFilePreview: StoryObj<typeof Dropzone> = {
+    args: {
+        maxSize: 5 * 1024 ** 2,
+        multiple: false,
+        onDrop: console.log,
+        onRemove: () => console.log('removed'),
+        showFilePreview: true,
+        size: 'md',
+        variant: 'file'
     }
 };
