@@ -149,6 +149,22 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     withBorder={false}
                     zIndex={1}
                 >
+                    <div className={classes.links}>
+                        <a
+                            href="https://www.nexxt.in/privacy"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Privacy
+                        </a>
+                        <a
+                            href="https://www.nexxt.in/terms"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Terms
+                        </a>
+                    </div>
                     <a
                         className={classes.byLogo}
                         href="https://nexxt.in"
