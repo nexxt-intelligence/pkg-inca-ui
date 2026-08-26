@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.13.0
+
+### Minor Changes
+
+-   cc37b25: feat: add file item to Dropzone, loading state for Alerts, privacy/terms to AppShell
+
 ## 7.12.0
 
 ### Minor Changes
