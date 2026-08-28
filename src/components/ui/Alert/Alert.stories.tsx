@@ -5,6 +5,7 @@ import Alert from './index';
 export default {
     argTypes: {
         children: { control: 'text' },
+        loading: { control: 'boolean' },
         title: { control: 'text' },
         type: {
             control: 'radio',
@@ -36,21 +37,21 @@ export const Primary: StoryObj<typeof Alert> = {
 };
 
 export const AllTypes: StoryObj<typeof Alert> = {
-    render: () => (
+    render: (args) => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <Alert title="Info" type="info" variant="light">
+            <Alert {...args} title="Info" type="info" variant="light">
                 This is an informational message.
             </Alert>
-            <Alert title="Success" type="success" variant="light">
+            <Alert {...args} title="Success" type="success" variant="light">
                 Action completed successfully.
             </Alert>
-            <Alert title="Warning" type="warning" variant="light">
+            <Alert {...args} title="Warning" type="warning" variant="light">
                 Please review before continuing.
             </Alert>
-            <Alert title="Danger" type="danger" variant="light">
+            <Alert {...args} title="Danger" type="danger" variant="light">
                 Something went wrong.
             </Alert>
-            <Alert title="AI" type="ai" variant="light">
+            <Alert {...args} title="AI" type="ai" variant="light">
                 This is an AI-generated message.
             </Alert>
         </div>

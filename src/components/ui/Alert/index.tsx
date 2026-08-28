@@ -1,4 +1,5 @@
 import {
+    Loader,
     Alert as MantineAlert,
     AlertProps as MantineAlertProps
 } from '@mantine/core';
@@ -11,6 +12,7 @@ import classes from './Alert.module.css';
 export interface AlertProps extends StrictProps<MantineAlertProps> {
     defaultOpen?: boolean;
     hideIcon?: boolean;
+    loading?: boolean;
     onClose?: () => void;
     open?: boolean;
     type?: 'ai' | 'danger' | 'info' | 'success' | 'warning';
@@ -44,7 +46,7 @@ const Alert = ({
     color,
     defaultOpen = true,
     hideIcon,
-    icon,
+    loading,
     onClose,
     open: controlledOpen,
     type = 'info',
@@ -78,7 +80,13 @@ const Alert = ({
             }}
             color={displayColor}
             data-color={displayColor}
-            icon={icon ?? alertType.icon}
+            icon={
+                loading ? (
+                    <Loader color={alertType.color} size="1rem" />
+                ) : (
+                    alertType.icon
+                )
+            }
             onClose={handleClose}
             {...props}
         >
