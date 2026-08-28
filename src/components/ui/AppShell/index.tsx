@@ -1,7 +1,6 @@
 import {
     Box,
     Burger,
-    Footer,
     Group,
     AppShell as MantineAppShell,
     AppShellProps as MantineAppShellProps,
@@ -13,6 +12,7 @@ import {
 } from '@mantine/core';
 
 import { type StrictProps } from '../../../types/props';
+import Footer from '../Footer';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './AppShell.module.css';
@@ -33,6 +33,7 @@ export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     openFeedback?: () => void;
     openHelp?: () => void;
     setActiveLink: (url: string) => void;
+    showFooter?: boolean;
     signOut: () => void;
     toggleNavbar: () => void;
     userFirstName?: string;
@@ -64,6 +65,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
         openFeedback,
         openHelp,
         setActiveLink,
+        showFooter = true,
         signOut,
         toggleNavbar,
         userFirstName,
@@ -142,42 +144,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             }}
             data-fixed={isFixedHeader}
             data-mobile={isMobile}
-            footer={
-                <Footer
-                    className={classes.footer}
-                    height={32}
-                    withBorder={false}
-                    zIndex={1}
-                >
-                    <div className={classes.links}>
-                        <a
-                            href="https://www.nexxt.in/privacy"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            Privacy
-                        </a>
-                        <a
-                            href="https://www.nexxt.in/terms"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            Terms
-                        </a>
-                    </div>
-                    <a
-                        className={classes.byLogo}
-                        href="https://nexxt.in"
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        <img
-                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
-                            width={200}
-                        />
-                    </a>
-                </Footer>
-            }
+            footer={showFooter ? <Footer /> : undefined}
             layout={!isMobile ? 'alt' : 'default'}
             navbar={
                 <Navbar

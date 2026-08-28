@@ -1,8 +1,9 @@
 .appShellRoot {
     background-color: var(--bg-base);
+    position: relative;
 }
 .appShellMain {
-    padding-bottom: 1.25rem;
+    padding-bottom: var(--mantine-footer-height, 0px);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -125,30 +126,6 @@
 .userProfilePicture {
     max-width: 100%;
     height: auto;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-    padding: 0.5rem 1rem;
-}
-.links {
-    a:first-of-type {
-        padding: 0 var(--spacing-xs);
-        border-right: 1px solid var(--border-medium);
-    }
-    a {
-        font-size: 12px;
-        color: var(--text-subtle);
-        margin-right: var(--spacing-xs);
-        text-decoration: none;
-    }
-}
-.byLogo {
-    display: flex;
-    align-items: center;
 }
 
 .hidden {
