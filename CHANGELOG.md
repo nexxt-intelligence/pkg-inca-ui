@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.13.1
+
+### Patch Changes
+
+-   5cdd46d: feat: extract Footer into reusable component with absolute positioning
+
 ## 7.13.0
 
 ### Minor Changes
