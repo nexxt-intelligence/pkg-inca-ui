@@ -12,6 +12,8 @@ import {
 
 import { type StrictProps } from '../../../types/props';
 import { cx } from '../../../utils/cx';
+import { FooterContent } from '../Footer';
+import footerClasses from '../Footer/Footer.module.css';
 import Icon from '../Icon';
 import Text from '../Text';
 import classes from './AppShell.module.css';
@@ -32,6 +34,7 @@ export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     openFeedback?: () => void;
     openHelp?: () => void;
     setActiveLink: (url: string) => void;
+    showFooter?: boolean;
     signOut: () => void;
     toggleNavbar: () => void;
     userFirstName?: string;
@@ -64,6 +67,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
         openFeedback,
         openHelp,
         setActiveLink,
+        showFooter = true,
         signOut,
         toggleNavbar,
         userFirstName,
@@ -143,7 +147,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             data-fixed={isFixedHeader}
             data-mobile={isMobile}
             data-navbar-open={isNavbarOpen}
-            footer={{ height: 32 }}
+            footer={{ collapsed: !showFooter, height: 16, offset: showFooter }}
             layout={!isMobile ? 'alt' : 'default'}
             navbar={{
                 breakpoint: 'md',
@@ -178,23 +182,15 @@ const AppShell = ({ ...props }: AppShellProps) => {
                     {renderNavLinks(navLinkBottomItems)}
                 </MantineAppShell.Section>
             </MantineAppShell.Navbar>
-            <MantineAppShell.Footer
-                className={classes.footer}
-                withBorder={false}
-                zIndex={1}
-            >
-                <a
-                    className={classes.byLogo}
-                    href="https://nexxt.in"
-                    rel="noreferrer"
-                    target="_blank"
+            {showFooter && (
+                <MantineAppShell.Footer
+                    className={footerClasses.footer}
+                    withBorder={false}
+                    zIndex={1}
                 >
-                    <img
-                        src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/powered_by_nexxt_intelligence_inca.png`}
-                        width={200}
-                    />
-                </a>
-            </MantineAppShell.Footer>
+                    <FooterContent />
+                </MantineAppShell.Footer>
+            )}
             <MantineAppShell.Main>
                 <header className={headerTitle ? classes.header : undefined}>
                     <Stack gap={0}>

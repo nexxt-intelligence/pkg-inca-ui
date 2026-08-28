@@ -83,6 +83,7 @@ export {
     default as Dropzone,
     type DropzoneProps
 } from './components/ui/Dropzone';
+export { default as Footer, type FooterProps } from './components/ui/Footer';
 export { default as Icon, type TablerIconKeys } from './components/ui/Icon';
 export { default as Label, type LabelProps } from './components/ui/Label';
 export { default as List, type ListProps } from './components/ui/List';

@@ -11,6 +11,7 @@ export default {
         isFixedHeader: { control: 'boolean' },
         isMobile: { control: 'boolean' },
         isNavbarOpen: { control: 'boolean' },
+        showFooter: { control: 'boolean' },
         userFirstName: { control: 'text' },
         userProfilePicture: { control: 'text' }
     },
