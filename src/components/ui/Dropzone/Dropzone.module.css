@@ -37,3 +37,21 @@
     max-width: 200px;
     object-fit: cover;
 }
+
+.filePreview {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 0.125rem dashed var(--border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+}
+
+.filePreviewText {
+    min-width: 0;
+}
+
+.fileName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
