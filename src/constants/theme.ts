@@ -268,6 +268,22 @@ export const theme: MantineThemeOverride = {
                 })
             }
         },
+        Checkbox: {
+            sizes: {
+                xs: () => ({
+                    labelWrapper: {
+                        marginTop: '2px'
+                    }
+                })
+            },
+            styles: {
+                label: {
+                    alignItems: 'center',
+                    display: 'inline-flex',
+                    gap: '4px'
+                }
+            }
+        },
         Input: {
             styles: {
                 input: {
@@ -309,6 +325,15 @@ export const theme: MantineThemeOverride = {
                     alignItems: 'center',
                     display: 'inline-flex',
                     fontWeight: 400,
+                    gap: '4px'
+                }
+            }
+        },
+        Radio: {
+            styles: {
+                label: {
+                    alignItems: 'center',
+                    display: 'inline-flex',
                     gap: '4px'
                 }
             }

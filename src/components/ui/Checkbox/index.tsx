@@ -24,10 +24,17 @@ export interface CheckboxProps
         StrictInputProps<MantineCheckboxProps, 'size' | 'type'>,
         'value'
     > {
+    tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
     value: number | string;
 }
 
-const Checkbox = ({ ...props }: CheckboxProps) => {
+const Checkbox = ({
+    label,
+    tooltip,
+    tooltipProps,
+    ...props
+}: CheckboxProps) => {
     return (
         <MantineCheckbox
             classNames={{
@@ -37,6 +44,15 @@ const Checkbox = ({ ...props }: CheckboxProps) => {
                 input: classes.checkboxInput,
                 label: classes.checkboxLabel
             }}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             {...props}
         />
     );

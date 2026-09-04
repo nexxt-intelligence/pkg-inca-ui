@@ -9,6 +9,8 @@ export default {
         disabled: false,
         error: '',
         label: 'Checkbox label',
+        size: 'sm',
+        tooltip: '',
         value: 'example'
     },
     argTypes: {
@@ -18,7 +20,13 @@ export default {
             table: { defaultValue: { summary: 'false' } }
         },
         error: { control: 'text' },
-        label: { control: 'text' }
+        label: { control: 'text' },
+        size: {
+            control: 'radio',
+            options: ['xs', 'sm'],
+            table: { defaultValue: { summary: 'sm' } }
+        },
+        tooltip: { control: 'text' }
     },
     component: Checkbox,
     title: 'UI/Inputs/Checkbox'

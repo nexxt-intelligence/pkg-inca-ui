@@ -22,10 +22,12 @@ export interface RadioGroupProps
 export interface RadioProps
     extends Omit<StrictInputProps<MantineRadioProps, 'size'>, 'value'> {
     disabled?: boolean;
+    tooltip?: string;
+    tooltipProps?: LabelProps['tooltipProps'];
     value: number | string;
 }
 
-const Radio = ({ ...props }: RadioProps) => {
+const Radio = ({ label, tooltip, tooltipProps, ...props }: RadioProps) => {
     return (
         <MantineRadio
             classNames={{
@@ -35,6 +37,15 @@ const Radio = ({ ...props }: RadioProps) => {
                 label: classes.radioLabel,
                 radio: classes.radio
             }}
+            label={
+                label ? (
+                    <Label
+                        label={label}
+                        tooltip={tooltip}
+                        tooltipProps={tooltipProps}
+                    />
+                ) : null
+            }
             {...props}
         />
     );

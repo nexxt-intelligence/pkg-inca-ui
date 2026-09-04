@@ -9,7 +9,9 @@ import { type StrictProps } from '../../../types/props';
 import Icon from '../Icon';
 import classes from './Alert.module.css';
 
-export interface AlertProps extends StrictProps<MantineAlertProps> {
+export interface AlertProps
+    extends Omit<StrictProps<MantineAlertProps>, 'children'> {
+    children?: React.ReactNode;
     defaultOpen?: boolean;
     hideIcon?: boolean;
     loading?: boolean;

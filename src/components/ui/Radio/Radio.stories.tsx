@@ -10,6 +10,7 @@ export default {
         disabled: false,
         error: '',
         label: 'Radio label',
+        tooltip: '',
         value: '1'
     },
     argTypes: {
@@ -19,7 +20,8 @@ export default {
             table: { defaultValue: { summary: 'false' } }
         },
         error: { control: 'text' },
-        label: { control: 'text' }
+        label: { control: 'text' },
+        tooltip: { control: 'text' }
     },
     component: Radio,
     title: 'UI/Inputs/Radio'
