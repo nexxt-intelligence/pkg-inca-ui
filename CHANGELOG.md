@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.13.2
+
+### Patch Changes
+
+-   8baef40: feat: children prop on Alert is optional, add tooltip to individual Checkbox and Radio
+
 ## 7.13.1
 
 ### Patch Changes
