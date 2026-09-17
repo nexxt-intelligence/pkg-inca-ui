@@ -4,7 +4,7 @@
  * Semantic CSS custom properties derived directly from the Figma token system.
  * Use these vars in all component CSS modules — never reference Mantine internals
  * (e.g. var(--mantine-color-blue-6)) or raw hex values in component styles.
- *
+ * 
  * Naming mirrors the Figma token hierarchy:
  *   Background/* → --bg-*
  *   Text/*       → --text-*
@@ -17,84 +17,79 @@
     /* ─── Background ──────────────────────────────────────────── */
 
     /* Surfaces */
-    --bg-surface: #ffffff; /* Background/surface  → static/white  */
-    --bg-base: #f8f9fa; /* Background/base     → gray/0        */
-    --bg-hover: #f1f3f5; /* Background/hover    → gray/1        */
-    --bg-disabled: #e9ecef; /* Background/disabled → gray/2        */
-    --bg-medium: #495057; /* Background/medium   → gray/7        */
-    --bg-overlay-black: rgba(0, 0, 0, 0.5); /* Background/overlay-Black */
-    --bg-transparent: rgba(255, 255, 255, 0); /* Background/transparent  */
+    --bg-surface: var(--mantine-color-white, #ffffff);
+    --bg-base: var(--mantine-color-gray-0, #f8f9fa);
+    --bg-hover: var(--mantine-color-gray-1, #f1f3f5);
+    --bg-disabled: var(--mantine-color-gray-2, #e9ecef);
+    --bg-medium: var(--mantine-color-gray-7, #495057);
+    --bg-overlay-black: rgba(0, 0, 0, 0.5);
+    --bg-transparent: rgba(255, 255, 255, 0);
 
     /* Accent (blue) */
-    --bg-accent: #2d67cb; /* blue/6 */
-    --bg-accent-hover: #275ebb; /* blue/7 */
-    --bg-accent-light: #e9f4ff; /* blue/0 */
-    --bg-accent-light-hover: #d6e3fa; /* blue/1 */
+    --bg-accent: var(--mantine-color-primary-6, #2d67cb);
+    --bg-accent-hover: var(--mantine-color-primary-7, #275ebb);
+    --bg-accent-light: var(--mantine-color-primary-0, #e9f4ff);
+    --bg-accent-light-hover: var(--mantine-color-primary-1, #d6e3fa);
 
     /* Error (red) */
-    --bg-error: #f33c15; /* red/6  */
-    --bg-error-hover: #d92e08; /* red/7  */
-    --bg-error-light: #ffece5; /* red/0  */
-    --bg-error-light-hover: #ffd8cf; /* red/1  */
+    --bg-error: var(--mantine-color-red-6, #f33c15);
+    --bg-error-hover: var(--mantine-color-red-7, #d92e08);
+    --bg-error-light: var(--mantine-color-red-0, #ffece5);
+    --bg-error-light-hover: var(--mantine-color-red-1, #ffd8cf);
 
     /* Warning (yellow) */
-    --bg-warning: #ffb902; /* yellow/6 */
-    --bg-warning-hover: #f79009; /* yellow/7 */
-    --bg-warning-light: #fff9df; /* yellow/0 */
-    --bg-warning-light-hover: #fff1ca; /* yellow/1 */
+    --bg-warning: var(--mantine-color-yellow-6, #ffb902);
+    --bg-warning-hover: var(--mantine-color-yellow-7, #f79009);
+    --bg-warning-light: var(--mantine-color-yellow-0, #fff9df);
+    --bg-warning-light-hover: var(--mantine-color-yellow-1, #fff1ca);
 
     /* Success (green) */
-    --bg-success: #4fc091; /* green/6 */
-    --bg-success-hover: #3ea97d; /* green/7 */
-    --bg-success-light: #eafbf5; /* green/0 */
-    --bg-success-light-hover: #dcf3ea; /* green/1 */
+    --bg-success: var(--mantine-color-green-6, #4fc091);
+    --bg-success-hover: var(--mantine-color-green-7, #3ea97d);
+    --bg-success-light: var(--mantine-color-green-0, #eafbf5);
+    --bg-success-light-hover: var(--mantine-color-green-1, #dcf3ea);
 
     /* AI / Feature (violet) */
-    --bg-ai: #7950f2; /* violet/6 */
-    --bg-ai-hover: #7048e8; /* violet/7 */
-    --bg-ai-light: #f3f0ff; /* violet/0 */
-    --bg-ai-light-hover: #e5dbff; /* violet/1 */
-
-    /* Canvas */
-    --canvas-default: #f1f3f5; /* Canvas/default → gray/1  */
-    --canvas-surface: #ffffff; /* Canvas/surface → white   */
+    --bg-ai: var(--mantine-color-violet-6, #7950f2);
+    --bg-ai-hover: var(--mantine-color-violet-7, #7048e8);
+    --bg-ai-light: var(--mantine-color-violet-0, #f3f0ff);
+    --bg-ai-light-hover: var(--mantine-color-violet-1, #e5dbff);
 
     /* ─── Text ────────────────────────────────────────────────── */
-    --text-default: #212529; /* gray/9  */
-    --text-medium: #495057; /* gray/7  */
-    --text-subtle: #868e96; /* gray/6  */
-    --text-placeholder: #adb5bd; /* gray/5  */
-    --text-disabled: #adb5bd; /* gray/5  */
-    --text-inverse: #ffffff; /* white   */
-    --text-accent: #2d67cb; /* blue/6  */
-    --text-error: #f33c15; /* red/6   */
-    --text-warning: #ffb902; /* yellow/6 */
-    --text-success: #4fc091; /* green/6 */
-    --text-ai: #7950f2; /* violet/6 */
+    --text-default: var(--mantine-color-gray-9, #212529);
+    --text-medium: var(--mantine-color-gray-7, #495057);
+    --text-subtle: var(--mantine-color-gray-6, #868e96);
+    --text-placeholder: var(--mantine-color-gray-5, #adb5bd);
+    --text-disabled: var(--mantine-color-gray-5, #adb5bd);
+    --text-inverse: var(--mantine-color-white, #ffffff);
+    --text-accent: var(--mantine-color-primary-6, #2d67cb);
+    --text-error: var(--mantine-color-red-6, #f33c15);
+    --text-warning: var(--mantine-color-yellow-6, #ffb902);
+    --text-success: var(--mantine-color-green-6, #4fc091);
+    --text-ai: var(--mantine-color-violet-6, #7950f2);
 
     /* ─── Icon ────────────────────────────────────────────────── */
-    --icon-default: #212529; /* gray/9  */
-    --icon-medium: #495057; /* gray/7  */
-    --icon-subtle: #868e96; /* gray/6  */
-    --icon-placeholder: #adb5bd; /* gray/5  */
-    --icon-disabled: #adb5bd; /* gray/5  */
-    --icon-inverse: #ffffff; /* white   */
-    --icon-accent: #2d67cb; /* blue/6  */
-    --icon-error: #f33c15; /* red/6   */
-    --icon-warning: #ffb902; /* yellow/6 */
-    --icon-success: #4fc091; /* green/6 */
-    --icon-ai: #7950f2; /* violet/6 */
-    --icon-ai-light: #f3f0ff; /* violet/0 */
+    --icon-default: var(--mantine-color-gray-9, #212529);
+    --icon-medium: var(--mantine-color-gray-7, #495057);
+    --icon-subtle: var(--mantine-color-gray-6, #868e96);
+    --icon-placeholder: var(--mantine-color-gray-5, #adb5bd);
+    --icon-disabled: var(--mantine-color-gray-5, #adb5bd);
+    --icon-inverse: var(--mantine-color-white, #ffffff);
+    --icon-accent: var(--mantine-color-primary-6, #2d67cb);
+    --icon-error: var(--mantine-color-red-6, #f33c15);
+    --icon-warning: var(--mantine-color-yellow-6, #ffb902);
+    --icon-success: var(--mantine-color-green-6, #4fc091);
+    --icon-ai: var(--mantine-color-violet-6, #7950f2);
+    --icon-ai-light: var(--mantine-color-violet-0, #f3f0ff);
 
     /* ─── Border ──────────────────────────────────────────────── */
-    --border-default: #e9ecef; /* gray/2   */
-    --border-disabled: #dee2e6; /* gray/3   */
-    --border-medium: #495057; /* gray/7   */
-    --border-accent: #2d67cb; /* blue/6   */
-    --border-error: #f33c15; /* red/6    */
-    --border-warning: #ffb902; /* yellow/6 */
-    --border-success: #4fc091; /* green/6  */
-    --border-ai: #7950f2; /* violet/6 */
+    --border-default: var(--mantine-color-gray-2, #e9ecef);
+    --border-disabled: var(--mantine-color-gray-3, #dee2e6);
+    --border-accent: var(--mantine-color-primary-6, #2d67cb);
+    --border-error: var(--mantine-color-red-6, #f33c15);
+    --border-warning: var(--mantine-color-yellow-6, #ffb902);
+    --border-success: var(--mantine-color-green-6, #4fc091);
+    --border-ai: var(--mantine-color-violet-6, #7950f2);
 
     /* ─── Elevation / Shadow ──────────────────────────────────── */
     --shadow-1: 0 3px 3px rgba(230, 230, 230, 0.3); /* Level 1 — cards, inputs  */

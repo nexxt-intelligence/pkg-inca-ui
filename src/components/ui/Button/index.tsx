@@ -40,7 +40,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) => {
         return (
             <MantineButton
-                className={clsx(className, classes.transition)}
+                className={clsx(className, classes.button)}
                 classNames={{
                     leftIcon: classes.leftIcon,
                     rightIcon: classes.rightIcon,

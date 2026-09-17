@@ -19,7 +19,7 @@ const labelStyle: React.CSSProperties = {
 export default {
     args: {
         children: 'Badge',
-        color: 'blue',
+        color: 'primary',
         fullWidth: false,
         size: 'md',
         variant: 'filled'
@@ -28,8 +28,8 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'select',
-            options: ['blue', 'green', 'yellow', 'red', 'dark', 'violet'],
-            table: { defaultValue: { summary: 'blue' } }
+            options: ['primary', 'green', 'yellow', 'red', 'dark', 'violet'],
+            table: { defaultValue: { summary: 'primary' } }
         },
         fullWidth: {
             control: 'boolean',
@@ -89,7 +89,7 @@ export const Colors: StoryObj<typeof Badge> = {
     render: (args) => (
         <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
             {(
-                ['blue', 'green', 'yellow', 'red', 'dark', 'violet'] as const
+                ['primary', 'green', 'yellow', 'red', 'dark', 'violet'] as const
             ).map((color) => (
                 <div key={color} style={columnStyle}>
                     <Badge {...args} color={color}>

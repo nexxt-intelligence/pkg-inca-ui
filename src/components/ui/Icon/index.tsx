@@ -10,7 +10,7 @@ export type TablerIconKeys = Extract<keyof typeof TablerIcons, `Icon${string}`>;
 
 interface IconProps {
     /**
-     * A Mantine theme color token (e.g. `"blue"`, `"red.6"`).
+     * A Mantine theme color token (e.g. `"primary"`, `"red.6"`).
      */
     color?: MantineColor;
     iconRotate?: number;

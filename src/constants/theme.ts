@@ -1,21 +1,24 @@
-import type { MantineThemeOverride } from '@mantine/core';
+import type { MantineThemeOverride, Tuple } from '@mantine/core';
+
+export type BrandPalette = Tuple<string, 10>;
+
+const BLUE: BrandPalette = [
+    '#E9F4FF',
+    '#D6E3FA',
+    '#ADC5EE',
+    '#81A5E3',
+    '#5B89D9',
+    '#4478D4',
+    '#2D67CB',
+    '#275EBB',
+    '#1D54A8',
+    '#094896'
+];
 
 // https://v6.mantine.dev/styles/global-styles/
 export const theme: MantineThemeOverride = {
-    black: '#212529', // Text/default → gray/9
     colors: {
-        blue: [
-            '#E9F4FF',
-            '#D6E3FA',
-            '#ADC5EE',
-            '#81A5E3',
-            '#5B89D9',
-            '#4478D4',
-            '#2D67CB',
-            '#275EBB',
-            '#1D54A8',
-            '#094896'
-        ],
+        blue: BLUE,
         gray: [
             '#F8F9FA',
             '#F1F3F5',
@@ -52,6 +55,7 @@ export const theme: MantineThemeOverride = {
             '#E7421D',
             '#CC3A1A'
         ],
+        primary: BLUE,
         red: [
             '#FFECE5',
             '#FFD8CF',
@@ -163,14 +167,14 @@ export const theme: MantineThemeOverride = {
                                 },
                                 backgroundColor: theme.white,
                                 borderColor: theme.colors.gray[2],
-                                color: theme.black
+                                color: 'var(--text-default)'
                             }
                         };
                     }
                     return {
                         root: {
                             backgroundColor: theme.white,
-                            color: theme.black
+                            color: 'var(--text-default)'
                         }
                     };
                 },
@@ -178,7 +182,7 @@ export const theme: MantineThemeOverride = {
                     if (params.color === 'yellow') {
                         return {
                             root: {
-                                color: theme.black
+                                color: 'var(--text-default)'
                             }
                         };
                     }
@@ -348,11 +352,11 @@ export const theme: MantineThemeOverride = {
             }
         },
         Title: {
-            styles: (theme) => ({
+            styles: {
                 root: {
-                    color: theme.black
+                    color: 'var(--text-default)'
                 }
-            })
+            }
         }
     },
     cursorType: 'pointer',
@@ -379,7 +383,7 @@ export const theme: MantineThemeOverride = {
         }
     },
     lineHeight: 1.5,
-    primaryColor: 'blue',
+    primaryColor: 'primary',
     primaryShade: 6,
 
     radius: {

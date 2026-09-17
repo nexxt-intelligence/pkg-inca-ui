@@ -1,7 +1,8 @@
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+import { useMemo } from 'react';
 
-import { theme } from './constants/theme';
+import { type BrandPalette, theme } from './constants/theme';
 import './assets/global.css';
 import './tokens.css';
 
@@ -119,12 +120,22 @@ export * from './constants/theme';
 export { type ConfirmationModalProps, useConfirmationModal } from './hooks';
 
 export const CustomMantineProvider = ({
+    brand,
     children
 }: {
+    brand?: BrandPalette;
     children: React.ReactNode;
 }) => {
+    const brandedTheme = useMemo(
+        () =>
+            brand
+                ? { ...theme, colors: { ...theme.colors, primary: brand } }
+                : theme,
+        [brand]
+    );
+
     return (
-        <MantineProvider theme={theme} withCSSVariables>
+        <MantineProvider theme={brandedTheme} withCSSVariables>
             <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
     );

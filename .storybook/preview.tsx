@@ -1,29 +1,13 @@
-import { MantineProvider } from '@mantine/core';
-import { ModalsProvider } from '@mantine/modals';
 import React from 'react';
 
-import '../src/assets/global.css';
-import '../src/tokens.css';
-// import theme object you've exported in previous step
-import { theme } from '../src/constants/theme';
+import { CustomMantineProvider } from '../src';
 
-// Create a wrapper component that will contain all your providers.
-// Usually you should render all providers in this component:
-// MantineProvider, DatesProvider, Notifications, Spotlight, etc.
-function ThemeWrapper(props: { children: React.ReactNode }) {
-    return (
-        <MantineProvider
-            theme={theme}
-            withCSSVariables
-            withGlobalStyles
-            withNormalizeCSS
-        >
-            <ModalsProvider>{props.children}</ModalsProvider>
-        </MantineProvider>
-    );
-}
-
-// enhance your stories with decorator that uses ThemeWrapper
+// Storybook renders through the SAME provider the library exports, so what you
+// see here is what a consuming app gets. Note this deliberately does NOT set
+// withGlobalStyles / withNormalizeCSS — CustomMantineProvider doesn't either,
+// and consuming apps bring their own global CSS.
 export const decorators = [
-    (renderStory) => <ThemeWrapper>{renderStory()}</ThemeWrapper>
+    (renderStory: () => React.ReactNode) => (
+        <CustomMantineProvider>{renderStory()}</CustomMantineProvider>
+    )
 ];

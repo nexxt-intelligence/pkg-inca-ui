@@ -19,5 +19,5 @@ label {
 }
 
 body {
-    color: var(--color-text-default);
+    color: var(--text-default);
 }

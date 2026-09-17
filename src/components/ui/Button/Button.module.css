@@ -10,21 +10,17 @@
     margin-right: calc(-1 * var(--spacing-2xs));
 }
 
-&:focus {
-    border: 0.0625rem solid transparent;
-}
-
-.transition {
+.button {
     will-change: background-color, color, border-color;
     transition: background-color 200ms ease, color 200ms ease,
         border-color 200ms ease;
 }
 
-[data-color='yellow'][data-variant='filled'] {
+.button[data-color='yellow'][data-variant='filled'] {
     color: var(--text-default);
 }
 
-[data-variant='outline'] {
+.button[data-variant='outline'] {
     border-color: var(--border-default);
     &:hover {
         background-color: var(--bg-base);

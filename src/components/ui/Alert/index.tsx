@@ -30,7 +30,7 @@ const alertTypes = {
         icon: <Icon type="IconAlertTriangle" />
     },
     info: {
-        color: 'blue',
+        color: 'primary',
         icon: <Icon type="IconInfoCircle" />
     },
     success: {
