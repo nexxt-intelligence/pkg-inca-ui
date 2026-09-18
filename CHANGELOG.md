@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.14.0
+
+### Minor Changes
+
+-   be89421: feat: update theme and colors for white labeling
+
 ## 7.13.2
 
 ### Patch Changes
