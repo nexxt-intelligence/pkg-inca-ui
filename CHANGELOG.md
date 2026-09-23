@@ -1,5 +1,11 @@
 # inca-ui
 
+## 9.2.0
+
+### Minor Changes
+
+-   17cab7e: feat: update theme and colors for white labeling
+
 ## 9.1.0
 
 ### Minor Changes
