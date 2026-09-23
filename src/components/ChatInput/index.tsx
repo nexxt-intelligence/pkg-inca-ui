@@ -31,7 +31,6 @@ const ChatInput = ({
                 <Group gap={0}>{/* future icons here? */}</Group>
                 <Group gap={0} justify="flex-end">
                     <ActionIcon
-                        color="blue"
                         disabled={disabled}
                         icon="IconSend"
                         onClick={handleSend}

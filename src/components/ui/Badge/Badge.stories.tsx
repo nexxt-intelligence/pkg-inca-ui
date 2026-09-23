@@ -16,13 +16,13 @@ const labelStyle: React.CSSProperties = {
     fontSize: 11
 };
 
-const badgeColors = ['blue', 'green', 'yellow', 'red', 'dark', 'violet'] as const;
+const badgeColors = ['primary', 'green', 'yellow', 'red', 'dark', 'violet'] as const;
 const badgeVariants = ['filled', 'light', 'outline', 'dot'] as const;
 
 export default {
     args: {
         children: 'Badge',
-        color: 'blue',
+        color: 'primary',
         fullWidth: false,
         size: 'md',
         variant: 'filled'
@@ -31,8 +31,8 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'select',
-            options: ['blue', 'green', 'yellow', 'red', 'dark', 'violet'],
-            table: { defaultValue: { summary: 'blue' } }
+            options: ['primary', 'green', 'yellow', 'red', 'dark', 'violet'],
+            table: { defaultValue: { summary: 'primary' } }
         },
         fullWidth: {
             control: 'boolean',

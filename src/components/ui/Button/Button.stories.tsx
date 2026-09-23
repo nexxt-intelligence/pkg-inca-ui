@@ -17,7 +17,7 @@ const labelStyle: React.CSSProperties = {
 };
 
 const buttonColors = [
-    'blue',
+    'primary',
     'green',
     'yellow',
     'red',
@@ -30,7 +30,7 @@ const buttonVariants = ['filled', 'subtle', 'outline'] as const;
 export default {
     args: {
         children: 'Button',
-        color: 'blue',
+        color: 'primary',
         compact: false,
         disabled: false,
         loading: false,
@@ -41,8 +41,8 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'radio',
-            options: ['blue', 'green', 'yellow', 'red', 'dark'],
-            table: { defaultValue: { summary: 'blue' } }
+            options: ['primary', 'green', 'yellow', 'red', 'dark'],
+            table: { defaultValue: { summary: 'primary' } }
         },
         compact: {
             control: 'boolean',

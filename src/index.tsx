@@ -1,7 +1,12 @@
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+import { useMemo } from 'react';
 
-import { theme, v6CssVariablesResolver } from './constants/theme';
+import {
+    type BrandPalette,
+    theme,
+    v6CssVariablesResolver
+} from './constants/theme';
 import '@mantine/core/styles.css';
 import '@mantine/dropzone/styles.css';
 import '@mantine/tiptap/styles.css';
@@ -135,14 +140,24 @@ export * from './constants/theme';
 export { type ConfirmationModalProps, useConfirmationModal } from './hooks';
 
 export const CustomMantineProvider = ({
+    brand,
     children
 }: {
+    brand?: BrandPalette;
     children: React.ReactNode;
 }) => {
+    const brandedTheme = useMemo(
+        () =>
+            brand
+                ? { ...theme, colors: { ...theme.colors, primary: brand } }
+                : theme,
+        [brand]
+    );
+
     return (
         <MantineProvider
             cssVariablesResolver={v6CssVariablesResolver}
-            theme={theme}
+            theme={brandedTheme}
             withCssVariables
         >
             <ModalsProvider>{children}</ModalsProvider>

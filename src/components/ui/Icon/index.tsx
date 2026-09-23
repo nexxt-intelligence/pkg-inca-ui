@@ -6,7 +6,7 @@ export type TablerIconKeys = Extract<keyof typeof TablerIcons, `Icon${string}`>;
 
 interface IconProps {
     /**
-     * A Mantine theme color token (e.g. `"blue"`, `"red.6"`) or any CSS color.
+     * A Mantine theme color token (e.g. `"primary"`, `"red.6"`) or any CSS color.
      */
     color?: React.CSSProperties['color'];
     iconRotate?: number;

@@ -8,6 +8,7 @@ import {
     defaultVariantColorsResolver,
     Input,
     InputWrapper,
+    type MantineColorsTuple,
     type MantineThemeOverride,
     Pill,
     PillGroup,
@@ -91,22 +92,25 @@ export const v6CssVariablesResolver: CSSVariablesResolver = (theme) => {
     return resolved;
 };
 
+export type BrandPalette = MantineColorsTuple;
+
+const BLUE: BrandPalette = [
+    '#E9F4FF',
+    '#D6E3FA',
+    '#ADC5EE',
+    '#81A5E3',
+    '#5B89D9',
+    '#4478D4',
+    '#2D67CB',
+    '#275EBB',
+    '#1D54A8',
+    '#094896'
+];
+
 // https://v6.mantine.dev/styles/global-styles/
 export const theme: MantineThemeOverride = {
-    black: '#212529', // Text/default → gray/9
     colors: {
-        blue: [
-            '#E9F4FF',
-            '#D6E3FA',
-            '#ADC5EE',
-            '#81A5E3',
-            '#5B89D9',
-            '#4478D4',
-            '#2D67CB',
-            '#275EBB',
-            '#1D54A8',
-            '#094896'
-        ],
+        blue: BLUE,
         gray: [
             '#F8F9FA',
             '#F1F3F5',
@@ -143,6 +147,7 @@ export const theme: MantineThemeOverride = {
             '#E7421D',
             '#CC3A1A'
         ],
+        primary: BLUE,
         red: [
             '#FFECE5',
             '#FFD8CF',
@@ -359,11 +364,11 @@ export const theme: MantineThemeOverride = {
             }
         }),
         Title: Title.extend({
-            styles: (theme) => ({
+            styles: {
                 root: {
-                    color: theme.black
+                    color: 'var(--text-default)'
                 }
-            })
+            }
         })
     },
     cursorType: 'pointer',
@@ -401,7 +406,7 @@ export const theme: MantineThemeOverride = {
         lg: '1.5',
         xl: '1.5'
     },
-    primaryColor: 'blue',
+    primaryColor: 'primary',
     primaryShade: 6,
     radius: {
         none: '0px',

@@ -29,7 +29,7 @@ const SplitPaneModalStory = (args: any) => {
                 {...args}
                 body="Configure your application settings"
                 header="Settings"
-                icon={<Icon color="blue" size="lg" type="IconSettings" />}
+                icon={<Icon color="primary" size="lg" type="IconSettings" />}
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
             >

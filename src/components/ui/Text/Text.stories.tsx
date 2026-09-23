@@ -6,7 +6,7 @@ export default {
     argTypes: {
         c: {
             control: 'select',
-            options: ['dark', 'gray', 'red', 'blue', 'green', 'orange']
+            options: ['dark', 'gray', 'red', 'primary', 'green', 'orange']
         },
         children: { control: 'text' },
         fs: {

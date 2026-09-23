@@ -5,7 +5,7 @@ import SplitButton from './index';
 export default {
     args: {
         children: 'Send',
-        color: 'blue',
+        color: 'primary',
         disabled: false,
         items: [
             { label: 'Schedule for later', onClick: () => {} },
@@ -25,8 +25,8 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'radio',
-            options: ['blue', 'green', 'red', 'dark'],
-            table: { defaultValue: { summary: 'blue' } }
+            options: ['primary', 'green', 'red', 'dark'],
+            table: { defaultValue: { summary: 'primary' } }
         },
         disabled: {
             control: 'boolean',
