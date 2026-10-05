@@ -18,6 +18,32 @@ import Icon from '../Icon';
 import Text from '../Text';
 import classes from './AppShell.module.css';
 
+const STATIC_STORAGE_URL =
+    'https://nexxt-inca-storage.s3.us-east-2.amazonaws.com';
+
+const defaultLogoIcon = (
+    <img
+        height="30"
+        src={`${STATIC_STORAGE_URL}/img/inca_blue_favicon.png`}
+        width="30"
+    />
+);
+
+const defaultLogoFull = (
+    <>
+        <img
+            height="26"
+            src={`${STATIC_STORAGE_URL}/img/inca_blue_favicon.png`}
+            width="26"
+        />
+        <img
+            height="32"
+            src={`${STATIC_STORAGE_URL}/img/inca_logo_text.png`}
+            width="76"
+        />
+    </>
+);
+
 export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     activeLink: string;
     headerBadge?: React.ReactNode;
@@ -29,6 +55,8 @@ export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     isFixedHeader?: boolean;
     isMobile: boolean;
     isNavbarOpen: boolean;
+    logoFull?: React.ReactNode;
+    logoIcon?: React.ReactNode;
     manageProfileUrl?: string;
     navLinkItems: NavLinkItem[];
     openFeedback?: () => void;
@@ -61,6 +89,8 @@ const AppShell = ({ ...props }: AppShellProps) => {
         isFixedHeader = false,
         isMobile,
         isNavbarOpen,
+        logoFull = defaultLogoFull,
+        logoIcon = defaultLogoIcon,
         manageProfileUrl,
         navLinkItems,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -168,11 +198,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                             isMobile && classes.hidden
                         )}
                     >
-                        <img
-                            height="30"
-                            src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
-                            width="30"
-                        />
+                        {logoIcon}
                     </div>
                 </MantineAppShell.Section>
                 <MantineAppShell.Section grow>
@@ -201,18 +227,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
                                 opened={isNavbarOpen}
                                 size="sm"
                             />
-                            <span className={classes.fullLogo}>
-                                <img
-                                    height="26"
-                                    src={`https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_blue_favicon.png`}
-                                    width="26"
-                                />
-                                <img
-                                    height="32"
-                                    src="https://nexxt-inca-storage.s3.us-east-2.amazonaws.com/img/inca_logo_text.png"
-                                    width="76"
-                                />
-                            </span>
+                            <span className={classes.fullLogo}>{logoFull}</span>
                         </div>
                         <Stack className={classes.headerContent} gap={0}>
                             <Group gap="sm">
