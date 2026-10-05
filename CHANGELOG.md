@@ -1,5 +1,11 @@
 # inca-ui
 
+## 9.3.0
+
+### Minor Changes
+
+-   9d80da5: feat: accept brand logo props on AppShell for white labeling
+
 ## 9.2.0
 
 ### Minor Changes
