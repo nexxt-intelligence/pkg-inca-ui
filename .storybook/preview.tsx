@@ -12,3 +12,9 @@ export const decorators: Preview['decorators'] = [
         <CustomMantineProvider>{renderStory()}</CustomMantineProvider>
     )
 ];
+
+export const parameters: Preview['parameters'] = {
+    options: {
+        storySort: { order: ['Docs', '*'] }
+    }
+};

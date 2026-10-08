@@ -17,8 +17,8 @@ export default {
     },
 
     stories: [
+        '../src/**/*.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'
-        // '../src/**/*.mdx',
         // '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
     ],
 

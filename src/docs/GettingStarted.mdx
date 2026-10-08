@@ -1,0 +1,272 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/Getting Started" />
+
+{/* Storybook's MDX has no GFM, so markdown tables don't render — use <Table /> instead. */}
+
+export const Table = ({ head, rows }) => (
+    <table>
+        <thead>
+            <tr>
+                {head.map((cell, i) => (
+                    <th key={i}>{cell}</th>
+                ))}
+            </tr>
+        </thead>
+        <tbody>
+            {rows.map((row, i) => (
+                <tr key={i}>
+                    {row.map((cell, j) => (
+                        <td key={j}>{cell}</td>
+                    ))}
+                </tr>
+            ))}
+        </tbody>
+    </table>
+);
+
+export const Swatch = ({ token }) => (
+    <div style={{ alignItems: 'center', display: 'flex', gap: 8, margin: '2px 0' }}>
+        <span
+            style={{
+                background: `var(${token})`,
+                border: '1px solid var(--border-default)',
+                borderRadius: 4,
+                display: 'inline-block',
+                flexShrink: 0,
+                height: 16,
+                width: 16
+            }}
+        />
+        <code>{token}</code>
+    </div>
+);
+
+export const Swatches = ({ tokens }) => tokens.map((token) => <Swatch key={token} token={token} />);
+
+export const SpacingBar = ({ token }) => (
+    <div
+        style={{
+            background: 'var(--bg-accent)',
+            borderRadius: 2,
+            height: 12,
+            width: `var(${token})`
+        }}
+    />
+);
+
+export const spacingScale = [
+    ['3xs', '2px'],
+    ['2xs', '4px'],
+    ['xs', '8px'],
+    ['sm', '12px'],
+    ['md', '16px'],
+    ['lg', '20px'],
+    ['xl', '24px'],
+    ['2xl', '32px'],
+    ['3xl', '40px']
+];
+
+# Getting Started with inca-ui
+
+inca-ui is the shared component library for the inca platform. It wraps
+[Mantine](https://mantine.dev) with our theme, design tokens (from Figma), and a set of
+custom components.
+
+## 1. Pick the right version
+
+There are two release tracks. **Install the one that matches your app's React version.**
+
+<Table
+    head={['Branch', 'Stack', 'npm dist-tag', 'Install']}
+    rows={[
+        [<code>main</code>, <>React 18+ / Mantine 9 (<code>9.x</code>)</>, <code>latest</code>, <code>yarn add inca-ui</code>],
+        [
+            <code>v7</code>,
+            <>React 16 / Mantine 6 (<code>7.x</code>)</>,
+            <code>legacy</code>,
+            <><code>yarn add inca-ui@legacy</code> (or pin <code>"inca-ui": "^7"</code>)</>
+        ]
+    ]}
+/>
+
+- `main` is where new features land.
+- `v7` is maintenance only: bug fixes for React 16 apps. Stay on `7.x` there (patch/minor changesets only).
+- This Storybook is built from `main`. Most components and all tokens are the same on `v7`,
+  but the props follow Mantine 6 there (see [Mantine 6 vs 9](#mantine-6-vs-9-differences)).
+
+## 2. Set up the provider
+
+Wrap your app once with `CustomMantineProvider`. It sets up the Mantine theme, `ModalsProvider`,
+fonts, global CSS, and the design tokens. **Do not** add your own `MantineProvider`.
+
+```tsx
+import { CustomMantineProvider } from 'inca-ui';
+
+export const App = () => (
+    <CustomMantineProvider>
+        <Routes />
+    </CustomMantineProvider>
+);
+```
+
+For white-labeling, pass a 10-shade palette as `brand`. It replaces the `primary` color:
+
+```tsx
+<CustomMantineProvider brand={['#f0f9ff', /* ...8 more... */, '#0c4a6e']}>
+```
+
+## 3. Import components from `inca-ui`
+
+Always import from `inca-ui`, not from `@mantine/core`.
+
+```tsx
+// ✅
+import { Button, Group, Stack, Text } from 'inca-ui';
+
+// ❌ skips our wrappers and defaults
+import { Button } from '@mantine/core';
+```
+
+The package exports three kinds of components:
+
+- **Extended Mantine components** (`Button`, `TextInput`, `Select`, `Modal`, …): Mantine components with our
+  sizes, defaults, and extra props (e.g. `leftIcon="IconPlus"` takes a Tabler icon name).
+  Check each component's story for the props it supports.
+- **Custom components** (`ActionCard`, `ChatInput`, `SplitButton`, `MiniModal`, …).
+- **Re-exported Mantine components** (`Group`, `Stack`, `Flex`, `Box`, `Paper`, `Popover`, …): used as-is.
+
+If you need a component that isn't exported, ask in the team channel or add it here first instead of
+importing it from Mantine directly.
+
+## 4. Design tokens
+
+All tokens are CSS variables defined in `src/tokens.css`. They are available globally once the provider
+is mounted.
+
+**Rules**
+
+1. Use semantic tokens (`--text-subtle`, `--bg-accent`, …) for colors.
+2. **Never** use raw hex values or Mantine internals like `var(--mantine-color-blue-6)`.
+3. Use the spacing / radius / font-size scales. Don't hardcode `px` values that aren't on the scale.
+
+### Colors
+
+Tokens are named `--{category}-{role}`. Pick by **what the color is used for**, not by how it looks.
+
+<Table
+    head={['Category', 'Use for', 'Example tokens']}
+    rows={[
+        [<code>--bg-*</code>, 'Backgrounds / surfaces', <Swatches tokens={['--bg-surface', '--bg-base', '--bg-hover', '--bg-accent', '--bg-accent-light']} />],
+        [<code>--text-*</code>, 'Text color', <Swatches tokens={['--text-default', '--text-medium', '--text-subtle', '--text-accent', '--text-error']} />],
+        [<code>--icon-*</code>, 'Icon color', <Swatches tokens={['--icon-default', '--icon-medium', '--icon-subtle', '--icon-accent']} />],
+        [<code>--border-*</code>, 'Borders / dividers', <Swatches tokens={['--border-default', '--border-accent', '--border-error']} />],
+        [<code>--shadow-*</code>, 'Elevation', <><code>--shadow-1</code> (cards, inputs), <code>--shadow-2</code> (modals, panels)</>]
+    ]}
+/>
+
+Status roles are the same across categories: `accent` (blue), `error` (red), `warning` (yellow),
+`success` (green), `ai` (violet). Backgrounds also have `-hover`, `-light`, and `-light-hover` variants,
+e.g. `--bg-error-light`.
+
+### Spacing
+
+<Table
+    head={['CSS variable', 'Mantine key', 'Value', '']}
+    rows={spacingScale.map(([key, value]) => [
+        <code>--spacing-{key}</code>,
+        <code>{key}</code>,
+        value,
+        <SpacingBar token={`--spacing-${key}`} />
+    ])}
+/>
+
+### Radius & font size
+
+<Table
+    head={['Radius', 'Value', 'Font size', 'Value']}
+    rows={[
+        [<code>--radius-xs</code>, '2px', <code>--font-size-2xs</code>, '10px'],
+        [<code>--radius-sm</code>, '4px (default)', <code>--font-size-xs</code>, '12px'],
+        [<code>--radius-md</code>, '8px', <code>--font-size-sm</code>, '14px'],
+        [<code>--radius-lg</code>, '16px', <code>--font-size-md</code>, '16px'],
+        [<code>--radius-xl</code>, '24px', <code>--font-size-lg</code>, '18px'],
+        [<code>--radius-2xl</code>, '32px', <code>--font-size-xl</code>, '20px']
+    ]}
+/>
+
+The Mantine theme uses the same scales, so the key names (`xs`, `sm`, `md`, …) mean the same value
+whether you use a CSS variable or a Mantine prop.
+
+## 5. Using tokens in code
+
+**In component props**, use the Mantine scale keys for spacing/radius/size and `var(--token)` for colors:
+
+```tsx
+<Stack gap="xs" p="md">
+    <Text c="var(--text-subtle)" size="sm">
+        Last edited 2 days ago
+    </Text>
+    <Group gap="2xs">
+        <Icon color="var(--icon-accent)" type="IconSparkles" />
+        <Text c="var(--text-ai)">AI suggestion</Text>
+    </Group>
+</Stack>
+```
+
+**In CSS modules** (preferred for anything more than a couple of props), use the CSS variables:
+
+```css
+/* MyCard.module.css */
+.root {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-1);
+}
+
+.root:hover {
+    background: var(--bg-hover);
+}
+
+.caption {
+    color: var(--text-subtle);
+    font-size: var(--font-size-xs);
+}
+```
+
+```css
+/* ❌ Avoid */
+.root {
+    padding: 15px;                             /* not on the scale */
+    color: #868e96;                            /* raw hex */
+    border-color: var(--mantine-color-gray-2); /* Mantine internal */
+}
+```
+
+### Mantine 6 vs 9 differences
+
+If you're on `v7` (`inca-ui@legacy`), tokens and component names are the same, but some props follow
+Mantine 6:
+
+<Table
+    head={['What', 'main (Mantine 9)', 'v7 (Mantine 6)']}
+    rows={[
+        ['Gap on Group / Stack', <code>gap="xs"</code>, <code>spacing="xs"</code>],
+        ['Text color', <code>c="var(--text-subtle)"</code>, <code>color="var(--text-subtle)"</code>]
+    ]}
+/>
+
+When in doubt, check the [Mantine 6 docs](https://v6.mantine.dev) for `v7` and the
+[Mantine docs](https://mantine.dev) for `main`.
+
+## 6. Contributing
+
+1. Branch off `main` (new features) or `v7` (React 16 bug fixes).
+2. Run `yarn storybook` and add/update the component's `*.stories.tsx`.
+3. Use tokens in your CSS modules (see above).
+4. Run `yarn changeset` and commit the generated file with your PR.
+5. After merge, a **Version Packages** PR is opened automatically. Merging it publishes to npm.
+
+See the [README](https://github.com/nexxt-intelligence/pkg-inca-ui#readme) for release details.
