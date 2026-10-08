@@ -26,7 +26,14 @@ export const Table = ({ head, rows }) => (
 );
 
 export const Swatch = ({ token }) => (
-    <div style={{ alignItems: 'center', display: 'flex', gap: 8, margin: '2px 0' }}>
+    <div
+        style={{
+            alignItems: 'center',
+            display: 'flex',
+            gap: 8,
+            margin: '2px 0'
+        }}
+    >
         <span
             style={{
                 background: `var(${token})`,
@@ -42,7 +49,8 @@ export const Swatch = ({ token }) => (
     </div>
 );
 
-export const Swatches = ({ tokens }) => tokens.map((token) => <Swatch key={token} token={token} />);
+export const Swatches = ({ tokens }) =>
+    tokens.map((token) => <Swatch key={token} token={token} />);
 
 export const SpacingBar = ({ token }) => (
     <div
@@ -69,6 +77,8 @@ export const spacingScale = [
 
 # Getting Started with inca-ui
 
+_Last updated: 2026-10-08_
+
 inca-ui is the shared component library for the inca platform. It wraps
 [Mantine](https://mantine.dev) with our theme, design tokens (from Figma), and a set of
 custom components.
@@ -80,20 +90,72 @@ There are two release tracks. **Install the one that matches your app's React ve
 <Table
     head={['Branch', 'Stack', 'npm dist-tag', 'Install']}
     rows={[
-        [<code>main</code>, <>React 18+ / Mantine 9 (<code>9.x</code>)</>, <code>latest</code>, <code>yarn add inca-ui</code>],
+        [
+            <code>main</code>,
+            <>
+                React 18+ / Mantine 9 (<code>9.x</code>)
+            </>,
+            <code>latest</code>,
+            <code>yarn add inca-ui</code>
+        ],
         [
             <code>v7</code>,
-            <>React 16 / Mantine 6 (<code>7.x</code>)</>,
+            <>
+                React 16 / Mantine 6 (<code>7.x</code>)
+            </>,
             <code>legacy</code>,
-            <><code>yarn add inca-ui@legacy</code> (or pin <code>"inca-ui": "^7"</code>)</>
+            <>
+                <code>yarn add inca-ui@legacy</code> (or pin{' '}
+                <code>"inca-ui": "^7"</code>)
+            </>
         ]
     ]}
 />
 
-- `main` is where new features land.
-- `v7` is maintenance only: bug fixes for React 16 apps. Stay on `7.x` there (patch/minor changesets only).
-- This Storybook is built from `main`. Most components and all tokens are the same on `v7`,
-  but the props follow Mantine 6 there (see [Mantine 6 vs 9](#mantine-6-vs-9-differences)).
+-   `main` is where new features land.
+-   `v7` is maintenance only: bug fixes for React 16 apps. Stay on `7.x` there (patch/minor changesets only).
+-   This Storybook is built from `main`. Most components and all tokens are the same on `v7`,
+    but the props follow Mantine 6 there (see [Mantine 6 vs 9](#mantine-6-vs-9-differences)).
+
+### What each app uses today
+
+<Table
+    head={['App', 'React', 'inca-ui', 'Track']}
+    rows={[
+        ['ui-smartinsight', '18+', 'latest', <code>main</code>],
+        ['portal-client', '16', <code>7.14.0</code>, <code>v7</code>],
+        ['ui-smartprobe', '16', <code>7.12.0</code>, <code>v7</code>],
+        [
+            'auth-client',
+            '16',
+            <code>^6.9.5</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        [
+            'dashboard',
+            '16',
+            <code>3.3.1</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        [
+            'quicktag',
+            '16',
+            <code>3.3.1</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        ['bot-client', '16', 'not used', '—'],
+        ['ui-docs', '19+', 'latest', <code>main</code>]
+    ]}
+/>
+
+All React 16 apps should be on `v7` (`inca-ui@legacy`). Apps on `3.x` / `6.x` are on releases that
+no longer get fixes. Update this table when an app upgrades.
 
 ## 2. Set up the provider
 
@@ -130,11 +192,11 @@ import { Button } from '@mantine/core';
 
 The package exports three kinds of components:
 
-- **Extended Mantine components** (`Button`, `TextInput`, `Select`, `Modal`, …): Mantine components with our
-  sizes, defaults, and extra props (e.g. `leftIcon="IconPlus"` takes a Tabler icon name).
-  Check each component's story for the props it supports.
-- **Custom components** (`ActionCard`, `ChatInput`, `SplitButton`, `MiniModal`, …).
-- **Re-exported Mantine components** (`Group`, `Stack`, `Flex`, `Box`, `Paper`, `Popover`, …): used as-is.
+-   **Extended Mantine components** (`Button`, `TextInput`, `Select`, `Modal`, …): Mantine components with our
+    sizes, defaults, and extra props (e.g. `leftIcon="IconPlus"` takes a Tabler icon name).
+    Check each component's story for the props it supports.
+-   **Custom components** (`ActionCard`, `ChatInput`, `SplitButton`, `MiniModal`, …).
+-   **Re-exported Mantine components** (`Group`, `Stack`, `Flex`, `Box`, `Paper`, `Popover`, …): used as-is.
 
 If you need a component that isn't exported, ask in the team channel or add it here first instead of
 importing it from Mantine directly.
@@ -157,11 +219,63 @@ Tokens are named `--{category}-{role}`. Pick by **what the color is used for**, 
 <Table
     head={['Category', 'Use for', 'Example tokens']}
     rows={[
-        [<code>--bg-*</code>, 'Backgrounds / surfaces', <Swatches tokens={['--bg-surface', '--bg-base', '--bg-hover', '--bg-accent', '--bg-accent-light']} />],
-        [<code>--text-*</code>, 'Text color', <Swatches tokens={['--text-default', '--text-medium', '--text-subtle', '--text-accent', '--text-error']} />],
-        [<code>--icon-*</code>, 'Icon color', <Swatches tokens={['--icon-default', '--icon-medium', '--icon-subtle', '--icon-accent']} />],
-        [<code>--border-*</code>, 'Borders / dividers', <Swatches tokens={['--border-default', '--border-accent', '--border-error']} />],
-        [<code>--shadow-*</code>, 'Elevation', <><code>--shadow-1</code> (cards, inputs), <code>--shadow-2</code> (modals, panels)</>]
+        [
+            <code>--bg-*</code>,
+            'Backgrounds / surfaces',
+            <Swatches
+                tokens={[
+                    '--bg-surface',
+                    '--bg-base',
+                    '--bg-hover',
+                    '--bg-accent',
+                    '--bg-accent-light'
+                ]}
+            />
+        ],
+        [
+            <code>--text-*</code>,
+            'Text color',
+            <Swatches
+                tokens={[
+                    '--text-default',
+                    '--text-medium',
+                    '--text-subtle',
+                    '--text-accent',
+                    '--text-error'
+                ]}
+            />
+        ],
+        [
+            <code>--icon-*</code>,
+            'Icon color',
+            <Swatches
+                tokens={[
+                    '--icon-default',
+                    '--icon-medium',
+                    '--icon-subtle',
+                    '--icon-accent'
+                ]}
+            />
+        ],
+        [
+            <code>--border-*</code>,
+            'Borders / dividers',
+            <Swatches
+                tokens={[
+                    '--border-default',
+                    '--border-accent',
+                    '--border-error'
+                ]}
+            />
+        ],
+        [
+            <code>--shadow-*</code>,
+            'Elevation',
+            <>
+                <code>--shadow-1</code> (cards, inputs), <code>--shadow-2</code>{' '}
+                (modals, panels)
+            </>
+        ]
     ]}
 />
 
@@ -187,7 +301,12 @@ e.g. `--bg-error-light`.
     head={['Radius', 'Value', 'Font size', 'Value']}
     rows={[
         [<code>--radius-xs</code>, '2px', <code>--font-size-2xs</code>, '10px'],
-        [<code>--radius-sm</code>, '4px (default)', <code>--font-size-xs</code>, '12px'],
+        [
+            <code>--radius-sm</code>,
+            '4px (default)',
+            <code>--font-size-xs</code>,
+            '12px'
+        ],
         [<code>--radius-md</code>, '8px', <code>--font-size-sm</code>, '14px'],
         [<code>--radius-lg</code>, '16px', <code>--font-size-md</code>, '16px'],
         [<code>--radius-xl</code>, '24px', <code>--font-size-lg</code>, '18px'],
@@ -239,8 +358,8 @@ whether you use a CSS variable or a Mantine prop.
 ```css
 /* ❌ Avoid */
 .root {
-    padding: 15px;                             /* not on the scale */
-    color: #868e96;                            /* raw hex */
+    padding: 15px; /* not on the scale */
+    color: #868e96; /* raw hex */
     border-color: var(--mantine-color-gray-2); /* Mantine internal */
 }
 ```
@@ -253,8 +372,16 @@ Mantine 6:
 <Table
     head={['What', 'main (Mantine 9)', 'v7 (Mantine 6)']}
     rows={[
-        ['Gap on Group / Stack', <code>gap="xs"</code>, <code>spacing="xs"</code>],
-        ['Text color', <code>c="var(--text-subtle)"</code>, <code>color="var(--text-subtle)"</code>]
+        [
+            'Gap on Group / Stack',
+            <code>gap="xs"</code>,
+            <code>spacing="xs"</code>
+        ],
+        [
+            'Text color',
+            <code>c="var(--text-subtle)"</code>,
+            <code>color="var(--text-subtle)"</code>
+        ]
     ]}
 />
 
