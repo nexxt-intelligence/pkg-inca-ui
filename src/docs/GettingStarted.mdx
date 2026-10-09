@@ -93,7 +93,7 @@ There are two release tracks. **Install the one that matches your app's React ve
         [
             <code>main</code>,
             <>
-                React 18+ / Mantine 9 (<code>9.x</code>)
+                React 19 / Mantine 9 (<code>9.x</code>)
             </>,
             <code>latest</code>,
             <code>yarn add inca-ui</code>
@@ -112,8 +112,8 @@ There are two release tracks. **Install the one that matches your app's React ve
     ]}
 />
 
--   `main` is where new features land.
--   `v7` is maintenance only: bug fixes for React 16 apps. Stay on `7.x` there (patch/minor changesets only).
+-   Both tracks are maintained in parallel until all apps move to React 19. Changes should go to both `main` and `v7`.
+-   Never use a major changeset on either branch (patch/minor only): `main` stays on `9.x` and `v7` stays on `7.x`.
 -   This Storybook is built from `main`. Most components and all tokens are the same on `v7`,
     but the props follow Mantine 6 there (see [Mantine 6 vs 9](#mantine-6-vs-9-differences)).
 
@@ -122,9 +122,9 @@ There are two release tracks. **Install the one that matches your app's React ve
 <Table
     head={['App', 'React', 'inca-ui', 'Track']}
     rows={[
-        ['ui-smartinsight', '18+', 'latest', <code>main</code>],
-        ['portal-client', '16', <code>7.14.0</code>, <code>v7</code>],
-        ['ui-smartprobe', '16', <code>7.12.0</code>, <code>v7</code>],
+        ['ui-smartinsight', '19', <code>9.2.0</code>, <code>main</code>],
+        ['portal-client', '16', <code>7.15.0</code>, <code>v7</code>],
+        ['ui-smartprobe', '16', <code>7.15.0</code>, <code>v7</code>],
         [
             'auth-client',
             '16',
@@ -376,11 +376,6 @@ Mantine 6:
             'Gap on Group / Stack',
             <code>gap="xs"</code>,
             <code>spacing="xs"</code>
-        ],
-        [
-            'Text color',
-            <code>c="var(--text-subtle)"</code>,
-            <code>color="var(--text-subtle)"</code>
         ]
     ]}
 />
@@ -390,10 +385,10 @@ When in doubt, check the [Mantine 6 docs](https://v6.mantine.dev) for `v7` and t
 
 ## 6. Contributing
 
-1. Branch off `main` (new features) or `v7` (React 16 bug fixes).
+1. Make the change on both `main` and `v7` (separate branches and PRs, each with its own changeset).
 2. Run `yarn storybook` and add/update the component's `*.stories.tsx`.
 3. Use tokens in your CSS modules (see above).
-4. Run `yarn changeset` and commit the generated file with your PR.
+4. Run `yarn changeset` (patch or minor only, never major) and commit the generated file with your PR.
 5. After merge, a **Version Packages** PR is opened automatically. Merging it publishes to npm.
 
 See the [README](https://github.com/nexxt-intelligence/pkg-inca-ui#readme) for release details.
