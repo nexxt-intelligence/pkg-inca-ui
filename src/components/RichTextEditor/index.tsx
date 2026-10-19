@@ -4,7 +4,9 @@ import {
     RichTextEditorProps as MantineRTEProps
 } from '@mantine/tiptap';
 import { Extension, mergeAttributes, Node } from '@tiptap/core';
+import Image from '@tiptap/extension-image';
 import Placeholder from '@tiptap/extension-placeholder';
+import { NodeSelection } from '@tiptap/pm/state';
 import {
     NodeViewProps,
     NodeViewWrapper,
@@ -121,12 +123,14 @@ export interface RichTextEditorHandle {
     getHTML: () => string;
     insertAnswerRef: (attrs: Record<string, unknown>) => void;
     insertContent: (content: Record<string, unknown> | string) => void;
+    /** Inserts an image, or replaces the selected image. */
+    insertImage: (image: RichTextImage) => void;
 }
 
 export interface RichTextEditorProps
     extends Omit<
         StrictProps<MantineRTEProps>,
-        'children' | 'editor' | 'onChange'
+        'children' | 'editor' | 'onBlur' | 'onChange'
     > {
     children?: React.ReactNode;
     defaultValue?: string;
@@ -140,12 +144,24 @@ export interface RichTextEditorProps
         confirm: (attrs: Record<string, unknown>) => void,
         current?: Record<string, unknown>
     ) => void;
+    /** Called with current HTML when focus leaves the editor and its toolbar. */
+    onBlur?: (html: string) => void;
     onChange?: (html: string) => void;
+    /** Uploads a selected file and returns the lasting URL to save in the HTML. */
+    onImageUpload?: (file: File) => Promise<string>;
+    onImageUploadError?: (error: unknown) => void;
     placeholder?: string;
+    readOnly?: boolean;
     required?: boolean;
     tooltip?: string;
     tooltipProps?: LabelProps['tooltipProps'];
     withAsterisk?: boolean;
+}
+
+export interface RichTextImage {
+    alt?: string;
+    src: string;
+    title?: string;
 }
 
 const RichTextEditor = React.forwardRef<
@@ -162,8 +178,12 @@ const RichTextEditor = React.forwardRef<
             hideToolbar = false,
             label,
             onAnswerRefClick,
+            onBlur,
             onChange,
+            onImageUpload,
+            onImageUploadError,
             placeholder,
+            readOnly = false,
             required,
             tooltip,
             tooltipProps,
@@ -174,16 +194,50 @@ const RichTextEditor = React.forwardRef<
     ) => {
         // Force update on selection change to update toolbar button states (can remove after upgrading mantine)
         const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+        const containerRef = React.useRef<HTMLDivElement>(null);
+        const fileInputRef = React.useRef<HTMLInputElement>(null);
+        const isPickingImageRef = React.useRef(false);
+        const isUploadingImageRef = React.useRef(false);
+        const onBlurRef = React.useRef(onBlur);
+        onBlurRef.current = onBlur;
+        const [isUploadingImage, setIsUploadingImage] = React.useState(false);
+        const [imageUploadError, setImageUploadError] = React.useState(false);
 
         const editor = useEditor({
             content: defaultValue,
-            editable: !disabled,
+            editable: !disabled && !readOnly,
             extensions: [
                 StarterKit,
                 Placeholder.configure({ placeholder }),
+                Image.configure({
+                    resize: {
+                        alwaysPreserveAspectRatio: true,
+                        enabled: true,
+                        minHeight: 50,
+                        minWidth: 50
+                    }
+                }),
                 AnswerRefNode,
                 ...extensions
             ],
+            onBlur({ editor, event }) {
+                const nextTarget = event.relatedTarget;
+                const html = editor.getHTML();
+                window.setTimeout(() => {
+                    if (
+                        isPickingImageRef.current ||
+                        isUploadingImageRef.current ||
+                        (nextTarget &&
+                            containerRef.current?.contains(
+                                nextTarget as globalThis.Node
+                            )) ||
+                        containerRef.current?.contains(document.activeElement)
+                    ) {
+                        return;
+                    }
+                    onBlurRef.current?.(html);
+                }, 0);
+            },
             onSelectionUpdate() {
                 forceUpdate();
             },
@@ -192,8 +246,108 @@ const RichTextEditor = React.forwardRef<
             }
         });
         React.useEffect(() => {
-            editor?.setEditable(!disabled);
-        }, [editor, disabled]);
+            editor?.setEditable(!disabled && !readOnly);
+        }, [editor, disabled, readOnly]);
+        React.useEffect(() => {
+            const restoreFocusAfterPicker = () => {
+                window.setTimeout(() => {
+                    if (
+                        isPickingImageRef.current &&
+                        !isUploadingImageRef.current
+                    ) {
+                        isPickingImageRef.current = false;
+                        if (!editor?.isDestroyed) editor?.commands.focus();
+                    }
+                }, 50);
+            };
+            window.addEventListener('focus', restoreFocusAfterPicker);
+            return () =>
+                window.removeEventListener('focus', restoreFocusAfterPicker);
+        }, [editor]);
+
+        const getSelectedImagePosition = React.useCallback(() => {
+            if (!(editor?.state.selection instanceof NodeSelection))
+                return null;
+            const { selection } = editor.state;
+            return selection.node.type.name === 'image' ? selection.from : null;
+        }, [editor]);
+
+        const insertImage = React.useCallback(
+            (image: RichTextImage, replaceAt = getSelectedImagePosition()) => {
+                if (!editor || editor.isDestroyed || disabled || readOnly)
+                    return;
+                if (
+                    replaceAt !== null &&
+                    editor.state.doc.nodeAt(replaceAt)?.type.name === 'image'
+                ) {
+                    editor
+                        .chain()
+                        .focus()
+                        .setNodeSelection(replaceAt)
+                        .updateAttributes('image', {
+                            ...image,
+                            height: null,
+                            width: null
+                        })
+                        .run();
+                } else {
+                    editor.chain().focus().setImage(image).run();
+                }
+            },
+            [editor, disabled, readOnly, getSelectedImagePosition]
+        );
+
+        const handleImageUpload = React.useCallback(
+            async (file: File) => {
+                if (!onImageUpload || isUploadingImage || disabled || readOnly)
+                    return;
+                const replaceAt = getSelectedImagePosition();
+                const originalSrc =
+                    replaceAt === null
+                        ? null
+                        : editor?.state.doc.nodeAt(replaceAt)?.attrs.src;
+                setImageUploadError(false);
+                isUploadingImageRef.current = true;
+                setIsUploadingImage(true);
+                try {
+                    const src = await onImageUpload(file);
+                    if (!src) throw new Error('Image upload returned no URL');
+                    const imageStillSelected =
+                        replaceAt !== null &&
+                        editor?.state.doc.nodeAt(replaceAt)?.type.name ===
+                            'image' &&
+                        editor?.state.doc.nodeAt(replaceAt)?.attrs.src ===
+                            originalSrc;
+                    insertImage(
+                        { alt: file.name, src },
+                        imageStillSelected ? replaceAt : null
+                    );
+                } catch (error) {
+                    setImageUploadError(true);
+                    onImageUploadError?.(error);
+                } finally {
+                    isUploadingImageRef.current = false;
+                    isPickingImageRef.current = false;
+                    setIsUploadingImage(false);
+                    if (!editor?.isDestroyed) editor?.commands.focus();
+                }
+            },
+            [
+                disabled,
+                editor,
+                getSelectedImagePosition,
+                insertImage,
+                isUploadingImage,
+                onImageUpload,
+                onImageUploadError,
+                readOnly
+            ]
+        );
+        const openImagePicker = () => {
+            if (!fileInputRef.current) return;
+            isPickingImageRef.current = true;
+            fileInputRef.current.click();
+        };
         const insertAnswerRef = React.useCallback(
             (attrs: Record<string, unknown>) => {
                 const { label = '', ...rest } = attrs;
@@ -219,80 +373,120 @@ const RichTextEditor = React.forwardRef<
             },
             insertContent: (content) => {
                 editor?.chain().focus().insertContent(content).run();
-            }
+            },
+            insertImage: (image) => insertImage(image)
         }));
 
         return (
-            <AnswerRefContext.Provider value={onAnswerRefClick ?? null}>
-                <Input.Wrapper
-                    description={description}
-                    error={error}
-                    label={
-                        label ? (
-                            <Label
-                                label={label}
-                                tooltip={tooltip}
-                                tooltipProps={tooltipProps}
-                            />
-                        ) : null
-                    }
-                    required={required}
-                    withAsterisk={withAsterisk}
-                >
-                    <MantineRTE
-                        classNames={{
-                            content: classes.content,
-                            root: classes.root,
-                            typographyStylesProvider:
-                                classes.typographyStylesProvider
-                        }}
-                        data-answerref={onAnswerRefClick ? true : undefined}
-                        data-disabled={disabled || undefined}
-                        editor={editor}
-                        {...props}
+            <AnswerRefContext.Provider
+                value={disabled || readOnly ? null : onAnswerRefClick ?? null}
+            >
+                <div ref={containerRef}>
+                    <Input.Wrapper
+                        description={description}
+                        error={error}
+                        label={
+                            label ? (
+                                <Label
+                                    label={label}
+                                    tooltip={tooltip}
+                                    tooltipProps={tooltipProps}
+                                />
+                            ) : null
+                        }
+                        required={required}
+                        withAsterisk={withAsterisk}
                     >
-                        {!hideToolbar && (
-                            <MantineRTE.Toolbar sticky>
-                                <MantineRTE.ControlsGroup>
-                                    <MantineRTE.Bold />
-                                    <MantineRTE.Italic />
-                                    <MantineRTE.Strikethrough />
-                                    <MantineRTE.Code />
-                                </MantineRTE.ControlsGroup>
-                                <MantineRTE.ControlsGroup>
-                                    <MantineRTE.H1 />
-                                    <MantineRTE.H2 />
-                                    <MantineRTE.H3 />
-                                </MantineRTE.ControlsGroup>
-                                <MantineRTE.ControlsGroup>
-                                    <MantineRTE.BulletList />
-                                    <MantineRTE.OrderedList />
-                                </MantineRTE.ControlsGroup>
-                                <MantineRTE.ControlsGroup>
-                                    <MantineRTE.Blockquote />
-                                    <MantineRTE.Hr />
-                                </MantineRTE.ControlsGroup>
-                            </MantineRTE.Toolbar>
+                        <MantineRTE
+                            classNames={{
+                                content: classes.content,
+                                root: classes.root,
+                                typographyStylesProvider:
+                                    classes.typographyStylesProvider
+                            }}
+                            data-answerref={onAnswerRefClick ? true : undefined}
+                            data-disabled={disabled || undefined}
+                            data-readonly={readOnly || undefined}
+                            editor={editor}
+                            {...props}
+                        >
+                            {!hideToolbar && !disabled && !readOnly && (
+                                <MantineRTE.Toolbar sticky>
+                                    <MantineRTE.ControlsGroup>
+                                        <MantineRTE.Bold />
+                                        <MantineRTE.Italic />
+                                        <MantineRTE.Strikethrough />
+                                        <MantineRTE.Code />
+                                    </MantineRTE.ControlsGroup>
+                                    <MantineRTE.ControlsGroup>
+                                        <MantineRTE.H1 />
+                                        <MantineRTE.H2 />
+                                        <MantineRTE.H3 />
+                                    </MantineRTE.ControlsGroup>
+                                    <MantineRTE.ControlsGroup>
+                                        <MantineRTE.BulletList />
+                                        <MantineRTE.OrderedList />
+                                    </MantineRTE.ControlsGroup>
+                                    <MantineRTE.ControlsGroup>
+                                        <MantineRTE.Blockquote />
+                                        <MantineRTE.Hr />
+                                    </MantineRTE.ControlsGroup>
+                                    {onImageUpload && (
+                                        <MantineRTE.ControlsGroup>
+                                            <Button
+                                                disabled={isUploadingImage}
+                                                leftIcon="IconPhoto"
+                                                onClick={openImagePicker}
+                                                size="xs"
+                                                variant="subtle"
+                                            >
+                                                {editor?.isActive('image')
+                                                    ? 'Replace image'
+                                                    : 'Insert image'}
+                                            </Button>
+                                        </MantineRTE.ControlsGroup>
+                                    )}
+                                </MantineRTE.Toolbar>
+                            )}
+                            {onAnswerRefClick && !disabled && !readOnly && (
+                                <Button
+                                    className={classes.insertButton}
+                                    disabled={disabled}
+                                    leftIcon="IconStar"
+                                    onClick={() =>
+                                        onAnswerRefClick((attrs) => {
+                                            insertAnswerRef(attrs);
+                                        })
+                                    }
+                                    size="xs"
+                                    variant="outline"
+                                >
+                                    Answer Reference
+                                </Button>
+                            )}
+                            <MantineRTE.Content />
+                        </MantineRTE>
+                        {onImageUpload && !readOnly && !disabled && (
+                            <input
+                                accept="image/*"
+                                aria-label="Choose image"
+                                hidden
+                                onChange={(event) => {
+                                    const file = event.currentTarget.files?.[0];
+                                    event.currentTarget.value = '';
+                                    if (file) void handleImageUpload(file);
+                                }}
+                                ref={fileInputRef}
+                                type="file"
+                            />
                         )}
-                        {onAnswerRefClick && (
-                            <Button
-                                className={classes.insertButton}
-                                disabled={disabled}
-                                leftIcon="IconStar"
-                                onClick={() =>
-                                    onAnswerRefClick((attrs) => {
-                                        insertAnswerRef(attrs);
-                                    })
-                                }
-                                size="xs"
-                                variant="outline"
-                            >
-                                Answer Reference
-                            </Button>
+                        {imageUploadError && !readOnly && (
+                            <span role="alert">
+                                Could not upload image. Try again.
+                            </span>
                         )}
-                        <MantineRTE.Content />
-                    </MantineRTE>
-                </Input.Wrapper>
+                    </Input.Wrapper>
+                </div>
             </AnswerRefContext.Provider>
         );
     }
