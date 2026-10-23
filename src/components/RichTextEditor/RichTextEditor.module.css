@@ -1,6 +1,14 @@
 .root {
     border-color: var(--border-default);
 
+    &[data-readonly='true'] {
+        border: 0;
+
+        .content {
+            background-color: transparent;
+        }
+    }
+
     &[data-answerref='true'] .content :global(.ProseMirror) {
         min-height: 40px;
         box-sizing: border-box;
