@@ -16,7 +16,7 @@ import {
 import StarterKit from '@tiptap/starter-kit';
 import * as React from 'react';
 
-import { ActionIcon, Button, Label, type LabelProps } from '../../index';
+import { ActionIcon, Button, Icon, Label, type LabelProps } from '../../index';
 import { type StrictProps } from '../../types/props';
 import classes from './RichTextEditor.module.css';
 
@@ -348,6 +348,9 @@ const RichTextEditor = React.forwardRef<
             isPickingImageRef.current = true;
             fileInputRef.current.click();
         };
+        const imageControlLabel = editor?.isActive('image')
+            ? 'Replace image'
+            : 'Insert image';
         const insertAnswerRef = React.useCallback(
             (attrs: Record<string, unknown>) => {
                 const { label = '', ...rest } = attrs;
@@ -433,17 +436,15 @@ const RichTextEditor = React.forwardRef<
                                     </MantineRTE.ControlsGroup>
                                     {onImageUpload && (
                                         <MantineRTE.ControlsGroup>
-                                            <Button
+                                            <MantineRTE.Control
+                                                active={editor?.isActive('image')}
+                                                aria-label={imageControlLabel}
                                                 disabled={isUploadingImage}
-                                                leftIcon="IconPhoto"
                                                 onClick={openImagePicker}
-                                                size="xs"
-                                                variant="subtle"
+                                                title={imageControlLabel}
                                             >
-                                                {editor?.isActive('image')
-                                                    ? 'Replace image'
-                                                    : 'Insert image'}
-                                            </Button>
+                                                <Icon type="IconPhoto" />
+                                            </MantineRTE.Control>
                                         </MantineRTE.ControlsGroup>
                                     )}
                                 </MantineRTE.Toolbar>
