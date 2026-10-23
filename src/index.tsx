@@ -45,7 +45,8 @@ export {
 export {
     default as RichTextEditor,
     type RichTextEditorHandle,
-    type RichTextEditorProps
+    type RichTextEditorProps,
+    type RichTextImage
 } from './components/RichTextEditor';
 export {
     default as SplitButton,
