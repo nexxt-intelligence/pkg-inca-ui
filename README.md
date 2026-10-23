@@ -19,6 +19,18 @@ Launches the test runner in the interactive watch mode.
 Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Rich text images
+
+`RichTextEditor` supports image insertion, replacement, and resizing. Pass
+`onImageUpload` to show its image control. The callback uploads the file and
+returns the lasting image URL to embed in the editor's HTML. The library does
+not choose an upload service or store image files.
+
+Use `onBlur` to receive the current HTML when focus leaves the editor and its
+toolbar. Use `readOnly` to show the same content without editing controls.
+The ref's `insertImage` method inserts an image URL directly or replaces the
+selected image. Resized images retain their width and height in the HTML.
+
 ## Publishing
 
 [Changesets](https://github.com/changesets/changesets) manages versioning, and the [Release GitHub Action](.github/workflows/release.yml) automatically publishes to npm.
