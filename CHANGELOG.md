@@ -1,5 +1,11 @@
 # inca-ui
 
+## 9.4.0
+
+### Minor Changes
+
+-   ad26e7c: Add image upload, replacement, and resizing to RichTextEditor, along with read-only and blur callbacks for report cards.
+
 ## 9.3.0
 
 ### Minor Changes
