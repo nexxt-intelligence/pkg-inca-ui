@@ -1,11 +1,11 @@
-.switchTrack {
+.track {
     cursor: pointer;
 }
-.switchLabel,
-.switchDescription,
-.switchError {
+.label,
+.description,
+.error {
     padding-left: var(--spacing-xs);
 }
-.fullWidthBody {
+.bodyFullWidth {
     justify-content: space-between;
 }

@@ -1,7 +1,7 @@
-.selectInput[data-readonly='true'] {
+.input[data-readonly='true'] {
     cursor: default;
 }
 
-.selectCreateLabel {
+.createLabel {
     color: var(--text-accent);
 }

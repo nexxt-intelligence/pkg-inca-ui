@@ -11,7 +11,7 @@ export type SegmentedControlProps = StrictProps<MantineSegmentedControlProps>;
 const SegmentedControl = ({ ...props }: SegmentedControlProps) => {
     return (
         <MantineSegmentedControl
-            classNames={{ label: classes.segmentedControlLabel }}
+            classNames={{ label: classes.label }}
             {...props}
         />
     );

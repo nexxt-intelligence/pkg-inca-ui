@@ -31,8 +31,8 @@ const TextArea = ({
         <MantineTextarea
             autosize={autosize}
             classNames={{
-                input: classes.textAreaInput,
-                required: classes.textAreaInputRequired
+                input: classes.input,
+                required: classes.required
             }}
             data-readonly={readOnly}
             data-variant={variant}
@@ -54,7 +54,7 @@ const TextArea = ({
                     ? {
                           input: {
                               paddingRight: rightSectionWidth
-                                  ? `calc(${rightSectionWidth}px + 16px)`
+                                  ? `calc(${rightSectionWidth}px + var(--spacing-md))`
                                   : 36
                           }
                       }

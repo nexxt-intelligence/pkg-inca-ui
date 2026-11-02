@@ -1,21 +1,21 @@
-.alertTitle {
+.title {
     margin-bottom: var(--spacing-2xs);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
-.alertRoot {
+.root {
     padding: var(--spacing-xs);
 }
-.alertRootHide {
+.rootNoIcon {
     padding: var(--spacing-xs) var(--spacing-sm);
 }
-.alertIcon {
+.icon {
     width: 1rem;
     height: 1rem;
     margin-right: var(--spacing-xs);
 }
-.alertIconHide {
+.iconHidden {
     display: none;
 }
-.alertCloseButton {
+.closeButton {
     margin-left: var(--spacing-md);
 }

@@ -1,10 +1,10 @@
-.chatInput {
+.root {
     border: 1px solid var(--border-default);
     border-radius: var(--radius-sm);
     padding: var(--spacing-2xs) var(--spacing-2xs) var(--spacing-2xs);
     background-color: var(--bg-surface);
 }
-.chatInput.disabled {
+.root.disabled {
     background-color: var(--bg-hover);
     opacity: 0.6;
 }

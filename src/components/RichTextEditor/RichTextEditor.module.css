@@ -15,7 +15,7 @@
         padding: var(--spacing-xs);
         padding-right: 140px;
         p {
-            margin-top: 2px;
+            margin-top: var(--spacing-3xs);
             line-height: 2;
         }
         :global(p.is-editor-empty) {
@@ -69,7 +69,7 @@
     align-items: center;
     background: var(--bg-medium);
     border-radius: var(--radius-sm);
-    padding: 1px 2px;
+    padding: 1px var(--spacing-3xs);
     z-index: 10;
 }
 .insertButton {

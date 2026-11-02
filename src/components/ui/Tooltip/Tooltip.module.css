@@ -1,8 +1,8 @@
 .tooltip {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     padding: var(--spacing-xs);
 }
 
-.tooltipChildren {
+.target {
     display: inline-flex;
 }

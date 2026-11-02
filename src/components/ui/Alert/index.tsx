@@ -72,11 +72,10 @@ const Alert = ({
     return (
         <MantineAlert
             classNames={{
-                closeButton: classes.alertCloseButton,
-                icon: hideIcon ? classes.alertIconHide : classes.alertIcon,
-                message: classes.alertMessage,
-                root: hideIcon ? classes.alertRootHide : classes.alertRoot,
-                title: classes.alertTitle
+                closeButton: classes.closeButton,
+                icon: hideIcon ? classes.iconHidden : classes.icon,
+                root: hideIcon ? classes.rootNoIcon : classes.root,
+                title: classes.title
             }}
             onClose={handleClose}
             {...alertType}

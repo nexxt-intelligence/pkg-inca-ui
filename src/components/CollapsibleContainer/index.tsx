@@ -48,7 +48,7 @@ const CollapsibleContainer = ({
                                 <Tooltip label={tooltip}>
                                     {tooltipType === 'info' && (
                                         <Icon
-                                            color="gray"
+                                            color="var(--icon-subtle)"
                                             size="sm"
                                             type="IconHelp"
                                         />
@@ -65,8 +65,8 @@ const CollapsibleContainer = ({
                         </span>
                         {description && (
                             <Text
+                                c="var(--text-subtle)"
                                 className={classes.description}
-                                color="gray"
                                 size="sm"
                             >
                                 {description}

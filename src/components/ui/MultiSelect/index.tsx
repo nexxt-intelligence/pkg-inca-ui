@@ -92,7 +92,7 @@ const MultiSelect = ({
     };
 
     const handleCreateLabel = (query: string) => (
-        <span className={classes.multiSelectCreateLabel}>
+        <span className={classes.createLabel}>
             {getCreateLabel?.(query) ?? `+ Add ${query}`}
         </span>
     );
@@ -113,14 +113,11 @@ const MultiSelect = ({
         readOnly,
         value
     }: { value: string } & MantineMultiSelectValueProps) => (
-        <div
-            className={classes.multiSelectValue}
-            data-disabled={disabled || undefined}
-        >
-            <span className={classes.multiSelectValueLabel}>{label}</span>
+        <div className={classes.value} data-disabled={disabled || undefined}>
+            <span className={classes.valueLabel}>{label}</span>
             {!disabled && !readOnly && !isNonRemovable(value) && (
                 <CloseButton
-                    className={classes.multiSelectValueRemove}
+                    className={classes.valueRemove}
                     iconSize="70%"
                     onMouseDown={onRemove}
                     tabIndex={-1}
@@ -132,9 +129,9 @@ const MultiSelect = ({
     return (
         <MantineMultiSelect
             classNames={{
-                input: classes.multiSelectInput,
-                searchInput: classes.multiSelectSearchInput,
-                values: classes.multiSelectValues
+                input: classes.input,
+                searchInput: classes.searchInput,
+                values: classes.values
             }}
             clearable={
                 clearable && (!hasNonRemovableValues || hasRemovableValue)

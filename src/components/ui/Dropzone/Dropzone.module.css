@@ -41,7 +41,7 @@
 .filePreview {
     width: 100%;
     padding: var(--spacing-md);
-    border: 0.125rem dashed var(--border-default);
+    border: 2px dashed var(--border-default);
     border-radius: var(--radius-sm);
     background-color: var(--bg-surface);
 }

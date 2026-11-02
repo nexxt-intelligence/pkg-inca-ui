@@ -1,16 +1,16 @@
-.checkboxInput {
+.input {
     width: 1rem;
     height: 1rem;
     cursor: pointer;
 }
-.checkboxInner {
+.inner {
     margin-top: var(--spacing-3xs);
     width: 1rem;
     height: 1rem;
 }
-.checkboxLabel,
-.checkboxDescription,
-.checkboxError {
+.label,
+.description,
+.error {
     padding-left: var(--spacing-xs);
     margin-top: 0;
 }

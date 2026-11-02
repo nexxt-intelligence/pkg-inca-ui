@@ -38,7 +38,7 @@
         border-top-right-radius: var(--radius-lg);
         font-size: var(--font-size-md);
         &[data-active] {
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
             background-color: var(--bg-surface);
             color: var(--text-accent);
         }

@@ -33,9 +33,9 @@ const TextInput = ({
     return (
         <MantineTextInput
             classNames={{
-                input: classes.textInput,
-                required: classes.textInputRequired,
-                wrapper: prefix ? classes.textInputWrapper : undefined
+                input: classes.input,
+                required: classes.required,
+                wrapper: prefix ? classes.wrapper : undefined
             }}
             data-readonly={readOnly}
             data-variant={variant}
@@ -50,8 +50,8 @@ const TextInput = ({
                 prefix
                     ? (children: ReactNode) => (
                           <Flex gap="2xs" wrap="nowrap">
-                              <div className={classes.textInputPrefix}>
-                                  <Text color="var(--text-disabled)" size="sm">
+                              <div className={classes.prefix}>
+                                  <Text c="var(--text-disabled)" size="sm">
                                       {prefix}
                                   </Text>
                               </div>

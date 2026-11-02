@@ -31,10 +31,10 @@ const NumberInput = ({
     return (
         <MantineNumberInput
             classNames={{
-                control: classes.numberInputControl,
-                controlUp: classes.numberInputControlUp,
-                input: classes.numberInput,
-                required: classes.numberInputRequired
+                control: classes.control,
+                controlUp: classes.controlUp,
+                input: classes.input,
+                required: classes.required
             }}
             data-readonly={readOnly}
             data-variant={variant}

@@ -38,11 +38,11 @@ const Checkbox = ({
     return (
         <MantineCheckbox
             classNames={{
-                description: classes.checkboxDescription,
-                error: classes.checkboxError,
-                inner: classes.checkboxInner,
-                input: classes.checkboxInput,
-                label: classes.checkboxLabel
+                description: classes.description,
+                error: classes.error,
+                inner: classes.inner,
+                input: classes.input,
+                label: classes.label
             }}
             label={
                 label ? (

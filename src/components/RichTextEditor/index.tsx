@@ -440,7 +440,9 @@ const RichTextEditor = React.forwardRef<
                                     {onImageUpload && (
                                         <MantineRTE.ControlsGroup>
                                             <MantineRTE.Control
-                                                active={editor?.isActive('image')}
+                                                active={editor?.isActive(
+                                                    'image'
+                                                )}
                                                 aria-label={imageControlLabel}
                                                 disabled={isUploadingImage}
                                                 onClick={openImagePicker}

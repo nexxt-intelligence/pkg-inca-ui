@@ -1,16 +1,16 @@
-.textInput[data-variant='filled'] {
+.input[data-variant='filled'] {
     background-color: var(--bg-accent-light);
 }
-.textInputRequired {
+.required {
     order: -1;
 }
-.textInput[data-readonly='true'] {
+.input[data-readonly='true'] {
     cursor: default;
 }
-.textInputWrapper {
+.wrapper {
     width: 100%;
 }
-.textInputPrefix {
+.prefix {
     display: flex;
     align-items: center;
     padding: 0 var(--spacing-xs);

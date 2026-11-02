@@ -29,11 +29,11 @@ const Switch = ({
     return (
         <MantineSwitch
             classNames={{
-                body: fullWidth ? classes.fullWidthBody : '',
-                description: classes.switchDescription,
-                error: classes.switchError,
-                label: classes.switchLabel,
-                track: classes.switchTrack
+                body: fullWidth ? classes.bodyFullWidth : undefined,
+                description: classes.description,
+                error: classes.error,
+                label: classes.label,
+                track: classes.track
             }}
             label={
                 label ? (

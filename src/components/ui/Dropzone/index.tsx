@@ -140,7 +140,7 @@ const Dropzone = (({
                 type={iconType}
             />
             {!isSmall && (
-                <Text color="var(--text-accent)" size="sm">
+                <Text c="var(--text-accent)" size="sm">
                     {label}
                 </Text>
             )}
@@ -162,7 +162,7 @@ const Dropzone = (({
                         <Text className={classes.fileName} size="sm">
                             {uploadedFile.name}
                         </Text>
-                        <Text color="var(--text-success)" size="sm">
+                        <Text c="var(--text-success)" size="sm">
                             Success
                         </Text>
                     </Stack>
@@ -193,13 +193,13 @@ const Dropzone = (({
             {shouldShowMetadataHelpers && (
                 <Group position="apart">
                     {resolvedSupportedFormatsDescription && (
-                        <Text color="var(--text-medium)" size="xs">
+                        <Text c="var(--text-medium)" size="xs">
                             Supported formats:{' '}
                             {resolvedSupportedFormatsDescription}
                         </Text>
                     )}
                     {resolvedMaxSizeDescription && (
-                        <Text color="var(--text-medium)" size="xs">
+                        <Text c="var(--text-medium)" size="xs">
                             Maximum size: {resolvedMaxSizeDescription}
                         </Text>
                     )}

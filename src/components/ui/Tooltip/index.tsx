@@ -34,7 +34,7 @@ const Tooltip = ({
             withArrow={withArrow}
             {...props}
         >
-            <span className={classes.tooltipChildren}>{children}</span>
+            <span className={classes.target}>{children}</span>
         </MantineTooltip>
     );
 };

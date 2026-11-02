@@ -3,10 +3,10 @@ import {
     ActionIconProps as MantineActionIconProps,
     MantineNumberSize
 } from '@mantine/core';
-import { clsx } from '@mantine/core';
 import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './ActionIcon.module.css';
 
@@ -34,7 +34,7 @@ const ActionIcon = React.forwardRef<HTMLButtonElement, ActionIconProps>(
     ) => {
         return (
             <MantineActionIcon
-                className={clsx(classes.actionIcon, className)}
+                className={cx(classes.root, className)}
                 color={color}
                 data-variant={variant}
                 size={size}

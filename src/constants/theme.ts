@@ -363,6 +363,8 @@ export const theme: MantineThemeOverride = {
     defaultRadius: 'sm',
     fontFamily: '"Source Sans 3", sans-serif',
     fontFamilyMonospace: '"Source Code Pro", monospace',
+    // src/tokens.css reads fonts, fontSizes, lineHeight, radius, shadows and spacing from
+    // here through Mantine's --mantine-* variables. Change these values here, not there.
     fontSizes: {
         '2xs': '0.625rem', // 10px
         xs: '0.75rem', // 12px

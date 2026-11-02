@@ -1,8 +1,8 @@
-.appShellRoot {
+.root {
     background-color: var(--bg-base);
     position: relative;
 }
-.appShellMain {
+.main {
     padding-bottom: var(--mantine-footer-height, 0px);
     min-height: 100vh;
     display: flex;
@@ -17,7 +17,7 @@
 .header {
     border-bottom: none;
     background-color: var(--bg-base);
-    padding-bottom: 1rem;
+    padding-bottom: var(--spacing-md);
 }
 .headerContent {
     position: static;
@@ -33,8 +33,8 @@
 }
 
 /* Mobile header styles */
-.appShellRoot[data-mobile='true'] {
-    .appShellMain {
+.root[data-mobile='true'] {
+    .main {
         padding-top: 80px;
     }
     .navbar {
@@ -48,7 +48,7 @@
     left: 0;
     background-color: var(--bg-surface);
     border-bottom: 1px solid var(--border-default);
-    padding: 1rem;
+    padding: var(--spacing-md);
     z-index: 999;
 }
 .burger {
@@ -62,23 +62,23 @@
 }
 
 /* Fixed header styles */
-.appShellRoot[data-fixed='true'] {
-    .appShellMain {
+.root[data-fixed='true'] {
+    .main {
         padding-top: 0;
     }
     .header {
         position: sticky;
         top: 0;
-        padding: 1rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
+        padding: var(--spacing-md);
+        margin-left: calc(-1 * var(--spacing-md));
+        margin-right: calc(-1 * var(--spacing-md));
         z-index: 999;
     }
 }
 
 /* Fixed + mobile header styles */
-.appShellRoot[data-fixed='true'][data-mobile='true'] {
-    .appShellMain {
+.root[data-fixed='true'][data-mobile='true'] {
+    .main {
         padding-top: 64px;
     }
     .header {
@@ -113,7 +113,7 @@
 .iconLogo {
     display: flex;
     justify-content: center;
-    padding: 0.75rem 0;
+    padding: var(--spacing-sm) 0;
 }
 .userProfilePictureContainer {
     display: flex;

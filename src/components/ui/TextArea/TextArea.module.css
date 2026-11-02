@@ -1,16 +1,16 @@
-.textAreaInput {
+.input {
     padding-top: var(--spacing-2xs);
     padding-bottom: var(--spacing-2xs);
     padding-left: var(--spacing-xs);
     min-height: 32px;
 }
-.textAreaInput[data-variant='filled'] {
+.input[data-variant='filled'] {
     background-color: var(--bg-accent-light);
 }
-.textAreaInputRequired {
+.required {
     order: -1;
 }
-.textAreaInput[data-readonly='true'] {
+.input[data-readonly='true'] {
     padding-left: var(--spacing-2xs);
     cursor: default;
 }

@@ -170,8 +170,8 @@ const AppShell = ({ ...props }: AppShellProps) => {
     return (
         <MantineAppShell
             classNames={{
-                main: classes.appShellMain,
-                root: classes.appShellRoot
+                main: classes.main,
+                root: classes.root
             }}
             data-fixed={isFixedHeader}
             data-mobile={isMobile}

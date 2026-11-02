@@ -31,10 +31,10 @@ const Radio = ({ label, tooltip, tooltipProps, ...props }: RadioProps) => {
     return (
         <MantineRadio
             classNames={{
-                description: classes.radioDescription,
-                error: classes.radioError,
-                inner: classes.radioInner,
-                label: classes.radioLabel,
+                description: classes.description,
+                error: classes.error,
+                inner: classes.inner,
+                label: classes.label,
                 radio: classes.radio
             }}
             label={

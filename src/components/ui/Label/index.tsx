@@ -24,7 +24,7 @@ const Label = ({
 }: LabelProps) => {
     const tooltipIcon = tooltip && (
         <Tooltip label={tooltip} {...tooltipProps}>
-            <Icon color="gray" size="xs" type="IconHelp" />
+            <Icon color="var(--icon-subtle)" size="xs" type="IconHelp" />
         </Tooltip>
     );
 

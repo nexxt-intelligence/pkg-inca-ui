@@ -1,17 +1,17 @@
-.numberInput[data-variant='filled'] {
+.input[data-variant='filled'] {
     background-color: var(--bg-accent-light);
 }
-.numberInputRequired {
+.required {
     order: -1;
 }
-.numberInput[data-readonly='true'] {
+.input[data-readonly='true'] {
     cursor: default;
     pointer-events: none;
 }
-.numberInputControlUp {
+.controlUp {
     border-bottom-color: var(--border-default);
 }
-.numberInputControl {
+.control {
     border-left-color: var(--border-default);
     cursor: pointer;
     &:disabled {

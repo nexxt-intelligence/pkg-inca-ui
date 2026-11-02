@@ -46,7 +46,7 @@ const Select = ({
     };
 
     const handleCreateLabel = (query: string) => (
-        <span className={classes.selectCreateLabel}>
+        <span className={classes.createLabel}>
             {getCreateLabel?.(query) ?? `+ Add ${query}`}
         </span>
     );
@@ -54,7 +54,7 @@ const Select = ({
     return (
         <MantineSelect
             classNames={{
-                input: classes.selectInput
+                input: classes.input
             }}
             creatable={hasCreatable}
             data-readonly={readOnly}
