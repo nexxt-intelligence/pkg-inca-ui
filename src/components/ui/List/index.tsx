@@ -7,10 +7,15 @@ import { type StrictProps } from '../../../types/props';
 import classes from './List.module.css';
 export interface ListProps
     extends Omit<StrictProps<MantineListProps>, 'children'> {
+    /** List items. Ignored when `items` is set. */
     children?: React.ReactNode;
+    /** Text items to render. Use instead of `children`. */
     items?: string[];
 }
 
+/**
+ * Mantine [List](https://v6.mantine.dev/core/list/). Pass `items` for a simple text list.
+ */
 const List = ({
     children,
     items,

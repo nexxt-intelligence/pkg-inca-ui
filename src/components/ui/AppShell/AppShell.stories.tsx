@@ -1,25 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Icon from '../Icon';
-import AppShell from './index';
-
-export default {
-    argTypes: {
-        activeLink: { control: 'text' },
-        headerSubtitle: { control: 'text' },
-        headerTitle: { control: 'text' },
-        isFixedHeader: { control: 'boolean' },
-        isMobile: { control: 'boolean' },
-        isNavbarOpen: { control: 'boolean' },
-        userFirstName: { control: 'text' },
-        userProfilePicture: { control: 'text' }
-    },
-    component: AppShell,
-    parameters: {
-        layout: 'fullscreen'
-    },
-    title: 'UI/Layout/AppShell'
-} as Meta<typeof AppShell>;
+import { AppShell, Icon } from '../../..';
 
 const mockNavLinkItems = [
     {
@@ -39,10 +20,10 @@ const mockNavLinkItems = [
     }
 ];
 
-export const Primary: StoryObj<typeof AppShell> = {
+const meta = {
     args: {
         activeLink: '/dashboard',
-        children: <div style={{ padding: '20px' }}>Main content area</div>,
+        children: 'Main content area',
         headerSubtitle: 'Hello, John!',
         headerTitle: 'Dashboard',
         isMobile: false,
@@ -52,5 +33,26 @@ export const Primary: StoryObj<typeof AppShell> = {
         signOut: () => console.log('Sign out'),
         toggleNavbar: () => console.log('Toggle navbar'),
         userFirstName: 'John'
-    }
-};
+    },
+    argTypes: {
+        activeLink: { control: 'text' },
+        headerSubtitle: { control: 'text' },
+        headerTitle: { control: 'text' },
+        isFixedHeader: { control: 'boolean' },
+        isMobile: { control: 'boolean' },
+        isNavbarOpen: { control: 'boolean' },
+        showFooter: { control: 'boolean' },
+        userFirstName: { control: 'text' },
+        userProfilePicture: { control: 'text' }
+    },
+    component: AppShell,
+    parameters: {
+        layout: 'fullscreen'
+    },
+    title: 'UI/Layout/AppShell'
+} satisfies Meta<typeof AppShell>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

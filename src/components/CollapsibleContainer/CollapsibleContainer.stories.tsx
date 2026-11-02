@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CollapsibleContainer from './index';
+import { CollapsibleContainer } from '../..';
 
-export default {
+const meta = {
+    args: {
+        children: <div>Content inside the collapsible container.</div>,
+        title: 'Collapsible Section'
+    },
     argTypes: {
         defaultOpen: { control: 'boolean' },
         description: { control: 'text' },
@@ -15,11 +19,9 @@ export default {
     },
     component: CollapsibleContainer,
     title: 'Components/CollapsibleContainer'
-} as Meta<typeof CollapsibleContainer>;
+} satisfies Meta<typeof CollapsibleContainer>;
 
-export const Primary: StoryObj<typeof CollapsibleContainer> = {
-    args: {
-        children: <div>Content inside the collapsible container.</div>,
-        title: 'Collapsible Section'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

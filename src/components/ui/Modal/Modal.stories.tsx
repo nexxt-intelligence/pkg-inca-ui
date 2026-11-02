@@ -1,13 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Group } from '@mantine/core';
 import { useState } from 'react';
 
-import Button from '../Button';
-import Text from '../Text';
-import Modal, { ModalProps } from './index';
+import { Button, Group, Modal, type ModalProps, Text } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        onClose: () => {},
+        opened: false,
+        title: 'Modal Title'
+    },
     argTypes: {
         cancelLabel: { control: 'text' },
         centered: {
@@ -35,7 +37,10 @@ export default {
     },
     component: Modal,
     title: 'UI/Overlays/Modal'
-} as Meta<typeof Modal>;
+} satisfies Meta<typeof Modal>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const ModalStory = (args: Partial<ModalProps>) => {
     const [opened, setOpened] = useState(false);
@@ -52,10 +57,7 @@ const ModalStory = (args: Partial<ModalProps>) => {
     );
 };
 
-export const Default: StoryObj<typeof Modal> = {
-    args: {
-        title: 'Modal Title'
-    },
+export const Primary: Story = {
     render: (args) => <ModalStory {...args} />
 };
 
@@ -99,7 +101,7 @@ const CustomFooterStory = (args: Partial<ModalProps>) => {
     );
 };
 
-export const CustomFooter: StoryObj<typeof Modal> = {
+export const CustomFooter: Story = {
     args: {
         title: 'Submit Survey'
     },

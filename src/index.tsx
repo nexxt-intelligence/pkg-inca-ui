@@ -6,6 +6,7 @@ import { type BrandPalette, theme } from './constants/theme';
 import './assets/global.css';
 import './tokens.css';
 
+/** Custom components */
 export {
     default as ActionCard,
     type ActionCardProps
@@ -18,14 +19,12 @@ export {
     default as CollapsibleContainer,
     type CollapsibleContainerProps
 } from './components/CollapsibleContainer';
-// TODO: Remove these
+// Deprecated: use TextInput, NumberInput or PasswordInput instead
 export { default as Input, type InputProps } from './components/Input';
-
 export {
     default as LinkCopyInput,
     type LinkCopyInputProps
 } from './components/LinkCopyInput';
-/** UI Components from OLD inca ui */
 export {
     MiniModal,
     MiniModalActions,
@@ -52,7 +51,7 @@ export {
     type SplitPaneModalContentProps,
     type SplitPaneModalProps
 } from './components/SplitPaneModal';
-/** Extended Mantine UI Components */
+/** Extended Mantine components */
 export {
     default as ActionIcon,
     type ActionIconProps
@@ -121,11 +120,13 @@ export {
 } from './components/ui/TextInput';
 export { default as Tooltip, type TooltipProps } from './components/ui/Tooltip';
 
-/** Constants */
+/** Theme */
 export * from './constants/theme';
 
+/** Hooks */
 export { type ConfirmationModalProps, useConfirmationModal } from './hooks';
 
+/** Provider */
 export const CustomMantineProvider = ({
     brand,
     children
@@ -148,7 +149,7 @@ export const CustomMantineProvider = ({
     );
 };
 
-/** Unmodified Mantine v6.0.21 Components */
+/** Re-exported Mantine components (unmodified) */
 // Layout
 export {
     AspectRatio,

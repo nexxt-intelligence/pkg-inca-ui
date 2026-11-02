@@ -2,7 +2,7 @@ name: Release
 on:
     push:
         branches:
-            - main # React 19 / Mantine 6+ line -> npm dist-tag "latest"
+            - main # React 19 / Mantine 9 line -> npm dist-tag "latest"
             - v7 # React 16 / Mantine 6 maintenance line -> npm dist-tag "legacy"
 jobs:
     release:

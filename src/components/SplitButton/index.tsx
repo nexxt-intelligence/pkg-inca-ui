@@ -22,16 +22,29 @@ const menuIconSizeMap: Record<SplitButtonSize, string> = {
 };
 
 export interface SplitButtonProps {
+    /** Tabler icon name shown on the left of the main button, e.g. `"IconSend"`. */
     buttonIcon?: TablerIconKeys;
+    /** Main button label. */
     children?: React.ReactNode;
+    /** Color of both parts of the button. */
     color?: ButtonProps['color'];
+    /** Disables both the main button and the menu. */
     disabled?: boolean;
+    /** Menu items shown when the arrow is clicked. */
     items?: MenuItem[];
+    /** Tabler icon name for the menu toggle, e.g. `"IconChevronDown"`. */
     menuIcon?: TablerIconKeys;
+    /** Called when the main button is clicked. */
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    /** Size of both parts of the button. */
     size?: SplitButtonSize;
 }
 
+/**
+ * **Custom inca-ui component** (not part of Mantine).
+ *
+ * A main action button with an attached menu for secondary actions.
+ */
 const SplitButton = ({
     buttonIcon,
     children = 'Send',

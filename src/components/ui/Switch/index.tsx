@@ -12,13 +12,21 @@ export interface SwitchProps
         StrictInputProps<MantineSwitchProps, 'size' | 'type'>,
         'checked' | 'onChange'
     > {
+    /** Whether the switch is on. */
     checked: boolean;
+    /** Pushes the label and the switch to opposite ends of the row. */
     fullWidth?: boolean;
+    /** Called when the switch is toggled. */
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [Switch](https://v6.mantine.dev/core/switch/) with a help tooltip and a `fullWidth` layout.
+ */
 const Switch = ({
     fullWidth = false,
     label,

@@ -12,12 +12,19 @@ export interface ColorInputProps
         MantineColorInputProps,
         'defaultValue' | 'onChange' | 'size' | 'value'
     > {
+    /** Content shown in a gray box attached to the left of the input. */
     leftFilledSection?: React.ReactNode;
+    /** Content shown in a gray box attached to the right of the input. */
     rightFilledSection?: React.ReactNode;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [ColorInput](https://v6.mantine.dev/core/color-input/) with an optional help `tooltip` next to the label.
+ */
 const ColorInput = ({
     label,
     tooltip,

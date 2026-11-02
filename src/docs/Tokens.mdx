@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/blocks';
+
+import { Palette, TokenTable } from './DocBlocks';
+
+<Meta title="Docs/Tokens" />
+
+# Design tokens
+
+Every design token is a CSS variable defined in `src/tokens.css`. They're available everywhere once
+`CustomMantineProvider` is mounted. The tables below are read straight from that file, so they always
+match the code. **Value** is what the browser resolves the token to.
+
+Most token values come from the Mantine theme (`src/constants/theme.ts`): the tokens read Mantine's
+`--mantine-*` variables, so `p="md"` and `var(--spacing-md)` can never disagree. Font weights are
+the only scale set in `tokens.css` itself.
+
+**Rules**
+
+1. Pick colors by **what they're used for** (`--text-subtle`, `--bg-accent`), not by how they look.
+2. **Never** use raw hex values or Mantine internals like `var(--mantine-color-blue-6)`.
+3. Use the scales for spacing, radius and typography (font size, weight, family, line height). Raw `px`
+   is only for borders (`1px solid …`) and fixed component dimensions.
+
+In CSS modules use the variable: `padding: var(--spacing-md)`. In component props use the
+**Mantine key** for sizes (`p="md"`, `radius="sm"`, `shadow="sm"`) and the variable for colors
+(`c="var(--text-subtle)"`). Spacing, radius and font-size keys are the same in both, so `p="md"` and
+`var(--spacing-md)` are both 16px.
+
+## Colors
+
+Tokens are named `--{category}-{role}`. The status roles are the same in every category:
+`accent` (blue, follows the white-label brand), `error` (red), `warning` (yellow), `success` (green)
+and `ai` (violet).
+
+### Background
+
+Surfaces and fills. Status backgrounds also have `-hover`, `-light` and `-light-hover` versions.
+
+<TokenTable prefix="--bg-" />
+
+### Text
+
+<TokenTable prefix="--text-" />
+
+### Icon
+
+<TokenTable prefix="--icon-" />
+
+### Border
+
+Borders and dividers.
+
+<TokenTable prefix="--border-" />
+
+## Elevation
+
+`--shadow-1` is for cards and inputs, `--shadow-2` for modals and panels.
+
+<TokenTable prefix="--shadow-" />
+
+## Spacing
+
+Padding, margin and gaps.
+
+<TokenTable prefix="--spacing-" />
+
+## Radius
+
+`sm` (4px) is the default radius for every component.
+
+<TokenTable prefix="--radius-" />
+
+## Typography
+
+See the <a href="./?path=/docs/docs-typography--docs" target="_top">Typography</a> page for which text
+style and component to use.
+
+### Font family
+
+<TokenTable prefix="--font-family-" />
+
+### Font size
+
+The Body, Uppercase and Code sizes. Heading sizes come from `Title` (see Typography).
+
+<TokenTable prefix="--font-size-" />
+
+### Font weight
+
+<TokenTable prefix="--font-weight-" />
+
+### Line height
+
+<TokenTable prefix="--line-height-" />
+
+## Theme palette
+
+The raw Mantine palettes behind the tokens. Use these **names** only for Mantine `color` props
+(`<Button color="red">`, `<Badge color="green">`); in CSS always use the tokens above. `primary` is
+replaced by the `brand` palette when an app is white-labeled, and shade `6` is the main shade.
+
+<Palette />

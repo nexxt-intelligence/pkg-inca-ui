@@ -1,56 +1,48 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Alert from './index';
+import { Alert, Stack } from '../../..';
 
-export default {
+const alertTypes = ['info', 'success', 'warning', 'danger', 'ai'] as const;
+
+const meta = {
+    args: {
+        children: 'Alert example',
+        title: 'Alert title',
+        type: 'info',
+        variant: 'light'
+    },
     argTypes: {
         children: { control: 'text' },
         loading: { control: 'boolean' },
         title: { control: 'text' },
         type: {
             control: 'radio',
-            description: 'The type of the alert',
-            options: ['warning', 'info', 'success', 'danger', 'ai'],
+            options: alertTypes,
             table: { defaultValue: { summary: 'info' } }
         },
         variant: {
             control: 'radio',
-            description: 'The variant of the alert',
             options: ['filled', 'outline', 'light'],
             table: { defaultValue: { summary: 'light' } }
-        }
+        },
+        withCloseButton: { control: 'boolean' }
     },
     component: Alert,
     title: 'UI/Feedback/Alert'
-} as Meta<typeof Alert>;
+} satisfies Meta<typeof Alert>;
 
-export const Primary: StoryObj<typeof Alert> = {
-    args: {
-        children: 'Alert example',
-        title: 'Alert title',
-        type: 'danger',
-        variant: 'light'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const AllTypes: StoryObj<typeof Alert> = {
+export const Primary: Story = {};
+
+export const Types: Story = {
+    argTypes: { type: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <Alert {...args} title="Info" type="info" variant="light">
-                This is an informational message.
-            </Alert>
-            <Alert {...args} title="Success" type="success" variant="light">
-                Action completed successfully.
-            </Alert>
-            <Alert {...args} title="Warning" type="warning" variant="light">
-                Please review before continuing.
-            </Alert>
-            <Alert {...args} title="Danger" type="danger" variant="light">
-                Something went wrong.
-            </Alert>
-            <Alert {...args} title="AI" type="ai" variant="light">
-                This is an AI-generated message.
-            </Alert>
-        </div>
+        <Stack spacing="sm">
+            {alertTypes.map((type) => (
+                <Alert {...args} key={type} title={type} type={type} />
+            ))}
+        </Stack>
     )
 };

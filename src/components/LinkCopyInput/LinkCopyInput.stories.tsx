@@ -1,24 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LinkCopyInput from './index';
+import { Box, LinkCopyInput } from '../..';
 
-export default {
+const meta = {
+    args: {
+        label: 'Shareable Link',
+        value: 'https://example.com/'
+    },
     argTypes: {
         label: { control: 'text' },
         value: { control: 'text' }
     },
     component: LinkCopyInput,
     title: 'Components/LinkCopyInput'
-} as Meta<typeof LinkCopyInput>;
+} satisfies Meta<typeof LinkCopyInput>;
 
-export const Primary: StoryObj<typeof LinkCopyInput> = {
-    args: {
-        label: 'Shareable Link',
-        value: 'https://example.com/'
-    },
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
     render: (args) => (
-        <div style={{ maxWidth: 640 }}>
+        <Box maw={640}>
             <LinkCopyInput {...args} />
-        </div>
+        </Box>
     )
 };

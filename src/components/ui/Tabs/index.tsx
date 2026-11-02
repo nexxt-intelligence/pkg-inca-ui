@@ -12,19 +12,31 @@ export interface TabsProps
         StrictProps<MantineTabsProps>,
         'children' | 'defaultValue' | 'onTabChange' | 'value' | 'variant'
     > {
+    /** `Tabs.Panel` elements. */
     children: React.ReactNode;
+    /** Initially active tab when `value` is not controlled. Defaults to the first tab. */
     defaultValue?: string;
+    /** Stretches the tabs to fill the row. */
     fullWidth?: boolean;
+    /** Called with the new tab value. */
     onTabChange?: (value: null | string) => void;
+    /** Tabs to show in the tab list. */
     tabs: {
         disabled?: boolean;
         label: string;
         value: string;
     }[];
+    /** Active tab (controlled). */
     value?: null | string;
+    /** Tab style. */
     variant?: 'contained' | 'default' | 'outline' | 'pills';
 }
 
+/**
+ * Tabs built from the `tabs` list. Built on Mantine [Tabs](https://v6.mantine.dev/core/tabs/).
+ *
+ * Add a `Tabs.Panel` for each tab as children. inca-ui adds a `contained` variant.
+ */
 const Tabs = ({
     children,
     tabs,

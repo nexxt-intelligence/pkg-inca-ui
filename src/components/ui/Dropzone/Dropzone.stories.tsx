@@ -2,9 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { IMAGE_MIME_TYPE } from '@mantine/dropzone';
 
-import Dropzone from './index';
+import { Dropzone } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        accept: IMAGE_MIME_TYPE,
+        maxSize: 5 * 1024 ** 2,
+        onDrop: console.log,
+        showImagePreview: true,
+        size: 'sm'
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -44,19 +51,14 @@ export default {
     },
     component: Dropzone,
     title: 'UI/Other Packages/Dropzone'
-} as Meta<typeof Dropzone>;
+} satisfies Meta<typeof Dropzone>;
 
-export const Primary: StoryObj<typeof Dropzone> = {
-    args: {
-        accept: IMAGE_MIME_TYPE,
-        maxSize: 5 * 1024 ** 2,
-        onDrop: console.log,
-        showImagePreview: true,
-        size: 'sm'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const WithFilePreview: StoryObj<typeof Dropzone> = {
+export const Primary: Story = {};
+
+export const WithFilePreview: Story = {
     args: {
         maxSize: 5 * 1024 ** 2,
         multiple: false,

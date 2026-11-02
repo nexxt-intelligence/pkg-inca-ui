@@ -45,36 +45,64 @@ const defaultLogoFull = (
 );
 
 export interface AppShellProps extends StrictProps<MantineAppShellProps> {
+    /** URL of the active nav link (highlighted). */
     activeLink: string;
+    /** Content shown next to the subtitle. */
     headerBadge?: React.ReactNode;
+    /** Content shown under the title row. */
     headerBottomContent?: React.ReactNode;
+    /** Content shown on the right of the title row (e.g. actions). */
     headerRightContent?: React.ReactNode;
+    /** Small uppercase text above the title. */
     headerSubtitle?: string;
+    /** Page title. */
     headerTitle?: string; // TODO: revert back to required
+    /** Content shown right after the title. */
     headerTitleAddon?: React.ReactNode;
+    /** Keeps the header visible while scrolling. */
     isFixedHeader?: boolean;
+    /** Switches to the mobile layout (top bar with burger menu). */
     isMobile: boolean;
+    /** Whether the left navbar is shown. */
     isNavbarOpen: boolean;
+    /** Full logo shown in the mobile header. Use for white-labeling. */
     logoFull?: React.ReactNode;
+    /** Small logo shown at the top of the navbar. Use for white-labeling. */
     logoIcon?: React.ReactNode;
+    /** URL opened from the profile nav link. */
     manageProfileUrl?: string;
+    /** Main nav links shown in the navbar. */
     navLinkItems: NavLinkItem[];
+    /** Not used yet. */
     openFeedback?: () => void;
+    /** Shows a Help nav link that calls this function. */
     openHelp?: () => void;
+    /** Called with the URL when a nav link is clicked. */
     setActiveLink: (url: string) => void;
+    /** Shows the Privacy / Terms footer. */
     showFooter?: boolean;
+    /** Called when the Logout nav link is clicked. */
     signOut: () => void;
+    /** Called when the mobile burger menu is clicked. */
     toggleNavbar: () => void;
+    /** Shown as the label of the profile nav link. */
     userFirstName?: string;
+    /** Image URL for the profile nav link. */
     userProfilePicture?: string;
 }
 
 export interface NavLinkItem extends StrictProps<MantineNavLinkProps> {
+    /** Status icon shown on top of the nav icon. */
     healthIcon?: React.ReactNode;
+    /** Called when the link is clicked. Takes priority over `url`. */
     onClick?: () => void;
+    /** Path this link navigates to. */
     url?: string;
 }
 
+/**
+ * Page layout used by every inca app: left navbar, page header and footer. Built on Mantine [AppShell](https://v6.mantine.dev/core/app-shell/).
+ */
 const AppShell = ({ ...props }: AppShellProps) => {
     const {
         activeLink,

@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { useState } from 'react';
 
-import Radio from './index';
+import { Radio } from '../../..';
 
-export default {
+const meta = {
     args: {
         description: '',
         disabled: false,
@@ -25,9 +25,12 @@ export default {
     },
     component: Radio,
     title: 'UI/Inputs/Radio'
-} as Meta<typeof Radio>;
+} satisfies Meta<typeof Radio>;
 
-export const Primary: StoryObj<typeof Radio> = {};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};
 
 const RadioGroupControlled = (
     args: React.ComponentProps<typeof Radio.Group>

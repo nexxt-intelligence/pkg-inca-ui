@@ -14,21 +14,21 @@ import classes from './Dropzone.module.css';
 
 export interface DropzoneProps
     extends Omit<StrictProps<MantineDropzoneProps>, 'children'> {
+    /** Overrides the generated "Maximum size" text. */
     maxSizeLabel?: string;
+    /** Called when the uploaded file is removed from the preview. */
     onRemove?: () => void;
+    /** After a drop, shows the file name with a remove button (single file, `file` variant only). */
     showFilePreview?: boolean;
+    /** After a drop, shows a preview of the dropped image. */
     showImagePreview?: boolean;
+    /** Shows the supported formats and maximum size under the dropzone. */
     showMetadataHelpers?: boolean;
+    /** `sm` is a 72px square with just the icon. `md` fills the width and shows a label. */
     size?: 'md' | 'sm';
+    /** `file` for any file, `media` for images and video. */
     variant?: 'file' | 'media';
 }
-
-type DropzoneComponent = ((props: DropzoneProps) => JSX.Element) & {
-    Accept: typeof MantineDropzone.Accept;
-    FullScreen: typeof MantineDropzone.FullScreen;
-    Idle: typeof MantineDropzone.Idle;
-    Reject: typeof MantineDropzone.Reject;
-};
 
 const formatBytes = (bytes: number) => {
     if (bytes < 1000) return `${bytes} B`;
@@ -69,7 +69,12 @@ const formatAcceptedTypes = (accept: MantineDropzoneProps['accept']) => {
     );
 };
 
-const Dropzone = (({
+/**
+ * File upload area. Built on Mantine [Dropzone](https://v6.mantine.dev/others/dropzone/).
+ *
+ * inca-ui adds image and file previews and the supported-format / max-size hints.
+ */
+const Dropzone = ({
     accept,
     disabled,
     maxSize,
@@ -207,7 +212,7 @@ const Dropzone = (({
             )}
         </Stack>
     );
-}) as DropzoneComponent;
+};
 
 Dropzone.Accept = MantineDropzone.Accept;
 Dropzone.FullScreen = MantineDropzone.FullScreen;

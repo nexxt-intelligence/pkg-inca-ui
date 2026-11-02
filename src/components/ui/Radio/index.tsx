@@ -11,22 +11,35 @@ import classes from './Radio.module.css';
 
 export interface RadioGroupProps
     extends Omit<StrictProps<MantineRadioGroupProps>, 'children'> {
+    /** Custom radio elements. Ignored when `options` is set. */
     children?: React.ReactNode;
+    /** Disables the radio (or every radio in the group). */
     disabled?: boolean;
+    /** Radios to render. Use instead of `children`. */
     options?: RadioProps[];
+    /** Lays the radios out in a row instead of a column. */
     row?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
 export interface RadioProps
     extends Omit<StrictInputProps<MantineRadioProps, 'size'>, 'value'> {
+    /** Disables the radio (or every radio in the group). */
     disabled?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
+    /** Value used by `Radio.Group`. */
     value: number | string;
 }
 
+/**
+ * Mantine [Radio](https://v6.mantine.dev/core/radio/) with inca-ui styling. Use `Radio.Group` for a list.
+ */
 const Radio = ({ label, tooltip, tooltipProps, ...props }: RadioProps) => {
     return (
         <MantineRadio
@@ -51,6 +64,9 @@ const Radio = ({ label, tooltip, tooltipProps, ...props }: RadioProps) => {
     );
 };
 
+/**
+ * Group of radios with a shared label. Pass `options` to render them from data and `row` to lay them out horizontally.
+ */
 const RadioGroup = ({
     children,
     disabled,

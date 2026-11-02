@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+import { ColorLookup, HeadingLookup, LookupTable } from './DocBlocks';
+
+<Meta title="Docs/Cheat Sheet" />
+
+# Cheat sheet
+
+Seeing a raw value in a design, like `16px` or `#212529`? Look it up here to find the token to use in
+CSS and the key to use in component props. The values are read from the theme and `src/tokens.css`,
+so they always match the code.
+
+If a value isn't listed, it isn't on the scale. Check with design before using it.
+
+## Spacing
+
+Padding, margin and gaps: `padding: var(--spacing-md)` in CSS, `p="md"` in props.
+
+<LookupTable prefix="--spacing-" />
+
+## Radius
+
+<LookupTable prefix="--radius-" />
+
+## Font size
+
+Body, Uppercase and Code text.
+
+<LookupTable prefix="--font-size-" />
+
+Headings don't have a font-size token. Use `Title`:
+
+<HeadingLookup />
+
+## Font weight
+
+<LookupTable prefix="--font-weight-" />
+
+## Line height
+
+<LookupTable prefix="--line-height-" />
+
+## Shadow
+
+<LookupTable prefix="--shadow-" />
+
+## Colors
+
+Several tokens can share a hex. Pick the one that matches what you're coloring: `--text-*` for
+text, `--bg-*` for backgrounds, `--icon-*` for icons and `--border-*` for borders.
+
+<ColorLookup />

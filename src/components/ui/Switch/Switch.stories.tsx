@@ -1,8 +1,18 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Switch from './index';
+import { useState } from 'react';
 
-export default {
+import { Switch, type SwitchProps } from '../../..';
+
+const meta = {
+    args: {
+        checked: false,
+        disabled: false,
+        fullWidth: false,
+        label: 'Switch label',
+        labelPosition: 'right',
+        onChange: () => {}
+    },
     argTypes: {
         description: { control: 'text' },
         disabled: {
@@ -24,13 +34,23 @@ export default {
     },
     component: Switch,
     title: 'UI/Inputs/Switch'
-} as Meta<typeof Switch>;
+} satisfies Meta<typeof Switch>;
 
-export const Primary: StoryObj<typeof Switch> = {
-    args: {
-        disabled: false,
-        fullWidth: false,
-        label: 'Switch label',
-        labelPosition: 'right'
-    }
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const SwitchControlled = (args: SwitchProps) => {
+    const [checked, setChecked] = useState(args.checked);
+
+    return (
+        <Switch
+            {...args}
+            checked={checked}
+            onChange={(event) => setChecked(event.currentTarget.checked)}
+        />
+    );
+};
+
+export const Primary: Story = {
+    render: (args) => <SwitchControlled {...args} />
 };

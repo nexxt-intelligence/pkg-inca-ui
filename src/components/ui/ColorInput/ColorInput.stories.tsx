@@ -1,8 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorInput from './index';
+import { ColorInput } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        defaultValue: '#228be6',
+        label: 'Color',
+        placeholder: 'Pick a color'
+    },
     argTypes: {
         description: { control: 'text' },
         disabled: {
@@ -21,12 +26,9 @@ export default {
     },
     component: ColorInput,
     title: 'UI/Inputs/ColorInput'
-} as Meta<typeof ColorInput>;
+} satisfies Meta<typeof ColorInput>;
 
-export const Primary: StoryObj<typeof ColorInput> = {
-    args: {
-        defaultValue: '#228be6',
-        label: 'Color',
-        placeholder: 'Pick a color'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

@@ -10,13 +10,21 @@ import Label, { type LabelProps } from '../Label';
 import classes from './Select.module.css';
 
 export interface SelectProps extends StrictProps<MantineSelectProps> {
+    /** Tabler icon name shown on the left of the input, e.g. `"IconSearch"` or `"IconUsers"`. */
     icon?: TablerIconKeys;
+    /** Shows a loader on the right side. */
     loading?: boolean;
+    /** Shows an "add" option that calls this instead of creating a value (e.g. to open a modal). */
     onCreateAction?: () => void;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [Select](https://v6.mantine.dev/core/select/) with a help tooltip, a loading state and an "add" option (`creatable` or `onCreateAction`).
+ */
 const Select = ({
     creatable,
     getCreateLabel,

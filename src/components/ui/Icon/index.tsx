@@ -9,19 +9,26 @@ import * as React from 'react';
 export type TablerIconKeys = Extract<keyof typeof TablerIcons, `Icon${string}`>;
 
 interface IconProps {
-    /**
-     * A Mantine theme color token (e.g. `"primary"`, `"red.6"`).
-     */
+    /** A color token (`"var(--icon-accent)"`), a theme color (`"red.6"`) or any CSS color. */
     color?: MantineColor;
+    /** Rotates the icon, in degrees. */
     iconRotate?: number;
+    /** `2xs` 8px · `xs` 12px · `sm` 16px · `md` 20px · `lg` 24px · `xl` 32px · or any number in px. */
     size?: '2xs' | MantineNumberSize;
-    /**
-     * Name of the Tabler icon to render (e.g. `"IconHome"`, `"IconUser"`).
-     * Full list: https://tabler.io/icons
-     */
+    /** Tabler icon name to render, e.g. `"IconHome"` or `"IconUser"`. */
     type: TablerIconKeys;
 }
 
+/**
+ * **Custom inca-ui component** for [Tabler Icons](https://tabler.io/icons) (`@tabler/icons-react`
+ * 2.47), not Mantine. Renders an icon by name, using inca-ui sizes and token colors.
+ *
+ * **Finding a name:** search the **All icons** story below. It lists every icon in the version we
+ * use, and clicking one copies its name. tabler.io shows the newest Tabler, which has icons we don't.
+ *
+ * **Name format:** `Icon` + the Tabler name in PascalCase, e.g. `arrow-left` → `IconArrowLeft`,
+ * `user-circle` → `IconUserCircle`. Filled versions end in `Filled` (`IconHeartFilled`).
+ */
 const Icon = ({ color, iconRotate = 0, size = 'sm', type }: IconProps) => {
     const theme = useMantineTheme();
 

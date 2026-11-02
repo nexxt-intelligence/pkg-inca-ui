@@ -123,8 +123,11 @@ const AnswerRefNode = Node.create({
 });
 
 export interface RichTextEditorHandle {
+    /** Returns the current content as HTML. */
     getHTML: () => string;
+    /** Inserts an answer-reference badge at the cursor. */
     insertAnswerRef: (attrs: Record<string, unknown>) => void;
+    /** Inserts HTML or Tiptap JSON content at the cursor. */
     insertContent: (content: Record<string, unknown> | string) => void;
     /** Inserts an image, or replaces the selected image. */
     insertImage: (image: RichTextImage) => void;
@@ -135,38 +138,69 @@ export interface RichTextEditorProps
         StrictProps<MantineRTEProps>,
         'children' | 'editor' | 'onBlur' | 'onChange'
     > {
+    /** Extra content rendered inside the editor (e.g. toolbar controls). */
     children?: React.ReactNode;
+    /** Initial HTML content. */
     defaultValue?: string;
+    /** Text shown under the label. */
     description?: InputWrapperProps['description'];
+    /** Makes the editor read-only and grayed out. */
     disabled?: boolean;
+    /** Error message shown under the editor. */
     error?: InputWrapperProps['error'];
+    /** Extra Tiptap extensions added to the default set. */
     extensions?: Extension[];
+    /** Hides the formatting toolbar. */
     hideToolbar?: boolean;
+    /** Label above the editor. */
     label?: string;
+    /** Enables editing answer-reference badges. Called with a `confirm` callback and the badge's current attributes. */
     onAnswerRefClick?: (
         confirm: (attrs: Record<string, unknown>) => void,
         current?: Record<string, unknown>
     ) => void;
     /** Called with current HTML when focus leaves the editor and its toolbar. */
     onBlur?: (html: string) => void;
+    /** Called with the editor content as HTML on every change. */
     onChange?: (html: string) => void;
     /** Uploads a selected file and returns the lasting URL to save in the HTML. */
     onImageUpload?: (file: File) => Promise<string>;
+    /** Called when `onImageUpload` throws or returns no URL. */
     onImageUploadError?: (error: unknown) => void;
+    /** Text shown while the editor is empty. */
     placeholder?: string;
+    /** Shows the content without the toolbar, border or editing. */
     readOnly?: boolean;
+    /** Marks the field as required (adds an asterisk). */
     required?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
+    /** Shows the required asterisk without setting `required`. */
     withAsterisk?: boolean;
 }
 
 export interface RichTextImage {
+    /** Alternative text. Defaults to the file name for uploaded images. */
     alt?: string;
+    /** Image URL saved in the HTML. */
     src: string;
+    /** Tooltip text shown on hover. */
     title?: string;
 }
 
+/**
+ * Rich text editor built on Mantine [RichTextEditor](https://v6.mantine.dev/others/tiptap/) (Tiptap).
+ *
+ * inca-ui adds a label, description and error like other inputs, returns HTML from `onChange` and
+ * `onBlur`, and supports answer-reference badges.
+ *
+ * **Images:** pass `onImageUpload` to show the image control. It uploads the file and returns the
+ * lasting URL to embed in the HTML (inca-ui doesn't choose an upload service or store files). Select
+ * an image to replace it, or drag its handles to resize; the size is kept in the HTML. The ref's
+ * `insertImage` inserts an image URL directly. Use `readOnly` to show the content without editing.
+ */
 const RichTextEditor = React.forwardRef<
     RichTextEditorHandle,
     RichTextEditorProps

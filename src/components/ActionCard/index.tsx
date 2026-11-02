@@ -5,13 +5,23 @@ import Text from '../ui/Text';
 import classes from './ActionCard.module.css';
 
 export interface ActionCardProps {
+    /** Short text under the title. Line breaks (`\n`) are kept. */
     description: string;
+    /** Disables the card. */
     disabled?: boolean;
+    /** Tabler icon name shown at the top, e.g. `"IconPlus"` or `"IconFileText"`. */
     icon: TablerIconKeys;
+    /** Called when the card is clicked. */
     onClick: () => void;
+    /** Main label of the card. */
     title: string;
 }
 
+/**
+ * **Custom inca-ui component** (not part of Mantine).
+ *
+ * Large clickable card with an icon, a title and a short description. Use it for picking between a few big options.
+ */
 const ActionCard = ({
     description,
     disabled,

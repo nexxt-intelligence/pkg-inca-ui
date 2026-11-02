@@ -11,12 +11,19 @@ import classes from './Alert.module.css';
 
 export interface AlertProps
     extends Omit<StrictProps<MantineAlertProps>, 'children'> {
+    /** Alert message. */
     children?: React.ReactNode;
+    /** Initial open state when `open` is not controlled. */
     defaultOpen?: boolean;
+    /** Hides the type icon. */
     hideIcon?: boolean;
+    /** Replaces the icon with a loader. */
     loading?: boolean;
+    /** Called when the close button is clicked. */
     onClose?: () => void;
+    /** Controls whether the alert is shown. */
     open?: boolean;
+    /** Sets the color and icon. */
     type?: 'ai' | 'danger' | 'info' | 'success' | 'warning';
 }
 
@@ -43,6 +50,11 @@ const alertTypes = {
     }
 };
 
+/**
+ * Inline feedback message. Built on Mantine [Alert](https://v6.mantine.dev/core/alert/).
+ *
+ * Pick the color and icon with `type`. It closes itself, or you can control it with `open`.
+ */
 const Alert = ({
     children,
     defaultOpen = true,

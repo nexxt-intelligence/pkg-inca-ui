@@ -6,14 +6,25 @@ import Tooltip, { type TooltipProps } from '../Tooltip';
 import classes from './Label.module.css';
 
 export interface LabelProps {
-    htmlFor?: string; // Add htmlFor when label is used standalone (not inside Mantine's label prop)
-    id?: string; // Add id when label is used standalone and for multiple inputs or elements (use aria-labelledby referencing this id)
+    /** Id of the input this label belongs to. Only needed when the label is used on its own. */
+    htmlFor?: string;
+    /** Id of the label text, for `aria-labelledby`. Only needed when the label is used on its own. */
+    id?: string;
+    /** Label text. */
     label: React.ReactNode;
+    /** Adds a red asterisk. */
     required?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: Omit<TooltipProps, 'children' | 'label'>;
 }
 
+/**
+ * **Custom inca-ui component** (not part of Mantine).
+ *
+ * Input label with an optional help tooltip. All inca-ui inputs already use it; use it directly only for custom fields.
+ */
 const Label = ({
     htmlFor,
     id,

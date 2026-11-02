@@ -5,22 +5,35 @@ import Icon from '../ui/Icon';
 import classes from './MiniModal.module.css';
 
 export interface MiniModalActionsProps {
+    /** Modal content. */
     children?: ReactNode;
 }
 
 export interface MiniModalContentProps {
+    /** Text shown under the header. */
     body?: ReactNode;
+    /** Modal content. */
     children?: ReactNode;
+    /** Large title text. */
     header?: ReactNode;
 }
 
 export interface MiniModalProps {
+    /** Modal content. */
     children?: ReactNode;
+    /** Shows the close (X) button. */
     isClosable?: boolean;
+    /** Whether the modal is shown. */
     isOpen?: boolean;
+    /** Called when the close button is clicked. */
     onClose?: () => void;
 }
 
+/**
+ * **Legacy custom inca-ui component** (not part of Mantine). Use `Modal` for new work.
+ *
+ * Small centered modal. Put `MiniModalContent` and `MiniModalActions` inside.
+ */
 export function MiniModal({
     children,
     isClosable = true,
@@ -48,10 +61,16 @@ export function MiniModal({
     ) : null;
 }
 
+/**
+ * Right-aligned action buttons for `MiniModal`.
+ */
 export function MiniModalActions({ children }: MiniModalActionsProps) {
     return <div className={classes.miniModalActions}>{children}</div>;
 }
 
+/**
+ * Title (`header`), text (`body`) and extra content for `MiniModal`.
+ */
 export function MiniModalContent({
     body,
     children,

@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+    NamingRule,
+    TextStyleTable,
+    TypefaceCard,
+    WeightTable
+} from './DocBlocks';
+
+<Meta title="Docs/Typography" />
+
+# Typography
+
+Every piece of text uses one of the text styles below. Pick the style from the design, then use the
+component in the **Use** column. Don't set `font-size`, `font-weight` or `line-height` by hand.
+
+## Typeface
+
+### Primary typeface
+
+**Source Sans 3** is the primary typeface used throughout the system. It's the default, so you don't
+need to set it.
+
+<TypefaceCard family="--font-family-sans" name="Source Sans 3" weight={600} />
+
+### Monospace typeface
+
+**Source Code Pro** is used for code snippets and technical content such as code blocks and inline code.
+
+<TypefaceCard family="--font-family-mono" name="Source Code Pro" />
+
+## Naming rule
+
+A text style name is **Role + Size + Weight**, e.g. **Heading xs Bold**: the Heading role, size `xs`,
+Bold weight. Using one naming rule keeps styles clear and easy to apply.
+
+<NamingRule />
+
+-   **Role**: `Heading`, `Body`, `Uppercase` or `Code`.
+-   **Size**: `xl`, `lg`, `md`, `sm`, `xs`, `2xs`. These are the same size keys as the tokens and Mantine
+    props (`size="2xs"`, `var(--font-size-2xs)`).
+-   **Weight**: Regular, Medium, Semi-Bold or Bold. Each role only uses the weights listed for it in
+    the table below (see [Weights](#weights)).
+
+## Text styles
+
+<TextStyleTable />
+
+-   **Headings** use `Title`, which renders the matching `<h1>`–`<h6>` tag. It's Semi-Bold unless you
+    set `fw={500}` (Medium) or `fw={700}` (Bold).
+-   **Body** text uses `Text`. It's Regular unless you set `fw={500}` (Medium) or `fw={600}`
+    (Semi-Bold).
+-   **Uppercase** is body text with `tt="uppercase"`.
+-   **Code**: for a short value inside a sentence use `<Code>`; for a code block use `<Prism>`; for
+    standalone monospace text use `<Text ff="var(--font-family-mono)">`.
+-   Color is separate from the text style: use `c="var(--text-…)"` (see the Tokens page).
+
+## Weights
+
+<WeightTable />
+
+Always set weights with the number (`fw={600}`) so they match the design exactly.
+
+## In CSS modules
+
+The font-size tokens are the Body / Uppercase / Code sizes (`2xs`–`xl`). Headings don't have
+font-size tokens: use `<Title>` for them instead of styling text to look like a heading.
+
+```css
+.caption {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-body);
+}
+
+.code {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+}
+```

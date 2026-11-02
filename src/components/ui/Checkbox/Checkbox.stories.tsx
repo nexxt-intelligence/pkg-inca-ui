@@ -1,9 +1,10 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { useState } from 'react';
 
-import Checkbox from './index';
+import { Checkbox } from '../../..';
 
-export default {
+const meta = {
     args: {
         description: '',
         disabled: false,
@@ -30,9 +31,12 @@ export default {
     },
     component: Checkbox,
     title: 'UI/Inputs/Checkbox'
-} as Meta<typeof Checkbox>;
+} satisfies Meta<typeof Checkbox>;
 
-export const Primary: StoryObj<typeof Checkbox> = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
     args: {
         checked: false,
         indeterminate: false,

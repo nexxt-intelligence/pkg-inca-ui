@@ -13,13 +13,21 @@ import classes from './TextInput.module.css';
 
 export interface TextInputProps
     extends Omit<StrictInputProps<MantineTextInputProps, 'size'>, 'prefix'> {
+    /** Icon on the left of the input: a Tabler icon name, e.g. `"IconSearch"` or `"IconMail"`, or a React node. */
     icon?: ReactNode | TablerIconKeys;
+    /** Text shown in a gray box before the input (e.g. `https://`). */
     prefix?: ReactNode;
+    /** Shows the value but prevents editing. */
     readOnly?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [TextInput](https://v6.mantine.dev/core/text-input/) with a help tooltip, a Tabler icon name for `icon`, a `prefix` box and a read-only state.
+ */
 const TextInput = ({
     icon,
     label,

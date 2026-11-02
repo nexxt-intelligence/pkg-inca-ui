@@ -2,9 +2,20 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { useState } from 'react';
 
-import RichTextEditor from './index';
+import {
+    Prism,
+    RichTextEditor,
+    type RichTextEditorProps,
+    Stack,
+    Switch
+} from '../..';
+import StoryLabel from '../../docs/StoryLabel';
 
-export default {
+const meta = {
+    args: {
+        label: 'Message',
+        placeholder: 'Type your message here...'
+    },
     argTypes: {
         label: { control: 'text' },
         placeholder: { control: 'text' },
@@ -12,36 +23,37 @@ export default {
     },
     component: RichTextEditor,
     title: 'Components/RichTextEditor'
-} as Meta<typeof RichTextEditor>;
+} satisfies Meta<typeof RichTextEditor>;
 
-export const Default: StoryObj<typeof RichTextEditor> = {
-    args: {
-        label: 'Message',
-        placeholder: 'Type your message here...'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-const ImageExample = () => {
+export const Primary: Story = {};
+
+const ImageExample = (args: RichTextEditorProps) => {
     const [readOnly, setReadOnly] = useState(false);
-    const [lastBlurredHtml, setLastBlurredHtml] = useState('');
+    const [blurredHtml, setBlurredHtml] = useState('');
 
     return (
-        <div style={{ maxWidth: 640 }}>
-            <button onClick={() => setReadOnly((current) => !current)}>
-                {readOnly ? 'Edit' : 'View'}
-            </button>
+        <Stack maw={640} spacing="sm">
+            <Switch
+                checked={readOnly}
+                label="Read only"
+                onChange={(event) => setReadOnly(event.currentTarget.checked)}
+            />
             <RichTextEditor
+                {...args}
                 defaultValue="<p>Choose an image, select it to replace it, or drag a resize handle.</p>"
-                onBlur={setLastBlurredHtml}
+                onBlur={setBlurredHtml}
                 onImageUpload={async (file) => URL.createObjectURL(file)}
                 readOnly={readOnly}
             />
-            <p>Last content returned on blur:</p>
-            <pre>{lastBlurredHtml}</pre>
-        </div>
+            <StoryLabel>HTML returned by onBlur</StoryLabel>
+            <Prism language="markup">{blurredHtml}</Prism>
+        </Stack>
     );
 };
 
-export const ImagesAndReadOnly: StoryObj<typeof RichTextEditor> = {
-    render: () => <ImageExample />
+export const WithImages: Story = {
+    render: (args) => <ImageExample {...args} />
 };

@@ -1,27 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import * as React from 'react';
+import { ActionIcon, Group, Stack } from '../../..';
+import StoryLabel from '../../../docs/StoryLabel';
 
-import { TablerIconKeys } from '../Icon';
-import ActionIcon from './index';
+const actionIconColors = [
+    'primary',
+    'red',
+    'green',
+    'gray',
+    'yellow',
+    'violet'
+] as const;
+const actionIconSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+const actionIconVariants = ['filled', 'subtle', 'muted'] as const;
 
-const columnStyle: React.CSSProperties = {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6
-};
-
-const labelStyle: React.CSSProperties = {
-    color: 'var(--text-subtle)',
-    fontSize: 11
-};
-
-export default {
+const meta = {
     args: {
         color: 'primary',
         disabled: false,
-        icon: 'IconPlus' as TablerIconKeys,
+        icon: 'IconPlus',
         loading: false,
         size: 'sm',
         variant: 'filled'
@@ -29,7 +26,7 @@ export default {
     argTypes: {
         color: {
             control: 'select',
-            options: ['primary', 'red', 'green', 'gray', 'yellow', 'violet'],
+            options: actionIconColors,
             table: { defaultValue: { summary: 'primary' } }
         },
         disabled: {
@@ -52,72 +49,76 @@ export default {
         },
         size: {
             control: 'radio',
-            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            options: actionIconSizes,
             table: { defaultValue: { summary: 'sm' } }
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'subtle', 'muted'],
+            options: actionIconVariants,
             table: { defaultValue: { summary: 'filled' } }
         }
     },
     component: ActionIcon,
     title: 'UI/Buttons/ActionIcon'
-} as Meta<typeof ActionIcon>;
+} satisfies Meta<typeof ActionIcon>;
 
-export const Primary: StoryObj<typeof ActionIcon> = {};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Variants: StoryObj<typeof ActionIcon> = {
+export const Primary: Story = {};
+
+export const Variants: Story = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['filled', 'subtle', 'muted'] as const).map((variant) => (
-                <div key={variant} style={columnStyle}>
+        <Group align="flex-end" spacing="xl">
+            {actionIconVariants.map((variant) => (
+                <Stack align="center" key={variant} spacing="2xs">
                     <ActionIcon {...args} variant={variant} />
-                    <span style={labelStyle}>{variant}</span>
-                </div>
+                    <StoryLabel>{variant}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };
 
-export const Sizes: StoryObj<typeof ActionIcon> = {
+export const Sizes: Story = {
     argTypes: { size: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-                <div key={size} style={columnStyle}>
-                    <ActionIcon {...args} size={size} variant="filled" />
-                    <span style={labelStyle}>{size}</span>
-                </div>
+        <Group align="flex-end" spacing="xl">
+            {actionIconSizes.map((size) => (
+                <Stack align="center" key={size} spacing="2xs">
+                    <ActionIcon {...args} size={size} />
+                    <StoryLabel>{size}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };
 
-export const Colors: StoryObj<typeof ActionIcon> = {
-    argTypes: { color: { table: { disable: true } } },
+export const Colors: Story = {
+    argTypes: {
+        color: { table: { disable: true } },
+        variant: { table: { disable: true } }
+    },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(
-                ['primary', 'red', 'green', 'gray', 'yellow', 'violet'] as const
-            ).map((color) => (
-                <div key={color} style={columnStyle}>
-                    <ActionIcon
-                        {...args}
-                        color={color}
-                        size="md"
-                        variant="filled"
-                    />
-                    <ActionIcon
-                        {...args}
-                        color={color}
-                        size="md"
-                        variant="subtle"
-                    />
-                    <span style={labelStyle}>{color}</span>
-                </div>
+        <Stack spacing="md">
+            {actionIconVariants.map((variant) => (
+                <Group key={variant} spacing="sm">
+                    <StoryLabel ta="right" w={96}>
+                        {variant}
+                    </StoryLabel>
+                    {actionIconColors.map((color) => (
+                        <Stack align="center" key={color} spacing="2xs">
+                            <ActionIcon
+                                {...args}
+                                color={color}
+                                variant={variant}
+                            />
+                            <StoryLabel>{color}</StoryLabel>
+                        </Stack>
+                    ))}
+                </Group>
             ))}
-        </div>
+        </Stack>
     )
 };

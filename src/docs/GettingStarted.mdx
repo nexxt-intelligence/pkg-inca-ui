@@ -1,0 +1,257 @@
+import { Meta } from '@storybook/blocks';
+
+import { Table } from './DocBlocks';
+
+<Meta title="Docs/Getting Started" />
+
+# Getting Started with inca-ui
+
+_Last updated: 2026-11-02_
+
+inca-ui is the shared component library for the inca platform. It wraps
+[Mantine](https://v6.mantine.dev) with our theme, design tokens (from Figma) and a set of custom components.
+
+## 1. Pick the right version
+
+There are two release tracks. **Install the one that matches your app's React version.**
+
+<Table
+    head={['Branch', 'Stack', 'npm dist-tag', 'Install']}
+    rows={[
+        [
+            <code>main</code>,
+            <>
+                React 19 / Mantine 9 (<code>9.x</code>)
+            </>,
+            <code>latest</code>,
+            <code>yarn add inca-ui</code>
+        ],
+        [
+            <code>v7</code>,
+            <>
+                React 16 / Mantine 6 (<code>7.x</code>)
+            </>,
+            <code>legacy</code>,
+            <>
+                <code>yarn add inca-ui@legacy</code> (or pin{' '}
+                <code>"inca-ui": "^7"</code>)
+            </>
+        ]
+    ]}
+/>
+
+-   Both tracks are maintained in parallel until all apps move to React 19. Every change goes to both
+    `main` and `v7`.
+-   Never use a major changeset on either branch (patch or minor only): `main` stays on `9.x` and `v7`
+    stays on `7.x`.
+-   You're looking at the **`v7` Storybook** (Mantine 6). It only runs locally: `yarn storybook` on the
+    `v7` branch. The deployed Storybook is built from `main`; components and tokens are the same
+    there, but its examples use Mantine 9 props (see [Mantine 6 vs 9](#5-mantine-6-vs-9-differences)).
+
+### What each app uses today
+
+<Table
+    head={['App', 'React', 'inca-ui', 'Track']}
+    rows={[
+        ['ui-smartinsight', '19', <code>9.2.0</code>, <code>main</code>],
+        ['portal-client', '16', <code>7.15.0</code>, <code>v7</code>],
+        ['ui-smartprobe', '16', <code>7.15.0</code>, <code>v7</code>],
+        [
+            'auth-client',
+            '16',
+            <code>^6.9.5</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        [
+            'dashboard',
+            '16',
+            <code>3.3.1</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        [
+            'quicktag',
+            '16',
+            <code>3.3.1</code>,
+            <>
+                outdated → move to <code>v7</code>
+            </>
+        ],
+        ['bot-client', '16', 'not used', '—'],
+        ['ui-docs', '19+', 'latest', <code>main</code>]
+    ]}
+/>
+
+All React 16 apps should be on `v7` (`inca-ui@legacy`). Apps on `3.x` / `6.x` are on releases that
+no longer get fixes. Update this table when an app upgrades.
+
+## 2. Set up the provider
+
+Wrap your app once with `CustomMantineProvider`. It sets up the Mantine theme, `ModalsProvider`, the
+fonts (Source Sans 3 and Source Code Pro), the global CSS and the design tokens. **Don't** add your own
+`MantineProvider`.
+
+```tsx
+import { CustomMantineProvider } from 'inca-ui';
+
+export const App = () => (
+    <CustomMantineProvider>
+        <Routes />
+    </CustomMantineProvider>
+);
+```
+
+For white-labeling, pass a 10-shade palette (lightest to darkest) as `brand`. It replaces the `primary`
+color, so every primary button, link and `--*-accent` token follows it. Shade `6` is the main shade.
+
+```tsx
+import { type BrandPalette, CustomMantineProvider } from 'inca-ui';
+
+const brand: BrandPalette = [
+    '#f0f9ff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#38bdf8',
+    '#0ea5e9', '#0284c7', '#0369a1', '#075985', '#0c4a6e'
+];
+
+<CustomMantineProvider brand={brand}>
+```
+
+## 3. Import components from `inca-ui`
+
+Always import from `inca-ui`, not from `@mantine/core`.
+
+```tsx
+// ✅
+import { Button, Group, Stack, Text } from 'inca-ui';
+
+// ❌ skips our wrappers and defaults
+import { Button } from '@mantine/core';
+```
+
+The package exports three kinds of components. Each one has a page in this Storybook with a short
+description, every prop and its default.
+
+-   **Extended Mantine components** (`Button`, `TextInput`, `Select`, `Modal`, …): Mantine components with
+    our sizes, defaults and extra props (e.g. `leftIcon="IconPlus"` takes a Tabler icon name).
+-   **Custom components** (`ActionCard`, `ChatInput`, `SplitButton`, `Label`, …): built by us, marked
+    **Custom inca-ui component** on their page.
+-   **Re-exported Mantine components** (`Group`, `Stack`, `Flex`, `Box`, `Paper`, `Popover`, …): used
+    as-is. The layout ones have their own pages under **UI / Layout**.
+
+If you need a component that isn't exported, ask in the design-system channel instead of importing it
+from Mantine directly.
+
+## 4. Styling with tokens
+
+All colors, spacing, radius, typography and shadows come from the design tokens.
+
+<a href="./?path=/docs/docs-tokens--docs" target="_top">
+    See every token on the Tokens page →
+</a>
+
+<a href="./?path=/docs/docs-typography--docs" target="_top">
+    See which text style and component to use on the Typography page →
+</a>
+
+<a href="./?path=/docs/docs-cheat-sheet--docs" target="_top">
+    Look up a raw design value (e.g. 16px or #212529) on the Cheat Sheet →
+</a>
+
+-   Colors: semantic tokens (`--text-subtle`, `--bg-accent`, …). **Never** raw hex or Mantine internals
+    like `var(--mantine-color-blue-6)`.
+-   Sizes: the spacing, radius and typography scales. Raw `px` only for borders and fixed dimensions.
+
+**In component props**, use Mantine keys for sizes and `var(--token)` for colors:
+
+```tsx
+<Stack spacing="xs" p="md">
+    <Text c="var(--text-subtle)" size="sm">
+        Last edited 2 days ago
+    </Text>
+    <Group spacing="2xs">
+        <Icon color="var(--icon-accent)" type="IconSparkles" />
+        <Text c="var(--text-ai)">AI suggestion</Text>
+    </Group>
+</Stack>
+```
+
+**In CSS modules** (better for anything more than a couple of props), use the CSS variables:
+
+```css
+/* MyCard.module.css */
+.root {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-1);
+}
+
+.root:hover {
+    background: var(--bg-hover);
+}
+
+/* ❌ Avoid */
+.caption {
+    padding: 15px; /* not on the scale */
+    color: #868e96; /* raw hex */
+    border-color: var(--mantine-color-gray-2); /* Mantine internal */
+}
+```
+
+## 5. Mantine 6 vs 9 differences
+
+Tokens, component names and inca-ui's own props (`leftIcon`, `icon`, `tooltip`, `compact`, …) are the
+same on both tracks. Some Mantine props differ:
+
+<Table
+    head={['What', 'main (Mantine 9)', 'v7 (Mantine 6)']}
+    rows={[
+        [
+            'Gap on Group / Stack',
+            <code>gap="xs"</code>,
+            <code>spacing="xs"</code>
+        ],
+        [
+            'Horizontal alignment on Group',
+            <code>justify="space-between"</code>,
+            <code>position="apart"</code>
+        ],
+        [
+            'No wrapping on Group',
+            <code>wrap="nowrap"</code>,
+            <code>noWrap</code>
+        ],
+        [
+            'Icon on re-exported Mantine inputs (PasswordInput, Autocomplete, …)',
+            <code>leftSection</code>,
+            <code>icon</code>
+        ],
+        [
+            'Show / hide by screen size',
+            <>
+                <code>hiddenFrom</code> / <code>visibleFrom</code>
+            </>,
+            <code>MediaQuery</code>
+        ]
+    ]}
+/>
+
+When in doubt, check the [Mantine 6 docs](https://v6.mantine.dev) for `v7` and the
+[Mantine docs](https://mantine.dev) for `main`.
+
+## 6. Contributing
+
+1. Branch off `main` or `v7`. Most changes go to both tracks: make one branch and one PR for each.
+2. Follow the conventions in the [README](https://github.com/nexxt-intelligence/pkg-inca-ui#conventions):
+   one folder per component (`index.tsx`, `<Name>.module.css`, `<Name>.stories.tsx`), JSDoc on every
+   component and prop, CSS class names that match Mantine slot names, tokens only, and the standard
+   story layout.
+3. Run `yarn storybook`, `yarn lint` and `yarn build`.
+4. Add a changeset: run `yarn changeset`, pick patch or minor (never major) and commit the generated
+   file.
+5. Open a PR into the branch you started from and request a review from **Sharon**.
+6. Once it's approved and merged, a **Version Packages** PR is opened automatically. Merging it
+   publishes to npm.

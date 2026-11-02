@@ -1,22 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../components/ui/Button';
-import Text from '../components/ui/Text';
-import { useConfirmationModal } from './useConfirmationModal';
+import { Button, Stack, Text, useConfirmationModal } from '..';
 
+/**
+ * **Custom inca-ui hook.** Built on the Mantine [modals manager](https://v6.mantine.dev/others/modals/).
+ *
+ * `showSimpleConfirmationModal` opens a confirm modal with a title and message. `showConfirmationModal`
+ * takes your own content and button labels. Needs `CustomMantineProvider` (it includes `ModalsProvider`).
+ */
 const ConfirmationModalDemo = () => {
     const { showConfirmationModal, showSimpleConfirmationModal } =
         useConfirmationModal();
 
     return (
-        <div
-            style={{
-                alignItems: 'flex-start',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12
-            }}
-        >
+        <Stack align="flex-start" spacing="sm">
             <Button
                 onClick={() =>
                     showSimpleConfirmationModal({
@@ -45,15 +42,16 @@ const ConfirmationModalDemo = () => {
             >
                 Complex (custom children)
             </Button>
-        </div>
+        </Stack>
     );
 };
 
-export default {
+const meta = {
     component: ConfirmationModalDemo,
     title: 'UI/Other Packages/useConfirmationModal'
-} as Meta<typeof ConfirmationModalDemo>;
+} satisfies Meta<typeof ConfirmationModalDemo>;
 
-export const Primary: StoryObj<typeof ConfirmationModalDemo> = {
-    render: () => <ConfirmationModalDemo />
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

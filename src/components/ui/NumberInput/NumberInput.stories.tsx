@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NumberInput from './index';
+import { NumberInput } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        label: 'Number',
+        placeholder: 'Enter a number'
+    },
     argTypes: {
         description: { control: 'text' },
         disabled: {
@@ -22,11 +26,9 @@ export default {
     },
     component: NumberInput,
     title: 'UI/Inputs/NumberInput'
-} as Meta<typeof NumberInput>;
+} satisfies Meta<typeof NumberInput>;
 
-export const Primary: StoryObj<typeof NumberInput> = {
-    args: {
-        label: 'Number',
-        placeholder: 'Enter a number'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

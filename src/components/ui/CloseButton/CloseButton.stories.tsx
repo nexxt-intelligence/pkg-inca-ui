@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CloseButton from './index';
+import { CloseButton } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        size: 'md',
+        variant: 'subtle'
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -12,14 +16,18 @@ export default {
             control: 'radio',
             options: ['xs', 'sm', 'md', 'lg', 'xl'],
             table: { defaultValue: { summary: 'md' } }
+        },
+        variant: {
+            control: 'radio',
+            options: ['subtle', 'transparent'],
+            table: { defaultValue: { summary: 'subtle' } }
         }
     },
     component: CloseButton,
     title: 'UI/Buttons/CloseButton'
-} as Meta<typeof CloseButton>;
+} satisfies Meta<typeof CloseButton>;
 
-export const Primary: StoryObj<typeof CloseButton> = {
-    args: {
-        size: 'md'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

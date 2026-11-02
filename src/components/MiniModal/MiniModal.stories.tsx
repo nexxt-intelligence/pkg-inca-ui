@@ -1,18 +1,28 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { useState } from 'react';
 
-import Button from '../ui/Button';
-import { MiniModal, MiniModalActions, MiniModalContent } from './index';
+import {
+    Button,
+    MiniModal,
+    MiniModalActions,
+    MiniModalContent,
+    type MiniModalProps
+} from '../..';
 
-export default {
+const meta = {
+    args: { isClosable: true },
     argTypes: {
         isClosable: { control: 'boolean' }
     },
     component: MiniModal,
     title: 'Components/MiniModal'
-} as Meta<typeof MiniModal>;
+} satisfies Meta<typeof MiniModal>;
 
-const MiniModalStory = (args: any) => {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const MiniModalStory = (args: MiniModalProps) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
@@ -43,7 +53,6 @@ const MiniModalStory = (args: any) => {
     );
 };
 
-export const Primary: StoryObj<typeof MiniModal> = {
-    args: { isClosable: true },
+export const Primary: Story = {
     render: (args) => <MiniModalStory {...args} />
 };

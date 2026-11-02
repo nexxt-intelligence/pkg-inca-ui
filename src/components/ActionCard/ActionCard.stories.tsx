@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ActionCard from './index';
+import { ActionCard } from '../..';
 
-export default {
+const meta = {
+    args: {
+        description: 'A short description of the action goes here.',
+        disabled: false,
+        icon: 'IconSend',
+        onClick: () => console.log('clicked'),
+        title: 'Action Title'
+    },
     argTypes: {
         description: { control: 'text' },
         disabled: { control: 'boolean' },
@@ -21,14 +28,9 @@ export default {
     },
     component: ActionCard,
     title: 'Components/ActionCard'
-} as Meta<typeof ActionCard>;
+} satisfies Meta<typeof ActionCard>;
 
-export const Primary: StoryObj<typeof ActionCard> = {
-    args: {
-        description: 'A short description of the action goes here.',
-        disabled: false,
-        icon: 'IconSend',
-        onClick: () => console.log('clicked'),
-        title: 'Action Title'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

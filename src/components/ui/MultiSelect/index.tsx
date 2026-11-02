@@ -12,12 +12,16 @@ import CloseButton from '../CloseButton';
 import Label, { type LabelProps } from '../Label';
 import classes from './MultiSelect.module.css';
 
-export interface MultiSelectProps
-    extends StrictProps<MantineMultiSelectProps> {
+export interface MultiSelectProps extends StrictProps<MantineMultiSelectProps> {
+    /** Shows a loader on the right side. */
     loading?: boolean;
+    /** Selected values that can't be removed. They are always shown first. */
     nonRemovableValues?: string[];
+    /** Shows an "add" option that calls this instead of creating a value (e.g. to open a modal). */
     onCreateAction?: () => void;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
@@ -27,6 +31,9 @@ const defaultShouldCreate = (query: string, items: MantineSelectItem[]) =>
 
 const lower = (value: string) => value.toLowerCase();
 
+/**
+ * Mantine [MultiSelect](https://v6.mantine.dev/core/multi-select/) with a help tooltip, a loading state, values that can't be removed and an "add" option (`creatable` or `onCreateAction`).
+ */
 const MultiSelect = ({
     clearable,
     creatable,

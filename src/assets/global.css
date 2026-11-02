@@ -20,4 +20,5 @@ label {
 
 body {
     color: var(--text-default);
+    font-family: var(--font-family-sans);
 }

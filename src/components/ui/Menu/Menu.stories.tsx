@@ -1,10 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../Button';
-import Icon from '../Icon';
-import Menu from './index';
+import { Button, Icon, Menu } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        children: <Button>Open Menu</Button>,
+        items: [
+            { icon: <Icon size="sm" type="IconUser" />, label: 'Profile' },
+            { icon: <Icon size="sm" type="IconSettings" />, label: 'Settings' },
+            {
+                color: 'red',
+                icon: <Icon size="sm" type="IconLogout" />,
+                label: 'Logout'
+            }
+        ],
+        position: 'bottom',
+        shadow: 'md'
+    },
     argTypes: {
         position: {
             control: 'radio',
@@ -19,21 +31,9 @@ export default {
     },
     component: Menu,
     title: 'UI/Overlays/Menu'
-} as Meta<typeof Menu>;
+} satisfies Meta<typeof Menu>;
 
-export const Primary: StoryObj<typeof Menu> = {
-    args: {
-        children: <Button>Open Menu</Button>,
-        items: [
-            { icon: <Icon size="sm" type="IconUser" />, label: 'Profile' },
-            { icon: <Icon size="sm" type="IconSettings" />, label: 'Settings' },
-            {
-                color: 'red',
-                icon: <Icon size="sm" type="IconLogout" />,
-                label: 'Logout'
-            }
-        ],
-        position: 'bottom',
-        shadow: 'md'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

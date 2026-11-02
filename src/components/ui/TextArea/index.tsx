@@ -9,12 +9,19 @@ import classes from './TextArea.module.css';
 
 export interface TextAreaProps
     extends StrictTextareaProps<MantineTextareaProps> {
+    /** Text shown while the field is empty. */
     placeholder?: string;
+    /** Shows the value but prevents editing. */
     readOnly?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [Textarea](https://v6.mantine.dev/core/textarea/) that grows with its content, with a help tooltip and a read-only state.
+ */
 const TextArea = ({
     autosize = true,
     label,

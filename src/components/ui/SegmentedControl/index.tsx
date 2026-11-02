@@ -8,6 +8,9 @@ import classes from './SegmentedControl.module.css';
 
 export type SegmentedControlProps = StrictProps<MantineSegmentedControlProps>;
 
+/**
+ * Mantine [SegmentedControl](https://v6.mantine.dev/core/segmented-control/) with inca-ui label styling.
+ */
 const SegmentedControl = ({ ...props }: SegmentedControlProps) => {
     return (
         <MantineSegmentedControl

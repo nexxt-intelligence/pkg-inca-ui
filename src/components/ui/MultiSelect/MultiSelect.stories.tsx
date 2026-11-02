@@ -2,11 +2,25 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { type ChangeEvent, useState } from 'react';
 
-import Modal from '../Modal';
-import TextInput from '../TextInput';
-import MultiSelect from './index';
+import { Modal, MultiSelect, TextInput } from '../../..';
 
-export default {
+const data = [
+    { label: 'React', value: 'react' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Angular', value: 'angular' },
+    { label: 'Svelte', value: 'svelte' }
+];
+
+const meta = {
+    args: {
+        clearable: false,
+        creatable: false,
+        data,
+        label: 'Select options',
+        nothingFound: 'No options',
+        placeholder: 'Choose values',
+        searchable: true
+    },
     argTypes: {
         clearable: {
             control: 'boolean',
@@ -46,33 +60,25 @@ export default {
     },
     component: MultiSelect,
     title: 'UI/Inputs/MultiSelect'
-} as Meta<typeof MultiSelect>;
+} satisfies Meta<typeof MultiSelect>;
 
-const data = [
-    { label: 'React', value: 'react' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Angular', value: 'angular' },
-    { label: 'Svelte', value: 'svelte' }
-];
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Primary: StoryObj<typeof MultiSelect> = {
+export const Primary: Story = {};
+
+export const WithNonRemovableValue: Story = {
     args: {
-        clearable: false,
-        creatable: false,
-        data,
-        label: 'Select options',
-        nothingFound: 'No options',
-        placeholder: 'Choose values',
-        searchable: true
-    }
-};
-
-export const WithNonRemovableValue: StoryObj<typeof MultiSelect> = {
-    args: {
-        ...Primary.args,
         clearable: true,
         defaultValue: ['react'],
         nonRemovableValues: ['react']
+    }
+};
+
+export const Creatable: Story = {
+    args: {
+        creatable: true,
+        getCreateLabel: (query) => `+ Add ${query}`
     }
 };
 
@@ -147,7 +153,7 @@ const WithCreateActionStory = () => {
     );
 };
 
-export const WithCreateAction: StoryObj<typeof MultiSelect> = {
+export const WithCreateAction: Story = {
     argTypes: {
         creatable: { table: { disable: true } },
         getCreateLabel: { table: { disable: true } },

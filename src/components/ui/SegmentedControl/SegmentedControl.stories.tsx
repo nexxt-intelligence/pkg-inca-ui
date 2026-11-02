@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SegmentedControl from './index';
+import { SegmentedControl } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        data: [
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' }
+        ]
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -20,14 +27,9 @@ export default {
     },
     component: SegmentedControl,
     title: 'UI/Inputs/SegmentedControl'
-} as Meta<typeof SegmentedControl>;
+} satisfies Meta<typeof SegmentedControl>;
 
-export const Primary: StoryObj<typeof SegmentedControl> = {
-    args: {
-        data: [
-            { label: 'React', value: 'react' },
-            { label: 'Vue', value: 'vue' },
-            { label: 'Angular', value: 'angular' }
-        ]
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

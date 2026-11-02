@@ -7,14 +7,25 @@ import Tooltip from '../ui/Tooltip';
 import classes from './CollapsibleContainer.module.css';
 
 export interface CollapsibleContainerProps extends AccordionProps {
+    /** Content shown when the section is expanded. */
     children: React.ReactNode;
+    /** Whether the section starts expanded. */
     defaultOpen?: boolean;
+    /** Secondary text shown on the right side of the header. */
     description?: string;
+    /** Header text. Also used as the internal accordion value. */
     title: string;
+    /** Text shown in a tooltip next to the title. */
     tooltip?: string;
+    /** `info` shows a help icon, `warning` shows a warning icon and a yellow border. */
     tooltipType?: 'info' | 'warning';
 }
 
+/**
+ * **Custom inca-ui component** (built with Mantine [Accordion](https://v6.mantine.dev/core/accordion/)).
+ *
+ * Collapsible section with a title, an optional description and an info or warning tooltip.
+ */
 const CollapsibleContainer = ({
     children,
     defaultOpen = true,

@@ -1,12 +1,29 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Text from './index';
+import { Group, Stack, Text } from '../../..';
+import StoryLabel from '../../../docs/StoryLabel';
 
-export default {
+const textColors = [
+    'var(--text-default)',
+    'var(--text-medium)',
+    'var(--text-subtle)',
+    'var(--text-accent)',
+    'var(--text-error)',
+    'var(--text-success)',
+    'var(--text-warning)',
+    'var(--text-ai)'
+];
+const textSizes = ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'] as const;
+const textWeights = [300, 400, 500, 600, 700] as const;
+
+const meta = {
+    args: {
+        children: 'The quick brown fox jumps over the lazy dog'
+    },
     argTypes: {
         c: {
             control: 'select',
-            options: ['dark', 'gray', 'red', 'primary', 'green', 'orange']
+            options: textColors
         },
         children: { control: 'text' },
         fs: {
@@ -16,12 +33,12 @@ export default {
         },
         fw: {
             control: 'select',
-            options: [300, 400, 500, 600, 700],
+            options: textWeights,
             table: { defaultValue: { summary: '400' } }
         },
         size: {
             control: 'radio',
-            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            options: textSizes,
             table: { defaultValue: { summary: 'md' } }
         },
         span: {
@@ -50,62 +67,37 @@ export default {
     },
     component: Text,
     title: 'UI/Typography/Text'
-} as Meta<typeof Text>;
+} satisfies Meta<typeof Text>;
 
-export const Primary: StoryObj<typeof Text> = {
-    args: {
-        children: 'Text content'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Sizes: StoryObj<typeof Text> = {
-    render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-                <div
-                    key={size}
-                    style={{ alignItems: 'baseline', display: 'flex', gap: 12 }}
-                >
-                    <Text size={size}>
-                        The quick brown fox jumps over the lazy dog
-                    </Text>
-                    <span
-                        style={{
-                            color: 'var(--text-subtle)',
-                            flexShrink: 0,
-                            fontSize: 11
-                        }}
-                    >
-                        {size}
-                    </span>
-                </div>
+export const Primary: Story = {};
+
+export const Sizes: Story = {
+    argTypes: { size: { table: { disable: true } } },
+    render: (args) => (
+        <Stack spacing="xs">
+            {textSizes.map((size) => (
+                <Group align="baseline" key={size} noWrap spacing="sm">
+                    <Text {...args} size={size} />
+                    <StoryLabel>{size}</StoryLabel>
+                </Group>
             ))}
-        </div>
+        </Stack>
     )
 };
 
-export const Weights: StoryObj<typeof Text> = {
-    render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {([300, 400, 500, 600, 700] as const).map((fw) => (
-                <div
-                    key={fw}
-                    style={{ alignItems: 'baseline', display: 'flex', gap: 12 }}
-                >
-                    <Text fw={fw}>
-                        The quick brown fox jumps over the lazy dog
-                    </Text>
-                    <span
-                        style={{
-                            color: 'var(--text-subtle)',
-                            flexShrink: 0,
-                            fontSize: 11
-                        }}
-                    >
-                        fw={fw}
-                    </span>
-                </div>
+export const Weights: Story = {
+    argTypes: { fw: { table: { disable: true } } },
+    render: (args) => (
+        <Stack spacing="xs">
+            {textWeights.map((fw) => (
+                <Group align="baseline" key={fw} noWrap spacing="sm">
+                    <Text {...args} fw={fw} />
+                    <StoryLabel>{fw}</StoryLabel>
+                </Group>
             ))}
-        </div>
+        </Stack>
     )
 };

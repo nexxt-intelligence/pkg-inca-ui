@@ -13,18 +13,30 @@ import tooltipClasses from '../Tooltip/Tooltip.module.css';
 import classes from './Menu.module.css';
 
 export type MenuItem = {
+    /** Disables the item. */
     disabled?: boolean;
+    /** Item text. */
     label: string;
+    /** Called when the item is clicked. */
     onClick?: () => void;
+    /** Text shown in a tooltip when hovering the item. */
     tooltip?: React.ReactElement | string;
+    /** Tooltip position. */
     tooltipPosition?: MantineTooltipProps['position'];
 } & StrictProps<MantineMenuItemProps>;
 
 export type MenuProps = {
+    /** Menu items to render. Use `menuContent` for fully custom content. */
     items?: MenuItem[];
+    /** Custom dropdown content. Overrides `items`. */
     menuContent?: React.ReactNode;
 } & StrictProps<MantineMenuProps>;
 
+/**
+ * Dropdown menu. Built on Mantine [Menu](https://v6.mantine.dev/core/menu/).
+ *
+ * `children` is the element that opens it. Pass `items` for a simple list (items can have tooltips) or `menuContent` for custom content.
+ */
 const Menu = ({ children, items, menuContent, ...props }: MenuProps) => {
     return (
         <MantineMenu
@@ -69,7 +81,7 @@ const Menu = ({ children, items, menuContent, ...props }: MenuProps) => {
                                       position={tooltipPosition}
                                       withArrow
                                       withinPortal
-                                      zIndex={9999} // sorry
+                                      zIndex={9999}
                                   >
                                       <MantineMenu.Item
                                           onClick={onClick}

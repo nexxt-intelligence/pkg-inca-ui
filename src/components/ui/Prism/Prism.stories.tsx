@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Prism from './index';
+import { Prism } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        children: `function Hello() {\n  return <div>Hello World</div>;\n}`,
+        language: 'tsx'
+    },
     argTypes: {
         copiedLabel: { control: 'text' },
         copyLabel: { control: 'text' },
@@ -25,11 +29,9 @@ export default {
     },
     component: Prism,
     title: 'UI/Other Packages/Prism'
-} as Meta<typeof Prism>;
+} satisfies Meta<typeof Prism>;
 
-export const Primary: StoryObj<typeof Prism> = {
-    args: {
-        children: `function Hello() {\n  return <div>Hello World</div>;\n}`,
-        language: 'tsx'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

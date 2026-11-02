@@ -13,12 +13,19 @@ export interface NumberInputProps
         MantineNumberInputProps,
         'classNames' | 'onChange' | 'size' | 'styles' | 'type' | 'value'
     > {
+    /** Tabler icon name shown on the left of the input, e.g. `"IconCurrencyDollar"`. */
     icon?: TablerIconKeys;
+    /** Shows the value but prevents editing. */
     readOnly?: boolean;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Props passed to the label tooltip (e.g. `position`, `multiline`). */
     tooltipProps?: LabelProps['tooltipProps'];
 }
 
+/**
+ * Mantine [NumberInput](https://v6.mantine.dev/core/number-input/) with a help tooltip and a read-only state.
+ */
 const NumberInput = ({
     icon,
     label,

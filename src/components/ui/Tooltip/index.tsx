@@ -9,13 +9,18 @@ import classes from './Tooltip.module.css';
 
 export interface FloatingTooltipProps
     extends StrictProps<MantineTooltipFloatingProps> {
+    /** Tooltip content. */
     label: React.ReactElement | string;
 }
 
 export interface TooltipProps extends StrictProps<MantineTooltipProps> {
+    /** Tooltip content. */
     label: React.ReactElement | string;
 }
 
+/**
+ * Mantine [Tooltip](https://v6.mantine.dev/core/tooltip/) with inca-ui defaults: arrow, multiline, 320px max width. Use `Tooltip.Floating` for one that follows the cursor.
+ */
 const Tooltip = ({
     children,
     label,
@@ -39,6 +44,9 @@ const Tooltip = ({
     );
 };
 
+/**
+ * Tooltip that follows the cursor.
+ */
 const FloatingTooltip = ({
     children,
     label,

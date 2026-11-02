@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TextArea from './index';
+import { TextArea } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        label: 'Text area',
+        placeholder: 'Enter text here'
+    },
     argTypes: {
         autosize: {
             control: 'boolean',
@@ -28,11 +32,9 @@ export default {
     },
     component: TextArea,
     title: 'UI/Inputs/TextArea'
-} as Meta<typeof TextArea>;
+} satisfies Meta<typeof TextArea>;
 
-export const Primary: StoryObj<typeof TextArea> = {
-    args: {
-        label: 'Text area',
-        placeholder: 'Enter text here'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};

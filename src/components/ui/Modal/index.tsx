@@ -11,15 +11,23 @@ import Button from '../Button';
 import classes from './Modal.module.css';
 
 export interface ModalProps extends StrictProps<MantineModalProps> {
+    /** Label of the default Cancel button. */
     cancelLabel?: string;
     /** Close the modal after confirm succeeds. Return false from onConfirm to keep it open. */
     closeOnConfirm?: boolean;
+    /** Label of the default confirm button. */
     confirmLabel?: string;
     /** Custom footer content. Defaults to Cancel + Done buttons. */
     footer?: ReactNode;
+    /** Called by the default confirm button. Can be async; the button shows a loader while it runs. */
     onConfirm?: () => boolean | Promise<boolean | void> | void;
 }
 
+/**
+ * Mantine [Modal](https://v6.mantine.dev/core/modal/) with a built-in footer.
+ *
+ * Shows Cancel and confirm buttons by default, or your own `footer`. `onConfirm` can be async; return `false` to keep the modal open.
+ */
 const Modal = ({
     cancelLabel = 'Cancel',
     centered = true,

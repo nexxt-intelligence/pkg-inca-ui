@@ -1,22 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import * as React from 'react';
+import { Badge, Group, Stack } from '../../..';
+import StoryLabel from '../../../docs/StoryLabel';
 
-import Badge from './index';
+const badgeColors = [
+    'primary',
+    'green',
+    'yellow',
+    'red',
+    'dark',
+    'violet'
+] as const;
+const badgeSizes = ['sm', 'md'] as const;
+const badgeVariants = ['filled', 'light', 'outline', 'dot'] as const;
 
-const columnStyle: React.CSSProperties = {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6
-};
-
-const labelStyle: React.CSSProperties = {
-    color: 'var(--text-subtle)',
-    fontSize: 11
-};
-
-export default {
+const meta = {
     args: {
         children: 'Badge',
         color: 'primary',
@@ -28,7 +26,7 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'select',
-            options: ['primary', 'green', 'yellow', 'red', 'dark', 'violet'],
+            options: badgeColors,
             table: { defaultValue: { summary: 'primary' } }
         },
         fullWidth: {
@@ -37,67 +35,76 @@ export default {
         },
         size: {
             control: 'radio',
-            options: ['sm', 'md'],
+            options: badgeSizes,
             table: { defaultValue: { summary: 'md' } }
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'light', 'outline', 'dot'],
+            options: badgeVariants,
             table: { defaultValue: { summary: 'filled' } }
         }
     },
     component: Badge,
     title: 'UI/Data Display/Badge'
-} as Meta<typeof Badge>;
+} satisfies Meta<typeof Badge>;
 
-export const Primary: StoryObj<typeof Badge> = {};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Variants: StoryObj<typeof Badge> = {
-    argTypes: { variant: { table: { disable: true } } },
+export const Primary: Story = {};
+
+export const Variants: Story = {
+    argTypes: {
+        color: { table: { disable: true } },
+        variant: { table: { disable: true } }
+    },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
-            {(['filled', 'light', 'outline', 'dot'] as const).map((variant) => (
-                <div key={variant} style={columnStyle}>
-                    <Badge {...args} variant={variant}>
-                        {args.children}
-                    </Badge>
-                    <span style={labelStyle}>{variant}</span>
-                </div>
+        <Stack spacing="md">
+            {badgeVariants.map((variant) => (
+                <Group key={variant} spacing="sm">
+                    <StoryLabel ta="right" w={96}>
+                        {variant}
+                    </StoryLabel>
+                    {badgeColors.map((color) => (
+                        <Badge
+                            {...args}
+                            color={color}
+                            key={color}
+                            variant={variant}
+                        >
+                            {color}
+                        </Badge>
+                    ))}
+                </Group>
             ))}
-        </div>
+        </Stack>
     )
 };
 
-export const Sizes: StoryObj<typeof Badge> = {
+export const Sizes: Story = {
     argTypes: { size: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
-            {(['sm', 'md'] as const).map((size) => (
-                <div key={size} style={columnStyle}>
-                    <Badge {...args} size={size}>
-                        {args.children}
-                    </Badge>
-                    <span style={labelStyle}>{size}</span>
-                </div>
+        <Group align="flex-end" spacing="xl">
+            {badgeSizes.map((size) => (
+                <Stack align="center" key={size} spacing="2xs">
+                    <Badge {...args} size={size} />
+                    <StoryLabel>{size}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };
 
-export const Colors: StoryObj<typeof Badge> = {
+export const Colors: Story = {
     argTypes: { color: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 16 }}>
-            {(
-                ['primary', 'green', 'yellow', 'red', 'dark', 'violet'] as const
-            ).map((color) => (
-                <div key={color} style={columnStyle}>
-                    <Badge {...args} color={color}>
-                        {args.children}
-                    </Badge>
-                    <span style={labelStyle}>{color}</span>
-                </div>
+        <Group align="flex-end" spacing="xl">
+            {badgeColors.map((color) => (
+                <Stack align="center" key={color} spacing="2xs">
+                    <Badge {...args} color={color} />
+                    <StoryLabel>{color}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };

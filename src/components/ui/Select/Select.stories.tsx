@@ -2,13 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { type ChangeEvent, useState } from 'react';
 
-import Modal from '../Modal';
-import TextInput from '../TextInput';
-import Select from './index';
-import FontSelectItem from './SelectItem/FontSelectItem';
-import QuestionSelectItem from './SelectItem/QuestionSelectItem';
+import {
+    FontSelectItem,
+    Modal,
+    QuestionSelectItem,
+    Select,
+    TextInput
+} from '../../..';
 
-export default {
+const meta = {
+    args: {
+        clearable: false,
+        creatable: false,
+        data: [
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            { label: 'Svelte', value: 'svelte' }
+        ],
+        label: 'Select an option',
+        nothingFound: 'No options available',
+        placeholder: 'Pick a value',
+        searchable: true
+    },
     argTypes: {
         clearable: {
             control: 'boolean',
@@ -46,24 +62,12 @@ export default {
     },
     component: Select,
     title: 'UI/Inputs/Select'
-} as Meta<typeof Select>;
+} satisfies Meta<typeof Select>;
 
-export const Primary: StoryObj<typeof Select> = {
-    args: {
-        clearable: false,
-        creatable: false,
-        data: [
-            { label: 'React', value: 'react' },
-            { label: 'Vue', value: 'vue' },
-            { label: 'Angular', value: 'angular' },
-            { label: 'Svelte', value: 'svelte' }
-        ],
-        label: 'Select an option',
-        nothingFound: 'No options available',
-        placeholder: 'Pick a value',
-        searchable: true
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};
 
 const createValue = (label: string) => label.toLowerCase().replace(/\s+/g, '-');
 
@@ -128,7 +132,7 @@ const WithCreateActionStory = () => {
     );
 };
 
-export const WithCreateAction: StoryObj<typeof Select> = {
+export const WithCreateAction: Story = {
     argTypes: {
         creatable: { table: { disable: true } },
         getCreateLabel: { table: { disable: true } },
@@ -137,7 +141,7 @@ export const WithCreateAction: StoryObj<typeof Select> = {
     render: () => <WithCreateActionStory />
 };
 
-export const WithQuestionSelectItem: StoryObj<typeof Select> = {
+export const WithQuestionSelectItem: Story = {
     args: {
         data: [
             {
@@ -166,7 +170,7 @@ export const WithQuestionSelectItem: StoryObj<typeof Select> = {
     name: 'Custom Item - QuestionSelectItem'
 };
 
-export const WithFontSelectItem: StoryObj<typeof Select> = {
+export const WithFontSelectItem: Story = {
     args: {
         data: [
             { label: 'Inter', value: 'Inter, sans-serif' },

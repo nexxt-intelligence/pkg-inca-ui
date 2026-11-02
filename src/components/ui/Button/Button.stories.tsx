@@ -1,22 +1,28 @@
-import { Meta, StoryObj } from '@storybook/react';
-import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { TablerIconKeys } from '../Icon';
-import Button from './index';
+import { Button, Group, Stack, type TablerIconKeys } from '../../..';
+import StoryLabel from '../../../docs/StoryLabel';
 
-const columnStyle: React.CSSProperties = {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6
-};
+const buttonColors = [
+    'primary',
+    'green',
+    'yellow',
+    'red',
+    'dark',
+    'gray'
+] as const;
+const buttonSizes = ['xs', 'sm', 'md'] as const;
+const buttonVariants = ['filled', 'subtle', 'outline'] as const;
+const iconOptions = [
+    undefined,
+    'IconPlus',
+    'IconPencil',
+    'IconChevronDown',
+    'IconSettings',
+    'IconTrash'
+];
 
-const labelStyle: React.CSSProperties = {
-    color: 'var(--text-subtle)',
-    fontSize: 11
-};
-
-export default {
+const meta = {
     args: {
         children: 'Button',
         color: 'primary',
@@ -30,7 +36,7 @@ export default {
         children: { control: 'text' },
         color: {
             control: 'radio',
-            options: ['primary', 'green', 'yellow', 'red', 'dark'],
+            options: buttonColors,
             table: { defaultValue: { summary: 'primary' } }
         },
         compact: {
@@ -41,187 +47,133 @@ export default {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        leftIcon: {
-            control: 'select',
-            options: [
-                undefined,
-                'IconPlus',
-                'IconPencil',
-                'IconChevronDown',
-                'IconSettings',
-                'IconTrash'
-            ]
+        fullWidth: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
         },
+        leftIcon: { control: 'select', options: iconOptions },
         loading: {
             control: 'boolean',
             table: { defaultValue: { summary: 'false' } }
         },
-        rightIcon: {
-            control: 'select',
-            options: [
-                undefined,
-                'IconPlus',
-                'IconPencil',
-                'IconChevronDown',
-                'IconSettings',
-                'IconTrash'
-            ]
+        radius: {
+            control: 'radio',
+            options: ['xs', 'sm', 'md', 'lg', 'xl'],
+            table: { defaultValue: { summary: 'sm' } }
         },
+        rightIcon: { control: 'select', options: iconOptions },
         size: {
             control: 'radio',
-            options: ['xs', 'sm', 'md'],
+            options: buttonSizes,
             table: { defaultValue: { summary: 'sm' } }
         },
         variant: {
             control: 'radio',
-            options: ['filled', 'subtle', 'outline'],
+            options: buttonVariants,
             table: { defaultValue: { summary: 'filled' } }
         }
     },
     component: Button,
     title: 'UI/Buttons/Button'
-} as Meta<typeof Button>;
+} satisfies Meta<typeof Button>;
 
-export const Primary: StoryObj<typeof Button> = {};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Variants: StoryObj<typeof Button> = {
+export const Primary: Story = {};
+
+export const Variants: Story = {
     argTypes: { variant: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['filled', 'subtle', 'outline'] as const).map((variant) => (
-                <div key={variant} style={columnStyle}>
-                    <Button {...args} variant={variant}>
-                        {variant.charAt(0).toUpperCase() + variant.slice(1)}
-                    </Button>
-                    <span style={labelStyle}>{variant}</span>
-                </div>
+        <Group align="flex-end" spacing="xl">
+            {buttonVariants.map((variant) => (
+                <Stack align="center" key={variant} spacing="2xs">
+                    <Button {...args} variant={variant} />
+                    <StoryLabel>{variant}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };
 
-export const Sizes: StoryObj<typeof Button> = {
+export const Sizes: Story = {
     argTypes: { size: { table: { disable: true } } },
     render: (args) => (
-        <div style={{ alignItems: 'flex-end', display: 'flex', gap: 24 }}>
-            {(['xs', 'sm', 'md'] as const).map((size) => (
-                <div key={size} style={columnStyle}>
-                    <Button {...args} size={size}>
-                        {args.children as string}
-                    </Button>
-                    <span style={labelStyle}>{size}</span>
-                </div>
+        <Group align="flex-end" spacing="xl">
+            {buttonSizes.map((size) => (
+                <Stack align="center" key={size} spacing="2xs">
+                    <Button {...args} size={size} />
+                    <StoryLabel>{size}</StoryLabel>
+                </Stack>
             ))}
-        </div>
+        </Group>
     )
 };
 
-export const Colors: StoryObj<typeof Button> = {
+export const Colors: Story = {
     argTypes: {
         color: { table: { disable: true } },
         variant: { table: { disable: true } }
     },
     render: (args) => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {(['filled', 'subtle', 'outline'] as const).map((variant) => (
-                <div
-                    key={variant}
-                    style={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        gap: 12
-                    }}
-                >
-                    <span
-                        style={{
-                            ...labelStyle,
-                            textAlign: 'right',
-                            width: 48
-                        }}
-                    >
+        <Stack spacing="md">
+            {buttonVariants.map((variant) => (
+                <Group key={variant} spacing="sm">
+                    <StoryLabel ta="right" w={96}>
                         {variant}
-                    </span>
-                    {(
-                        ['primary', 'green', 'yellow', 'red', 'dark'] as const
-                    ).map((color) => (
+                    </StoryLabel>
+                    {buttonColors.map((color) => (
                         <Button
                             {...args}
                             color={color}
                             key={color}
                             variant={variant}
                         >
-                            {color.charAt(0).toUpperCase() + color.slice(1)}
+                            {color}
                         </Button>
                     ))}
-                </div>
+                </Group>
             ))}
-        </div>
+        </Stack>
     )
 };
 
-export const WithIcons: StoryObj<typeof Button> = {
+const iconCombos: {
+    children: string;
+    leftIcon?: TablerIconKeys;
+    rightIcon?: TablerIconKeys;
+}[] = [
+    { children: 'leftIcon', leftIcon: 'IconPlus' },
+    { children: 'rightIcon', rightIcon: 'IconChevronDown' },
+    { children: 'both', leftIcon: 'IconSend', rightIcon: 'IconChevronRight' }
+];
+
+export const WithIcons: Story = {
     argTypes: {
         leftIcon: { table: { disable: true } },
         rightIcon: { table: { disable: true } },
-        variant: { table: { disable: true } }
+        size: { table: { disable: true } }
     },
-    render: (args) => {
-        const iconCombos = [
-            {
-                children: 'Add Item',
-                label: 'leftIcon',
-                leftIcon: 'IconPlus' as TablerIconKeys,
-                rightIcon: undefined
-            },
-            {
-                children: 'Dropdown',
-                label: 'rightIcon',
-                leftIcon: undefined,
-                rightIcon: 'IconChevronDown' as TablerIconKeys
-            },
-            {
-                children: 'Send',
-                label: 'both',
-                leftIcon: 'IconSend' as TablerIconKeys,
-                rightIcon: 'IconChevronRight' as TablerIconKeys
-            }
-        ] as const;
-        return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {(['filled', 'subtle', 'outline'] as const).map((variant) => (
-                    <div
-                        key={variant}
-                        style={{
-                            alignItems: 'center',
-                            display: 'flex',
-                            gap: 12
-                        }}
-                    >
-                        <span
-                            style={{
-                                ...labelStyle,
-                                textAlign: 'right',
-                                width: 48
-                            }}
+    render: (args) => (
+        <Stack spacing="md">
+            {buttonSizes.map((size) => (
+                <Group key={size} spacing="sm">
+                    <StoryLabel ta="right" w={96}>
+                        {size}
+                    </StoryLabel>
+                    {iconCombos.map((combo) => (
+                        <Button
+                            {...args}
+                            key={combo.children}
+                            leftIcon={combo.leftIcon}
+                            rightIcon={combo.rightIcon}
+                            size={size}
                         >
-                            {variant}
-                        </span>
-                        {iconCombos.map(
-                            ({ children, label, leftIcon, rightIcon }) => (
-                                <Button
-                                    {...args}
-                                    key={label}
-                                    leftIcon={leftIcon}
-                                    rightIcon={rightIcon}
-                                    variant={variant}
-                                >
-                                    {children}
-                                </Button>
-                            )
-                        )}
-                    </div>
-                ))}
-            </div>
-        );
-    }
+                            {combo.children}
+                        </Button>
+                    ))}
+                </Group>
+            ))}
+        </Stack>
+    )
 };

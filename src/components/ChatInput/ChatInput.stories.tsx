@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ChatInput from './index';
+import { ChatInput } from '../..';
 
-export default {
+const meta = {
+    args: {
+        handleSend: () => {},
+        placeholder: 'Type a message...'
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -12,16 +16,14 @@ export default {
     },
     component: ChatInput,
     title: 'Components/ChatInput'
-} as Meta<typeof ChatInput>;
+} satisfies Meta<typeof ChatInput>;
 
-export const Primary: StoryObj<typeof ChatInput> = {
-    args: {
-        handleSend: () => {},
-        placeholder: 'Type a message...'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Disabled: StoryObj<typeof ChatInput> = {
+export const Primary: Story = {};
+
+export const Disabled: Story = {
     args: {
         disabled: true,
         handleSend: () => {},

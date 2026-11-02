@@ -12,13 +12,23 @@ import Tooltip from '../ui/Tooltip';
 import classes from './Input.module.css';
 
 export interface InputProps {
+    /** Content shown in a gray box attached to the left of the input (e.g. `https://`). */
     leftFilledSection?: React.ReactNode;
+    /** Lets the tooltip text wrap onto several lines. */
     multilineTooltip?: boolean;
+    /** Content shown in a gray box attached to the right of the input (e.g. `.com`). */
     rightFilledSection?: React.ReactNode;
+    /** Help text shown in a tooltip next to the label. */
     tooltip?: string;
+    /** Input style: `default` · `filled` · `unstyled` · `underline`. */
     variant?: string;
 }
 
+/**
+ * **Deprecated custom inca-ui component.**
+ *
+ * @deprecated Use `TextInput`, `NumberInput` or `PasswordInput` instead.
+ */
 const Input = ({
     icon,
     label,

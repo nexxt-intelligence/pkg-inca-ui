@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SplitButton from './index';
+import { SplitButton } from '../..';
 
-export default {
+const meta = {
     args: {
         children: 'Send',
         color: 'primary',
@@ -12,10 +12,8 @@ export default {
             { label: 'Save draft', onClick: () => {} },
             { label: 'Delete', onClick: () => {} }
         ],
-        loading: false,
         menuIcon: 'IconChevronDown',
-        size: 'sm',
-        variant: 'filled'
+        size: 'sm'
     },
     argTypes: {
         buttonIcon: {
@@ -44,11 +42,14 @@ export default {
     },
     component: SplitButton,
     title: 'Components/SplitButton'
-} as Meta<typeof SplitButton>;
+} satisfies Meta<typeof SplitButton>;
 
-export const Primary: StoryObj<typeof SplitButton> = {};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const WithItemTooltips: StoryObj<typeof SplitButton> = {
+export const Primary: Story = {};
+
+export const WithItemTooltips: Story = {
     args: {
         items: [
             {

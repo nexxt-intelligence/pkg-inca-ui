@@ -1,10 +1,13 @@
-import { Center } from '@mantine/core';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../Button';
-import Tooltip from './index';
+import { Button, Center, Tooltip } from '../../..';
 
-export default {
+const meta = {
+    args: {
+        children: <Button>Hover me</Button>,
+        label: 'This is a tooltip',
+        position: 'top'
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -28,18 +31,15 @@ export default {
     },
     component: Tooltip,
     title: 'UI/Overlays/Tooltip'
-} as Meta<typeof Tooltip>;
+} satisfies Meta<typeof Tooltip>;
 
-export const Primary: StoryObj<typeof Tooltip> = {
-    args: {
-        label: 'This is a tooltip',
-        position: 'top'
-    },
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
     render: (args) => (
-        <Center style={{ height: '10vh' }}>
-            <Tooltip {...args}>
-                <Button>Hover me</Button>
-            </Tooltip>
+        <Center h="10vh">
+            <Tooltip {...args} />
         </Center>
     )
 };
@@ -49,7 +49,7 @@ export const Floating: StoryObj<typeof Tooltip.Floating> = {
         label: 'This is a floating tooltip'
     },
     render: (args) => (
-        <Center style={{ height: '10vh' }}>
+        <Center h="10vh">
             <Tooltip.Floating {...args}>
                 <Button>Hover me</Button>
             </Tooltip.Floating>

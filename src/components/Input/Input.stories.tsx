@@ -1,8 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Input from './index';
+import { Input, Stack } from '../..';
 
-export default {
+const inputTypes = ['text', 'number', 'password'] as const;
+
+const meta = {
+    args: {
+        label: 'Input label',
+        placeholder: 'Enter text here'
+    },
     argTypes: {
         disabled: {
             control: 'boolean',
@@ -24,41 +30,24 @@ export default {
     },
     component: Input,
     title: 'Components/Input'
-} as Meta<typeof Input>;
+} satisfies Meta<typeof Input>;
 
-export const Primary: StoryObj<typeof Input> = {
-    args: {
-        label: 'Input label',
-        placeholder: 'Enter text here'
-    }
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Types: StoryObj<typeof Input> = {
+export const Primary: Story = {};
+
+export const Types: Story = {
     render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {(['text', 'number', 'password'] as const).map((type) => (
-                <div
+        <Stack spacing="sm">
+            {inputTypes.map((type) => (
+                <Input
                     key={type}
-                    style={{ alignItems: 'flex-end', display: 'flex', gap: 12 }}
-                >
-                    <Input
-                        label={type.charAt(0).toUpperCase() + type.slice(1)}
-                        placeholder={`Enter ${type}`}
-                        style={{ flex: 1 }}
-                        type={type}
-                    />
-                    <span
-                        style={{
-                            color: 'var(--text-subtle)',
-                            fontSize: 11,
-                            paddingBottom: 8,
-                            width: 48
-                        }}
-                    >
-                        {type}
-                    </span>
-                </div>
+                    label={type}
+                    placeholder={`Enter ${type}`}
+                    type={type}
+                />
             ))}
-        </div>
+        </Stack>
     )
 };

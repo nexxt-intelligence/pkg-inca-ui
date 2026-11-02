@@ -7,9 +7,14 @@ import { type StrictProps } from '../../../types/props';
 import classes from './Footer.module.css';
 
 export type FooterProps = {
+    /** Footer height. */
     height?: MantineFooterProps['height'];
 } & Omit<StrictProps<MantineFooterProps>, 'children' | 'height'>;
 
+/**
+ * The Privacy / Terms footer shown at the bottom of `AppShell`. Built on Mantine
+ * [Footer](https://v6.mantine.dev/core/app-shell/).
+ */
 const Footer = ({ ...props }: FooterProps) => {
     return (
         <MantineFooter

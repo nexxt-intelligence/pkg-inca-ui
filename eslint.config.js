@@ -25,6 +25,20 @@ export default tseslint.config(
         rules: {
             ...reactHooks.configs.recommended.rules,
             '@typescript-eslint/no-explicit-any': 'warn',
+            // Design tokens only: no raw colors or bare px values ("10px") in JSX props / inline styles.
+            // Borders like "1px solid var(--border-default)" are fine.
+            // Use var(--token) for colors and Mantine scale keys ("xs", "md", …) for sizes.
+            'no-restricted-syntax': [
+                'warn',
+                {
+                    message: 'Use a color token, e.g. var(--text-subtle), instead of a raw color.',
+                    selector: 'JSXAttribute Literal[value=/#[0-9a-fA-F]{3,8}\\b|rgba?\\(/]'
+                },
+                {
+                    message: 'Use a Mantine scale key ("xs", "md", …) or a token instead of a px value.',
+                    selector: 'JSXAttribute Literal[value=/^-?[\\d.]+px$/]'
+                }
+            ],
             'perfectionist/sort-imports': 'warn',
             // Size-scale tokens (none → 3xs → 2xs → xs → sm → md → lg → xl → 2xl → 3xl)
             // must stay in semantic order, not alphabetical.

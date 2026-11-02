@@ -6,10 +6,17 @@ import TextArea, { TextAreaProps } from '../ui/TextArea';
 import classes from './ChatInput.module.css';
 
 export interface ChatInputProps extends TextAreaProps {
+    /** Disables the text area and the send button. */
     disabled?: boolean;
+    /** Called when the send button is clicked. */
     handleSend: () => void;
 }
 
+/**
+ * **Custom inca-ui component** (not part of Mantine).
+ *
+ * Auto-growing text area with a send button. Takes all `TextArea` props.
+ */
 const ChatInput = ({
     disabled,
     handleSend,

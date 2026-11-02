@@ -12,12 +12,21 @@ import classes from './ActionIcon.module.css';
 
 export interface ActionIconProps
     extends Omit<StrictButtonProps<MantineActionIconProps>, 'onClick'> {
+    /** Tabler icon name, e.g. `"IconPencil"` or `"IconTrash"`. */
     icon: TablerIconKeys;
+    /** Rotates the icon, in degrees. */
     iconRotate?: number;
+    /** Icon size. Defaults to the button `size`. */
     iconSize?: '2xs' | MantineNumberSize;
+    /** Called when the button is clicked. */
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
+/**
+ * Icon-only button. Built on Mantine [ActionIcon](https://v6.mantine.dev/core/action-icon/).
+ *
+ * inca-ui adds `icon` (a Tabler icon name) and a `muted` variant.
+ */
 const ActionIcon = React.forwardRef<HTMLButtonElement, ActionIconProps>(
     (
         {

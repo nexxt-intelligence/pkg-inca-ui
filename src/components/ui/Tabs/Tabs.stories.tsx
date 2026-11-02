@@ -1,22 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tabs from './index';
+import { Stack, Tabs } from '../../..';
+import StoryLabel from '../../../docs/StoryLabel';
 
-export default {
-    argTypes: {
-        fullWidth: {
-            control: 'boolean',
-            table: { defaultValue: { summary: 'false' } }
-        },
-        variant: {
-            control: 'radio',
-            options: ['default', 'outline', 'pills', 'contained'],
-            table: { defaultValue: { summary: 'default' } }
-        }
-    },
-    component: Tabs,
-    title: 'UI/Navigation/Tabs'
-} as Meta<typeof Tabs>;
+const tabVariants = ['default', 'outline', 'pills', 'contained'] as const;
 
 const tabs = [
     { label: 'First', value: 'first' },
@@ -38,39 +25,42 @@ const panels = (
     </>
 );
 
-export const Default: StoryObj<typeof Tabs> = {
+const meta = {
     args: {
         children: panels,
         defaultValue: 'first',
         tabs
-    }
-};
+    },
+    argTypes: {
+        fullWidth: {
+            control: 'boolean',
+            table: { defaultValue: { summary: 'false' } }
+        },
+        variant: {
+            control: 'radio',
+            options: tabVariants,
+            table: { defaultValue: { summary: 'default' } }
+        }
+    },
+    component: Tabs,
+    title: 'UI/Navigation/Tabs'
+} satisfies Meta<typeof Tabs>;
 
-export const Variants: StoryObj<typeof Tabs> = {
-    render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            {(['default', 'outline', 'pills', 'contained'] as const).map(
-                (variant) => (
-                    <div key={variant}>
-                        <p
-                            style={{
-                                color: 'var(--text-subtle)',
-                                fontSize: 11,
-                                marginBottom: 8
-                            }}
-                        >
-                            {variant}
-                        </p>
-                        <Tabs
-                            defaultValue="first"
-                            tabs={tabs}
-                            variant={variant}
-                        >
-                            {panels}
-                        </Tabs>
-                    </div>
-                )
-            )}
-        </div>
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {};
+
+export const Variants: Story = {
+    argTypes: { variant: { table: { disable: true } } },
+    render: (args) => (
+        <Stack spacing="2xl">
+            {tabVariants.map((variant) => (
+                <Stack key={variant} spacing="xs">
+                    <StoryLabel>{variant}</StoryLabel>
+                    <Tabs {...args} variant={variant} />
+                </Stack>
+            ))}
+        </Stack>
     )
 };

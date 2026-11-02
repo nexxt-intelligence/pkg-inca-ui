@@ -1,15 +1,18 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { useState } from 'react';
 
-import Button from '../ui/Button';
-import Icon from '../ui/Icon';
 import {
+    Button,
+    Icon,
     SplitPaneModal,
     SplitPaneModalActions,
-    SplitPaneModalContent
-} from './index';
+    SplitPaneModalContent,
+    type SplitPaneModalProps
+} from '../..';
 
-export default {
+const meta = {
+    args: { isBlurred: true, isClosable: true },
     argTypes: {
         body: { control: 'text' },
         header: { control: 'text' },
@@ -18,9 +21,12 @@ export default {
     },
     component: SplitPaneModal,
     title: 'Components/SplitPaneModal'
-} as Meta<typeof SplitPaneModal>;
+} satisfies Meta<typeof SplitPaneModal>;
 
-const SplitPaneModalStory = (args: any) => {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const SplitPaneModalStory = (args: SplitPaneModalProps) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
@@ -52,7 +58,6 @@ const SplitPaneModalStory = (args: any) => {
     );
 };
 
-export const Primary: StoryObj<typeof SplitPaneModal> = {
-    args: { isBlurred: true, isClosable: true },
+export const Primary: Story = {
     render: (args) => <SplitPaneModalStory {...args} />
 };
