@@ -1,6 +1,8 @@
 import { CopyButton, Flex } from '@mantine/core';
 
-import { Button, TextInput, TextInputProps, Tooltip } from '../..';
+import Button from '../ui/Button';
+import TextInput, { type TextInputProps } from '../ui/TextInput';
+import Tooltip from '../ui/Tooltip';
 
 export interface LinkCopyInputProps extends TextInputProps {
     label: string;

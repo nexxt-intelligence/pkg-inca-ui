@@ -21,7 +21,8 @@ const CollapsibleContainer = ({
     description,
     title,
     tooltip,
-    tooltipType = 'info'
+    tooltipType = 'info',
+    ...props
 }: CollapsibleContainerProps) => {
     const defaultValue = defaultOpen ? title : null;
 
@@ -30,13 +31,13 @@ const CollapsibleContainer = ({
             classNames={{
                 control: classes.control,
                 item: classes.item,
-                label: classes.label,
-                panel: classes.panel
+                label: classes.label
             }}
             defaultValue={defaultValue}
             multiple={false}
             variant="contained"
             w={'100%'}
+            {...props}
         >
             <Accordion.Item data-tooltiptype={tooltipType} value={title}>
                 <Accordion.Control>

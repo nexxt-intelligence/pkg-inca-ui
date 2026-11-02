@@ -2,10 +2,10 @@ import {
     Button as MantineButton,
     ButtonProps as MantineButtonProps
 } from '@mantine/core';
-import { clsx } from '@mantine/core';
 import * as React from 'react';
 
 import { type StrictButtonProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Icon, { TablerIconKeys } from '../Icon';
 import classes from './Button.module.css';
 
@@ -40,7 +40,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) => {
         return (
             <MantineButton
-                className={clsx(className, classes.button)}
+                className={cx(className, classes.button)}
                 classNames={{
                     leftIcon: classes.leftIcon,
                     rightIcon: classes.rightIcon,

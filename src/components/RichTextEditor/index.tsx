@@ -16,8 +16,11 @@ import {
 import StarterKit from '@tiptap/starter-kit';
 import * as React from 'react';
 
-import { ActionIcon, Button, Icon, Label, type LabelProps } from '../../index';
 import { type StrictProps } from '../../types/props';
+import ActionIcon from '../ui/ActionIcon';
+import Button from '../ui/Button';
+import Icon from '../ui/Icon';
+import Label, { type LabelProps } from '../ui/Label';
 import classes from './RichTextEditor.module.css';
 
 type OnAnswerRefClick = (
@@ -482,9 +485,9 @@ const RichTextEditor = React.forwardRef<
                             />
                         )}
                         {imageUploadError && !readOnly && (
-                            <span role="alert">
+                            <Input.Error role="alert">
                                 Could not upload image. Try again.
-                            </span>
+                            </Input.Error>
                         )}
                     </Input.Wrapper>
                 </div>

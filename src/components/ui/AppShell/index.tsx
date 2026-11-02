@@ -12,6 +12,7 @@ import {
 } from '@mantine/core';
 
 import { type StrictProps } from '../../../types/props';
+import { cx } from '../../../utils/cx';
 import Footer from '../Footer';
 import Icon from '../Icon';
 import Text from '../Text';
@@ -178,17 +179,19 @@ const AppShell = ({ ...props }: AppShellProps) => {
             layout={!isMobile ? 'alt' : 'default'}
             navbar={
                 <Navbar
-                    className={`${classes.navbar} ${
-                        isNavbarOpen ? '' : classes.hidden
-                    } `}
+                    className={cx(
+                        classes.navbar,
+                        !isNavbarOpen && classes.hidden
+                    )}
                     height={'auto'}
                     width={{ base: 85 }}
                 >
                     <Navbar.Section>
                         <div
-                            className={`${classes.iconLogo} ${
-                                isMobile ? classes.hidden : ''
-                            }`}
+                            className={cx(
+                                classes.iconLogo,
+                                isMobile && classes.hidden
+                            )}
                         >
                             {logoIcon}
                         </div>
@@ -204,7 +207,7 @@ const AppShell = ({ ...props }: AppShellProps) => {
             navbarOffsetBreakpoint={isNavbarOpen ? '' : 'md'}
             {...mantineAppShellProps}
         >
-            <header className={headerTitle ? classes.header : ''}>
+            <header className={headerTitle ? classes.header : undefined}>
                 <Stack spacing={0}>
                     {isMobile && (
                         <div className={classes.mobileHeader}>

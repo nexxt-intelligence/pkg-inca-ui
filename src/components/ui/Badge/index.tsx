@@ -7,14 +7,13 @@ import * as React from 'react';
 import { type StrictProps } from '../../../types/props';
 import classes from './Badge.module.css';
 
-type BadgeProps = {
+export type BadgeProps = {
     children: React.ReactNode;
 } & StrictProps<MantineBadgeProps>;
 
-export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
+const Badge = ({ children, size = 'md', ...props }: BadgeProps) => {
     return (
         <MantineBadge
-            className={classes.badge}
             classNames={{
                 leftSection: classes.leftSection,
                 root: classes.root
@@ -27,6 +26,6 @@ export default function Badge({ children, size = 'md', ...props }: BadgeProps) {
             {children}
         </MantineBadge>
     );
-}
+};
 
-export type { BadgeProps };
+export default Badge;

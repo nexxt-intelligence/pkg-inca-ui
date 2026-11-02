@@ -1,5 +1,4 @@
 import { modals } from '@mantine/modals';
-import { OpenConfirmModal } from '@mantine/modals/lib/context';
 import * as React from 'react';
 
 import Text from '../components/ui/Text';
@@ -11,6 +10,8 @@ export type ConfirmationModalProps = {
     message?: string;
     title: string;
 } & OpenConfirmModal;
+
+type OpenConfirmModal = Parameters<typeof modals.openConfirmModal>[0];
 
 export const useConfirmationModal = () => {
     const showConfirmationModal = ({

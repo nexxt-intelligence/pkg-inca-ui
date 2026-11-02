@@ -32,7 +32,8 @@ const Tabs = ({
     fullWidth,
     onTabChange: controlledOnTabChange,
     value: controlledValue,
-    variant = 'default'
+    variant = 'default',
+    ...props
 }: TabsProps) => {
     /** Had to go with controlled tabs because of interference with React-tab in portal-client */
     const [activeTab, setActiveTab] = React.useState<null | string>(
@@ -55,7 +56,6 @@ const Tabs = ({
         <div onClick={(e) => e.stopPropagation()}>
             <MantineTabs
                 classNames={{
-                    panel: classes.panel,
                     root: classes.root,
                     tab: classes.tab,
                     tabsList: classes.tabsList
@@ -64,6 +64,7 @@ const Tabs = ({
                 onTabChange={handleTabChange}
                 value={currentValue}
                 variant={variant}
+                {...props}
             >
                 {tabs.length > 0 && (
                     <MantineTabs.List grow={fullWidth}>

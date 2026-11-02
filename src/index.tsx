@@ -29,7 +29,10 @@ export {
 export {
     MiniModal,
     MiniModalActions,
-    MiniModalContent
+    type MiniModalActionsProps,
+    MiniModalContent,
+    type MiniModalContentProps,
+    type MiniModalProps
 } from './components/MiniModal';
 export {
     default as RichTextEditor,
@@ -44,7 +47,10 @@ export {
 export {
     SplitPaneModal,
     SplitPaneModalActions,
-    SplitPaneModalContent
+    type SplitPaneModalActionsProps,
+    SplitPaneModalContent,
+    type SplitPaneModalContentProps,
+    type SplitPaneModalProps
 } from './components/SplitPaneModal';
 /** Extended Mantine UI Components */
 export {

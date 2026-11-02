@@ -25,7 +25,7 @@ export type MenuProps = {
     menuContent?: React.ReactNode;
 } & StrictProps<MantineMenuProps>;
 
-function Menu({ children, items, menuContent, ...props }: MenuProps) {
+const Menu = ({ children, items, menuContent, ...props }: MenuProps) => {
     return (
         <MantineMenu
             classNames={{
@@ -94,7 +94,7 @@ function Menu({ children, items, menuContent, ...props }: MenuProps) {
             </MantineMenu.Dropdown>
         </MantineMenu>
     );
-}
+};
 
 Menu.Item = MantineMenu.Item;
 Menu.Label = MantineMenu.Label;
