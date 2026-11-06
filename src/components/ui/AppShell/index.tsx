@@ -48,7 +48,7 @@ const defaultLogoFull = (
 export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     /** URL of the active nav link (highlighted). */
     activeLink: string;
-    /** Pinned full-width to the top of the window, above the navbar and the page header, e.g. a `AnnouncementBar`. */
+    /** Pinned full-width to the top of the window, above the navbar and the page header, e.g. an `AnnouncementBar`. */
     announcement?: React.ReactNode;
     /** Content shown next to the subtitle. */
     headerBadge?: React.ReactNode;

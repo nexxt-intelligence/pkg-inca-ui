@@ -42,8 +42,8 @@ const defaultMessage = (startUtc?: null | string, endUtc?: null | string) =>
         : null;
 
 export interface AnnouncementBarProps {
-    /** The app's `MAINTENANCE_STATUS_URL`, e.g. https://maintenance.prod.nexxt.in/status.json */
-    statusUrl: string;
+    /** The app's `MAINTENANCE_STATUS_URL` */
+    statusUrl?: string;
 }
 
 /**
@@ -64,7 +64,11 @@ const AnnouncementBar = ({ statusUrl }: AnnouncementBarProps) => {
 
     // Send open tabs to the maintenance page once the window starts.
     useEffect(() => {
-        if (!status?.blockActive || readCookie(BYPASS_COOKIE) !== null) {
+        if (
+            !statusUrl ||
+            !status?.blockActive ||
+            readCookie(BYPASS_COOKIE) !== null
+        ) {
             return;
         }
         const target = new URL('/', statusUrl);
