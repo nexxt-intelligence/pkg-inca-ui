@@ -1,0 +1,33 @@
+.root {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--bg-error-light);
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.badge {
+    flex-shrink: 0;
+}
+
+.closeButton {
+    flex-shrink: 0;
+    color: var(--icon-subtle);
+}
+
+/* Below 992px (based on inca's mobile width - standardize later): badge on top, message underneath, both centered */
+@media (max-width: 62rem) {
+    .content {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        text-align: center;
+    }
+}

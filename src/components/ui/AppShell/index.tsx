@@ -10,6 +10,7 @@ import {
     Stack,
     Title
 } from '@mantine/core';
+import { useEffect, useRef, useState } from 'react';
 
 import { type StrictProps } from '../../../types/props';
 import { cx } from '../../../utils/cx';
@@ -47,6 +48,8 @@ const defaultLogoFull = (
 export interface AppShellProps extends StrictProps<MantineAppShellProps> {
     /** URL of the active nav link (highlighted). */
     activeLink: string;
+    /** Pinned full-width to the top of the window, above the navbar and the page header, e.g. a `AnnouncementBar`. */
+    announcement?: React.ReactNode;
     /** Content shown next to the subtitle. */
     headerBadge?: React.ReactNode;
     /** Content shown under the title row. */
@@ -106,6 +109,7 @@ export interface NavLinkItem extends StrictProps<MantineNavLinkProps> {
 const AppShell = ({ ...props }: AppShellProps) => {
     const {
         activeLink,
+        announcement,
         children,
         headerBadge,
         headerBottomContent,
@@ -131,6 +135,20 @@ const AppShell = ({ ...props }: AppShellProps) => {
         userProfilePicture,
         ...mantineAppShellProps
     } = props;
+
+    // The announcement is fixed at the top, so the navbar and the page move down by its height.
+    // It can wrap or render nothing, so measure it instead of assuming a height.
+    const announcementRef = useRef<HTMLDivElement>(null);
+    const [announcementHeight, setAnnouncementHeight] = useState(0);
+    useEffect(() => {
+        const element = announcementRef.current;
+        if (!element) return;
+        const observer = new ResizeObserver(() =>
+            setAnnouncementHeight(element.offsetHeight)
+        );
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, []);
 
     const navLinkBottomItems = [
         openHelp && {
@@ -233,8 +251,16 @@ const AppShell = ({ ...props }: AppShellProps) => {
                 </Navbar>
             }
             navbarOffsetBreakpoint={isNavbarOpen ? '' : 'md'}
+            style={
+                {
+                    '--announcement-height': `${announcementHeight}px`
+                } as React.CSSProperties
+            }
             {...mantineAppShellProps}
         >
+            <div className={classes.announcement} ref={announcementRef}>
+                {announcement}
+            </div>
             <header className={headerTitle ? classes.header : undefined}>
                 <Stack spacing={0}>
                     {isMobile && (

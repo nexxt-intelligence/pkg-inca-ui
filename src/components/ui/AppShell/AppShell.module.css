@@ -1,10 +1,12 @@
 .root {
     background-color: var(--bg-base);
     position: relative;
+    /* Room for the fixed announcement (0px when there is none) */
+    padding-top: var(--announcement-height, 0px);
 }
 .main {
     padding-bottom: var(--mantine-footer-height, 0px);
-    min-height: 100vh;
+    min-height: calc(100vh - var(--announcement-height, 0px));
     display: flex;
     flex-direction: column;
 }
@@ -38,12 +40,12 @@
         padding-top: 80px;
     }
     .navbar {
-        top: 64px;
+        top: calc(64px + var(--announcement-height, 0px));
     }
 }
 .mobileHeader {
     position: fixed;
-    top: 0;
+    top: var(--announcement-height, 0px);
     right: 0;
     left: 0;
     background-color: var(--bg-surface);
@@ -68,7 +70,7 @@
     }
     .header {
         position: sticky;
-        top: 0;
+        top: var(--announcement-height, 0px);
         padding: var(--spacing-md);
         margin-left: calc(-1 * var(--spacing-md));
         margin-right: calc(-1 * var(--spacing-md));
@@ -82,12 +84,16 @@
         padding-top: 64px;
     }
     .header {
-        top: 64px;
+        top: calc(64px + var(--announcement-height, 0px));
     }
 }
 
 .navbar {
     overflow: auto;
+}
+/* Below the announcement (`.root` raises specificity over Mantine's own `top`) */
+.root .navbar {
+    top: var(--announcement-height, 0px);
 }
 .navLinkRoot {
     flex-direction: column;
@@ -130,4 +136,14 @@
 
 .hidden {
     display: none;
+}
+
+/* Pinned to the top of the window, full width, above the navbar and the page header */
+.announcement {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* Above the navbar (100), below modals (200) */
+    z-index: 150;
 }

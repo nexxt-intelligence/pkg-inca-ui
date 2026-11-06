@@ -12,6 +12,10 @@ export {
     type ActionCardProps
 } from './components/ActionCard';
 export {
+    default as AnnouncementBar,
+    type AnnouncementBarProps
+} from './components/AnnouncementBar';
+export {
     default as ChatInput,
     type ChatInputProps
 } from './components/ChatInput';
@@ -124,7 +128,12 @@ export { default as Tooltip, type TooltipProps } from './components/ui/Tooltip';
 export * from './constants/theme';
 
 /** Hooks */
-export { type ConfirmationModalProps, useConfirmationModal } from './hooks';
+export {
+    type ConfirmationModalProps,
+    type MaintenanceStatus,
+    useConfirmationModal,
+    useMaintenanceStatus
+} from './hooks';
 
 /** Provider */
 export const CustomMantineProvider = ({
