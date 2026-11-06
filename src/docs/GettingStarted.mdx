@@ -6,10 +6,27 @@ import { Table } from './DocBlocks';
 
 # Getting Started with inca-ui
 
-_Last updated: 2026-11-02_
+_Last updated: 2026-11-03_
 
 inca-ui is the shared component library for the inca platform. It wraps
 [Mantine](https://v6.mantine.dev) with our theme, design tokens (from Figma) and a set of custom components.
+
+## What's in this Storybook
+
+-   **Docs**: guides, starting with this page, then Tokens, Typography and the Cheat Sheet.
+-   **Components**: our own components (`ActionCard`, `SplitButton`, …). They're built on Mantine but have
+    their own props, so these docs are the reference.
+-   **UI**: Mantine components with our styling and defaults (`Button`, `Select`, `Stack`, …). Mantine's
+    docs apply too, and each page links to them.
+
+**On this page**
+
+1. [Pick the right version](#1-pick-the-right-version)
+2. [Set up the provider](#2-set-up-the-provider)
+3. [Import components from `inca-ui`](#3-import-components-from-inca-ui)
+4. [Styling with tokens](#4-styling-with-tokens)
+5. [Mantine 6 vs 9 differences](#5-mantine-6-vs-9-differences)
+6. [Contributing](#6-contributing)
 
 ## 1. Pick the right version
 
@@ -130,15 +147,8 @@ import { Button, Group, Stack, Text } from 'inca-ui';
 import { Button } from '@mantine/core';
 ```
 
-The package exports three kinds of components. Each one has a page in this Storybook with a short
-description, every prop and its default.
-
--   **Extended Mantine components** (`Button`, `TextInput`, `Select`, `Modal`, …): Mantine components with
-    our sizes, defaults and extra props (e.g. `leftIcon="IconPlus"` takes a Tabler icon name).
--   **Custom components** (`ActionCard`, `ChatInput`, `SplitButton`, `Label`, …): built by us, marked
-    **Custom inca-ui component** on their page.
--   **Re-exported Mantine components** (`Group`, `Stack`, `Flex`, `Box`, `Paper`, `Popover`, …): used
-    as-is. The layout ones have their own pages under **UI / Layout**.
+Other Mantine components we export without a page here (`Box`, `Paper`, `Popover`, …) work exactly as
+in Mantine's docs.
 
 If you need a component that isn't exported, ask in the design-system channel instead of importing it
 from Mantine directly.

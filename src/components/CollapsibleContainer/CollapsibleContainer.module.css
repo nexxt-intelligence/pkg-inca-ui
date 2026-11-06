@@ -3,6 +3,9 @@
     width: 100%;
     border: 1px solid var(--border-default);
     background-color: var(--bg-surface);
+    &[data-active='true'] {
+        background-color: var(--bg-surface);
+    }
     &[data-tooltiptype='warning'] {
         border: 1px solid var(--border-warning);
     }
