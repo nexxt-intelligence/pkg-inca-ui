@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.18.1
+
+### Patch Changes
+
+-   566fd76: fix: optional statusUrl prop on AnnouncementBar
+
 ## 7.18.0
 
 ### Minor Changes
