@@ -1,5 +1,11 @@
 # inca-ui
 
+## 7.18.0
+
+### Minor Changes
+
+-   373e08a: feat: add AnnouncementBar for scheduled maintenance, useMaintenanceStatus hook and AppShell announcement prop
+
 ## 7.17.0
 
 ### Minor Changes
