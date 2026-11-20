@@ -98,6 +98,10 @@ export {
     default as NumberInput,
     type NumberInputProps
 } from './components/ui/NumberInput';
+export {
+    default as Pagination,
+    type PaginationProps
+} from './components/ui/Pagination';
 export { default as Prism, type PrismProps } from './components/ui/Prism';
 export {
     default as Radio,
@@ -112,6 +116,11 @@ export { default as Select, type SelectProps } from './components/ui/Select';
 export { default as FontSelectItem } from './components/ui/Select/SelectItem/FontSelectItem';
 export { default as QuestionSelectItem } from './components/ui/Select/SelectItem/QuestionSelectItem';
 export { default as Switch, type SwitchProps } from './components/ui/Switch';
+export {
+    default as Table,
+    type TableCellTextProps,
+    type TableProps
+} from './components/ui/Table';
 export { default as Tabs, type TabsProps } from './components/ui/Tabs';
 export { default as Text, type TextProps } from './components/ui/Text';
 export {
@@ -221,9 +230,7 @@ export {
     Anchor,
     type AnchorProps,
     Breadcrumbs,
-    type BreadcrumbsProps,
-    Pagination,
-    type PaginationProps
+    type BreadcrumbsProps
 } from '@mantine/core';
 
 // Data display
@@ -275,8 +282,6 @@ export {
     type HighlightProps,
     Mark,
     type MarkProps,
-    Table,
-    type TableProps,
     Title,
     type TitleProps
 } from '@mantine/core';
