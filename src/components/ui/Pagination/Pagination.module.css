@@ -1,0 +1,36 @@
+.control {
+    height: 24px;
+    min-width: 24px;
+    padding: 0 var(--spacing-2xs);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-disabled);
+    color: var(--text-default);
+    font-size: var(--font-size-sm);
+
+    &:not([data-disabled]):hover {
+        background-color: var(--bg-hover);
+    }
+
+    &[data-active] {
+        background-color: var(--bg-accent-light);
+        border-color: var(--border-accent);
+        color: var(--text-accent);
+
+        &:not([data-disabled]):hover {
+            background-color: var(--bg-accent-light-hover);
+        }
+    }
+
+    &[data-disabled] {
+        color: var(--text-disabled);
+        opacity: 1;
+    }
+}
+
+.dots {
+    height: 24px;
+    min-width: 24px;
+    border: 1px solid var(--border-disabled);
+    border-radius: var(--radius-sm);
+    color: var(--text-subtle);
+}
